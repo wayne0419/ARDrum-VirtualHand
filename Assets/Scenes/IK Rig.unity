@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 353023369}
   - component: {fileID: 353023368}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Left Hand Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 1797628281}
   - component: {fileID: 1797628280}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Right Hand Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,7 +1655,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 81bb9eea30387e442899949a80011e55,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.556
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81bb9eea30387e442899949a80011e55,
         type: 3}
