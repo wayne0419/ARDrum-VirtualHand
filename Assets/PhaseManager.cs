@@ -12,7 +12,7 @@ public enum Phase
 public class PhaseManager : MonoBehaviour
 {   
     [Header("Reference")]
-    RecordPhaseRunner recordPhaseRunner;
+    public RecordPhaseRunner recordPhaseRunner;
     [Header("Debug (Dont modify from inspector)")]
     public Phase currentPhase;
     public PhaseRunner currentPhaseRunner;
@@ -27,7 +27,7 @@ public class PhaseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             // Stop current phase
-            if (currentPhaseRunner.isRunning) {
+            if (currentPhaseRunner != null && currentPhaseRunner.isRunning) {
                 currentPhaseRunner.StopPhaseRunner();
             }
 
