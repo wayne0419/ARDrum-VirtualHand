@@ -8,49 +8,51 @@ public class TransformRecorder : MonoBehaviour
     [System.Serializable]
     public struct TransformData
     {
-        public Vector3 position;
-        public Quaternion rotation;
+        public Vector3 position1;
+        public Quaternion rotation1;
+        public Vector3 position2;
+        public Quaternion rotation2;
         public float timestamp;
 
-        public TransformData(Vector3 pos, Quaternion rot, float time)
+        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, float time)
         {
-            position = pos;
-            rotation = rot;
+            position1 = pos1;
+            rotation1 = rot1;
+            position2 = pos2;
+            rotation2 = rot2;
             timestamp = time;
         }
     }
-    [Header("Reference")]
-    public Metronome metronome; // 參考 Metronome 組件
 
-    [Header("Record Settings")]
-    public Transform targetTransform; // 要記錄的 Transform
+    public Transform targetTransform1; // 第一個要記錄的 Transform
+    public Transform targetTransform2; // 第二個要記錄的 Transform
     public string folderPath = "Assets/RecordedTransforms"; // 指定資料夾路徑
     public float recordInterval = 0.1f; // 記錄間隔時間
     public float bpm = 120f; // beats per minute
     public float recordDelayBeats = 4f; // 延遲的 beats 數量
     public float recordDurationBeats = 4f; // 記錄持續的 beats 數量
-    
-    [Header("Debug(dont modify from inspector)")]
-    [SerializeField]
-    private float timeSinceLastRecord = 0f;
-    [SerializeField]
-    private bool isRecording = false;
-    [SerializeField]
-    private bool isRecordingInProgress = false;
-    [SerializeField]
-    private float recordingStartTime = 0f;
+    public Metronome metronome; // 參考 Metronome 組件
+
+    [Header("Debug(Dont modify from inspector)")]
     private List<TransformData> transformDataList = new List<TransformData>();
+    public float timeSinceLastRecord = 0f;
+    public bool isRecording = false;
+    public bool isRecordingInProgress = false;
+    private float recordingStartTime = 0f;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isRecordingInProgress)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (metronome != null)
+            if (!isRecordingInProgress)
             {
-                metronome.bpm = bpm;
-                metronome.StartMetronome();
+                if (metronome != null)
+                {
+                    metronome.bpm = bpm;
+                    metronome.StartMetronome();
+                }
+                StartCoroutine(StartRecordingAfterBeats(recordDelayBeats, recordDurationBeats));
             }
-            StartCoroutine(StartRecordingAfterBeats(recordDelayBeats, recordDurationBeats));
         }
 
         if (isRecording)
@@ -67,10 +69,14 @@ public class TransformRecorder : MonoBehaviour
 
     void RecordTransform()
     {
-        if (targetTransform != null)
+        if (targetTransform1 != null && targetTransform2 != null)
         {
             float timestamp = Time.time - recordingStartTime;
-            TransformData data = new TransformData(targetTransform.position, targetTransform.rotation, timestamp);
+            TransformData data = new TransformData(
+                targetTransform1.position, targetTransform1.rotation,
+                targetTransform2.position, targetTransform2.rotation,
+                timestamp
+            );
             transformDataList.Add(data);
         }
     }
@@ -108,7 +114,7 @@ public class TransformRecorder : MonoBehaviour
         string filePath = Path.Combine(folderPath, fileCount + ".json");
 
         // 將 transformDataList 轉換為 JSON 格式並寫入文件
-        TransformDataList dataList = new TransformDataList(transformDataList, bpm);
+        TransformDataList dataList = new TransformDataList(bpm, transformDataList);
         string json = JsonUtility.ToJson(dataList, true);
         File.WriteAllText(filePath, json);
 
@@ -118,13 +124,13 @@ public class TransformRecorder : MonoBehaviour
     [System.Serializable]
     public class TransformDataList
     {
-        public List<TransformData> dataList;
         public float bpm;
+        public List<TransformData> dataList;
 
-        public TransformDataList(List<TransformData> list, float bpmValue)
+        public TransformDataList(float bpmValue, List<TransformData> list)
         {
-            dataList = list;
             bpm = bpmValue;
+            dataList = list;
         }
     }
 }
