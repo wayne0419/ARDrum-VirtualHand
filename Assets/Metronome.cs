@@ -10,7 +10,6 @@ public class Metronome : MonoBehaviour
     private AudioSource audioSource;
     private Coroutine metronomeCoroutine;
     private bool isPaused = false;
-    private float beatDuration;
 
     void Start()
     {
@@ -19,7 +18,6 @@ public class Metronome : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-        beatDuration = 60f / bpm;
     }
 
     public void StartMetronome()
@@ -54,6 +52,7 @@ public class Metronome : MonoBehaviour
         int beatCount = 0;
         while (true)
         {
+            float beatDuration = 60f / bpm; // Calculate beatDuration here
             if (!isPaused)
             {
                 if (beatCount % 4 == 0)

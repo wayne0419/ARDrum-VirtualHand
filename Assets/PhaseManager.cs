@@ -6,13 +6,14 @@ public enum Phase
 {
     Normal, 
     Record, 
-    Replay
+    PlayBack
 }
 
 public class PhaseManager : MonoBehaviour
 {   
     [Header("Reference")]
     public RecordPhaseRunner recordPhaseRunner;
+    public PlayBackPhaseRunner playBackPhaseRunner;
     [Header("Debug (Dont modify from inspector)")]
     public Phase currentPhase;
     public PhaseRunner currentPhaseRunner;
@@ -34,6 +35,17 @@ public class PhaseManager : MonoBehaviour
             // Start a record phase
             currentPhase = Phase.Record;
             currentPhaseRunner = recordPhaseRunner;
+            currentPhaseRunner.StartPhaseRunner();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            // Stop current phase
+            if (currentPhaseRunner != null && currentPhaseRunner.isRunning) {
+                currentPhaseRunner.StopPhaseRunner();
+            }
+
+            // Start a record phase
+            currentPhase = Phase.PlayBack;
+            currentPhaseRunner = playBackPhaseRunner;
             currentPhaseRunner.StartPhaseRunner();
         }
     }
