@@ -35,7 +35,7 @@ public class TransformPlayBacker : MonoBehaviour
     private float playbackSpeedMultiplier;
     public bool isPlaying = false; // 將 isPlaying 設置為 public
 
-    void Start()
+    void OnEnable()
     {
         // 讀取 JSON 文件
         LoadJsonFile(jsonFilePath);
