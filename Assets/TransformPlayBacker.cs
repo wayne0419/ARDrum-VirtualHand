@@ -37,7 +37,7 @@ public class TransformPlayBacker : MonoBehaviour
 
     void OnEnable()
     {
-        // 讀取 JSON 文件
+        // 每次啟用時讀取 JSON 文件
         LoadJsonFile(jsonFilePath);
     }
 
@@ -65,19 +65,27 @@ public class TransformPlayBacker : MonoBehaviour
 
             // 計算經過的時間，考慮播放速度倍率
             float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier;
-            float targetTime = playbackData.dataList[currentIndex].timestamp;
-            float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
 
-            // 計算插值因子
-            float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
-
-            // 使用線性插值更新 Transform
-            UpdateTransforms(currentIndex, currentIndex + 1, t);
-
-            // 檢查是否需要移動到下一個時間點
-            if (elapsedTime >= nextTime)
+            while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
                 currentIndex++;
+            }
+
+            if (currentIndex < playbackData.dataList.Count - 1)
+            {
+                float targetTime = playbackData.dataList[currentIndex].timestamp;
+                float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
+
+                // 計算插值因子
+                float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
+
+                // 使用線性插值更新 Transform
+                UpdateTransforms(currentIndex, currentIndex + 1, t);
+            }
+            else
+            {
+                // 如果已經播放到最後一個 Transform
+                UpdateTransforms(currentIndex, currentIndex, 1.0f);
             }
         }
     }
