@@ -1172,7 +1172,7 @@ MonoBehaviour:
   targetTransform1: {fileID: 353023367}
   targetTransform2: {fileID: 1797628279}
   folderPath: Assets/RecordedTransforms
-  recordInterval: 0.1
+  recordInterval: 0.01
   bpm: 80
   recordDelayBeats: 4
   recordDurationBeats: 4
