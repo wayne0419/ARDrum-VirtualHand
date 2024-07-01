@@ -1172,12 +1172,27 @@ MonoBehaviour:
   targetTransform1: {fileID: 353023367}
   targetTransform2: {fileID: 1797628279}
   folderPath: Assets/RecordedTransforms
-  recordInterval: 0.01
   bpm: 80
   recordDelayBeats: 4
   recordDurationBeats: 4
   metronome: {fileID: 563949437}
-  timeSinceLastRecord: 0
+  hitBaseDrum:
+    m_Name: Hit Base Drum
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f286d3a7-585b-4386-9231-da9642b1109a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f1939164-53a7-4447-9d2d-e04dc045dac3
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Base Drum
+      m_Flags: 0
+    m_Flags: 0
   isRecording: 0
   isRecordingInProgress: 0
 --- !u!4 &475410637 stripped

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TransformRecorder : MonoBehaviour
 {
-    // 記錄 position 和 rotation 的結構體
+    // 記錄 position、rotation 和 bassDrumHit 的結構體
     [System.Serializable]
     public struct TransformData
     {
@@ -12,14 +13,16 @@ public class TransformRecorder : MonoBehaviour
         public Quaternion rotation1;
         public Vector3 position2;
         public Quaternion rotation2;
+        public float bassDrumHit;
         public float timestamp;
 
-        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, float time)
+        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, float drumHit, float time)
         {
             position1 = pos1;
             rotation1 = rot1;
             position2 = pos2;
             rotation2 = rot2;
+            bassDrumHit = drumHit;
             timestamp = time;
         }
     }
@@ -31,11 +34,22 @@ public class TransformRecorder : MonoBehaviour
     public float recordDelayBeats = 4f; // 延遲的節拍數量
     public float recordDurationBeats = 4f; // 記錄持續的節拍數量
     public Metronome metronome; // 參考 Metronome 組件
+    public InputAction hitBaseDrum; // Input Action
 
     private List<TransformData> transformDataList = new List<TransformData>();
     public bool isRecording = false; // 記錄狀態
     public bool isRecordingInProgress = false; // 記錄延遲或記錄過程的狀態
     private float recordingStartTime = 0f;
+
+    void OnEnable()
+    {
+        hitBaseDrum.Enable();
+    }
+
+    void OnDisable()
+    {
+        hitBaseDrum.Disable();
+    }
 
     void Update()
     {
@@ -63,10 +77,18 @@ public class TransformRecorder : MonoBehaviour
     {
         if (targetTransform1 != null && targetTransform2 != null)
         {
+            // 檢查是否有 bassDrumHit 的觸發
+            float bassDrumHitValue = 0f;
+            if (hitBaseDrum.triggered)
+            {
+                bassDrumHitValue = hitBaseDrum.ReadValue<float>();
+            }
+
             float timestamp = Time.time - recordingStartTime;
             TransformData data = new TransformData(
                 targetTransform1.position, targetTransform1.rotation,
                 targetTransform2.position, targetTransform2.rotation,
+                bassDrumHitValue,
                 timestamp
             );
             transformDataList.Add(data);
