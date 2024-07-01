@@ -15,6 +15,13 @@ public class TransformPlayBacker : MonoBehaviour
         public Quaternion rotation2;
         public float timestamp;
         public float bassDrumHit; // 新增 bassDrumHit
+        public float snareDrumHit;
+        public float closedHiHatHit;
+        public float tom1Hit;
+        public float tom2Hit;
+        public float floorTomHit;
+        public float crashHit;
+        public float rideHit;
     }
 
     [Serializable]
@@ -24,22 +31,30 @@ public class TransformPlayBacker : MonoBehaviour
         public List<TransformData> dataList;
     }
 
-    public string jsonFilePath; // JSON 文件的路徑
+    public string jsonFilePath; // JSON 文件的路径
     public Transform targetTransform1;
     public Transform targetTransform2;
-    public float playBackBPM; // 用於調整播放速度
-    public Metronome metronome; // Metronome 組件引用
+    public float playBackBPM; // 用于调整播放速度
+    public Metronome metronome; // Metronome 组件引用
+
     public AudioSource bassDrumAudioSource; // Bass Drum 音效
+    public AudioSource snareDrumAudioSource; // Snare Drum 音效
+    public AudioSource closedHiHatAudioSource; // Closed Hi-Hat 音效
+    public AudioSource tom1AudioSource; // Tom1 音效
+    public AudioSource tom2AudioSource; // Tom2 音效
+    public AudioSource floorTomAudioSource; // Floor Tom 音效
+    public AudioSource crashAudioSource; // Crash 音效
+    public AudioSource rideAudioSource; // Ride 音效
 
     private TransformPlaybackData playbackData;
     private int currentIndex;
     private float playbackStartTime;
     private float playbackSpeedMultiplier;
-    public bool isPlaying = false; // 將 isPlaying 設置為 public
+    public bool isPlaying = false; // 将 isPlaying 设置为 public
 
     void OnEnable()
     {
-        // 每次啟用時讀取 JSON 文件
+        // 每次启用时读取 JSON 文件
         LoadJsonFile(jsonFilePath);
     }
 
@@ -65,17 +80,14 @@ public class TransformPlayBacker : MonoBehaviour
                 return;
             }
 
-            // 計算經過的時間，考慮播放速度倍率
+            // 计算经过的时间，考虑播放速度倍率
             float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier;
 
-            // 檢查是否跳過了多個元素
+            // 检查是否跳过了多个元素
             while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
-                // 如果被跳過的元素中有 bassDrumHit 大於 0 的情況，播放 bassDrumAudioSource
-                if (playbackData.dataList[currentIndex].bassDrumHit > 0f)
-                {
-                    PlayBassDrum(playbackData.dataList[currentIndex].bassDrumHit);
-                }
+                // 如果被跳过的元素中有击打事件，播放相应音效
+                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
                 currentIndex++;
             }
 
@@ -84,21 +96,18 @@ public class TransformPlayBacker : MonoBehaviour
                 float targetTime = playbackData.dataList[currentIndex].timestamp;
                 float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
 
-                // 計算插值因子
+                // 计算插值因子
                 float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
 
-                // 使用線性插值更新 Transform
+                // 使用线性插值更新 Transform
                 UpdateTransforms(currentIndex, currentIndex + 1, t);
 
-                // 播放 Bass Drum 音效
-                if (playbackData.dataList[currentIndex].bassDrumHit > 0f)
-                {
-                    PlayBassDrum(playbackData.dataList[currentIndex].bassDrumHit);
-                }
+                // 检查当前元素的击打事件，播放相应音效
+                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
             }
             else
             {
-                // 如果已經播放到最後一個 Transform
+                // 如果已经播放到最后一个 Transform
                 UpdateTransforms(currentIndex, currentIndex, 1.0f);
             }
         }
@@ -119,7 +128,7 @@ public class TransformPlayBacker : MonoBehaviour
         currentIndex = 0;
         isPlaying = true;
 
-        // 開始播放 Metronome
+        // 开始播放 Metronome
         if (metronome != null)
         {
             metronome.bpm = playBackBPM;
@@ -162,12 +171,25 @@ public class TransformPlayBacker : MonoBehaviour
         targetTransform2.rotation = Quaternion.Lerp(dataA.rotation2, dataB.rotation2, t);
     }
 
-    void PlayBassDrum(float volume)
+    void CheckAndPlayDrumHits(TransformData data)
     {
-        if (bassDrumAudioSource != null)
+        if (data.bassDrumHit > 0f) PlayDrumHit(bassDrumAudioSource, data.bassDrumHit);
+        if (data.snareDrumHit > 0f) PlayDrumHit(snareDrumAudioSource, data.snareDrumHit);
+        if (data.closedHiHatHit > 0f) PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit);
+        if (data.tom1Hit > 0f) PlayDrumHit(tom1AudioSource, data.tom1Hit);
+        if (data.tom2Hit > 0f) PlayDrumHit(tom2AudioSource, data.tom2Hit);
+        if (data.floorTomHit > 0f) PlayDrumHit(floorTomAudioSource, data.floorTomHit);
+        if (data.crashHit > 0f) PlayDrumHit(crashAudioSource, data.crashHit);
+        if (data.rideHit > 0f) PlayDrumHit(rideAudioSource, data.rideHit);
+    }
+
+    void PlayDrumHit(AudioSource audioSource, float volume)
+    {
+        if (audioSource != null)
         {
-            bassDrumAudioSource.volume = volume; // 設置音量
-            bassDrumAudioSource.PlayOneShot(bassDrumAudioSource.clip); // 播放新的 clip
+            audioSource.volume = volume; // 设置音量
+            audioSource.Stop(); // 停止当前播放的 clip
+            audioSource.Play(); // 播放新的 clip
         }
     }
 }

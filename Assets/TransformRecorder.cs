@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class TransformRecorder : MonoBehaviour
 {
-    // 記錄 position、rotation 和 bassDrumHit 的結構體
+    // 記錄 position、rotation 和打擊音效值的結構體
     [System.Serializable]
     public struct TransformData
     {
@@ -14,15 +14,29 @@ public class TransformRecorder : MonoBehaviour
         public Vector3 position2;
         public Quaternion rotation2;
         public float bassDrumHit;
+        public float snareDrumHit;
+        public float closedHiHatHit;
+        public float tom1Hit;
+        public float tom2Hit;
+        public float floorTomHit;
+        public float crashHit;
+        public float rideHit;
         public float timestamp;
 
-        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, float drumHit, float time)
+        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, float bassHit, float snareHit, float hiHatHit, float t1Hit, float t2Hit, float floorHit, float crashH, float rideH, float time)
         {
             position1 = pos1;
             rotation1 = rot1;
             position2 = pos2;
             rotation2 = rot2;
-            bassDrumHit = drumHit;
+            bassDrumHit = bassHit;
+            snareDrumHit = snareHit;
+            closedHiHatHit = hiHatHit;
+            tom1Hit = t1Hit;
+            tom2Hit = t2Hit;
+            floorTomHit = floorHit;
+            crashHit = crashH;
+            rideHit = rideH;
             timestamp = time;
         }
     }
@@ -34,7 +48,16 @@ public class TransformRecorder : MonoBehaviour
     public float recordDelayBeats = 4f; // 延遲的節拍數量
     public float recordDurationBeats = 4f; // 記錄持續的節拍數量
     public Metronome metronome; // 參考 Metronome 組件
-    public InputAction hitBaseDrum; // Input Action
+
+    // Input Actions
+    public InputAction bassDrumHit;
+    public InputAction snareDrumHit;
+    public InputAction closedHiHatHit;
+    public InputAction tom1Hit;
+    public InputAction tom2Hit;
+    public InputAction floorTomHit;
+    public InputAction crashHit;
+    public InputAction rideHit;
 
     private List<TransformData> transformDataList = new List<TransformData>();
     public bool isRecording = false; // 記錄狀態
@@ -43,12 +66,26 @@ public class TransformRecorder : MonoBehaviour
 
     void OnEnable()
     {
-        hitBaseDrum.Enable();
+        bassDrumHit.Enable();
+        snareDrumHit.Enable();
+        closedHiHatHit.Enable();
+        tom1Hit.Enable();
+        tom2Hit.Enable();
+        floorTomHit.Enable();
+        crashHit.Enable();
+        rideHit.Enable();
     }
 
     void OnDisable()
     {
-        hitBaseDrum.Disable();
+        bassDrumHit.Disable();
+        snareDrumHit.Disable();
+        closedHiHatHit.Disable();
+        tom1Hit.Disable();
+        tom2Hit.Disable();
+        floorTomHit.Disable();
+        crashHit.Disable();
+        rideHit.Disable();
     }
 
     void Update()
@@ -77,18 +114,28 @@ public class TransformRecorder : MonoBehaviour
     {
         if (targetTransform1 != null && targetTransform2 != null)
         {
-            // 檢查是否有 bassDrumHit 的觸發
-            float bassDrumHitValue = 0f;
-            if (hitBaseDrum.triggered)
-            {
-                bassDrumHitValue = hitBaseDrum.ReadValue<float>();
-            }
+            // 檢查是否有打擊音效的觸發
+            float bassDrumHitValue = bassDrumHit.triggered ? bassDrumHit.ReadValue<float>() : 0f;
+            float snareDrumHitValue = snareDrumHit.triggered ? snareDrumHit.ReadValue<float>() : 0f;
+            float closedHiHatHitValue = closedHiHatHit.triggered ? closedHiHatHit.ReadValue<float>() : 0f;
+            float tom1HitValue = tom1Hit.triggered ? tom1Hit.ReadValue<float>() : 0f;
+            float tom2HitValue = tom2Hit.triggered ? tom2Hit.ReadValue<float>() : 0f;
+            float floorTomHitValue = floorTomHit.triggered ? floorTomHit.ReadValue<float>() : 0f;
+            float crashHitValue = crashHit.triggered ? crashHit.ReadValue<float>() : 0f;
+            float rideHitValue = rideHit.triggered ? rideHit.ReadValue<float>() : 0f;
 
             float timestamp = Time.time - recordingStartTime;
             TransformData data = new TransformData(
                 targetTransform1.position, targetTransform1.rotation,
                 targetTransform2.position, targetTransform2.rotation,
                 bassDrumHitValue,
+                snareDrumHitValue,
+                closedHiHatHitValue,
+                tom1HitValue,
+                tom2HitValue,
+                floorTomHitValue,
+                crashHitValue,
+                rideHitValue,
                 timestamp
             );
             transformDataList.Add(data);
