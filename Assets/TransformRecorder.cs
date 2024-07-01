@@ -27,17 +27,14 @@ public class TransformRecorder : MonoBehaviour
     public Transform targetTransform1; // 第一個要記錄的 Transform
     public Transform targetTransform2; // 第二個要記錄的 Transform
     public string folderPath = "Assets/RecordedTransforms"; // 指定資料夾路徑
-    public float recordInterval = 0.1f; // 記錄間隔時間
-    public float bpm = 120f; // beats per minute
-    public float recordDelayBeats = 4f; // 延遲的 beats 數量
-    public float recordDurationBeats = 4f; // 記錄持續的 beats 數量
+    public float bpm = 120f; // 每分鐘的節拍數
+    public float recordDelayBeats = 4f; // 延遲的節拍數量
+    public float recordDurationBeats = 4f; // 記錄持續的節拍數量
     public Metronome metronome; // 參考 Metronome 組件
 
-    [Header("Debug(Dont modify from inspector)")]
     private List<TransformData> transformDataList = new List<TransformData>();
-    public float timeSinceLastRecord = 0f;
-    public bool isRecording = false;
-    public bool isRecordingInProgress = false;
+    public bool isRecording = false; // 記錄狀態
+    public bool isRecordingInProgress = false; // 記錄延遲或記錄過程的狀態
     private float recordingStartTime = 0f;
 
     void Update()
@@ -46,6 +43,7 @@ public class TransformRecorder : MonoBehaviour
         {
             if (!isRecordingInProgress)
             {
+                // 如果沒有進行中的記錄延遲或記錄過程，開始新的記錄
                 if (metronome != null)
                 {
                     metronome.bpm = bpm;
@@ -57,13 +55,7 @@ public class TransformRecorder : MonoBehaviour
 
         if (isRecording)
         {
-            timeSinceLastRecord += Time.deltaTime;
-
-            if (timeSinceLastRecord >= recordInterval)
-            {
-                RecordTransform();
-                timeSinceLastRecord = 0f;
-            }
+            RecordTransform();
         }
     }
 
@@ -89,7 +81,6 @@ public class TransformRecorder : MonoBehaviour
         isRecording = true;
         recordingStartTime = Time.time;
         transformDataList.Clear(); // 清除之前的記錄
-        timeSinceLastRecord = 0f; // 重置時間
         yield return new WaitForSeconds(recordBeats * beatDuration);
         isRecording = false;
         SaveTransformData();
@@ -110,7 +101,7 @@ public class TransformRecorder : MonoBehaviour
         }
 
         // 獲取當前資料夾中的文件數
-        int fileCount = Directory.GetFiles(folderPath, "*.json").Length;
+        int fileCount = Directory.GetFiles(folderPath).Length;
         string filePath = Path.Combine(folderPath, fileCount + ".json");
 
         // 將 transformDataList 轉換為 JSON 格式並寫入文件
