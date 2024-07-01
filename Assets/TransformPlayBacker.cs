@@ -14,6 +14,7 @@ public class TransformPlayBacker : MonoBehaviour
         public Vector3 position2;
         public Quaternion rotation2;
         public float timestamp;
+        public float bassDrumHit; // 新增 bassDrumHit
     }
 
     [Serializable]
@@ -28,6 +29,7 @@ public class TransformPlayBacker : MonoBehaviour
     public Transform targetTransform2;
     public float playBackBPM; // 用於調整播放速度
     public Metronome metronome; // Metronome 組件引用
+    public AudioSource bassDrumAudioSource; // Bass Drum 音效
 
     private TransformPlaybackData playbackData;
     private int currentIndex;
@@ -66,8 +68,14 @@ public class TransformPlayBacker : MonoBehaviour
             // 計算經過的時間，考慮播放速度倍率
             float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier;
 
+            // 檢查是否跳過了多個元素
             while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
+                // 如果被跳過的元素中有 bassDrumHit 大於 0 的情況，播放 bassDrumAudioSource
+                if (playbackData.dataList[currentIndex].bassDrumHit > 0f)
+                {
+                    PlayBassDrum(playbackData.dataList[currentIndex].bassDrumHit);
+                }
                 currentIndex++;
             }
 
@@ -81,6 +89,12 @@ public class TransformPlayBacker : MonoBehaviour
 
                 // 使用線性插值更新 Transform
                 UpdateTransforms(currentIndex, currentIndex + 1, t);
+
+                // 播放 Bass Drum 音效
+                if (playbackData.dataList[currentIndex].bassDrumHit > 0f)
+                {
+                    PlayBassDrum(playbackData.dataList[currentIndex].bassDrumHit);
+                }
             }
             else
             {
@@ -146,5 +160,15 @@ public class TransformPlayBacker : MonoBehaviour
         targetTransform1.rotation = Quaternion.Lerp(dataA.rotation1, dataB.rotation1, t);
         targetTransform2.position = Vector3.Lerp(dataA.position2, dataB.position2, t);
         targetTransform2.rotation = Quaternion.Lerp(dataA.rotation2, dataB.rotation2, t);
+    }
+
+    void PlayBassDrum(float volume)
+    {
+        if (bassDrumAudioSource != null)
+        {
+            bassDrumAudioSource.Stop(); // 停止當前播放的 clip
+            bassDrumAudioSource.volume = volume; // 設置音量
+            bassDrumAudioSource.Play(); // 播放新的 clip
+        }
     }
 }

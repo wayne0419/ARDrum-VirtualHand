@@ -122,8 +122,8 @@ public class TransformRecorder : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
-        // 獲取當前資料夾中的文件數
-        int fileCount = Directory.GetFiles(folderPath).Length;
+        // 只計算 .json 文件
+        int fileCount = Directory.GetFiles(folderPath, "*.json").Length;
         string filePath = Path.Combine(folderPath, fileCount + ".json");
 
         // 將 transformDataList 轉換為 JSON 格式並寫入文件
