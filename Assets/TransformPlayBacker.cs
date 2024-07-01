@@ -166,9 +166,8 @@ public class TransformPlayBacker : MonoBehaviour
     {
         if (bassDrumAudioSource != null)
         {
-            bassDrumAudioSource.Stop(); // 停止當前播放的 clip
             bassDrumAudioSource.volume = volume; // 設置音量
-            bassDrumAudioSource.Play(); // 播放新的 clip
+            bassDrumAudioSource.PlayOneShot(bassDrumAudioSource.clip); // 播放新的 clip
         }
     }
 }

@@ -90,8 +90,8 @@ public class DrumKit : MonoBehaviour
 
     void PlayAudio(AudioSource audioSource, float value)
     {
-        // You can adjust the volume or other parameters using the value if needed
+        // 調整音量或其他參數
         audioSource.volume = value;
-        audioSource.Play();
+        audioSource.PlayOneShot(audioSource.clip, value);
     }
 }
