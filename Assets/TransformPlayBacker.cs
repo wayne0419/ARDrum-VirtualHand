@@ -13,8 +13,10 @@ public class TransformPlayBacker : MonoBehaviour
         public Quaternion rotation1;
         public Vector3 position2;
         public Quaternion rotation2;
+        public Vector3 position3; // 新增第三组 position
+        public Quaternion rotation3; // 新增第三组 rotation
         public float timestamp;
-        public float bassDrumHit; // 新增 bassDrumHit
+        public float bassDrumHit;
         public float snareDrumHit;
         public float closedHiHatHit;
         public float tom1Hit;
@@ -34,6 +36,7 @@ public class TransformPlayBacker : MonoBehaviour
     public string jsonFilePath; // JSON 文件的路径
     public Transform targetTransform1;
     public Transform targetTransform2;
+    public Transform targetTransform3; // 新增第三个 Transform
     public float playBackBPM; // 用于调整播放速度
     public Metronome metronome; // Metronome 组件引用
 
@@ -169,6 +172,8 @@ public class TransformPlayBacker : MonoBehaviour
         targetTransform1.rotation = Quaternion.Lerp(dataA.rotation1, dataB.rotation1, t);
         targetTransform2.position = Vector3.Lerp(dataA.position2, dataB.position2, t);
         targetTransform2.rotation = Quaternion.Lerp(dataA.rotation2, dataB.rotation2, t);
+        targetTransform3.position = Vector3.Lerp(dataA.position3, dataB.position3, t); // 更新第三个 Transform 的位置
+        targetTransform3.rotation = Quaternion.Lerp(dataA.rotation3, dataB.rotation3, t); // 更新第三个 Transform 的旋转
     }
 
     void CheckAndPlayDrumHits(TransformData data)

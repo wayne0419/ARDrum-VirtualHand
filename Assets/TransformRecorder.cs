@@ -5,14 +5,16 @@ using UnityEngine.InputSystem;
 
 public class TransformRecorder : MonoBehaviour
 {
-    // 記錄 position、rotation 和打擊音效值的結構體
+    // 记录 position、rotation 和打击音效值的结构体
     [System.Serializable]
-    public struct TransformData
+    public class TransformData
     {
         public Vector3 position1;
         public Quaternion rotation1;
         public Vector3 position2;
         public Quaternion rotation2;
+        public Vector3 position3;
+        public Quaternion rotation3;
         public float bassDrumHit;
         public float snareDrumHit;
         public float closedHiHatHit;
@@ -23,12 +25,14 @@ public class TransformRecorder : MonoBehaviour
         public float rideHit;
         public float timestamp;
 
-        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, float bassHit, float snareHit, float hiHatHit, float t1Hit, float t2Hit, float floorHit, float crashH, float rideH, float time)
+        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, Vector3 pos3, Quaternion rot3, float bassHit, float snareHit, float hiHatHit, float t1Hit, float t2Hit, float floorHit, float crashH, float rideH, float time)
         {
             position1 = pos1;
             rotation1 = rot1;
             position2 = pos2;
             rotation2 = rot2;
+            position3 = pos3;
+            rotation3 = rot3;
             bassDrumHit = bassHit;
             snareDrumHit = snareHit;
             closedHiHatHit = hiHatHit;
@@ -41,13 +45,15 @@ public class TransformRecorder : MonoBehaviour
         }
     }
 
-    public Transform targetTransform1; // 第一個要記錄的 Transform
-    public Transform targetTransform2; // 第二個要記錄的 Transform
-    public string folderPath = "Assets/RecordedTransforms"; // 指定資料夾路徑
-    public float bpm = 120f; // 每分鐘的節拍數
-    public float recordDelayBeats = 4f; // 延遲的節拍數量
-    public float recordDurationBeats = 4f; // 記錄持續的節拍數量
-    public Metronome metronome; // 參考 Metronome 組件
+    public Transform targetTransform1; // 第一组要记录的 Transform
+    public Transform targetTransform2; // 第二组要记录的 Transform
+    public Transform targetTransform3; // 第三组要记录的 Transform
+    public string folderPath = "Assets/RecordedTransforms"; // 指定文件夹路径
+    public float bpm = 120f; // 每分钟的节拍数
+    public float recordDelayBeats = 4f; // 延迟的节拍数量
+    public float recordDurationBeats = 4f; // 记录持续的节拍数量
+    public Metronome metronome; // 参考 Metronome 组件
+    public AnimationClip animationClip; // 用于第三组 Transform 的 AnimationClip
 
     // Input Actions
     public InputAction bassDrumHit;
@@ -60,8 +66,8 @@ public class TransformRecorder : MonoBehaviour
     public InputAction rideHit;
 
     private List<TransformData> transformDataList = new List<TransformData>();
-    public bool isRecording = false; // 記錄狀態
-    public bool isRecordingInProgress = false; // 記錄延遲或記錄過程的狀態
+    public bool isRecording = false; // 记录状态
+    public bool isRecordingInProgress = false; // 记录延迟或记录过程的状态
     private float recordingStartTime = 0f;
 
     void OnEnable()
@@ -94,7 +100,7 @@ public class TransformRecorder : MonoBehaviour
         {
             if (!isRecordingInProgress)
             {
-                // 如果沒有進行中的記錄延遲或記錄過程，開始新的記錄
+                // 如果没有进行中的记录延迟或记录过程，开始新的记录
                 if (metronome != null)
                 {
                     metronome.bpm = bpm;
@@ -114,7 +120,7 @@ public class TransformRecorder : MonoBehaviour
     {
         if (targetTransform1 != null && targetTransform2 != null)
         {
-            // 檢查是否有打擊音效的觸發
+            // 检查是否有打击音效的触发
             float bassDrumHitValue = bassDrumHit.triggered ? bassDrumHit.ReadValue<float>() : 0f;
             float snareDrumHitValue = snareDrumHit.triggered ? snareDrumHit.ReadValue<float>() : 0f;
             float closedHiHatHitValue = closedHiHatHit.triggered ? closedHiHatHit.ReadValue<float>() : 0f;
@@ -125,9 +131,20 @@ public class TransformRecorder : MonoBehaviour
             float rideHitValue = rideHit.triggered ? rideHit.ReadValue<float>() : 0f;
 
             float timestamp = Time.time - recordingStartTime;
+
+            if (bassDrumHit.triggered)
+            {
+                float bassDrumHitTime = timestamp;
+                OverwriteTransformDataWithAnimationClip(bassDrumHitTime);
+            }
+
+            Vector3 position3 = targetTransform3.position;
+            Quaternion rotation3 = targetTransform3.rotation;
+
             TransformData data = new TransformData(
                 targetTransform1.position, targetTransform1.rotation,
                 targetTransform2.position, targetTransform2.rotation,
+                position3, rotation3,
                 bassDrumHitValue,
                 snareDrumHitValue,
                 closedHiHatHitValue,
@@ -142,6 +159,22 @@ public class TransformRecorder : MonoBehaviour
         }
     }
 
+    void OverwriteTransformDataWithAnimationClip(float endTime)
+    {
+        float clipLength = animationClip.length;
+        for (int i = 0; i < transformDataList.Count; i++)
+        {
+            float timestamp = transformDataList[i].timestamp;
+            if (timestamp <= endTime && timestamp >= endTime - clipLength)
+            {
+                float animationTime = timestamp - (endTime - clipLength);
+                animationClip.SampleAnimation(targetTransform3.gameObject, animationTime);
+                transformDataList[i].position3 = targetTransform3.position;
+                transformDataList[i].rotation3 = targetTransform3.rotation;
+            }
+        }
+    }
+
     System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
     {
         isRecordingInProgress = true;
@@ -149,7 +182,7 @@ public class TransformRecorder : MonoBehaviour
         yield return new WaitForSeconds(delayBeats * beatDuration);
         isRecording = true;
         recordingStartTime = Time.time;
-        transformDataList.Clear(); // 清除之前的記錄
+        transformDataList.Clear(); // 清除之前的记录
         yield return new WaitForSeconds(recordBeats * beatDuration);
         isRecording = false;
         SaveTransformData();
@@ -169,11 +202,11 @@ public class TransformRecorder : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
-        // 只計算 .json 文件
+        // 只计算 .json 文件
         int fileCount = Directory.GetFiles(folderPath, "*.json").Length;
         string filePath = Path.Combine(folderPath, fileCount + ".json");
 
-        // 將 transformDataList 轉換為 JSON 格式並寫入文件
+        // 将 transformDataList 转换为 JSON 格式并写入文件
         TransformDataList dataList = new TransformDataList(bpm, transformDataList);
         string json = JsonUtility.ToJson(dataList, true);
         File.WriteAllText(filePath, json);
