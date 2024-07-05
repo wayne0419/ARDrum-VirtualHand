@@ -1,5 +1,13 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "Keijiro",
+      "url": "https://registry.npmjs.com",
+      "scopes": [ "jp.keijiro" ]
+    }
+  ],
   "dependencies": {
+    "jp.keijiro.minis": "1.0.10",
     "com.meta.xr.sdk.all": "65.0.0",
     "com.meta.xr.sdk.interaction.ovr.samples": "65.0.0",
     "com.unity.animation.rigging": "1.2.1",

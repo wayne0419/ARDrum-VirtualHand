@@ -5623,6 +5623,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Hit Bass Drum
       m_Flags: 0
+    - m_Name: 
+      m_Id: f1de6e83-cd8d-440c-af19-46a76568d785
+      m_Path: <MidiDevice>/note036
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Bass Drum
+      m_Flags: 0
     m_Flags: 0
   hitSnareDrum:
     m_Name: Hit Snare Drum
@@ -5643,6 +5651,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 43346262-2bac-4daa-8474-91727746d7df
       m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Snare Drum
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 89eaa0dc-01c2-47aa-b3f5-7ea81983c11c
+      m_Path: <MidiDevice>/note038
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -5673,6 +5689,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Hit Tom 1
       m_Flags: 0
+    - m_Name: 
+      m_Id: 8273f3e0-09e2-4a7b-8db3-b53d24844371
+      m_Path: <MidiDevice>/note048
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 1
+      m_Flags: 0
     m_Flags: 0
   hitTom2:
     m_Name: Hit Tom 2
@@ -5693,6 +5717,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: a4f105a3-0cd9-436a-b6af-d9eb5a4248d2
       m_Path: <Keyboard>/j
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 2
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 71ace62d-24e7-4ac9-8bbe-582e7a888095
+      m_Path: <MidiDevice>/note045
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -5723,6 +5755,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Hit Floor Tom
       m_Flags: 0
+    - m_Name: 
+      m_Id: a863bd17-ba2b-457f-a826-09c49ce663aa
+      m_Path: <MidiDevice>/note043
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Floor Tom
+      m_Flags: 0
     m_Flags: 0
   hitClosedHiHat:
     m_Name: Hit Closed Hi Hat
@@ -5735,6 +5775,30 @@ MonoBehaviour:
     - m_Name: 
       m_Id: e7c09ac3-c0bf-420d-aa8e-c66cb085554a
       m_Path: <Keyboard>/t
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Closed Hi Hat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a32484ab-2cd0-441f-8f74-338f153006fc
+      m_Path: <MidiDevice>/note022
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Closed Hi Hat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a6dc3005-c1b9-48f1-bebf-02d903c10757
+      m_Path: <MidiDevice>/note042
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Closed Hi Hat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b285b457-a4da-48b6-bb81-6a95572a51ad
+      m_Path: 
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -5757,6 +5821,22 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Hit Crash
       m_Flags: 0
+    - m_Name: 
+      m_Id: 2cefd6f3-3112-4511-95ff-59da00f81da8
+      m_Path: <MidiDevice>/note049
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Crash
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d0855831-9ce3-4e5b-b4da-c5c67fa8adc5
+      m_Path: <MidiDevice>/note055
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Crash
+      m_Flags: 0
     m_Flags: 0
   hitRide:
     m_Name: Hit Ride
@@ -5769,6 +5849,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 844f9dda-28af-416b-953b-08d1e0d2471a
       m_Path: <Keyboard>/p
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Ride
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2b5775c1-3a31-4195-be3e-4c2c6a0e2510
+      m_Path: <MidiDevice>/note059
       m_Interactions: 
       m_Processors: 
       m_Groups: 
