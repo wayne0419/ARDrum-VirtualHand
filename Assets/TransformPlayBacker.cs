@@ -106,7 +106,7 @@ public class TransformPlayBacker : MonoBehaviour
                 UpdateTransforms(currentIndex, currentIndex + 1, t);
 
                 // 检查当前元素的击打事件，播放相应音效
-                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
+                // CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
             }
             else
             {
@@ -193,8 +193,8 @@ public class TransformPlayBacker : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.volume = volume; // 设置音量
-            audioSource.Stop(); // 停止当前播放的 clip
-            audioSource.Play(); // 播放新的 clip
+            // audioSource.Stop(); // 停止当前播放的 clip
+            audioSource.PlayOneShot(audioSource.clip); // 播放新的 clip
         }
     }
 }
