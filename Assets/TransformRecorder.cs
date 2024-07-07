@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class TransformRecorder : MonoBehaviour
 {
-    // 记录 position、rotation 和打击音效值的结构体
+    // 记录 position、rotation 和打击音效值的类
     [System.Serializable]
     public class TransformData
     {
@@ -167,7 +167,7 @@ public class TransformRecorder : MonoBehaviour
             float timestamp = transformDataList[i].timestamp;
             if (timestamp <= endTime && timestamp >= endTime - clipLength)
             {
-                float animationTime = timestamp - (endTime - clipLength);
+                float animationTime = timestamp - (endTime - clipLength); // 将 animationClip 的末尾对齐到 endTime
                 animationClip.SampleAnimation(targetTransform3.gameObject, animationTime);
                 transformDataList[i].position3 = targetTransform3.position;
                 transformDataList[i].rotation3 = targetTransform3.rotation;
