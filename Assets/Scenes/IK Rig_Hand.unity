@@ -715,7 +715,7 @@ MonoBehaviour:
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
-  playBackBPM: 80
+  playBackBPM: 40
   metronome: {fileID: 1340986489}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
@@ -1962,9 +1962,9 @@ MonoBehaviour:
   targetTransform2: {fileID: 1636075968}
   targetTransform3: {fileID: 991976842}
   folderPath: Assets/RecordedTransforms
-  bpm: 80
-  recordDelayBeats: 4
-  recordDurationBeats: 4
+  bpm: 40
+  recordDelayBeats: 3
+  recordDurationBeats: 5
   metronome: {fileID: 563949437}
   animationClip: {fileID: 7400000, guid: 5ee8067b6ae8eb74fa66453237f6c03a, type: 2}
   bassDrumHit:
@@ -4364,7 +4364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1662416506
 MonoBehaviour:
   m_ObjectHideFlags: 0
