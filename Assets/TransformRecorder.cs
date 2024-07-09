@@ -23,9 +23,10 @@ public class TransformRecorder : MonoBehaviour
         public float floorTomHit;
         public float crashHit;
         public float rideHit;
+        public float openHiHatHit; // 新增的 openHiHatHit
         public float timestamp;
 
-        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, Vector3 pos3, Quaternion rot3, float bassHit, float snareHit, float hiHatHit, float t1Hit, float t2Hit, float floorHit, float crashH, float rideH, float time)
+        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, Vector3 pos3, Quaternion rot3, float bassHit, float snareHit, float hiHatHit, float t1Hit, float t2Hit, float floorHit, float crashH, float rideH, float openHiHat, float time)
         {
             position1 = pos1;
             rotation1 = rot1;
@@ -41,6 +42,7 @@ public class TransformRecorder : MonoBehaviour
             floorTomHit = floorHit;
             crashHit = crashH;
             rideHit = rideH;
+            openHiHatHit = openHiHat;
             timestamp = time;
         }
     }
@@ -64,6 +66,7 @@ public class TransformRecorder : MonoBehaviour
     public InputAction floorTomHit;
     public InputAction crashHit;
     public InputAction rideHit;
+    public InputAction openHiHatHit; // 新增的 openHiHatHit
 
     private List<TransformData> transformDataList = new List<TransformData>();
     public bool isRecording = false; // 记录状态
@@ -80,6 +83,7 @@ public class TransformRecorder : MonoBehaviour
         floorTomHit.Enable();
         crashHit.Enable();
         rideHit.Enable();
+        openHiHatHit.Enable(); // 启用 openHiHatHit
     }
 
     void OnDisable()
@@ -92,6 +96,7 @@ public class TransformRecorder : MonoBehaviour
         floorTomHit.Disable();
         crashHit.Disable();
         rideHit.Disable();
+        openHiHatHit.Disable(); // 禁用 openHiHatHit
     }
 
     void Update()
@@ -129,6 +134,7 @@ public class TransformRecorder : MonoBehaviour
             float floorTomHitValue = floorTomHit.triggered ? floorTomHit.ReadValue<float>() : 0f;
             float crashHitValue = crashHit.triggered ? crashHit.ReadValue<float>() : 0f;
             float rideHitValue = rideHit.triggered ? rideHit.ReadValue<float>() : 0f;
+            float openHiHatHitValue = openHiHatHit.triggered ? openHiHatHit.ReadValue<float>() : 0f; // 记录 openHiHatHit
 
             float timestamp = Time.time - recordingStartTime;
 
@@ -153,6 +159,7 @@ public class TransformRecorder : MonoBehaviour
                 floorTomHitValue,
                 crashHitValue,
                 rideHitValue,
+                openHiHatHitValue, // 记录 openHiHatHit 的值
                 timestamp
             );
             transformDataList.Add(data);

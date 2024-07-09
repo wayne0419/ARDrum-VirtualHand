@@ -24,6 +24,7 @@ public class TransformPlayBacker : MonoBehaviour
         public float floorTomHit;
         public float crashHit;
         public float rideHit;
+        public float openHiHatHit; // 新增 openHiHatHit
     }
 
     [Serializable]
@@ -48,6 +49,7 @@ public class TransformPlayBacker : MonoBehaviour
     public AudioSource floorTomAudioSource; // Floor Tom 音效
     public AudioSource crashAudioSource; // Crash 音效
     public AudioSource rideAudioSource; // Ride 音效
+    public AudioSource openHiHatAudioSource; // Open Hi-Hat 音效
 
     private TransformPlaybackData playbackData;
     private int currentIndex;
@@ -183,6 +185,7 @@ public class TransformPlayBacker : MonoBehaviour
         if (data.floorTomHit > 0f) PlayDrumHit(floorTomAudioSource, data.floorTomHit);
         if (data.crashHit > 0f) PlayDrumHit(crashAudioSource, data.crashHit);
         if (data.rideHit > 0f) PlayDrumHit(rideAudioSource, data.rideHit);
+        if (data.openHiHatHit > 0f) PlayDrumHit(openHiHatAudioSource, data.openHiHatHit); // 处理 openHiHatHit
     }
 
     void PlayDrumHit(AudioSource audioSource, float volume)
