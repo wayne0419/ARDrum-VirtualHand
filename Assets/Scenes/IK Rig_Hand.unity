@@ -2059,14 +2059,6 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Hit Closed Hi Hat
       m_Flags: 0
-    - m_Name: 
-      m_Id: b285b457-a4da-48b6-bb81-6a95572a51ad
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Hit Closed Hi Hat
-      m_Flags: 0
     m_Flags: 0
   tom1Hit:
     m_Name: Hit Tom 1
