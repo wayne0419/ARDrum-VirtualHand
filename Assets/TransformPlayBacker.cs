@@ -39,6 +39,7 @@ public class TransformPlayBacker : MonoBehaviour
     public Transform targetTransform2;
     public Transform targetTransform3; // 新增第三个 Transform
     public float playBackBPM; // 用于调整播放速度
+    public float startOffsetBeat; // 新增 startOffsetBeat
     public Metronome metronome; // Metronome 组件引用
 
     public AudioSource bassDrumAudioSource; // Bass Drum 音效
@@ -53,9 +54,11 @@ public class TransformPlayBacker : MonoBehaviour
 
     private TransformPlaybackData playbackData;
     private int currentIndex;
-    private float playbackStartTime;
     private float playbackSpeedMultiplier;
+    private float offsetDuration;
     public bool isPlaying = false; // 将 isPlaying 设置为 public
+    private Coroutine playbackCoroutine;
+    private float playbackStartTime; // 确保声明 playbackStartTime
 
     void OnEnable()
     {
@@ -76,43 +79,6 @@ public class TransformPlayBacker : MonoBehaviour
                 StopPlayBack();
             }
         }
-
-        if (isPlaying)
-        {
-            if (playbackData == null || currentIndex >= playbackData.dataList.Count - 1)
-            {
-                StopPlayBack();
-                return;
-            }
-
-            // 计算经过的时间，考虑播放速度倍率
-            float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier;
-
-            // 检查是否跳过了多个元素
-            while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
-            {
-                // 如果被跳过的元素中有击打事件，播放相应音效
-                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
-                currentIndex++;
-            }
-
-            if (currentIndex < playbackData.dataList.Count - 1)
-            {
-                float targetTime = playbackData.dataList[currentIndex].timestamp;
-                float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
-
-                // 计算插值因子
-                float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
-
-                // 使用线性插值更新 Transform
-                UpdateTransforms(currentIndex, currentIndex + 1, t);
-            }
-            else
-            {
-                // 如果已经播放到最后一个 Transform
-                UpdateTransforms(currentIndex, currentIndex, 1.0f);
-            }
-        }
     }
 
     public void StartPlayBack()
@@ -120,32 +86,81 @@ public class TransformPlayBacker : MonoBehaviour
         if (playbackData != null)
         {
             playbackSpeedMultiplier = playBackBPM / playbackData.bpm;
+            offsetDuration = 60f / playBackBPM * startOffsetBeat;
         }
         else
         {
             playbackSpeedMultiplier = 1f;
+            offsetDuration = 0f;
         }
 
-        playbackStartTime = Time.time;
-        currentIndex = 0;
         isPlaying = true;
-
-        // 开始播放 Metronome
-        if (metronome != null)
-        {
-            metronome.bpm = playBackBPM;
-            metronome.StartMetronome();
-        }
+        playbackCoroutine = StartCoroutine(PlayBackCoroutine());
     }
 
     public void StopPlayBack()
     {
+        if (playbackCoroutine != null)
+        {
+            StopCoroutine(playbackCoroutine);
+        }
+
         isPlaying = false;
 
         // 停止播放 Metronome
         if (metronome != null)
         {
             metronome.StopMetronome();
+        }
+    }
+
+    private IEnumerator PlayBackCoroutine()
+    {
+        while (isPlaying)
+        {
+            // 开始播放 Metronome
+            if (metronome != null)
+            {
+                metronome.bpm = playBackBPM; // 确保设置 bpm
+                metronome.StopMetronome(); // 确保 metronome 停止
+                metronome.StartMetronome(); // 重新启动 metronome
+            }
+
+            // 播放空白记录
+            yield return new WaitForSeconds(offsetDuration);
+
+            playbackStartTime = Time.time;
+            currentIndex = 0;
+
+            while (currentIndex < playbackData.dataList.Count - 1)
+            {
+                float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier;
+
+                // 检查是否跳过了多个元素
+                while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
+                {
+                    // 如果被跳过的元素中有击打事件，播放相应音效
+                    CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
+                    currentIndex++;
+                }
+
+                if (currentIndex < playbackData.dataList.Count - 1)
+                {
+                    float targetTime = playbackData.dataList[currentIndex].timestamp;
+                    float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
+
+                    // 计算插值因子
+                    float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
+
+                    // 使用线性插值更新 Transform
+                    UpdateTransforms(currentIndex, currentIndex + 1, t);
+                }
+
+                yield return null;
+            }
+
+            // 播放到最后一个 Transform
+            UpdateTransforms(currentIndex, currentIndex, 1.0f);
         }
     }
 
