@@ -34,6 +34,8 @@ public class TransformPlayBacker : MonoBehaviour
         public List<TransformData> dataList;
     }
 
+    public enum PlaybackMode { A, B }
+
     public string jsonFilePath; // JSON 文件的路径
     public Transform targetTransform1;
     public Transform targetTransform2;
@@ -41,6 +43,7 @@ public class TransformPlayBacker : MonoBehaviour
     public float playBackBPM; // 用于调整播放速度
     public float startOffsetBeat; // 新增 startOffsetBeat
     public Metronome metronome; // Metronome 组件引用
+    public PlaybackMode playbackMode = PlaybackMode.A; // 添加播放模式选择
 
     public AudioSource bassDrumAudioSource; // Bass Drum 音效
     public AudioSource snareDrumAudioSource; // Snare Drum 音效
@@ -95,7 +98,16 @@ public class TransformPlayBacker : MonoBehaviour
         }
 
         isPlaying = true;
-        playbackCoroutine = StartCoroutine(PlayBackCoroutine());
+
+        switch (playbackMode)
+        {
+            case PlaybackMode.A:
+                playbackCoroutine = StartCoroutine(PlayBackCoroutineA());
+                break;
+            case PlaybackMode.B:
+                playbackCoroutine = StartCoroutine(PlayBackCoroutineB());
+                break;
+        }
     }
 
     public void StopPlayBack()
@@ -114,7 +126,7 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayBackCoroutine()
+    private IEnumerator PlayBackCoroutineA()
     {
         while (isPlaying)
         {
@@ -161,6 +173,61 @@ public class TransformPlayBacker : MonoBehaviour
 
             // 播放到最后一个 Transform
             UpdateTransforms(currentIndex, currentIndex, 1.0f);
+        }
+    }
+
+    private IEnumerator PlayBackCoroutineB()
+    {
+        // 播放空白记录
+        yield return new WaitForSeconds(offsetDuration);
+
+        playbackStartTime = Time.time;
+        currentIndex = 0;
+        float skipTime = 0f;
+        while (isPlaying)
+        {
+            
+            // 播放 TransformPlayBackData 的完整数据
+            while (currentIndex < playbackData.dataList.Count - 1)
+            {
+                float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier + skipTime;
+
+                // 检查是否跳过了多个元素
+                while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
+                {
+                    // 如果被跳过的元素中有击打事件，播放相应音效
+                    CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
+                    currentIndex++;
+                }
+
+                if (currentIndex < playbackData.dataList.Count - 1)
+                {
+                    float targetTime = playbackData.dataList[currentIndex].timestamp;
+                    float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
+
+                    // 计算插值因子
+                    float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
+
+                    // 使用线性插值更新 Transform
+                    UpdateTransforms(currentIndex, currentIndex + 1, t);
+                }
+
+                yield return null;
+            }
+
+            // 播放到最后一个 Transform
+            UpdateTransforms(currentIndex, currentIndex, 1.0f);
+
+            // 循环播放，从第二个 beat 开始
+            playbackStartTime = Time.time;
+            skipTime = 60f / playbackData.bpm; // 跳过一个 beat 的时间
+            currentIndex = 0;
+
+            // 找到从第二个 beat 开始的索引
+            while (currentIndex < playbackData.dataList.Count - 1 && playbackData.dataList[currentIndex].timestamp < skipTime)
+            {
+                currentIndex++;
+            }
         }
     }
 
