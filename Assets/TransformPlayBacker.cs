@@ -34,7 +34,8 @@ public class TransformPlayBacker : MonoBehaviour
         public List<TransformData> dataList;
     }
 
-    public enum PlaybackMode { A, B }
+    public enum PlayMode { A, B } // 新增播放模式枚举
+    public PlayMode playMode = PlayMode.A; // 默认播放模式为 A
 
     public string jsonFilePath; // JSON 文件的路径
     public Transform targetTransform1;
@@ -43,7 +44,6 @@ public class TransformPlayBacker : MonoBehaviour
     public float playBackBPM; // 用于调整播放速度
     public float startOffsetBeat; // 新增 startOffsetBeat
     public Metronome metronome; // Metronome 组件引用
-    public PlaybackMode playbackMode = PlaybackMode.A; // 添加播放模式选择
 
     public AudioSource bassDrumAudioSource; // Bass Drum 音效
     public AudioSource snareDrumAudioSource; // Snare Drum 音效
@@ -99,14 +99,14 @@ public class TransformPlayBacker : MonoBehaviour
 
         isPlaying = true;
 
-        switch (playbackMode)
+        // 根据播放模式启动不同的 coroutine
+        if (playMode == PlayMode.A)
         {
-            case PlaybackMode.A:
-                playbackCoroutine = StartCoroutine(PlayBackCoroutineA());
-                break;
-            case PlaybackMode.B:
-                playbackCoroutine = StartCoroutine(PlayBackCoroutineB());
-                break;
+            playbackCoroutine = StartCoroutine(PlayBackCoroutineA());
+        }
+        else if (playMode == PlayMode.B)
+        {
+            playbackCoroutine = StartCoroutine(PlayBackCoroutineB());
         }
     }
 
@@ -178,57 +178,93 @@ public class TransformPlayBacker : MonoBehaviour
 
     private IEnumerator PlayBackCoroutineB()
     {
+        // 开始播放 Metronome
+        if (metronome != null)
+        {
+            metronome.bpm = playBackBPM; // 确保设置 bpm
+            metronome.StopMetronome(); // 确保 metronome 停止
+            metronome.StartMetronome(); // 重新启动 metronome
+        }
+
         // 播放空白记录
         yield return new WaitForSeconds(offsetDuration);
 
         playbackStartTime = Time.time;
         currentIndex = 0;
-        float skipTime = 0f;
+
+        // 播放整个 TransformPlayBackData 一次
+        yield return PlayTransformData();
+
+        // 循环播放 TransformPlayBackData 跳过开头一个 beat 的时间
         while (isPlaying)
         {
-            
-            // 播放 TransformPlayBackData 的完整数据
-            while (currentIndex < playbackData.dataList.Count - 1)
+            playbackStartTime = Time.time;
+
+            float skipTime = 60f / playbackData.bpm;
+
+            // 重置 Metronome
+            if (metronome != null)
             {
-                float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier + skipTime;
-
-                // 检查是否跳过了多个元素
-                while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
-                {
-                    // 如果被跳过的元素中有击打事件，播放相应音效
-                    CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
-                    currentIndex++;
-                }
-
-                if (currentIndex < playbackData.dataList.Count - 1)
-                {
-                    float targetTime = playbackData.dataList[currentIndex].timestamp;
-                    float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
-
-                    // 计算插值因子
-                    float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
-
-                    // 使用线性插值更新 Transform
-                    UpdateTransforms(currentIndex, currentIndex + 1, t);
-                }
-
-                yield return null;
+                metronome.bpm = playBackBPM; // 确保设置 bpm
+                metronome.StopMetronome(); // 确保 metronome 停止
+                metronome.StartMetronome(); // 重新启动 metronome
             }
 
-            // 播放到最后一个 Transform
-            UpdateTransforms(currentIndex, currentIndex, 1.0f);
+            // 调用 PlayTransformData 时传递 skipTime 以跳过开头一个 beat 的时间
+            yield return PlayTransformData(skipTime);
+        }
+    }
 
-            // 循环播放，从第二个 beat 开始
-            playbackStartTime = Time.time;
-            skipTime = 60f / playbackData.bpm; // 跳过一个 beat 的时间
-            currentIndex = 0;
+    private IEnumerator PlayTransformData(float startTimeOffset = 0f)
+    {
+        if (startTimeOffset > 0)
+        {
+            // 计算跳过时间后应该从哪个索引开始播放
+            currentIndex = GetStartIndexAfterSkipTime(startTimeOffset);
+        }
 
-            // 找到从第二个 beat 开始的索引
-            while (currentIndex < playbackData.dataList.Count - 1 && playbackData.dataList[currentIndex].timestamp < skipTime)
+        while (currentIndex < playbackData.dataList.Count - 1)
+        {
+            float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier + startTimeOffset;
+
+            // 检查是否跳过了多个元素
+            while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
+                // 如果被跳过的元素中有击打事件，播放相应音效
+                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
                 currentIndex++;
             }
+
+            if (currentIndex < playbackData.dataList.Count - 1)
+            {
+                float targetTime = playbackData.dataList[currentIndex].timestamp;
+                float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
+
+                // 计算插值因子
+                float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
+
+                // 使用线性插值更新 Transform
+                UpdateTransforms(currentIndex, currentIndex + 1, t);
+            }
+
+            yield return null;
         }
+
+        // 播放到最后一个 Transform
+        UpdateTransforms(currentIndex, currentIndex, 1.0f);
+    }
+
+    private int GetStartIndexAfterSkipTime(float skipTime)
+    {
+        // 找到第一个 timestamp 大于 skipTime 的索引
+        for (int i = 0; i < playbackData.dataList.Count; i++)
+        {
+            if (playbackData.dataList[i].timestamp >= skipTime)
+            {
+                return i;
+            }
+        }
+        return 0; // 如果所有 timestamp 都小于 skipTime，则从头开始
     }
 
     void LoadJsonFile(string path)

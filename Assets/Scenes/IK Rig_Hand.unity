@@ -712,11 +712,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a49f6e261c0a3e41b6d17567d8ce2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFilePath: Assets/RecordedTransforms/0_classic.json
+  playMode: 1
+  jsonFilePath: Assets/RecordedTransforms/2_advanced1.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
-  playBackBPM: 40
+  playBackBPM: 120
+  startOffsetBeat: 3
   metronome: {fileID: 1340986489}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
