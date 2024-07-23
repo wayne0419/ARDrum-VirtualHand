@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 3748162833028224774, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4562136047836220860, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
@@ -4165,13 +4165,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284159562}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.033463992, y: -0.7063145, z: 0.033463992, w: 0.7063145}
   m_LocalPosition: {x: 0.886, y: -0.957, z: 0.368}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.425, y: -90, z: 0}
 --- !u!1001 &1285457424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11410,32 +11410,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Data.m_Mid
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3893690466253621474}
     - target: {fileID: 992436918626425533, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Data.m_Tip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2386755063356862137}
     - target: {fileID: 992436918626425533, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Data.m_Root
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5008629981415787504}
     - target: {fileID: 1086115466967779818, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Data.m_Mid
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3833711321298511314}
     - target: {fileID: 1086115466967779818, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Data.m_Tip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 98122357059685584}
     - target: {fileID: 1086115466967779818, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Data.m_Root
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3489230243350903824}
     - target: {fileID: 1815433576937004381, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Data.m_Mid
