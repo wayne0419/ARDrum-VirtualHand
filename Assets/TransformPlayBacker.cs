@@ -55,6 +55,8 @@ public class TransformPlayBacker : MonoBehaviour
     public AudioSource rideAudioSource; // Ride 音效
     public AudioSource openHiHatAudioSource; // Open Hi-Hat 音效
 
+    public DrumHitIndicator drumHitIndicator; // 新增 DrumHitIndicator 组件引用
+
     private TransformPlaybackData playbackData;
     private int currentIndex;
     private float playbackSpeedMultiplier;
@@ -67,6 +69,12 @@ public class TransformPlayBacker : MonoBehaviour
     {
         // 每次启用时读取 JSON 文件
         LoadJsonFile(jsonFilePath);
+
+        // 初始化 drumHitIndicator
+        if (drumHitIndicator != null)
+        {
+            drumHitIndicator.Initialize();
+        }
     }
 
     void Update()
@@ -295,15 +303,78 @@ public class TransformPlayBacker : MonoBehaviour
 
     void CheckAndPlayDrumHits(TransformData data)
     {
-        if (data.bassDrumHit > 0f) PlayDrumHit(bassDrumAudioSource, data.bassDrumHit);
-        if (data.snareDrumHit > 0f) PlayDrumHit(snareDrumAudioSource, data.snareDrumHit);
-        if (data.closedHiHatHit > 0f) PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit);
-        if (data.tom1Hit > 0f) PlayDrumHit(tom1AudioSource, data.tom1Hit);
-        if (data.tom2Hit > 0f) PlayDrumHit(tom2AudioSource, data.tom2Hit);
-        if (data.floorTomHit > 0f) PlayDrumHit(floorTomAudioSource, data.floorTomHit);
-        if (data.crashHit > 0f) PlayDrumHit(crashAudioSource, data.crashHit);
-        if (data.rideHit > 0f) PlayDrumHit(rideAudioSource, data.rideHit);
-        if (data.openHiHatHit > 0f) PlayDrumHit(openHiHatAudioSource, data.openHiHatHit); // 处理 openHiHatHit
+        if (data.bassDrumHit > 0f) 
+        {
+            PlayDrumHit(bassDrumAudioSource, data.bassDrumHit);
+            if (drumHitIndicator != null) 
+            {
+                drumHitIndicator.TriggerBassDrum();
+            }
+        }
+        if (data.snareDrumHit > 0f)
+        {
+            PlayDrumHit(snareDrumAudioSource, data.snareDrumHit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerSnareDrum(); // 触发 Snare Drum Indicator 效果
+            }
+        }
+        if (data.closedHiHatHit > 0f) 
+        {
+            PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerClosedHiHat();
+            }
+        }
+        if (data.tom1Hit > 0f) 
+        {
+            PlayDrumHit(tom1AudioSource, data.tom1Hit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerTom1();
+            }
+        }
+        if (data.tom2Hit > 0f) 
+        {
+            PlayDrumHit(tom2AudioSource, data.tom2Hit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerTom2();
+            }
+        }
+        if (data.floorTomHit > 0f) 
+        {
+            PlayDrumHit(floorTomAudioSource, data.floorTomHit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerFloorTom();
+            }
+        }
+        if (data.crashHit > 0f) 
+        {
+            PlayDrumHit(crashAudioSource, data.crashHit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerCrash();
+            }
+        }
+        if (data.rideHit > 0f) 
+        {
+            PlayDrumHit(rideAudioSource, data.rideHit);
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerRide();
+            }
+        }
+        if (data.openHiHatHit > 0f) 
+        {
+            PlayDrumHit(openHiHatAudioSource, data.openHiHatHit); // 处理 openHiHatHit
+            if (drumHitIndicator != null)
+            {
+                drumHitIndicator.TriggerOpenHiHat();
+            }
+        }
     }
 
     void PlayDrumHit(AudioSource audioSource, float volume)
