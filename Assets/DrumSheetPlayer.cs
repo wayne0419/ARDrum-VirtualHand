@@ -4,6 +4,7 @@ using UnityEngine.Video;
 public class DrumSheetPlayer : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
+    public float drumSheetBPM; // Drum sheet 影片的原始 BPM
 
     void Start()
     {
@@ -13,13 +14,16 @@ public class DrumSheetPlayer : MonoBehaviour
         }
     }
 
-    public void Play(float startTime = 0f)
+    public void Play(float startTime = 0f, float playBackBPM = 120f)
     {
         if (videoPlayer != null)
         {
             videoPlayer.time = startTime;
+            float playbackSpeedMultiplier = playBackBPM / drumSheetBPM;
+            videoPlayer.playbackSpeed = playbackSpeedMultiplier;
             videoPlayer.Play();
         }
+        Debug.Log("Play Drum Sheet!");
     }
 
     public void Pause()

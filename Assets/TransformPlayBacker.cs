@@ -161,7 +161,7 @@ public class TransformPlayBacker : MonoBehaviour
             // 开始播放 Drum Sheet 影片
             if (drumSheetPlayer != null)
             {
-                drumSheetPlayer.Play(0f); // 从头开始播放
+                drumSheetPlayer.Play(0f, playBackBPM); // 从头开始播放，并调整速度
             }
 
             // 使用 PlayTransformData 简化代码
@@ -188,7 +188,7 @@ public class TransformPlayBacker : MonoBehaviour
         // 开始播放 Drum Sheet 影片
         if (drumSheetPlayer != null)
         {
-            drumSheetPlayer.Play(0f); // 从头开始播放
+            drumSheetPlayer.Play(0f, playBackBPM); // 从头开始播放，并调整速度
         }
 
         // 播放整个 TransformPlayBackData 一次
@@ -212,7 +212,7 @@ public class TransformPlayBacker : MonoBehaviour
             // 开始播放 Drum Sheet 影片并跳过开头一个 beat 的时间
             if (drumSheetPlayer != null)
             {
-                drumSheetPlayer.Play(skipTime);
+                drumSheetPlayer.Play(skipTime, playBackBPM);
             }
 
             // 调用 PlayTransformData 时传递 skipTime 以跳过开头一个 beat 的时间
