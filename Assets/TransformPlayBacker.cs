@@ -152,35 +152,8 @@ public class TransformPlayBacker : MonoBehaviour
             playbackStartTime = Time.time;
             currentIndex = 0;
 
-            while (currentIndex < playbackData.dataList.Count - 1)
-            {
-                float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier;
-
-                // 检查是否跳过了多个元素
-                while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
-                {
-                    // 如果被跳过的元素中有击打事件，播放相应音效
-                    CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
-                    currentIndex++;
-                }
-
-                if (currentIndex < playbackData.dataList.Count - 1)
-                {
-                    float targetTime = playbackData.dataList[currentIndex].timestamp;
-                    float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
-
-                    // 计算插值因子
-                    float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
-
-                    // 使用线性插值更新 Transform
-                    UpdateTransforms(currentIndex, currentIndex + 1, t);
-                }
-
-                yield return null;
-            }
-
-            // 播放到最后一个 Transform
-            UpdateTransforms(currentIndex, currentIndex, 1.0f);
+            // 使用 PlayTransformData 简化代码
+            yield return PlayTransformData();
         }
     }
 
