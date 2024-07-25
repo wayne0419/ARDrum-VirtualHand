@@ -889,12 +889,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a49f6e261c0a3e41b6d17567d8ce2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/2_advanced1.json
+  playMode: 1
+  jsonFilePath: Assets/RecordedTransforms/3_advanced2.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
-  playBackBPM: 80
+  playBackBPM: 40
   startOffsetBeat: 3
   metronome: {fileID: 1340986489}
   bassDrumAudioSource: {fileID: 1449333153}
@@ -3216,6 +3216,113 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1900614060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &855652023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 855652024}
+  - component: {fileID: 855652027}
+  - component: {fileID: 855652026}
+  - component: {fileID: 855652025}
+  m_Layer: 0
+  m_Name: DrumStick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &855652024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855652023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.61822504, y: -0.34321684, z: -0.46864018, w: 0.5295058}
+  m_LocalPosition: {x: 0.197, y: -1.618, z: 0.145}
+  m_LocalScale: {x: 0.010780001, y: 0.18976003, z: 0.010780001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1900614060}
+  m_LocalEulerAnglesHint: {x: 160.548, y: 90, z: 77.527}
+--- !u!136 &855652025
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855652023}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &855652026
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855652023}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &855652027
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855652023}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &916432448
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,7 +5533,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498640516}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1d084e1d495b9b647bb9feda4a256440, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: aa4a0ad79acc00448b51b1c9cb8f19b0, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -5435,7 +5542,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
-  m_AspectRatio: 2
+  m_AspectRatio: 0
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
@@ -5465,7 +5572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1498640518}
-  drumSheetBPM: 120
+  drumSheetBPM: 170
 --- !u!1 &1517058573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,6 +6590,7 @@ Transform:
   - {fileID: 267356194}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 855652024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022289352

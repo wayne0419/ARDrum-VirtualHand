@@ -14,16 +14,24 @@ public class DrumSheetPlayer : MonoBehaviour
         }
     }
 
-    public void Play(float startTime = 0f, float playBackBPM = 120f)
+    public void Play(float skipBeat = 0f, float playBackBPM = 120f)
     {
         if (videoPlayer != null)
         {
-            videoPlayer.time = startTime;
             float playbackSpeedMultiplier = playBackBPM / drumSheetBPM;
             videoPlayer.playbackSpeed = playbackSpeedMultiplier;
+
+            if (videoPlayer.isPlaying)
+            {
+                videoPlayer.Stop(); // 停止当前播放
+            }
+
             videoPlayer.Play();
+
+            // 将 skipBeat 转换为 drumSheetBPM 相关的时间
+            float drumSheetStartTime = skipBeat * (60f / drumSheetBPM);
+            videoPlayer.time = drumSheetStartTime;
         }
-        Debug.Log("Play Drum Sheet!");
     }
 
     public void Pause()

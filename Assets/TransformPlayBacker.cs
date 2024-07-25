@@ -199,7 +199,7 @@ public class TransformPlayBacker : MonoBehaviour
         {
             playbackStartTime = Time.time;
 
-            float skipTime = 60f / playbackData.bpm;
+            float skipBeat = 1f;
 
             // 重置 Metronome
             if (metronome != null)
@@ -212,11 +212,11 @@ public class TransformPlayBacker : MonoBehaviour
             // 开始播放 Drum Sheet 影片并跳过开头一个 beat 的时间
             if (drumSheetPlayer != null)
             {
-                drumSheetPlayer.Play(skipTime, playBackBPM);
+                drumSheetPlayer.Play(skipBeat, playBackBPM);
             }
 
-            // 调用 PlayTransformData 时传递 skipTime 以跳过开头一个 beat 的时间
-            yield return PlayTransformData(skipTime);
+            // 调用 PlayTransformData 时传递 skipBeat 以跳过开头一个 beat 的时间
+            yield return PlayTransformData(skipBeat * (60f / playbackData.bpm));
         }
     }
 
