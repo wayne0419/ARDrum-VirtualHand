@@ -56,6 +56,7 @@ public class TransformPlayBacker : MonoBehaviour
     public AudioSource openHiHatAudioSource; // Open Hi-Hat 音效
 
     public DrumHitIndicator drumHitIndicator; // 新增 DrumHitIndicator 组件引用
+    public DrumSheetPlayer drumSheetPlayer; // 新增 DrumSheetPlayer 组件引用
 
     private TransformPlaybackData playbackData;
     private int currentIndex;
@@ -127,10 +128,15 @@ public class TransformPlayBacker : MonoBehaviour
 
         isPlaying = false;
 
-        // 停止播放 Metronome
+        // 停止播放 Metronome 和 Drum Sheet
         if (metronome != null)
         {
             metronome.StopMetronome();
+        }
+
+        if (drumSheetPlayer != null)
+        {
+            drumSheetPlayer.Pause();
         }
     }
 
@@ -151,6 +157,12 @@ public class TransformPlayBacker : MonoBehaviour
 
             playbackStartTime = Time.time;
             currentIndex = 0;
+
+            // 开始播放 Drum Sheet 影片
+            if (drumSheetPlayer != null)
+            {
+                drumSheetPlayer.Play(0f); // 从头开始播放
+            }
 
             // 使用 PlayTransformData 简化代码
             yield return PlayTransformData();
@@ -173,6 +185,12 @@ public class TransformPlayBacker : MonoBehaviour
         playbackStartTime = Time.time;
         currentIndex = 0;
 
+        // 开始播放 Drum Sheet 影片
+        if (drumSheetPlayer != null)
+        {
+            drumSheetPlayer.Play(0f); // 从头开始播放
+        }
+
         // 播放整个 TransformPlayBackData 一次
         yield return PlayTransformData();
 
@@ -189,6 +207,12 @@ public class TransformPlayBacker : MonoBehaviour
                 metronome.bpm = playBackBPM; // 确保设置 bpm
                 metronome.StopMetronome(); // 确保 metronome 停止
                 metronome.StartMetronome(); // 重新启动 metronome
+            }
+
+            // 开始播放 Drum Sheet 影片并跳过开头一个 beat 的时间
+            if (drumSheetPlayer != null)
+            {
+                drumSheetPlayer.Play(skipTime);
             }
 
             // 调用 PlayTransformData 时传递 skipTime 以跳过开头一个 beat 的时间
