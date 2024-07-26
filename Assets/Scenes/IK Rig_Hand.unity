@@ -7032,6 +7032,11 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 781261141069594571, guid: 9a50fe01f2f914947b91629e1861b433,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e0d1e91dcaa9814f9be5f5f26ee2b37, type: 2}
     - target: {fileID: 874221508979838535, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_AABB.m_Center.x
@@ -7807,6 +7812,11 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7352171251474966601, guid: 9a50fe01f2f914947b91629e1861b433,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e0d1e91dcaa9814f9be5f5f26ee2b37, type: 2}
     - target: {fileID: 7542624404437977000, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_AABB.m_Center.x
