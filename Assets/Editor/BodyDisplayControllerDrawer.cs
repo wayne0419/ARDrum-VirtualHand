@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomPropertyDrawer(typeof(BodyDisplayController.BodyGroup))]
-public class BodyGroupDrawer : PropertyDrawer
+public class BodyDisplayControllerDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -23,6 +23,7 @@ public class BodyGroupDrawer : PropertyDrawer
         if (newTransparency != transparency.floatValue)
         {
             transparency.floatValue = newTransparency;
+            property.serializedObject.ApplyModifiedProperties(); // 確保即時更新
             // 找到並更新對應的 BodyGroup
             BodyDisplayController controller = (BodyDisplayController)property.serializedObject.targetObject;
             foreach (var bodyGroup in controller.bodyGroups)
