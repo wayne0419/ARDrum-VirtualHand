@@ -31,7 +31,7 @@ public class BodyDisplayController : MonoBehaviour
 
     private void SetRendererTransparency(Renderer renderer, float alpha)
     {
-        foreach (Material mat in renderer.materials)
+        foreach (Material mat in renderer.sharedMaterials)
         {
             if (alpha < 1.0f)
             {
