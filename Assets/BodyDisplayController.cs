@@ -31,15 +31,11 @@ public class BodyDisplayController : MonoBehaviour
 
     private void SetRendererTransparency(Renderer renderer, float alpha)
     {
-        Material[] materials = renderer.sharedMaterials;
-        foreach (Material mat in materials)
+        foreach (Material mat in renderer.materials)
         {
-            if (mat != null)
-            {
-                Color color = mat.color;
-                color.a = alpha;
-                mat.color = color;
-            }
+            Color color = mat.color;
+            color.a = alpha;
+            mat.color = color;
         }
     }
 
