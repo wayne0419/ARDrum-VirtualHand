@@ -35,25 +35,27 @@ public class BodyDisplayController : MonoBehaviour
         {
             if (alpha < 1.0f)
             {
-                mat.SetFloat("_Mode", 2); // Transparent mode
+                mat.SetFloat("_Surface", 1); // Transparent mode
+                mat.SetOverrideTag("RenderType", "Transparent");
                 mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
                 mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
                 mat.SetInt("_ZWrite", 0);
                 mat.DisableKeyword("_ALPHATEST_ON");
                 mat.EnableKeyword("_ALPHABLEND_ON");
                 mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                mat.renderQueue = 3000;
+                mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
             }
             else
             {
-                mat.SetFloat("_Mode", 0); // Opaque mode
+                mat.SetFloat("_Surface", 0); // Opaque mode
+                mat.SetOverrideTag("RenderType", "Opaque");
                 mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
                 mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
                 mat.SetInt("_ZWrite", 1);
                 mat.DisableKeyword("_ALPHATEST_ON");
                 mat.DisableKeyword("_ALPHABLEND_ON");
                 mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                mat.renderQueue = -1;
+                mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
             }
 
             Color color = mat.color;

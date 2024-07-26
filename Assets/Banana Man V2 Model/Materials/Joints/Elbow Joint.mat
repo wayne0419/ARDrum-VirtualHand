@@ -17,9 +17,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
-    RenderType: Transparent
+    RenderType: Opaque
   disabledShaderPasses:
   - DepthOnly
   - SHADOWCASTER
@@ -113,13 +113,13 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Surface: 1
+    - _Surface: 0
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.24705458, g: 0.24705458, b: 0.24705452, a: 1}
-    - _Color: {r: 0.2470561, g: 0.2470561, b: 0.24705607, a: 1}
+    - _BaseColor: {r: 0.24704972, g: 0.24704972, b: 0.24704969, a: 1}
+    - _Color: {r: 0.2470502, g: 0.2470502, b: 0.24705017, a: 0.403}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
