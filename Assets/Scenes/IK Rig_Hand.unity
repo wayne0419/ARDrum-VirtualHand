@@ -1542,6 +1542,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!137 &286776681 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 781261141069594571, guid: 9a50fe01f2f914947b91629e1861b433,
+    type: 3}
+  m_PrefabInstance: {fileID: 5554298501304234582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &327938867
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,6 +3649,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959390650}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &978889484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3748162833028224774, guid: 9a50fe01f2f914947b91629e1861b433,
+    type: 3}
+  m_PrefabInstance: {fileID: 5554298501304234582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &991976842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8291627547504108419, guid: 9a50fe01f2f914947b91629e1861b433,
@@ -5726,6 +5738,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5554298501304234582}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1541896916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978889484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0720ac0a7fc6cb04780973a3aa75c938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyGroups:
+  - groupName: Fore Arms
+    renderers:
+    - {fileID: 1851523251}
+    - {fileID: 286776681}
+    transparency: 0
 --- !u!1 &1580649881
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,6 +6663,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797628278}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!137 &1851523251 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7352171251474966601, guid: 9a50fe01f2f914947b91629e1861b433,
+    type: 3}
+  m_PrefabInstance: {fileID: 5554298501304234582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1870361695
 GameObject:
   m_ObjectHideFlags: 0
@@ -7944,7 +7980,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1202858216}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3748162833028224774, guid: 9a50fe01f2f914947b91629e1861b433,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1541896916}
   m_SourcePrefab: {fileID: 100100000, guid: 9a50fe01f2f914947b91629e1861b433, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
