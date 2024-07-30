@@ -6,12 +6,13 @@ public class HandMovementPathRenderer : MonoBehaviour
     public TransformPlayBacker transformPlayBacker;
     public LineRenderer lineRenderer1;
     public LineRenderer lineRenderer2;
-    public Transform LeftHandDrumStickTipAnchor;
-    public Transform RightHandDrumStickTipAnchor;
     public Material lineMaterial;
     public float lineWidth = 0.1f;
     public float preTime = 1f;
     public float postTime = 1f;
+
+    public Transform LeftHandDrumStickTipAnchor; // 新增 LeftHandDrumStickTipAnchor
+    public Transform RightHandDrumStickTipAnchor; // 新增 RightHandDrumStickTipAnchor
 
     private void OnEnable()
     {
@@ -23,13 +24,17 @@ public class HandMovementPathRenderer : MonoBehaviour
 
         if (lineRenderer1 == null)
         {
-            lineRenderer1 = new GameObject("LineRenderer1").AddComponent<LineRenderer>();
+            GameObject lineObj1 = new GameObject("LineRenderer1");
+            lineObj1.transform.parent = this.transform; // 将 LineRenderer1 添加为 HandMovementPathRenderer 的子对象
+            lineRenderer1 = lineObj1.AddComponent<LineRenderer>();
         }
         InitializeLineRenderer(lineRenderer1);
 
         if (lineRenderer2 == null)
         {
-            lineRenderer2 = new GameObject("LineRenderer2").AddComponent<LineRenderer>();
+            GameObject lineObj2 = new GameObject("LineRenderer2");
+            lineObj2.transform.parent = this.transform; // 将 LineRenderer2 添加为 HandMovementPathRenderer 的子对象
+            lineRenderer2 = lineObj2.AddComponent<LineRenderer>();
         }
         InitializeLineRenderer(lineRenderer2);
     }
@@ -66,8 +71,11 @@ public class HandMovementPathRenderer : MonoBehaviour
         {
             if (data.timestamp >= currentTime - preTime && data.timestamp <= currentTime + postTime)
             {
-                positions1.Add(data.rotation1 * LeftHandDrumStickTipAnchor.localPosition + data.position1);
-                positions2.Add(data.rotation2 * RightHandDrumStickTipAnchor.localPosition + data.position2);
+                Vector3 leftStickTipPosition = data.position1 + data.rotation1 * LeftHandDrumStickTipAnchor.localPosition;
+                positions1.Add(leftStickTipPosition);
+
+                Vector3 rightStickTipPosition = data.position2 + data.rotation2 * RightHandDrumStickTipAnchor.localPosition;
+                positions2.Add(rightStickTipPosition);
             }
         }
 
