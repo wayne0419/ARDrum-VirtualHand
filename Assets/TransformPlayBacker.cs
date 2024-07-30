@@ -58,8 +58,8 @@ public class TransformPlayBacker : MonoBehaviour
     public DrumHitIndicator drumHitIndicator; // 新增 DrumHitIndicator 组件引用
     public DrumSheetPlayer drumSheetPlayer; // 新增 DrumSheetPlayer 组件引用
 
-    private TransformPlaybackData playbackData;
-    private int currentIndex;
+    public TransformPlaybackData playbackData;
+    public int currentIndex;
     private float playbackSpeedMultiplier;
     private float offsetDuration;
     public bool isPlaying = false; // 将 isPlaying 设置为 public
