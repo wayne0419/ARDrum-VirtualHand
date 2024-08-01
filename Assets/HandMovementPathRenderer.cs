@@ -6,10 +6,10 @@ public class HandMovementPathRenderer : MonoBehaviour
     public TransformPlayBacker transformPlayBacker;
     public LineRenderer lineRenderer1;
     public LineRenderer lineRenderer2;
-    public Material lineMaterial;
     public float lineWidth = 0.1f;
-    public float preTime = 1f;
-    public float postTime = 1f;
+    public int preHitNumber = 5;
+    public int postHitNumber = 5;
+    public int resolution = 5; // 每隔多少点采样一个
 
     public Transform LeftHandDrumStickTipAnchor; // 新增 LeftHandDrumStickTipAnchor
     public Transform RightHandDrumStickTipAnchor; // 新增 RightHandDrumStickTipAnchor
@@ -41,7 +41,6 @@ public class HandMovementPathRenderer : MonoBehaviour
 
     private void InitializeLineRenderer(LineRenderer lineRenderer)
     {
-        lineRenderer.material = lineMaterial;
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
         lineRenderer.positionCount = 0;
@@ -65,18 +64,42 @@ public class HandMovementPathRenderer : MonoBehaviour
             return;
         }
 
-        float currentTime = transformPlayBacker.playbackData.dataList[transformPlayBacker.currentIndex].timestamp;
+        int currentIndex = transformPlayBacker.currentIndex;
+        float currentTime = transformPlayBacker.playbackData.dataList[currentIndex].timestamp;
 
-        foreach (var data in transformPlayBacker.playbackData.dataList)
+        // 找到 preHitNumber 个击打事件之前的索引
+        int startIndex = currentIndex;
+        int hitCount = 0;
+        while (startIndex > 0 && hitCount < preHitNumber)
         {
-            if (data.timestamp >= currentTime - preTime && data.timestamp <= currentTime + postTime)
+            startIndex--;
+            if (HasHit(transformPlayBacker.playbackData.dataList[startIndex]))
             {
-                Vector3 leftStickTipPosition = data.position1 + data.rotation1 * LeftHandDrumStickTipAnchor.localPosition;
-                positions1.Add(leftStickTipPosition);
-
-                Vector3 rightStickTipPosition = data.position2 + data.rotation2 * RightHandDrumStickTipAnchor.localPosition;
-                positions2.Add(rightStickTipPosition);
+                hitCount++;
             }
+        }
+
+        // 找到 postHitNumber 个击打事件之后的索引
+        int endIndex = currentIndex;
+        hitCount = 0;
+        while (endIndex < transformPlayBacker.playbackData.dataList.Count - 1 && hitCount < postHitNumber)
+        {
+            endIndex++;
+            if (HasHit(transformPlayBacker.playbackData.dataList[endIndex]))
+            {
+                hitCount++;
+            }
+        }
+
+        // 收集路径点
+        for (int i = startIndex; i <= endIndex; i += resolution)
+        {
+            var data = transformPlayBacker.playbackData.dataList[i];
+            Vector3 leftStickTipPosition = data.position1 + data.rotation1 * LeftHandDrumStickTipAnchor.localPosition;
+            positions1.Add(leftStickTipPosition);
+
+            Vector3 rightStickTipPosition = data.position2 + data.rotation2 * RightHandDrumStickTipAnchor.localPosition;
+            positions2.Add(rightStickTipPosition);
         }
 
         lineRenderer1.positionCount = positions1.Count;
@@ -84,5 +107,12 @@ public class HandMovementPathRenderer : MonoBehaviour
 
         lineRenderer2.positionCount = positions2.Count;
         lineRenderer2.SetPositions(positions2.ToArray());
+    }
+
+    private bool HasHit(TransformPlayBacker.TransformData data)
+    {
+        return data.bassDrumHit > 0 || data.snareDrumHit > 0 || data.closedHiHatHit > 0 ||
+               data.tom1Hit > 0 || data.tom2Hit > 0 || data.floorTomHit > 0 ||
+               data.crashHit > 0 || data.rideHit > 0 || data.openHiHatHit > 0;
     }
 }
