@@ -111,8 +111,8 @@ public class HandMovementPathRenderer : MonoBehaviour
 
     private bool HasHit(TransformPlayBacker.TransformData data)
     {
-        return data.bassDrumHit > 0 || data.snareDrumHit > 0 || data.closedHiHatHit > 0 ||
-               data.tom1Hit > 0 || data.tom2Hit > 0 || data.floorTomHit > 0 ||
-               data.crashHit > 0 || data.rideHit > 0 || data.openHiHatHit > 0;
+        return data.bassDrumHit.value > 0 || data.snareDrumHit.value > 0 || data.closedHiHatHit.value > 0 ||
+               data.tom1Hit.value > 0 || data.tom2Hit.value > 0 || data.floorTomHit.value > 0 ||
+               data.crashHit.value > 0 || data.rideHit.value > 0 || data.openHiHatHit.value > 0;
     }
 }

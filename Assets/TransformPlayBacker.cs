@@ -7,24 +7,31 @@ using System.IO;
 public class TransformPlayBacker : MonoBehaviour
 {
     [Serializable]
+    public class DrumHit
+    {
+        public float value;
+        public string limb;
+    }
+
+    [Serializable]
     public class TransformData
     {
         public Vector3 position1;
         public Quaternion rotation1;
         public Vector3 position2;
         public Quaternion rotation2;
-        public Vector3 position3; // 新增第三组 position
-        public Quaternion rotation3; // 新增第三组 rotation
+        public Vector3 position3;
+        public Quaternion rotation3;
         public float timestamp;
-        public float bassDrumHit;
-        public float snareDrumHit;
-        public float closedHiHatHit;
-        public float tom1Hit;
-        public float tom2Hit;
-        public float floorTomHit;
-        public float crashHit;
-        public float rideHit;
-        public float openHiHatHit; // 新增 openHiHatHit
+        public DrumHit bassDrumHit;
+        public DrumHit snareDrumHit;
+        public DrumHit closedHiHatHit;
+        public DrumHit tom1Hit;
+        public DrumHit tom2Hit;
+        public DrumHit floorTomHit;
+        public DrumHit crashHit;
+        public DrumHit rideHit;
+        public DrumHit openHiHatHit;
     }
 
     [Serializable]
@@ -58,13 +65,13 @@ public class TransformPlayBacker : MonoBehaviour
     public DrumHitIndicator drumHitIndicator; // 新增 DrumHitIndicator 组件引用
     public DrumSheetPlayer drumSheetPlayer; // 新增 DrumSheetPlayer 组件引用
 
-    public TransformPlaybackData playbackData;
+    public TransformPlaybackData playbackData; // 修改为 public
     public int currentIndex;
     private float playbackSpeedMultiplier;
     private float offsetDuration;
     public bool isPlaying = false; // 将 isPlaying 设置为 public
     private Coroutine playbackCoroutine;
-    private float playbackStartTime; // 确保声明 playbackStartTime
+    public float playbackStartTime; // 确保声明 playbackStartTime
 
     void OnEnable()
     {
@@ -300,73 +307,73 @@ public class TransformPlayBacker : MonoBehaviour
 
     void CheckAndPlayDrumHits(TransformData data)
     {
-        if (data.bassDrumHit > 0f) 
+        if (data.bassDrumHit.value > 0f)
         {
-            PlayDrumHit(bassDrumAudioSource, data.bassDrumHit);
-            if (drumHitIndicator != null) 
+            PlayDrumHit(bassDrumAudioSource, data.bassDrumHit.value);
+            if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerBassDrum();
             }
         }
-        if (data.snareDrumHit > 0f)
+        if (data.snareDrumHit.value > 0f)
         {
-            PlayDrumHit(snareDrumAudioSource, data.snareDrumHit);
+            PlayDrumHit(snareDrumAudioSource, data.snareDrumHit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerSnareDrum(); // 触发 Snare Drum Indicator 效果
             }
         }
-        if (data.closedHiHatHit > 0f) 
+        if (data.closedHiHatHit.value > 0f)
         {
-            PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit);
+            PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerClosedHiHat();
             }
         }
-        if (data.tom1Hit > 0f) 
+        if (data.tom1Hit.value > 0f)
         {
-            PlayDrumHit(tom1AudioSource, data.tom1Hit);
+            PlayDrumHit(tom1AudioSource, data.tom1Hit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerTom1();
             }
         }
-        if (data.tom2Hit > 0f) 
+        if (data.tom2Hit.value > 0f)
         {
-            PlayDrumHit(tom2AudioSource, data.tom2Hit);
+            PlayDrumHit(tom2AudioSource, data.tom2Hit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerTom2();
             }
         }
-        if (data.floorTomHit > 0f) 
+        if (data.floorTomHit.value > 0f)
         {
-            PlayDrumHit(floorTomAudioSource, data.floorTomHit);
+            PlayDrumHit(floorTomAudioSource, data.floorTomHit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerFloorTom();
             }
         }
-        if (data.crashHit > 0f) 
+        if (data.crashHit.value > 0f)
         {
-            PlayDrumHit(crashAudioSource, data.crashHit);
+            PlayDrumHit(crashAudioSource, data.crashHit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerCrash();
             }
         }
-        if (data.rideHit > 0f) 
+        if (data.rideHit.value > 0f)
         {
-            PlayDrumHit(rideAudioSource, data.rideHit);
+            PlayDrumHit(rideAudioSource, data.rideHit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerRide();
             }
         }
-        if (data.openHiHatHit > 0f) 
+        if (data.openHiHatHit.value > 0f)
         {
-            PlayDrumHit(openHiHatAudioSource, data.openHiHatHit); // 处理 openHiHatHit
+            PlayDrumHit(openHiHatAudioSource, data.openHiHatHit.value); // 处理 openHiHatHit
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerOpenHiHat();

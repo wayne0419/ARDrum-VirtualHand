@@ -7,6 +7,19 @@ public class TransformRecorder : MonoBehaviour
 {
     // 记录 position、rotation 和打击音效值的类
     [System.Serializable]
+    public class DrumHit
+    {
+        public float value;
+        public string limb;
+
+        public DrumHit(float val, string limbType)
+        {
+            value = val;
+            limb = limbType;
+        }
+    }
+
+    [System.Serializable]
     public class TransformData
     {
         public Vector3 position1;
@@ -15,18 +28,18 @@ public class TransformRecorder : MonoBehaviour
         public Quaternion rotation2;
         public Vector3 position3;
         public Quaternion rotation3;
-        public float bassDrumHit;
-        public float snareDrumHit;
-        public float closedHiHatHit;
-        public float tom1Hit;
-        public float tom2Hit;
-        public float floorTomHit;
-        public float crashHit;
-        public float rideHit;
-        public float openHiHatHit; // 新增的 openHiHatHit
+        public DrumHit bassDrumHit;
+        public DrumHit snareDrumHit;
+        public DrumHit closedHiHatHit;
+        public DrumHit tom1Hit;
+        public DrumHit tom2Hit;
+        public DrumHit floorTomHit;
+        public DrumHit crashHit;
+        public DrumHit rideHit;
+        public DrumHit openHiHatHit;
         public float timestamp;
 
-        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, Vector3 pos3, Quaternion rot3, float bassHit, float snareHit, float hiHatHit, float t1Hit, float t2Hit, float floorHit, float crashH, float rideH, float openHiHat, float time)
+        public TransformData(Vector3 pos1, Quaternion rot1, Vector3 pos2, Quaternion rot2, Vector3 pos3, Quaternion rot3, DrumHit bassHit, DrumHit snareHit, DrumHit hiHatHit, DrumHit t1Hit, DrumHit t2Hit, DrumHit floorHit, DrumHit crashH, DrumHit rideH, DrumHit openHiHat, float time)
         {
             position1 = pos1;
             rotation1 = rot1;
@@ -126,15 +139,15 @@ public class TransformRecorder : MonoBehaviour
         if (targetTransform1 != null && targetTransform2 != null)
         {
             // 检查是否有打击音效的触发
-            float bassDrumHitValue = bassDrumHit.triggered ? bassDrumHit.ReadValue<float>() : 0f;
-            float snareDrumHitValue = snareDrumHit.triggered ? snareDrumHit.ReadValue<float>() : 0f;
-            float closedHiHatHitValue = closedHiHatHit.triggered ? closedHiHatHit.ReadValue<float>() : 0f;
-            float tom1HitValue = tom1Hit.triggered ? tom1Hit.ReadValue<float>() : 0f;
-            float tom2HitValue = tom2Hit.triggered ? tom2Hit.ReadValue<float>() : 0f;
-            float floorTomHitValue = floorTomHit.triggered ? floorTomHit.ReadValue<float>() : 0f;
-            float crashHitValue = crashHit.triggered ? crashHit.ReadValue<float>() : 0f;
-            float rideHitValue = rideHit.triggered ? rideHit.ReadValue<float>() : 0f;
-            float openHiHatHitValue = openHiHatHit.triggered ? openHiHatHit.ReadValue<float>() : 0f; // 记录 openHiHatHit
+            DrumHit bassDrumHitValue = bassDrumHit.triggered ? new DrumHit(bassDrumHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit snareDrumHitValue = snareDrumHit.triggered ? new DrumHit(snareDrumHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit closedHiHatHitValue = closedHiHatHit.triggered ? new DrumHit(closedHiHatHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit tom1HitValue = tom1Hit.triggered ? new DrumHit(tom1Hit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit tom2HitValue = tom2Hit.triggered ? new DrumHit(tom2Hit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit floorTomHitValue = floorTomHit.triggered ? new DrumHit(floorTomHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit crashHitValue = crashHit.triggered ? new DrumHit(crashHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit rideHitValue = rideHit.triggered ? new DrumHit(rideHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
+            DrumHit openHiHatHitValue = openHiHatHit.triggered ? new DrumHit(openHiHatHit.ReadValue<float>(), "unspecified") : new DrumHit(0f, "no limb");
 
             float timestamp = Time.time - recordingStartTime;
 
@@ -159,7 +172,7 @@ public class TransformRecorder : MonoBehaviour
                 floorTomHitValue,
                 crashHitValue,
                 rideHitValue,
-                openHiHatHitValue, // 记录 openHiHatHit 的值
+                openHiHatHitValue,
                 timestamp
             );
             transformDataList.Add(data);
