@@ -67,37 +67,66 @@ public class HandMovementPathRenderer : MonoBehaviour
         int currentIndex = transformPlayBacker.currentIndex;
         float currentTime = transformPlayBacker.playbackData.dataList[currentIndex].timestamp;
 
-        // 找到 preHitNumber 个击打事件之前的索引
-        int startIndex = currentIndex;
-        int hitCount = 0;
-        while (startIndex > 0 && hitCount < preHitNumber)
+        // 找到 preHitNumber 个左手击打事件之前的索引
+        int startIndex1 = currentIndex;
+        int leftHandHitCount = 0;
+        while (startIndex1 > 0 && leftHandHitCount < preHitNumber)
         {
-            startIndex--;
-            if (HasHit(transformPlayBacker.playbackData.dataList[startIndex]))
+            startIndex1--;
+            if (IsLeftHandHit(transformPlayBacker.playbackData.dataList[startIndex1]))
             {
-                hitCount++;
+                leftHandHitCount++;
             }
         }
 
-        // 找到 postHitNumber 个击打事件之后的索引
-        int endIndex = currentIndex;
-        hitCount = 0;
-        while (endIndex < transformPlayBacker.playbackData.dataList.Count - 1 && hitCount < postHitNumber)
+        // 找到 postHitNumber 个左手击打事件之后的索引
+        int endIndex1 = currentIndex;
+        leftHandHitCount = 0;
+        while (endIndex1 < transformPlayBacker.playbackData.dataList.Count - 1 && leftHandHitCount < postHitNumber)
         {
-            endIndex++;
-            if (HasHit(transformPlayBacker.playbackData.dataList[endIndex]))
+            endIndex1++;
+            if (IsLeftHandHit(transformPlayBacker.playbackData.dataList[endIndex1]))
             {
-                hitCount++;
+                leftHandHitCount++;
             }
         }
 
-        // 收集路径点
-        for (int i = startIndex; i <= endIndex; i += resolution)
+        // 找到 preHitNumber 个右手击打事件之前的索引
+        int startIndex2 = currentIndex;
+        int rightHandHitCount = 0;
+        while (startIndex2 > 0 && rightHandHitCount < preHitNumber)
+        {
+            startIndex2--;
+            if (IsRightHandHit(transformPlayBacker.playbackData.dataList[startIndex2]))
+            {
+                rightHandHitCount++;
+            }
+        }
+
+        // 找到 postHitNumber 个右手击打事件之后的索引
+        int endIndex2 = currentIndex;
+        rightHandHitCount = 0;
+        while (endIndex2 < transformPlayBacker.playbackData.dataList.Count - 1 && rightHandHitCount < postHitNumber)
+        {
+            endIndex2++;
+            if (IsRightHandHit(transformPlayBacker.playbackData.dataList[endIndex2]))
+            {
+                rightHandHitCount++;
+            }
+        }
+
+        // 收集左手路径点
+        for (int i = startIndex1; i <= endIndex1; i += resolution)
         {
             var data = transformPlayBacker.playbackData.dataList[i];
             Vector3 leftStickTipPosition = data.position1 + data.rotation1 * LeftHandDrumStickTipAnchor.localPosition;
             positions1.Add(leftStickTipPosition);
+        }
 
+        // 收集右手路径点
+        for (int i = startIndex2; i <= endIndex2; i += resolution)
+        {
+            var data = transformPlayBacker.playbackData.dataList[i];
             Vector3 rightStickTipPosition = data.position2 + data.rotation2 * RightHandDrumStickTipAnchor.localPosition;
             positions2.Add(rightStickTipPosition);
         }
@@ -109,10 +138,29 @@ public class HandMovementPathRenderer : MonoBehaviour
         lineRenderer2.SetPositions(positions2.ToArray());
     }
 
-    private bool HasHit(TransformPlayBacker.TransformData data)
+    private bool IsLeftHandHit(TransformPlayBacker.TransformData data)
     {
-        return data.bassDrumHit.value > 0 || data.snareDrumHit.value > 0 || data.closedHiHatHit.value > 0 ||
-               data.tom1Hit.value > 0 || data.tom2Hit.value > 0 || data.floorTomHit.value > 0 ||
-               data.crashHit.value > 0 || data.rideHit.value > 0 || data.openHiHatHit.value > 0;
+        return (data.bassDrumHit.limb == "lefthand" && data.bassDrumHit.value > 0) ||
+               (data.snareDrumHit.limb == "lefthand" && data.snareDrumHit.value > 0) ||
+               (data.closedHiHatHit.limb == "lefthand" && data.closedHiHatHit.value > 0) ||
+               (data.tom1Hit.limb == "lefthand" && data.tom1Hit.value > 0) ||
+               (data.tom2Hit.limb == "lefthand" && data.tom2Hit.value > 0) ||
+               (data.floorTomHit.limb == "lefthand" && data.floorTomHit.value > 0) ||
+               (data.crashHit.limb == "lefthand" && data.crashHit.value > 0) ||
+               (data.rideHit.limb == "lefthand" && data.rideHit.value > 0) ||
+               (data.openHiHatHit.limb == "lefthand" && data.openHiHatHit.value > 0);
+    }
+
+    private bool IsRightHandHit(TransformPlayBacker.TransformData data)
+    {
+        return (data.bassDrumHit.limb == "righthand" && data.bassDrumHit.value > 0) ||
+               (data.snareDrumHit.limb == "righthand" && data.snareDrumHit.value > 0) ||
+               (data.closedHiHatHit.limb == "righthand" && data.closedHiHatHit.value > 0) ||
+               (data.tom1Hit.limb == "righthand" && data.tom1Hit.value > 0) ||
+               (data.tom2Hit.limb == "righthand" && data.tom2Hit.value > 0) ||
+               (data.floorTomHit.limb == "righthand" && data.floorTomHit.value > 0) ||
+               (data.crashHit.limb == "righthand" && data.crashHit.value > 0) ||
+               (data.rideHit.limb == "righthand" && data.rideHit.value > 0) ||
+               (data.openHiHatHit.limb == "righthand" && data.openHiHatHit.value > 0);
     }
 }
