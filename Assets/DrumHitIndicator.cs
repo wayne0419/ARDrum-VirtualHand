@@ -20,6 +20,10 @@ public class DrumHitIndicator : MonoBehaviour
     public DrumIndicator rideIndicator;
     public DrumIndicator openHiHatIndicator;
 
+    public Color leftHandHitColor = Color.red;
+    public Color rightHandHitColor = Color.blue;
+    public Color defaultHitColor = Color.white;
+
     private Coroutine bassDrumCoroutine;
     private Coroutine snareDrumCoroutine;
     private Coroutine closedHiHatCoroutine;
@@ -48,62 +52,63 @@ public class DrumHitIndicator : MonoBehaviour
         SetMaterialTransparency(openHiHatIndicator.indicator, 0f);
     }
 
-    public void TriggerBassDrum()
+    public void TriggerBassDrum(string limb)
     {
         if (bassDrumCoroutine != null) StopCoroutine(bassDrumCoroutine);
-        bassDrumCoroutine = StartCoroutine(IndicatorEffect(bassDrumIndicator));
+        bassDrumCoroutine = StartCoroutine(IndicatorEffect(bassDrumIndicator, limb));
     }
 
-    public void TriggerSnareDrum()
+    public void TriggerSnareDrum(string limb)
     {
         if (snareDrumCoroutine != null) StopCoroutine(snareDrumCoroutine);
-        snareDrumCoroutine = StartCoroutine(IndicatorEffect(snareDrumIndicator));
+        snareDrumCoroutine = StartCoroutine(IndicatorEffect(snareDrumIndicator, limb));
     }
 
-    public void TriggerClosedHiHat()
+    public void TriggerClosedHiHat(string limb)
     {
         if (closedHiHatCoroutine != null) StopCoroutine(closedHiHatCoroutine);
-        closedHiHatCoroutine = StartCoroutine(IndicatorEffect(closedHiHatIndicator));
+        closedHiHatCoroutine = StartCoroutine(IndicatorEffect(closedHiHatIndicator, limb));
     }
 
-    public void TriggerTom1()
+    public void TriggerTom1(string limb)
     {
         if (tom1Coroutine != null) StopCoroutine(tom1Coroutine);
-        tom1Coroutine = StartCoroutine(IndicatorEffect(tom1Indicator));
+        tom1Coroutine = StartCoroutine(IndicatorEffect(tom1Indicator, limb));
     }
 
-    public void TriggerTom2()
+    public void TriggerTom2(string limb)
     {
         if (tom2Coroutine != null) StopCoroutine(tom2Coroutine);
-        tom2Coroutine = StartCoroutine(IndicatorEffect(tom2Indicator));
+        tom2Coroutine = StartCoroutine(IndicatorEffect(tom2Indicator, limb));
     }
 
-    public void TriggerFloorTom()
+    public void TriggerFloorTom(string limb)
     {
         if (floorTomCoroutine != null) StopCoroutine(floorTomCoroutine);
-        floorTomCoroutine = StartCoroutine(IndicatorEffect(floorTomIndicator));
+        floorTomCoroutine = StartCoroutine(IndicatorEffect(floorTomIndicator, limb));
     }
 
-    public void TriggerCrash()
+    public void TriggerCrash(string limb)
     {
         if (crashCoroutine != null) StopCoroutine(crashCoroutine);
-        crashCoroutine = StartCoroutine(IndicatorEffect(crashIndicator));
+        crashCoroutine = StartCoroutine(IndicatorEffect(crashIndicator, limb));
     }
 
-    public void TriggerRide()
+    public void TriggerRide(string limb)
     {
         if (rideCoroutine != null) StopCoroutine(rideCoroutine);
-        rideCoroutine = StartCoroutine(IndicatorEffect(rideIndicator));
+        rideCoroutine = StartCoroutine(IndicatorEffect(rideIndicator, limb));
     }
 
-    public void TriggerOpenHiHat()
+    public void TriggerOpenHiHat(string limb)
     {
         if (openHiHatCoroutine != null) StopCoroutine(openHiHatCoroutine);
-        openHiHatCoroutine = StartCoroutine(IndicatorEffect(openHiHatIndicator));
+        openHiHatCoroutine = StartCoroutine(IndicatorEffect(openHiHatIndicator, limb));
     }
 
-    private IEnumerator IndicatorEffect(DrumIndicator drumIndicator)
+    private IEnumerator IndicatorEffect(DrumIndicator drumIndicator, string limb)
     {
+        SetMaterialColor(drumIndicator.indicator, GetHitColor(limb));
         SetMaterialTransparency(drumIndicator.indicator, 1f);
         for (float t = 0f; t < 1f; t += Time.deltaTime / drumIndicator.fadeDuration)
         {
@@ -124,6 +129,31 @@ public class DrumHitIndicator : MonoBehaviour
                 color.a = alpha;
                 material.color = color;
             }
+        }
+    }
+
+    private void SetMaterialColor(GameObject indicator, Color color)
+    {
+        if (indicator != null)
+        {
+            Material material = indicator.GetComponent<Renderer>().material;
+            if (material != null)
+            {
+                material.color = color;
+            }
+        }
+    }
+
+    private Color GetHitColor(string limb)
+    {
+        switch (limb)
+        {
+            case "lefthand":
+                return leftHandHitColor;
+            case "righthand":
+                return rightHandHitColor;
+            default:
+                return defaultHitColor;
         }
     }
 }

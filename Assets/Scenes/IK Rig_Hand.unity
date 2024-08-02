@@ -7919,6 +7919,9 @@ MonoBehaviour:
   openHiHatIndicator:
     indicator: {fileID: 1223852443}
     fadeDuration: 0.1
+  leftHandHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rightHandHitColor: {r: 0, g: 0.1764706, b: 1, a: 1}
+  defaultHitColor: {r: 1, g: 0.9254902, b: 0, a: 1}
 --- !u!4 &1580649883
 Transform:
   m_ObjectHideFlags: 0

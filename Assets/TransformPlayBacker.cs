@@ -312,7 +312,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(bassDrumAudioSource, data.bassDrumHit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerBassDrum();
+                drumHitIndicator.TriggerBassDrum(data.bassDrumHit.limb);
             }
         }
         if (data.snareDrumHit.value > 0f)
@@ -320,7 +320,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(snareDrumAudioSource, data.snareDrumHit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerSnareDrum(); // 触发 Snare Drum Indicator 效果
+                drumHitIndicator.TriggerSnareDrum(data.snareDrumHit.limb);
             }
         }
         if (data.closedHiHatHit.value > 0f)
@@ -328,7 +328,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerClosedHiHat();
+                drumHitIndicator.TriggerClosedHiHat(data.closedHiHatHit.limb);
             }
         }
         if (data.tom1Hit.value > 0f)
@@ -336,7 +336,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(tom1AudioSource, data.tom1Hit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerTom1();
+                drumHitIndicator.TriggerTom1(data.tom1Hit.limb);
             }
         }
         if (data.tom2Hit.value > 0f)
@@ -344,7 +344,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(tom2AudioSource, data.tom2Hit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerTom2();
+                drumHitIndicator.TriggerTom2(data.tom2Hit.limb);
             }
         }
         if (data.floorTomHit.value > 0f)
@@ -352,7 +352,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(floorTomAudioSource, data.floorTomHit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerFloorTom();
+                drumHitIndicator.TriggerFloorTom(data.floorTomHit.limb);
             }
         }
         if (data.crashHit.value > 0f)
@@ -360,7 +360,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(crashAudioSource, data.crashHit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerCrash();
+                drumHitIndicator.TriggerCrash(data.crashHit.limb);
             }
         }
         if (data.rideHit.value > 0f)
@@ -368,7 +368,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(rideAudioSource, data.rideHit.value);
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerRide();
+                drumHitIndicator.TriggerRide(data.rideHit.limb);
             }
         }
         if (data.openHiHatHit.value > 0f)
@@ -376,7 +376,7 @@ public class TransformPlayBacker : MonoBehaviour
             PlayDrumHit(openHiHatAudioSource, data.openHiHatHit.value); // 处理 openHiHatHit
             if (drumHitIndicator != null)
             {
-                drumHitIndicator.TriggerOpenHiHat();
+                drumHitIndicator.TriggerOpenHiHat(data.openHiHatHit.limb);
             }
         }
     }
@@ -385,8 +385,8 @@ public class TransformPlayBacker : MonoBehaviour
     {
         if (audioSource != null)
         {
-            audioSource.volume = volume; // 设置音量
-            audioSource.PlayOneShot(audioSource.clip); // 播放新的 clip
+            audioSource.volume = volume;
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }
