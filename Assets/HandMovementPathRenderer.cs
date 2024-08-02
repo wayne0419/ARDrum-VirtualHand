@@ -11,8 +11,12 @@ public class HandMovementPathRenderer : MonoBehaviour
     public int postHitNumber = 5;
     public int resolution = 5; // 每隔多少点采样一个
 
-    public Transform LeftHandDrumStickTipAnchor; // 新增 LeftHandDrumStickTipAnchor
-    public Transform RightHandDrumStickTipAnchor; // 新增 RightHandDrumStickTipAnchor
+    public Transform LeftHandDrumStickTipAnchor;
+    public Transform RightHandDrumStickTipAnchor;
+
+    public GameObject leftHandHighlightPoint; // 用于左手高亮的对象
+    public GameObject rightHandHighlightPoint; // 用于右手高亮的对象
+    public bool highlightHighestPointEnabled = true; // 控制是否启用高亮
 
     private void OnEnable()
     {
@@ -25,7 +29,7 @@ public class HandMovementPathRenderer : MonoBehaviour
         if (lineRenderer1 == null)
         {
             GameObject lineObj1 = new GameObject("LineRenderer1");
-            lineObj1.transform.parent = this.transform; // 将 LineRenderer1 添加为 HandMovementPathRenderer 的子对象
+            lineObj1.transform.parent = this.transform;
             lineRenderer1 = lineObj1.AddComponent<LineRenderer>();
         }
         InitializeLineRenderer(lineRenderer1);
@@ -33,10 +37,21 @@ public class HandMovementPathRenderer : MonoBehaviour
         if (lineRenderer2 == null)
         {
             GameObject lineObj2 = new GameObject("LineRenderer2");
-            lineObj2.transform.parent = this.transform; // 将 LineRenderer2 添加为 HandMovementPathRenderer 的子对象
+            lineObj2.transform.parent = this.transform;
             lineRenderer2 = lineObj2.AddComponent<LineRenderer>();
         }
         InitializeLineRenderer(lineRenderer2);
+
+        // 确保高亮对象已被分配
+        if (leftHandHighlightPoint == null)
+        {
+            Debug.LogError("Left hand highlight point is not assigned.");
+        }
+
+        if (rightHandHighlightPoint == null)
+        {
+            Debug.LogError("Right hand highlight point is not assigned.");
+        }
     }
 
     private void InitializeLineRenderer(LineRenderer lineRenderer)
@@ -131,11 +146,31 @@ public class HandMovementPathRenderer : MonoBehaviour
             positions2.Add(rightStickTipPosition);
         }
 
+        // 设置 LineRenderer 的路径点
         lineRenderer1.positionCount = positions1.Count;
         lineRenderer1.SetPositions(positions1.ToArray());
 
         lineRenderer2.positionCount = positions2.Count;
         lineRenderer2.SetPositions(positions2.ToArray());
+
+        // 高亮路径的最高点
+        if (highlightHighestPointEnabled)
+        {
+            HighlightHighestPoint(positions1, leftHandHighlightPoint);
+            HighlightHighestPoint(positions2, rightHandHighlightPoint);
+        }
+        else
+        {
+            if (leftHandHighlightPoint != null)
+            {
+                leftHandHighlightPoint.SetActive(false);
+            }
+
+            if (rightHandHighlightPoint != null)
+            {
+                rightHandHighlightPoint.SetActive(false);
+            }
+        }
     }
 
     private bool IsLeftHandHit(TransformPlayBacker.TransformData data)
@@ -162,5 +197,25 @@ public class HandMovementPathRenderer : MonoBehaviour
                (data.crashHit.limb == "righthand" && data.crashHit.value > 0) ||
                (data.rideHit.limb == "righthand" && data.rideHit.value > 0) ||
                (data.openHiHatHit.limb == "righthand" && data.openHiHatHit.value > 0);
+    }
+
+    private void HighlightHighestPoint(List<Vector3> positions, GameObject highlight)
+    {
+        if (positions.Count == 0 || highlight == null)
+        {
+            return;
+        }
+
+        Vector3 highestPoint = positions[0];
+        foreach (var position in positions)
+        {
+            if (position.y > highestPoint.y)
+            {
+                highestPoint = position;
+            }
+        }
+
+        highlight.transform.position = highestPoint;
+        highlight.SetActive(true);
     }
 }
