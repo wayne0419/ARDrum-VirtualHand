@@ -4546,6 +4546,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855652023}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &862772830 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3466602100421555516, guid: 9a50fe01f2f914947b91629e1861b433,
+    type: 3}
+  m_PrefabInstance: {fileID: 5554298501304234582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &885409546 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 414141033111102327, guid: 9a50fe01f2f914947b91629e1861b433,
@@ -5582,7 +5588,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -7812,6 +7818,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyGroups:
+  - groupName: Left Upper Arm
+    renderers:
+    - {fileID: 1958228702}
+    - {fileID: 968905352}
+    color: {r: 1, g: 0, b: 0, a: 0.5019608}
+  - groupName: Left Fore Arm
+    renderers:
+    - {fileID: 286776681}
+    - {fileID: 1960182207}
+    color: {r: 1, g: 0, b: 0, a: 0.5019608}
+  - groupName: Left Hand
+    renderers:
+    - {fileID: 978316447}
+    - {fileID: 511122418}
+    - {fileID: 720961246}
+    color: {r: 1, g: 0, b: 0, a: 0.5019608}
+  - groupName: Left Drum Stick
+    renderers:
+    - {fileID: 2074181348}
+    color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  - groupName: Right Upper Arm
+    renderers:
+    - {fileID: 1940064539}
+    - {fileID: 843911602}
+    color: {r: 0, g: 0.1764706, b: 1, a: 0.5019608}
+  - groupName: Right Fore Arm
+    renderers:
+    - {fileID: 1851523251}
+    - {fileID: 417782999}
+    color: {r: 0, g: 0.17647076, b: 1, a: 0.5019608}
+  - groupName: Right Hand
+    renderers:
+    - {fileID: 1188486335}
+    - {fileID: 797143591}
+    - {fileID: 885409546}
+    color: {r: 0, g: 0.1764706, b: 1, a: 0.5019608}
+  - groupName: Right Drum Stick
+    renderers:
+    - {fileID: 862772830}
+    color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   - groupName: Torso
     renderers:
     - {fileID: 1668710841}
@@ -7821,30 +7867,7 @@ MonoBehaviour:
     - {fileID: 1857290673}
     - {fileID: 2016362416}
     - {fileID: 417795340}
-    transparency: 1
-  - groupName: Fore Arms
-    renderers:
-    - {fileID: 286776681}
-    - {fileID: 1851523251}
-    - {fileID: 1960182207}
-    - {fileID: 417782999}
-    transparency: 1
-  - groupName: Upper Arms
-    renderers:
-    - {fileID: 1958228702}
-    - {fileID: 1940064539}
-    - {fileID: 968905352}
-    - {fileID: 843911602}
-    transparency: 1
-  - groupName: Hands
-    renderers:
-    - {fileID: 978316447}
-    - {fileID: 511122418}
-    - {fileID: 1188486335}
-    - {fileID: 797143591}
-    - {fileID: 720961246}
-    - {fileID: 885409546}
-    transparency: 1
+    color: {r: 0.95686275, g: 0.8352941, b: 0.40784314, a: 0}
   - groupName: Legs
     renderers:
     - {fileID: 1104012075}
@@ -7855,14 +7878,14 @@ MonoBehaviour:
     - {fileID: 1069071539}
     - {fileID: 1873919350}
     - {fileID: 587387498}
-    transparency: 1
+    color: {r: 0.95686275, g: 0.8352941, b: 0.40784314, a: 0}
   - groupName: Foot
     renderers:
     - {fileID: 1944516723}
     - {fileID: 1806743234}
     - {fileID: 1534598786}
     - {fileID: 474073281}
-    transparency: 1
+    color: {r: 0.95686275, g: 0.8352941, b: 0.40784314, a: 0}
 --- !u!1 &1580649881
 GameObject:
   m_ObjectHideFlags: 0
@@ -9285,6 +9308,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1580649883}
   m_LocalEulerAnglesHint: {x: -5.38, y: 0, z: 0}
+--- !u!23 &2074181348 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7046540921111301808, guid: 9a50fe01f2f914947b91629e1861b433,
+    type: 3}
+  m_PrefabInstance: {fileID: 5554298501304234582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2106054726
 GameObject:
   m_ObjectHideFlags: 0
@@ -10860,7 +10889,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

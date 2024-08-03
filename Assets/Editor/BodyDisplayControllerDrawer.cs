@@ -10,19 +10,19 @@ public class BodyDisplayControllerDrawer : PropertyDrawer
 
         SerializedProperty groupName = property.FindPropertyRelative("groupName");
         SerializedProperty renderers = property.FindPropertyRelative("renderers");
-        SerializedProperty transparency = property.FindPropertyRelative("transparency");
+        SerializedProperty color = property.FindPropertyRelative("color");
 
         Rect groupNameRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
         Rect renderersRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, EditorGUI.GetPropertyHeight(renderers));
-        Rect transparencyRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(renderers) + 4, position.width, EditorGUIUtility.singleLineHeight);
+        Rect colorRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(renderers) + 4, position.width, EditorGUIUtility.singleLineHeight);
 
         EditorGUI.PropertyField(groupNameRect, groupName);
         EditorGUI.PropertyField(renderersRect, renderers, true);
-        float newTransparency = EditorGUI.Slider(transparencyRect, "Transparency", transparency.floatValue, 0, 1);
+        Color newColor = EditorGUI.ColorField(colorRect, "Color", color.colorValue);
 
-        if (newTransparency != transparency.floatValue)
+        if (newColor != color.colorValue)
         {
-            transparency.floatValue = newTransparency;
+            color.colorValue = newColor;
             property.serializedObject.ApplyModifiedProperties(); // 確保即時更新
             // 找到並更新對應的 BodyGroup
             BodyDisplayController controller = (BodyDisplayController)property.serializedObject.targetObject;
@@ -30,7 +30,7 @@ public class BodyDisplayControllerDrawer : PropertyDrawer
             {
                 if (bodyGroup.groupName == groupName.stringValue)
                 {
-                    controller.UpdateTransparency(bodyGroup);
+                    controller.UpdateColor(bodyGroup);
                     break;
                 }
             }

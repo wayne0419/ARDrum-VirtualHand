@@ -8,19 +8,19 @@ public class BodyDisplayController : MonoBehaviour
     {
         public string groupName;
         public List<Renderer> renderers;
-        [Range(0, 1)] public float transparency = 1.0f;
+        public Color color = Color.white;
     }
 
     public List<BodyGroup> bodyGroups = new List<BodyGroup>();
 
-    public void SetTransparency(string groupName, float alpha)
+    public void SetColor(string groupName, Color color)
     {
         BodyGroup bodyGroup = bodyGroups.Find(group => group.groupName == groupName);
         if (bodyGroup != null)
         {
             foreach (Renderer renderer in bodyGroup.renderers)
             {
-                SetRendererTransparency(renderer, alpha);
+                SetRendererColor(renderer, color);
             }
         }
         else
@@ -29,11 +29,11 @@ public class BodyDisplayController : MonoBehaviour
         }
     }
 
-    private void SetRendererTransparency(Renderer renderer, float alpha)
+    private void SetRendererColor(Renderer renderer, Color color)
     {
         foreach (Material mat in renderer.sharedMaterials)
         {
-            if (alpha < 1.0f)
+            if (color.a < 1.0f)
             {
                 mat.SetFloat("_Surface", 1); // Transparent mode
                 mat.SetOverrideTag("RenderType", "Transparent");
@@ -58,17 +58,15 @@ public class BodyDisplayController : MonoBehaviour
                 mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
             }
 
-            Color color = mat.color;
-            color.a = alpha;
             mat.color = color;
         }
     }
 
-    public void UpdateTransparency(BodyGroup bodyGroup)
+    public void UpdateColor(BodyGroup bodyGroup)
     {
         foreach (Renderer renderer in bodyGroup.renderers)
         {
-            SetRendererTransparency(renderer, bodyGroup.transparency);
+            SetRendererColor(renderer, bodyGroup.color);
         }
     }
 }
