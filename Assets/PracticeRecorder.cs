@@ -52,7 +52,7 @@ public class PracticeRecorder : MonoBehaviour
         while (true)
         {
             // 等待記錄延遲時間後開始記錄
-            yield return StartCoroutine(transformRecorder.StartRecordingAfterBeats(recordDelayBeats, recordDurationBeats));
+            yield return transformRecorder.StartRecord(recordDelayBeats, recordDurationBeats);
         }
     }
 }

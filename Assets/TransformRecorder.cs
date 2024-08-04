@@ -125,7 +125,7 @@ public class TransformRecorder : MonoBehaviour
                     metronome.bpm = bpm;
                     metronome.StartMetronome();
                 }
-                StartCoroutine(StartRecordingAfterBeats(recordDelayBeats, recordDurationBeats));
+                StartRecord(recordDelayBeats, recordDurationBeats);
             }
         }
 
@@ -196,7 +196,10 @@ public class TransformRecorder : MonoBehaviour
         }
     }
 
-    public System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
+    public Coroutine StartRecord(float delayBeats, float recordBeats) {
+        return StartCoroutine(StartRecordingAfterBeats(delayBeats, recordBeats));
+    }
+    private System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
     {
         isRecordingInProgress = true;
         float beatDuration = 60f / bpm;
