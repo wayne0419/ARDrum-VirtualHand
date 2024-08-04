@@ -14,8 +14,8 @@ public class HandMovementPathRenderer : MonoBehaviour
     public Transform LeftHandDrumStickTipAnchor;
     public Transform RightHandDrumStickTipAnchor;
 
-    public GameObject leftHandHighlightPoint; // 用于左手高亮的对象
-    public GameObject rightHandHighlightPoint; // 用于右手高亮的对象
+    public GameObject leftHandHighPoint; // 用于左手高亮的对象
+    public GameObject rightHandHighPoint; // 用于右手高亮的对象
     public GameObject leftHandStartPoint; // 用于左手路径开始点的对象
     public GameObject rightHandStartPoint; // 用于右手路径开始点的对象
     public GameObject leftHandEndPoint; // 用于左手路径结束点的对象
@@ -63,14 +63,14 @@ public class HandMovementPathRenderer : MonoBehaviour
         InitializeLineRenderer(lineRenderer2);
 
         // 确保高亮对象已被分配
-        if (leftHandHighlightPoint == null)
+        if (leftHandHighPoint == null)
         {
-            Debug.LogError("Left hand highlight point is not assigned.");
+            Debug.LogError("Left hand high point is not assigned.");
         }
 
-        if (rightHandHighlightPoint == null)
+        if (rightHandHighPoint == null)
         {
-            Debug.LogError("Right hand highlight point is not assigned.");
+            Debug.LogError("Right hand high point is not assigned.");
         }
 
         if (leftHandStartPoint == null)
@@ -215,8 +215,8 @@ public class HandMovementPathRenderer : MonoBehaviour
         // 高亮路径的最高点、开始点和结束点
         if (highlightHighestPointEnabled)
         {
-            HighlightPoint(leftHandHighlightPoint, leftHandHighestPointPosition);
-            HighlightPoint(rightHandHighlightPoint, rightHandHighestPointPosition);
+            HighlightPoint(leftHandHighPoint, leftHandHighestPointPosition);
+            HighlightPoint(rightHandHighPoint, rightHandHighestPointPosition);
             HighlightPoint(leftHandStartPoint, leftHandStartPointPosition);
             HighlightPoint(rightHandStartPoint, rightHandStartPointPosition);
             HighlightPoint(leftHandEndPoint, leftHandEndPointPosition);
@@ -224,14 +224,14 @@ public class HandMovementPathRenderer : MonoBehaviour
         }
         else
         {
-            if (leftHandHighlightPoint != null)
+            if (leftHandHighPoint != null)
             {
-                leftHandHighlightPoint.SetActive(false);
+                leftHandHighPoint.SetActive(false);
             }
 
-            if (rightHandHighlightPoint != null)
+            if (rightHandHighPoint != null)
             {
-                rightHandHighlightPoint.SetActive(false);
+                rightHandHighPoint.SetActive(false);
             }
 
             if (leftHandStartPoint != null)
