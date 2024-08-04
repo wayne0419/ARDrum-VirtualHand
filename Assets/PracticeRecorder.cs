@@ -5,9 +5,9 @@ public class PracticeRecorder : MonoBehaviour
 {
     public TransformRecorder transformRecorder;
     public TransformPlayBacker transformPlayBacker;
-    // public Metronome metronome;
     public float recordDelayBeats = 4f;
     public float recordDurationBeats = 4f;
+    public bool isPracticeRecording = false; // 加入此變量
 
     private Coroutine practiceCoroutine;
 
@@ -15,27 +15,36 @@ public class PracticeRecorder : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (practiceCoroutine == null)
+            if (!isPracticeRecording)
             {
-                practiceCoroutine = StartCoroutine(StartPractice());
+                StartPracticeRecord();
             }
             else
             {
-                StopCoroutine(practiceCoroutine);
-                practiceCoroutine = null;
-                transformPlayBacker.StopPlayBack(); // 停止播放
+                StopPracticeRecord();
             }
+        }
+    }
+
+    public void StartPracticeRecord()
+    {
+        isPracticeRecording = true;
+        practiceCoroutine = StartCoroutine(StartPractice());
+    }
+
+    public void StopPracticeRecord()
+    {
+        if (practiceCoroutine != null)
+        {
+            StopCoroutine(practiceCoroutine);
+            practiceCoroutine = null;
+            transformPlayBacker.StopPlayBack(); // 停止播放
+            isPracticeRecording = false;
         }
     }
 
     private IEnumerator StartPractice()
     {
-        // if (metronome != null)
-        // {
-        //     metronome.bpm = transformRecorder.bpm;
-        //     metronome.StartMetronome();
-        // }
-
         // 開始播放
         transformPlayBacker.playMode = TransformPlayBacker.PlayMode.A;
         transformPlayBacker.StartPlayBack();
