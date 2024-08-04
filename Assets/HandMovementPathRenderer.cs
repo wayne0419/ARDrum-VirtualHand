@@ -16,7 +16,27 @@ public class HandMovementPathRenderer : MonoBehaviour
 
     public GameObject leftHandHighlightPoint; // 用于左手高亮的对象
     public GameObject rightHandHighlightPoint; // 用于右手高亮的对象
+    public GameObject leftHandStartPoint; // 用于左手路径开始点的对象
+    public GameObject rightHandStartPoint; // 用于右手路径开始点的对象
+    public GameObject leftHandEndPoint; // 用于左手路径结束点的对象
+    public GameObject rightHandEndPoint; // 用于右手路径结束点的对象
+
     public bool highlightHighestPointEnabled = true; // 控制是否启用高亮
+
+    // 记录路径范围的最高点、开始点和结束点的位置和时间戳
+    public Vector3 leftHandHighestPointPosition;
+    public Vector3 leftHandStartPointPosition;
+    public Vector3 leftHandEndPointPosition;
+    public float leftHandHighestPointTimestamp;
+    public float leftHandStartPointTimestamp;
+    public float leftHandEndPointTimestamp;
+
+    public Vector3 rightHandHighestPointPosition;
+    public Vector3 rightHandStartPointPosition;
+    public Vector3 rightHandEndPointPosition;
+    public float rightHandHighestPointTimestamp;
+    public float rightHandStartPointTimestamp;
+    public float rightHandEndPointTimestamp;
 
     private void OnEnable()
     {
@@ -51,6 +71,26 @@ public class HandMovementPathRenderer : MonoBehaviour
         if (rightHandHighlightPoint == null)
         {
             Debug.LogError("Right hand highlight point is not assigned.");
+        }
+
+        if (leftHandStartPoint == null)
+        {
+            Debug.LogError("Left hand start point is not assigned.");
+        }
+
+        if (rightHandStartPoint == null)
+        {
+            Debug.LogError("Right hand start point is not assigned.");
+        }
+
+        if (leftHandEndPoint == null)
+        {
+            Debug.LogError("Left hand end point is not assigned.");
+        }
+
+        if (rightHandEndPoint == null)
+        {
+            Debug.LogError("Right hand end point is not assigned.");
         }
     }
 
@@ -153,11 +193,34 @@ public class HandMovementPathRenderer : MonoBehaviour
         lineRenderer2.positionCount = positions2.Count;
         lineRenderer2.SetPositions(positions2.ToArray());
 
-        // 高亮路径的最高点
+        // 记录路径范围的最高点、开始点和结束点
+        if (positions1.Count > 0)
+        {
+            leftHandStartPointPosition = positions1[0];
+            leftHandStartPointTimestamp = transformPlayBacker.playbackData.dataList[startIndex1].timestamp;
+            leftHandEndPointPosition = positions1[positions1.Count - 1];
+            leftHandEndPointTimestamp = transformPlayBacker.playbackData.dataList[endIndex1].timestamp;
+            (leftHandHighestPointPosition, leftHandHighestPointTimestamp) = GetHighestPointAndTimestamp(positions1, startIndex1, endIndex1);
+        }
+
+        if (positions2.Count > 0)
+        {
+            rightHandStartPointPosition = positions2[0];
+            rightHandStartPointTimestamp = transformPlayBacker.playbackData.dataList[startIndex2].timestamp;
+            rightHandEndPointPosition = positions2[positions2.Count - 1];
+            rightHandEndPointTimestamp = transformPlayBacker.playbackData.dataList[endIndex2].timestamp;
+            (rightHandHighestPointPosition, rightHandHighestPointTimestamp) = GetHighestPointAndTimestamp(positions2, startIndex2, endIndex2);
+        }
+
+        // 高亮路径的最高点、开始点和结束点
         if (highlightHighestPointEnabled)
         {
-            HighlightHighestPoint(positions1, leftHandHighlightPoint);
-            HighlightHighestPoint(positions2, rightHandHighlightPoint);
+            HighlightPoint(leftHandHighlightPoint, leftHandHighestPointPosition);
+            HighlightPoint(rightHandHighlightPoint, rightHandHighestPointPosition);
+            HighlightPoint(leftHandStartPoint, leftHandStartPointPosition);
+            HighlightPoint(rightHandStartPoint, rightHandStartPointPosition);
+            HighlightPoint(leftHandEndPoint, leftHandEndPointPosition);
+            HighlightPoint(rightHandEndPoint, rightHandEndPointPosition);
         }
         else
         {
@@ -169,6 +232,26 @@ public class HandMovementPathRenderer : MonoBehaviour
             if (rightHandHighlightPoint != null)
             {
                 rightHandHighlightPoint.SetActive(false);
+            }
+
+            if (leftHandStartPoint != null)
+            {
+                leftHandStartPoint.SetActive(false);
+            }
+
+            if (rightHandStartPoint != null)
+            {
+                rightHandStartPoint.SetActive(false);
+            }
+
+            if (leftHandEndPoint != null)
+            {
+                leftHandEndPoint.SetActive(false);
+            }
+
+            if (rightHandEndPoint != null)
+            {
+                rightHandEndPoint.SetActive(false);
             }
         }
     }
@@ -199,23 +282,28 @@ public class HandMovementPathRenderer : MonoBehaviour
                (data.openHiHatHit.limb == "righthand" && data.openHiHatHit.value > 0);
     }
 
-    private void HighlightHighestPoint(List<Vector3> positions, GameObject highlight)
+    private (Vector3, float) GetHighestPointAndTimestamp(List<Vector3> positions, int startIndex, int endIndex)
     {
-        if (positions.Count == 0 || highlight == null)
-        {
-            return;
-        }
-
         Vector3 highestPoint = positions[0];
-        foreach (var position in positions)
+        float highestTimestamp = transformPlayBacker.playbackData.dataList[startIndex].timestamp;
+
+        for (int i = 0; i < positions.Count; i++)
         {
-            if (position.y > highestPoint.y)
+            if (positions[i].y > highestPoint.y)
             {
-                highestPoint = position;
+                highestPoint = positions[i];
+                highestTimestamp = transformPlayBacker.playbackData.dataList[startIndex + i].timestamp;
             }
         }
+        return (highestPoint, highestTimestamp);
+    }
 
-        highlight.transform.position = highestPoint;
-        highlight.SetActive(true);
+    private void HighlightPoint(GameObject highlight, Vector3 position)
+    {
+        if (highlight != null)
+        {
+            highlight.transform.position = position;
+            highlight.SetActive(true);
+        }
     }
 }
