@@ -135,6 +135,31 @@ public class TransformRecorder : MonoBehaviour
         }
     }
 
+    public Coroutine StartRecord(float delayBeats, float recordBeats)
+    {
+        return StartCoroutine(StartRecordingAfterBeats(delayBeats, recordBeats));
+    }
+
+    System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
+    {
+        isRecordingInProgress = true;
+        float beatDuration = 60f / bpm;
+        yield return new WaitForSeconds(delayBeats * beatDuration);
+        isRecording = true;
+        recordingStartTime = Time.time;
+        transformDataList.Clear(); // 清除之前的记录
+        yield return new WaitForSeconds(recordBeats * beatDuration);
+        isRecording = false;
+        SaveTransformData();
+
+        if (metronome != null)
+        {
+            metronome.StopMetronome();
+        }
+
+        isRecordingInProgress = false;
+    }
+
     void RecordTransform()
     {
         if (targetTransform1 != null && targetTransform2 != null)
@@ -194,29 +219,6 @@ public class TransformRecorder : MonoBehaviour
                 transformDataList[i].rotation3 = targetTransform3.rotation;
             }
         }
-    }
-
-    public Coroutine StartRecord(float delayBeats, float recordBeats) {
-        return StartCoroutine(StartRecordingAfterBeats(delayBeats, recordBeats));
-    }
-    private System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
-    {
-        isRecordingInProgress = true;
-        float beatDuration = 60f / bpm;
-        yield return new WaitForSeconds(delayBeats * beatDuration);
-        isRecording = true;
-        recordingStartTime = Time.time;
-        transformDataList.Clear(); // 清除之前的记录
-        yield return new WaitForSeconds(recordBeats * beatDuration);
-        isRecording = false;
-        SaveTransformData();
-
-        if (metronome != null)
-        {
-            metronome.StopMetronome();
-        }
-
-        isRecordingInProgress = false;
     }
 
     public void SaveTransformData()
