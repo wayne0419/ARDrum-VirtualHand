@@ -69,6 +69,7 @@ public class TransformRecorder : MonoBehaviour
     public float recordDurationBeats = 4f; // 记录持续的节拍数量
     public Metronome metronome; // 参考 Metronome 组件
     public AnimationClip animationClip; // 用于第三组 Transform 的 AnimationClip
+    public bool allowInputControl = true; // 是否允许通过空白键操控
 
     // Input Actions
     public InputAction bassDrumHit;
@@ -114,7 +115,7 @@ public class TransformRecorder : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (allowInputControl && Input.GetKeyDown(KeyCode.Space))
         {
             if (!isRecordingInProgress)
             {

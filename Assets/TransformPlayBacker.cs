@@ -70,6 +70,7 @@ public class TransformPlayBacker : MonoBehaviour
     private float playbackSpeedMultiplier;
     private float offsetDuration;
     public bool isPlaying = false; // 将 isPlaying 设置为 public
+    public bool allowInputControl = true; // 新增 allowInputControl
     private Coroutine playbackCoroutine;
     public float playbackStartTime; // 确保声明 playbackStartTime
 
@@ -87,7 +88,7 @@ public class TransformPlayBacker : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (allowInputControl && Input.GetKeyDown(KeyCode.Space))
         {
             if (!isPlaying)
             {
