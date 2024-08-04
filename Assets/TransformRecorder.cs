@@ -196,7 +196,7 @@ public class TransformRecorder : MonoBehaviour
         }
     }
 
-    System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
+    public System.Collections.IEnumerator StartRecordingAfterBeats(float delayBeats, float recordBeats)
     {
         isRecordingInProgress = true;
         float beatDuration = 60f / bpm;
