@@ -52,7 +52,7 @@ public class ReviewManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
         // 加載用戶和目標的變換數據
         LoadTransformData(userRecordFilePath, out userTransformDataList);
