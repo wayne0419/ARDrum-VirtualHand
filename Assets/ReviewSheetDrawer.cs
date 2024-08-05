@@ -4,12 +4,14 @@ using UnityEngine;
 public class ReviewSheetDrawer : MonoBehaviour
 {
     public ReviewManager reviewManager;
-    public Transform reviewSheetContainer; // 新增的 Transform 用于容纳打击点
+    public Transform reviewSheetContainer; // 用于容纳打击点的 Transform
 
     // 线条渲染器设置
     public float timeScale = 1.0f; // 时间刻度，用于调整视觉化的时间间隔
     public float yOffset = 2.0f; // 每个鼓的垂直偏移量
-    public float pointSize = 0.2f; // 打击点的大小
+    public float pointSizeX = 0.2f; // 打击点的 X 轴大小
+    public float pointSizeY = 0.2f; // 打击点的 Y 轴大小
+    public float pointSizeZ = 0.2f; // 打击点的 Z 轴大小
     public GameObject pointPrefab; // 预制体用于打击点
 
     // 用于视觉化的颜色
@@ -63,7 +65,7 @@ public class ReviewSheetDrawer : MonoBehaviour
             GameObject point = Instantiate(pointPrefab, reviewSheetContainer);
             point.transform.localPosition = position; // 使用 localPosition 确保相对于 reviewSheetContainer 的位置
             point.GetComponent<Renderer>().material.color = color;
-            point.transform.localScale = new Vector3(pointSize, pointSize, pointSize);
+            point.transform.localScale = new Vector3(pointSizeX, pointSizeY, pointSizeZ);
             points.Add(point);
         }
     }
