@@ -11349,6 +11349,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436070715}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1447921849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1447921850}
+  - component: {fileID: 1447921851}
+  m_Layer: 0
+  m_Name: ReviewPhaseRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1447921850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447921849}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1976742942}
+  m_Father: {fileID: 1900614060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1447921851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447921849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae764e27e1216149adbed9531204ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRunning: 0
+  reviewManager: {fileID: 0}
 --- !u!1 &1448659128
 GameObject:
   m_ObjectHideFlags: 0
@@ -12817,6 +12864,7 @@ MonoBehaviour:
   recordPhaseRunner: {fileID: 955397018}
   playBackPhaseRunner: {fileID: 1472043470}
   practiceRecordPhaseRunner: {fileID: 1448659130}
+  reviewPhaseRunner: {fileID: 0}
   currentPhase: 0
   currentPhaseRunner: {fileID: 0}
 --- !u!4 &1725072749
@@ -13610,6 +13658,7 @@ Transform:
   - {fileID: 955397017}
   - {fileID: 1472043471}
   - {fileID: 1448659129}
+  - {fileID: 1447921850}
   - {fileID: 1284159566}
   - {fileID: 1490160809}
   - {fileID: 1022990155}
@@ -14018,6 +14067,77 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962050839}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1976742941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1976742942}
+  - component: {fileID: 1976742943}
+  m_Layer: 0
+  m_Name: ReviewManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1976742942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976742941}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1447921850}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1976742943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976742941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f70d65b297159442b5bcd39e9ec49d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userRecordFilePath: Assets/RecordedPracticeTransforms/0.json
+  targetRecordFilePath: Assets/RecordedTransforms/3_advanced2.json
+  userTransformDataList:
+    bpm: 0
+    dataList: []
+  targetTransformDataList:
+    bpm: 0
+    dataList: []
+  reviewBPM: 0
+  userSnareDrumHits: []
+  userBassDrumHits: []
+  userClosedHiHatHits: []
+  userTom1Hits: []
+  userTom2Hits: []
+  userFloorTomHits: []
+  userCrashHits: []
+  userRideHits: []
+  userOpenHiHatHits: []
+  targetSnareDrumHits: []
+  targetBassDrumHits: []
+  targetClosedHiHatHits: []
+  targetTom1Hits: []
+  targetTom2Hits: []
+  targetFloorTomHits: []
+  targetCrashHits: []
+  targetRideHits: []
+  targetOpenHiHatHits: []
 --- !u!1001 &1980856715
 PrefabInstance:
   m_ObjectHideFlags: 0
