@@ -7,7 +7,8 @@ public enum Phase
     Normal, 
     Record, 
     PlayBack,
-    PracticeRecord
+    PracticeRecord,
+    Review
 }
 
 public class PhaseManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class PhaseManager : MonoBehaviour
     public RecordPhaseRunner recordPhaseRunner;
     public PlayBackPhaseRunner playBackPhaseRunner;
     public PracticeRecordPhaseRunner practiceRecordPhaseRunner;
+    public ReviewPhaseRunner reviewPhaseRunner;
     [Header("Debug (Dont modify from inspector)")]
     public Phase currentPhase;
     public PhaseRunner currentPhaseRunner;
@@ -59,6 +61,17 @@ public class PhaseManager : MonoBehaviour
             // Start a record phase
             currentPhase = Phase.PracticeRecord;
             currentPhaseRunner = practiceRecordPhaseRunner;
+            currentPhaseRunner.StartPhaseRunner();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            // Stop current phase
+            if (currentPhaseRunner != null && currentPhaseRunner.isRunning) {
+                currentPhaseRunner.StopPhaseRunner();
+            }
+
+            // Start a record phase
+            currentPhase = Phase.Review;
+            currentPhaseRunner = reviewPhaseRunner;
             currentPhaseRunner.StartPhaseRunner();
         }
     }
