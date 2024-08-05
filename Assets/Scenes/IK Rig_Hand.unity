@@ -4480,7 +4480,7 @@ Transform:
   m_GameObject: {fileID: 565949926}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4527,7 +4527,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ef3ed99ee63a56b4b93affe445734ee4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6433,19 +6433,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reviewManager: {fileID: 1976742943}
-  timeScale: 1
-  yOffset: 2
-  pointSize: 0.2
+  timeScale: 0.3
+  yOffset: 0.2
+  pointSize: 0.01
   pointPrefab: {fileID: 565949926}
-  snareDrumColor: {r: 1, g: 0, b: 0, a: 1}
-  bassDrumColor: {r: 0, g: 0, b: 1, a: 1}
-  closedHiHatColor: {r: 0, g: 1, b: 0, a: 1}
-  tom1Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  tom2Color: {r: 1, g: 0, b: 1, a: 1}
-  floorTomColor: {r: 0, g: 1, b: 1, a: 1}
-  crashColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  rideColor: {r: 1, g: 1, b: 1, a: 1}
-  openHiHatColor: {r: 0, g: 0, b: 0, a: 1}
+  userColor: {r: 1, g: 0.5748932, b: 0, a: 1}
+  targetColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &903189553
 GameObject:
   m_ObjectHideFlags: 0
@@ -14501,7 +14494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1976742942
 Transform:
   m_ObjectHideFlags: 0
@@ -14530,7 +14523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f70d65b297159442b5bcd39e9ec49d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userRecordFilePath: Assets/RecordedPracticeTransforms/0.json
+  userRecordFilePath: Assets/RecordedPracticeTransforms/0_practice.json
   targetRecordFilePath: Assets/RecordedTransforms/3_advanced2.json
   userTransformDataList:
     bpm: 0
