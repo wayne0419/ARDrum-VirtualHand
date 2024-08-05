@@ -4,6 +4,7 @@ using UnityEngine;
 public class ReviewSheetDrawer : MonoBehaviour
 {
     public ReviewManager reviewManager;
+    public Transform reviewSheetContainer; // 新增的 Transform 用于容纳打击点
 
     // 线条渲染器设置
     public float timeScale = 1.0f; // 时间刻度，用于调整视觉化的时间间隔
@@ -22,6 +23,12 @@ public class ReviewSheetDrawer : MonoBehaviour
         if (reviewManager == null)
         {
             Debug.LogWarning("ReviewManager is not assigned.");
+            return;
+        }
+
+        if (reviewSheetContainer == null)
+        {
+            Debug.LogWarning("ReviewSheetContainer is not assigned.");
             return;
         }
 
@@ -53,7 +60,8 @@ public class ReviewSheetDrawer : MonoBehaviour
         foreach (var hit in drumHits)
         {
             Vector3 position = new Vector3(hit.data.timestamp * timeScale, yOffset * yIndex, 0);
-            GameObject point = Instantiate(pointPrefab, position, Quaternion.identity, this.transform);
+            GameObject point = Instantiate(pointPrefab, reviewSheetContainer);
+            point.transform.localPosition = position; // 使用 localPosition 确保相对于 reviewSheetContainer 的位置
             point.GetComponent<Renderer>().material.color = color;
             point.transform.localScale = new Vector3(pointSize, pointSize, pointSize);
             points.Add(point);

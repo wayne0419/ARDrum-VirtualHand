@@ -6412,10 +6412,11 @@ Transform:
   m_GameObject: {fileID: 874258663}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.101, z: 0.822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1923638405}
   - {fileID: 1030533243}
   - {fileID: 565949927}
   m_Father: {fileID: 1976742942}
@@ -6433,9 +6434,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reviewManager: {fileID: 1976742943}
-  timeScale: 0.3
-  yOffset: 0.2
-  pointSize: 0.01
+  reviewSheetContainer: {fileID: 1923638405}
+  timeScale: 0.06
+  yOffset: 0.05
+  pointSize: 0.02
   pointPrefab: {fileID: 565949926}
   userColor: {r: 1, g: 0.5748932, b: 0, a: 1}
   targetColor: {r: 0, g: 0, b: 1, a: 1}
@@ -14080,6 +14082,37 @@ Transform:
   - {fileID: 832575519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1923638404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923638405}
+  m_Layer: 0
+  m_Name: ReviewSheetContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1923638405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923638404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 874258664}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1934039790
 GameObject:
   m_ObjectHideFlags: 0
@@ -14523,7 +14556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f70d65b297159442b5bcd39e9ec49d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userRecordFilePath: Assets/RecordedPracticeTransforms/0_practice.json
+  userRecordFilePath: Assets/RecordedPracticeTransforms/1_wrong.json
   targetRecordFilePath: Assets/RecordedTransforms/3_advanced2.json
   userTransformDataList:
     bpm: 0
