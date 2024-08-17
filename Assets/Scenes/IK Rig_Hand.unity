@@ -1641,7 +1641,7 @@ MonoBehaviour:
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
-  playBackBPM: 40
+  playBackBPM: 120
   startOffsetBeat: 3
   metronome: {fileID: 1340986489}
   bassDrumAudioSource: {fileID: 1449333153}

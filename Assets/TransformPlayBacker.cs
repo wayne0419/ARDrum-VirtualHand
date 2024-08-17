@@ -47,6 +47,7 @@ public class TransformPlayBacker : MonoBehaviour
         public string drumHit; // 被击打的鼓
         public int startIdx; // 该段的开始索引
         public int endIdx; // 该段的结束索引
+        public bool skip; // 是否跳过这个区段
     }
 
     public enum PlayMode { A, B } // 播放模式枚举
@@ -258,28 +259,37 @@ public class TransformPlayBacker : MonoBehaviour
             // 检查是否跳过了多个元素
             while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
-                // 如果被跳过的元素中有击打事件，播放相应音效
-                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
+                if (!IsCurrentSegmentSkipped(currentIndex))
+                {
+                    // 如果被跳过的元素中有击打事件，播放相应音效
+                    CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
+                }
                 currentIndex++;
             }
 
             if (currentIndex < playbackData.dataList.Count - 1)
             {
-                float targetTime = playbackData.dataList[currentIndex].timestamp;
-                float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
+                if (!IsCurrentSegmentSkipped(currentIndex))
+                {
+                    float targetTime = playbackData.dataList[currentIndex].timestamp;
+                    float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
 
-                // 计算插值因子
-                float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
+                    // 计算插值因子
+                    float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
 
-                // 使用线性插值更新 Transform
-                UpdateTransforms(currentIndex, currentIndex + 1, t);
+                    // 使用线性插值更新 Transform
+                    UpdateTransforms(currentIndex, currentIndex + 1, t);
+                }
             }
 
             yield return null;
         }
 
         // 播放到最后一个 Transform
-        UpdateTransforms(currentIndex, currentIndex, 1.0f);
+        if (!IsCurrentSegmentSkipped(currentIndex))
+        {
+            UpdateTransforms(currentIndex, currentIndex, 1.0f);
+        }
     }
 
     private int GetStartIndexAfterSkipTime(float skipTime)
@@ -438,10 +448,23 @@ public class TransformPlayBacker : MonoBehaviour
                 limbUsed = drumHit.limb,
                 drumHit = drumName,
                 startIdx = startIdx,
-                endIdx = endIdx
+                endIdx = endIdx,
+                skip = false // 默认不跳过这个区段
             });
 
             lastHitIndex[drumHit.limb] = currentIndex;
         }
+    }
+
+    bool IsCurrentSegmentSkipped(int currentIndex)
+    {
+        foreach (var segment in hitSegments)
+        {
+            if (currentIndex >= segment.startIdx && currentIndex <= segment.endIdx && segment.skip)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
