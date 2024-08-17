@@ -9,70 +9,79 @@ public class TransformPlayBacker : MonoBehaviour
     [Serializable]
     public class DrumHit
     {
-        public float value;
-        public string limb;
+        public float value; // 鼓击打的力度值
+        public string limb; // 使用的肢体
     }
 
     [Serializable]
     public class TransformData
     {
-        public Vector3 position1;
-        public Quaternion rotation1;
-        public Vector3 position2;
-        public Quaternion rotation2;
-        public Vector3 position3;
-        public Quaternion rotation3;
-        public float timestamp;
-        public DrumHit bassDrumHit;
-        public DrumHit snareDrumHit;
-        public DrumHit closedHiHatHit;
-        public DrumHit tom1Hit;
-        public DrumHit tom2Hit;
-        public DrumHit floorTomHit;
-        public DrumHit crashHit;
-        public DrumHit rideHit;
-        public DrumHit openHiHatHit;
+        public Vector3 position1; // 第一个 Transform 的位置
+        public Quaternion rotation1; // 第一个 Transform 的旋转
+        public Vector3 position2; // 第二个 Transform 的位置
+        public Quaternion rotation2; // 第二个 Transform 的旋转
+        public Vector3 position3; // 第三个 Transform 的位置
+        public Quaternion rotation3; // 第三个 Transform 的旋转
+        public float timestamp; // 时间戳
+        public DrumHit bassDrumHit; // 大鼓的击打
+        public DrumHit snareDrumHit; // 小军鼓的击打
+        public DrumHit closedHiHatHit; // 闭合的踩镲的击打
+        public DrumHit tom1Hit; // Tom1 鼓的击打
+        public DrumHit tom2Hit; // Tom2 鼓的击打
+        public DrumHit floorTomHit; // 地板鼓的击打
+        public DrumHit crashHit; // 碰镲的击打
+        public DrumHit rideHit; // Ride镲的击打
+        public DrumHit openHiHatHit; // 打开的踩镲的击打
     }
 
     [Serializable]
     public class TransformPlaybackData
     {
-        public float bpm;
-        public List<TransformData> dataList;
+        public float bpm; // 记录的节拍速度
+        public List<TransformData> dataList; // 记录的 Transform 数据列表
     }
 
-    public enum PlayMode { A, B } // 新增播放模式枚举
+    public class HitSegment
+    {
+        public string limbUsed; // 这个击打使用的肢体
+        public string drumHit; // 被击打的鼓
+        public int startIdx; // 该段的开始索引
+        public int endIdx; // 该段的结束索引
+    }
+
+    public enum PlayMode { A, B } // 播放模式枚举
     public PlayMode playMode = PlayMode.A; // 默认播放模式为 A
 
     public string jsonFilePath; // JSON 文件的路径
-    public Transform targetTransform1;
-    public Transform targetTransform2;
-    public Transform targetTransform3; // 新增第三个 Transform
+    public Transform targetTransform1; // 第一个 Transform 对象
+    public Transform targetTransform2; // 第二个 Transform 对象
+    public Transform targetTransform3; // 第三个 Transform 对象
     public float playBackBPM; // 用于调整播放速度
-    public float startOffsetBeat; // 新增 startOffsetBeat
+    public float startOffsetBeat; // 开始播放前的偏移节拍数
     public Metronome metronome; // Metronome 组件引用
 
-    public AudioSource bassDrumAudioSource; // Bass Drum 音效
-    public AudioSource snareDrumAudioSource; // Snare Drum 音效
-    public AudioSource closedHiHatAudioSource; // Closed Hi-Hat 音效
-    public AudioSource tom1AudioSource; // Tom1 音效
-    public AudioSource tom2AudioSource; // Tom2 音效
-    public AudioSource floorTomAudioSource; // Floor Tom 音效
-    public AudioSource crashAudioSource; // Crash 音效
-    public AudioSource rideAudioSource; // Ride 音效
-    public AudioSource openHiHatAudioSource; // Open Hi-Hat 音效
+    public AudioSource bassDrumAudioSource; // 大鼓音效
+    public AudioSource snareDrumAudioSource; // 小军鼓音效
+    public AudioSource closedHiHatAudioSource; // 闭合踩镲音效
+    public AudioSource tom1AudioSource; // Tom1 鼓音效
+    public AudioSource tom2AudioSource; // Tom2 鼓音效
+    public AudioSource floorTomAudioSource; // 地板鼓音效
+    public AudioSource crashAudioSource; // 碰镲音效
+    public AudioSource rideAudioSource; // Ride镲音效
+    public AudioSource openHiHatAudioSource; // 打开踩镲音效
 
-    public DrumHitIndicator drumHitIndicator; // 新增 DrumHitIndicator 组件引用
-    public DrumSheetPlayer drumSheetPlayer; // 新增 DrumSheetPlayer 组件引用
+    public DrumHitIndicator drumHitIndicator; // DrumHitIndicator 组件引用
+    public DrumSheetPlayer drumSheetPlayer; // DrumSheetPlayer 组件引用
 
-    public TransformPlaybackData playbackData; // 修改为 public
-    public int currentIndex;
-    private float playbackSpeedMultiplier;
-    private float offsetDuration;
-    public bool isPlaying = false; // 将 isPlaying 设置为 public
-    public bool allowInputControl = true; // 新增 allowInputControl
-    private Coroutine playbackCoroutine;
-    public float playbackStartTime; // 确保声明 playbackStartTime
+    public TransformPlaybackData playbackData; // 播放数据
+    public List<HitSegment> hitSegments; // 保存击打区段信息
+    public int currentIndex; // 当前播放的索引
+    private float playbackSpeedMultiplier; // 播放速度倍率
+    private float offsetDuration; // 播放前的偏移时长
+    public bool isPlaying = false; // 播放状态标志
+    public bool allowInputControl = true; // 是否允许通过按空格键来控制
+    private Coroutine playbackCoroutine; // 播放协程引用
+    public float playbackStartTime; // 播放开始时间
 
     void OnEnable()
     {
@@ -84,10 +93,14 @@ public class TransformPlayBacker : MonoBehaviour
         {
             drumHitIndicator.Initialize();
         }
+
+        // 生成区段信息
+        GenerateHitSegments();
     }
 
     void Update()
     {
+        // 如果允许输入控制且按下空格键，启动或停止播放
         if (allowInputControl && Input.GetKeyDown(KeyCode.Space))
         {
             if (!isPlaying)
@@ -103,6 +116,7 @@ public class TransformPlayBacker : MonoBehaviour
 
     public void StartPlayBack()
     {
+        // 根据播放数据初始化播放速度倍率和偏移时长
         if (playbackData != null)
         {
             playbackSpeedMultiplier = playBackBPM / playbackData.bpm;
@@ -129,6 +143,7 @@ public class TransformPlayBacker : MonoBehaviour
 
     public void StopPlayBack()
     {
+        // 停止播放协程
         if (playbackCoroutine != null)
         {
             StopCoroutine(playbackCoroutine);
@@ -388,6 +403,45 @@ public class TransformPlayBacker : MonoBehaviour
         {
             audioSource.volume = volume;
             audioSource.PlayOneShot(audioSource.clip);
+        }
+    }
+
+    void GenerateHitSegments()
+    {
+        hitSegments = new List<HitSegment>();
+        Dictionary<string, int> lastHitIndex = new Dictionary<string, int>();
+
+        for (int i = 0; i < playbackData.dataList.Count; i++)
+        {
+            var data = playbackData.dataList[i];
+            ProcessHit(data.bassDrumHit, "Bass Drum", i, lastHitIndex);
+            ProcessHit(data.snareDrumHit, "Snare Drum", i, lastHitIndex);
+            ProcessHit(data.closedHiHatHit, "Closed Hi-Hat", i, lastHitIndex);
+            ProcessHit(data.tom1Hit, "Tom1", i, lastHitIndex);
+            ProcessHit(data.tom2Hit, "Tom2", i, lastHitIndex);
+            ProcessHit(data.floorTomHit, "Floor Tom", i, lastHitIndex);
+            ProcessHit(data.crashHit, "Crash", i, lastHitIndex);
+            ProcessHit(data.rideHit, "Ride", i, lastHitIndex);
+            ProcessHit(data.openHiHatHit, "Open Hi-Hat", i, lastHitIndex);
+        }
+    }
+
+    void ProcessHit(DrumHit drumHit, string drumName, int currentIndex, Dictionary<string, int> lastHitIndex)
+    {
+        if (drumHit.value > 0)
+        {
+            int startIdx = lastHitIndex.ContainsKey(drumHit.limb) ? lastHitIndex[drumHit.limb] + 1 : 0;
+            int endIdx = currentIndex;
+
+            hitSegments.Add(new HitSegment
+            {
+                limbUsed = drumHit.limb,
+                drumHit = drumName,
+                startIdx = startIdx,
+                endIdx = endIdx
+            });
+
+            lastHitIndex[drumHit.limb] = currentIndex;
         }
     }
 }
