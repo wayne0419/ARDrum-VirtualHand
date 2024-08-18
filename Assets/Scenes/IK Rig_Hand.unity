@@ -1728,13 +1728,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/3_advanced2.json
+  jsonFilePath: Assets/RecordedTransforms/4_1e2a3e4a.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
   playBackBPM: 120
   startOffsetBeat: 3
   metronome: {fileID: 1340986489}
+  drumSheet: {fileID: 1285220128}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
   closedHiHatAudioSource: {fileID: 273501198}
@@ -4524,6 +4525,7 @@ MonoBehaviour:
   playBackBPM: 40
   startOffsetBeat: 3
   metronome: {fileID: 1340986489}
+  drumSheet: {fileID: 0}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
   closedHiHatAudioSource: {fileID: 273501198}
@@ -4534,7 +4536,7 @@ MonoBehaviour:
   rideAudioSource: {fileID: 1407571837}
   openHiHatAudioSource: {fileID: 1416786295}
   drumHitIndicator: {fileID: 962698970}
-  drumSheetPlayer: {fileID: 1016098900}
+  drumSheetPlayer: {fileID: 0}
   playbackData:
     bpm: 0
     dataList: []
@@ -19165,6 +19167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: drumType
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: highlightColor.a
+      value: 0.95686275
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}

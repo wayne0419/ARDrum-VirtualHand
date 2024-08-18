@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4218536273910776678}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.896, y: 0.567, z: 0}
   m_LocalScale: {x: 0.44130123, y: 0.44130123, z: 0.44130123}
   m_ConstrainProportionsScale: 0
@@ -119,6 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drumType: 0
-  skippedColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  skippedColor: {r: 0, g: 0.12156863, b: 1, a: 0}
+  defaultColor: {r: 0, g: 0.12156863, b: 1, a: 0.65882355}
+  highlightColor: {r: 0, g: 0.12156863, b: 1, a: 1}

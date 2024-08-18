@@ -45,10 +45,11 @@ public class TransformPlayBacker : MonoBehaviour
     public class HitSegment
     {
         public string limbUsed; // 这个击打使用的肢体
-        public string drumHit; // 被击打的鼓
+        public DrumType drumHit; // 被击打的鼓类型
         public int startIdx; // 该段的开始索引
         public int endIdx; // 该段的结束索引
         public bool skip; // 是否跳过这个区段
+        public DrumNote associatedNote; // 关联的 DrumNote
     }
 
     public enum PlayMode { A, B } // 播放模式枚举
@@ -61,6 +62,7 @@ public class TransformPlayBacker : MonoBehaviour
     public float playBackBPM; // 用于调整播放速度
     public float startOffsetBeat; // 开始播放前的偏移节拍数
     public Metronome metronome; // Metronome 组件引用
+    public DrumSheet drumSheet; // 引用 DrumSheet 组件
 
     public AudioSource bassDrumAudioSource; // 大鼓音效
     public AudioSource snareDrumAudioSource; // 小军鼓音效
@@ -443,38 +445,56 @@ public class TransformPlayBacker : MonoBehaviour
     {
         hitSegments = new List<HitSegment>();
         Dictionary<string, int> lastHitIndex = new Dictionary<string, int>();
+        Dictionary<DrumType, int> drumHitCounter = new Dictionary<DrumType, int>(); // 用于计数每种类型的 DrumNote
 
         for (int i = 0; i < playbackData.dataList.Count; i++)
         {
             var data = playbackData.dataList[i];
-            ProcessHit(data.bassDrumHit, "Bass Drum", i, lastHitIndex);
-            ProcessHit(data.snareDrumHit, "Snare Drum", i, lastHitIndex);
-            ProcessHit(data.closedHiHatHit, "Closed Hi-Hat", i, lastHitIndex);
-            ProcessHit(data.tom1Hit, "Tom1", i, lastHitIndex);
-            ProcessHit(data.tom2Hit, "Tom2", i, lastHitIndex);
-            ProcessHit(data.floorTomHit, "Floor Tom", i, lastHitIndex);
-            ProcessHit(data.crashHit, "Crash", i, lastHitIndex);
-            ProcessHit(data.rideHit, "Ride", i, lastHitIndex);
-            ProcessHit(data.openHiHatHit, "Open Hi-Hat", i, lastHitIndex);
+            ProcessHit(data.bassDrumHit, DrumType.BassDrum, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.snareDrumHit, DrumType.SnareDrum, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.closedHiHatHit, DrumType.ClosedHiHat, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.tom1Hit, DrumType.Tom1, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.tom2Hit, DrumType.Tom2, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.floorTomHit, DrumType.FloorTom, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.crashHit, DrumType.Crash, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.rideHit, DrumType.Ride, i, lastHitIndex, drumHitCounter);
+            ProcessHit(data.openHiHatHit, DrumType.OpenHiHat, i, lastHitIndex, drumHitCounter);
         }
     }
 
-    void ProcessHit(DrumHit drumHit, string drumName, int currentIndex, Dictionary<string, int> lastHitIndex)
+    void ProcessHit(DrumHit drumHit, DrumType drumType, int currentIndex, Dictionary<string, int> lastHitIndex, Dictionary<DrumType, int> drumHitCounter)
     {
         if (drumHit.value > 0)
         {
+            // 计算击打区段的开始和结束索引
             int startIdx = lastHitIndex.ContainsKey(drumHit.limb) ? lastHitIndex[drumHit.limb] + 1 : 0;
             int endIdx = currentIndex;
 
-            hitSegments.Add(new HitSegment
+            // 计算这是该类型的第几个 hit
+            if (!drumHitCounter.ContainsKey(drumType))
+            {
+                drumHitCounter[drumType] = 0;
+            }
+            int hitIndex = drumHitCounter[drumType];
+            drumHitCounter[drumType]++;
+
+            // 连接 hitSegment 和 DrumNote 的代码
+            DrumNote associatedNote = drumSheet.GetDrumNoteByIndex(drumType, hitIndex);
+
+            // 创建新的 HitSegment 并添加到列表
+            HitSegment segment = new HitSegment
             {
                 limbUsed = drumHit.limb,
-                drumHit = drumName,
+                drumHit = drumType,
                 startIdx = startIdx,
                 endIdx = endIdx,
-                skip = false // 默认不跳过这个区段
-            });
+                skip = false, // 默认不跳过这个区段
+                associatedNote = associatedNote // 关联的 DrumNote
+            };
 
+            hitSegments.Add(segment);
+
+            // 更新 lastHitIndex
             lastHitIndex[drumHit.limb] = currentIndex;
         }
     }
