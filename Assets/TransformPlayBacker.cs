@@ -41,6 +41,7 @@ public class TransformPlayBacker : MonoBehaviour
         public List<TransformData> dataList; // 记录的 Transform 数据列表
     }
 
+    [Serializable]
     public class HitSegment
     {
         public string limbUsed; // 这个击打使用的肢体
