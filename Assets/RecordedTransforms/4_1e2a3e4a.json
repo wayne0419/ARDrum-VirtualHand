@@ -8317,7 +8317,7 @@
             },
             "bassDrumHit": {
                 "value": 0.6062992215156555,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -12205,7 +12205,7 @@
             },
             "bassDrumHit": {
                 "value": 0.4724409580230713,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -23581,7 +23581,7 @@
             },
             "bassDrumHit": {
                 "value": 0.6299212574958801,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -27325,7 +27325,7 @@
             },
             "bassDrumHit": {
                 "value": 0.5511811375617981,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
