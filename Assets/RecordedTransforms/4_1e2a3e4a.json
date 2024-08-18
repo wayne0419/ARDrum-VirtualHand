@@ -8540,8 +8540,8 @@
                 "limb": "no limb"
             },
             "closedHiHatHit": {
-                "value": 0.5196850895881653,
-                "limb": "righthand"
+                "value": 0.0,
+                "limb": "no limb"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -8556,8 +8556,8 @@
                 "limb": "no limb"
             },
             "crashHit": {
-                "value": 0.0,
-                "limb": "no limb"
+                "value": 0.5196850895881653,
+                "limb": "righthand"
             },
             "rideHit": {
                 "value": 0.0,
