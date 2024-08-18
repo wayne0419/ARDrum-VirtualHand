@@ -54,9 +54,9 @@ public class TransformPlayBacker : MonoBehaviour
     public PlayMode playMode = PlayMode.A; // 默认播放模式为 A
 
     public string jsonFilePath; // JSON 文件的路径
-    public Transform targetTransform1; // 第一个 Transform 对象
-    public Transform targetTransform2; // 第二个 Transform 对象
-    public Transform targetTransform3; // 第三个 Transform 对象
+    public Transform targetTransform1; // 第一个 Transform 对象 (左手)
+    public Transform targetTransform2; // 第二个 Transform 对象 (右手)
+    public Transform targetTransform3; // 第三个 Transform 对象 (右脚)
     public float playBackBPM; // 用于调整播放速度
     public float startOffsetBeat; // 开始播放前的偏移节拍数
     public Metronome metronome; // Metronome 组件引用
@@ -259,37 +259,28 @@ public class TransformPlayBacker : MonoBehaviour
             // 检查是否跳过了多个元素
             while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
-                if (!IsCurrentSegmentSkipped(currentIndex))
-                {
-                    // 如果被跳过的元素中有击打事件，播放相应音效
-                    CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
-                }
+                // 如果被跳过的元素中有击打事件，播放相应音效
+                CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
                 currentIndex++;
             }
 
             if (currentIndex < playbackData.dataList.Count - 1)
             {
-                if (!IsCurrentSegmentSkipped(currentIndex))
-                {
-                    float targetTime = playbackData.dataList[currentIndex].timestamp;
-                    float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
+                float targetTime = playbackData.dataList[currentIndex].timestamp;
+                float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
 
-                    // 计算插值因子
-                    float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
+                // 计算插值因子
+                float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
 
-                    // 使用线性插值更新 Transform
-                    UpdateTransforms(currentIndex, currentIndex + 1, t);
-                }
+                // 使用线性插值更新 Transform
+                UpdateTransforms(currentIndex, currentIndex + 1, t);
             }
 
             yield return null;
         }
 
         // 播放到最后一个 Transform
-        if (!IsCurrentSegmentSkipped(currentIndex))
-        {
-            UpdateTransforms(currentIndex, currentIndex, 1.0f);
-        }
+        UpdateTransforms(currentIndex, currentIndex, 1.0f);
     }
 
     private int GetStartIndexAfterSkipTime(float skipTime)
@@ -323,17 +314,32 @@ public class TransformPlayBacker : MonoBehaviour
         TransformData dataA = playbackData.dataList[indexA];
         TransformData dataB = playbackData.dataList[indexB];
 
-        targetTransform1.position = Vector3.Lerp(dataA.position1, dataB.position1, t);
-        targetTransform1.rotation = Quaternion.Lerp(dataA.rotation1, dataB.rotation1, t);
-        targetTransform2.position = Vector3.Lerp(dataA.position2, dataB.position2, t);
-        targetTransform2.rotation = Quaternion.Lerp(dataA.rotation2, dataB.rotation2, t);
-        targetTransform3.position = Vector3.Lerp(dataA.position3, dataB.position3, t); // 更新第三个 Transform 的位置
-        targetTransform3.rotation = Quaternion.Lerp(dataA.rotation3, dataB.rotation3, t); // 更新第三个 Transform 的旋转
+        // 更新左手 (对应 position1 和 rotation1)
+        if (!IsCurrentSegmentSkipped(indexA, "lefthand"))
+        {
+            targetTransform1.position = Vector3.Lerp(dataA.position1, dataB.position1, t);
+            targetTransform1.rotation = Quaternion.Lerp(dataA.rotation1, dataB.rotation1, t);
+        }
+
+        // 更新右手 (对应 position2 和 rotation2)
+        if (!IsCurrentSegmentSkipped(indexA, "righthand"))
+        {
+            targetTransform2.position = Vector3.Lerp(dataA.position2, dataB.position2, t);
+            targetTransform2.rotation = Quaternion.Lerp(dataA.rotation2, dataB.rotation2, t);
+        }
+
+        // 更新右脚 (对应 position3 和 rotation3)
+        if (!IsCurrentSegmentSkipped(indexA, "rightfeet"))
+        {
+            targetTransform3.position = Vector3.Lerp(dataA.position3, dataB.position3, t);
+            targetTransform3.rotation = Quaternion.Lerp(dataA.rotation3, dataB.rotation3, t);
+        }
     }
 
     void CheckAndPlayDrumHits(TransformData data)
     {
-        if (data.bassDrumHit.value > 0f)
+        // 播放大鼓击打音效
+        if (data.bassDrumHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.bassDrumHit.limb))
         {
             PlayDrumHit(bassDrumAudioSource, data.bassDrumHit.value);
             if (drumHitIndicator != null)
@@ -341,7 +347,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerBassDrum(data.bassDrumHit.limb);
             }
         }
-        if (data.snareDrumHit.value > 0f)
+
+        // 播放小军鼓击打音效
+        if (data.snareDrumHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.snareDrumHit.limb))
         {
             PlayDrumHit(snareDrumAudioSource, data.snareDrumHit.value);
             if (drumHitIndicator != null)
@@ -349,7 +357,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerSnareDrum(data.snareDrumHit.limb);
             }
         }
-        if (data.closedHiHatHit.value > 0f)
+
+        // 播放闭合踩镲击打音效
+        if (data.closedHiHatHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.closedHiHatHit.limb))
         {
             PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit.value);
             if (drumHitIndicator != null)
@@ -357,7 +367,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerClosedHiHat(data.closedHiHatHit.limb);
             }
         }
-        if (data.tom1Hit.value > 0f)
+
+        // 播放 Tom1 鼓击打音效
+        if (data.tom1Hit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.tom1Hit.limb))
         {
             PlayDrumHit(tom1AudioSource, data.tom1Hit.value);
             if (drumHitIndicator != null)
@@ -365,7 +377,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerTom1(data.tom1Hit.limb);
             }
         }
-        if (data.tom2Hit.value > 0f)
+
+        // 播放 Tom2 鼓击打音效
+        if (data.tom2Hit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.tom2Hit.limb))
         {
             PlayDrumHit(tom2AudioSource, data.tom2Hit.value);
             if (drumHitIndicator != null)
@@ -373,7 +387,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerTom2(data.tom2Hit.limb);
             }
         }
-        if (data.floorTomHit.value > 0f)
+
+        // 播放地板鼓击打音效
+        if (data.floorTomHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.floorTomHit.limb))
         {
             PlayDrumHit(floorTomAudioSource, data.floorTomHit.value);
             if (drumHitIndicator != null)
@@ -381,7 +397,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerFloorTom(data.floorTomHit.limb);
             }
         }
-        if (data.crashHit.value > 0f)
+
+        // 播放碰镲击打音效
+        if (data.crashHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.crashHit.limb))
         {
             PlayDrumHit(crashAudioSource, data.crashHit.value);
             if (drumHitIndicator != null)
@@ -389,7 +407,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerCrash(data.crashHit.limb);
             }
         }
-        if (data.rideHit.value > 0f)
+
+        // 播放 Ride 镲击打音效
+        if (data.rideHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.rideHit.limb))
         {
             PlayDrumHit(rideAudioSource, data.rideHit.value);
             if (drumHitIndicator != null)
@@ -397,7 +417,9 @@ public class TransformPlayBacker : MonoBehaviour
                 drumHitIndicator.TriggerRide(data.rideHit.limb);
             }
         }
-        if (data.openHiHatHit.value > 0f)
+
+        // 播放打开踩镲击打音效
+        if (data.openHiHatHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.openHiHatHit.limb))
         {
             PlayDrumHit(openHiHatAudioSource, data.openHiHatHit.value); // 处理 openHiHatHit
             if (drumHitIndicator != null)
@@ -456,11 +478,11 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
-    bool IsCurrentSegmentSkipped(int currentIndex)
+    bool IsCurrentSegmentSkipped(int currentIndex, string limb)
     {
         foreach (var segment in hitSegments)
         {
-            if (currentIndex >= segment.startIdx && currentIndex <= segment.endIdx && segment.skip)
+            if (currentIndex >= segment.startIdx && currentIndex <= segment.endIdx && segment.skip && segment.limbUsed == limb)
             {
                 return true;
             }
