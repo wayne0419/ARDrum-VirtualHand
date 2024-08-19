@@ -8,6 +8,7 @@ public class RealTimeInputTracker : MonoBehaviour
     // 引用 TransformPlayBacker，用于检测播放状态
     public TransformPlayBacker transformPlayBacker;
     public GameObject HitDrumInputMarker; // 预制体，用于标记正确的击打输入
+    public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
 
     // 鼓击打的 InputActions
     public InputAction bassDrumHit;
@@ -141,9 +142,6 @@ public class RealTimeInputTracker : MonoBehaviour
                 hitValue = hitValue
             });
 
-            // 计算允许的时间误差（0.1 个 beat 对应的时间）
-            float allowedError = 60f / transformPlayBacker.playBackBPM * 0.1f;
-
             // 检查输入时间戳是否接近任何未配对的且未被跳过的 HitSegment 的 endIdx 时间戳
             foreach (var segment in trackedHitSegments)
             {
@@ -154,7 +152,8 @@ public class RealTimeInputTracker : MonoBehaviour
                     // 根据播放速度调整时间误差的计算
                     float adjustedTimestamp = segmentTimestamp * transformPlayBacker.playbackData.bpm / transformPlayBacker.playBackBPM;
 
-                    if (Mathf.Abs(timestamp - adjustedTimestamp) < allowedError) // 使用计算的误差范围
+                    // 使用 correctTimeTolerance 作为容许误差
+                    if (Mathf.Abs(timestamp - adjustedTimestamp) < correctTimeTolerance)
                     {
                         segment.matched = true;
                         segment.correct = true; // 标记为正确
