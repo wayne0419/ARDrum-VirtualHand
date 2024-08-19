@@ -71,6 +71,7 @@ public class RealTimeInputTracker : MonoBehaviour
                 drumHit = segment.drumHit,
                 startIdx = segment.startIdx,
                 endIdx = segment.endIdx,
+                skip = segment.skip, // 保留 skip 状态
                 associatedNote = segment.associatedNote,
                 matched = false,
                 correct = false
@@ -140,10 +141,10 @@ public class RealTimeInputTracker : MonoBehaviour
                 hitValue = hitValue
             });
 
-            // 检查输入时间戳是否接近任何未配对的 HitSegment 的 endIdx 时间戳
+            // 检查输入时间戳是否接近任何未配对的且未被跳过的 HitSegment 的 endIdx 时间戳
             foreach (var segment in trackedHitSegments)
             {
-                if (!segment.matched && segment.drumHit == drumType)
+                if (!segment.matched && !segment.skip && segment.drumHit == drumType)
                 {
                     float segmentTimestamp = transformPlayBacker.playbackData.dataList[segment.endIdx].timestamp;
 
