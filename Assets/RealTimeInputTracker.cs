@@ -11,6 +11,7 @@ public class RealTimeInputTracker : MonoBehaviour
     public GameObject HitDrumInputLevel1ErrorMarker; // 预制体，用于标记 level 1 错误输入
     public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
     public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
+    public float level1ErrorShift = 0.1f; // 当出现 level 1 错误时，标记位置的偏移量
 
     // 鼓击打的 InputActions
     public InputAction bassDrumHit;
@@ -176,10 +177,20 @@ public class RealTimeInputTracker : MonoBehaviour
                     {
                         segment.matched = true;
 
-                        // 在 associatedNote 的位置生成 HitDrumInputLevel1ErrorMarker
                         if (HitDrumInputLevel1ErrorMarker != null && segment.associatedNote != null)
                         {
                             Vector3 notePosition = segment.associatedNote.transform.position;
+
+                            // 根据 hitDrumInput 时间相对于 segment 的时间早晚来决定偏移方向
+                            if (timestamp < adjustedTimestamp)
+                            {
+                                notePosition.x -= level1ErrorShift; // 时间太早，向 -x 方向偏移
+                            }
+                            else
+                            {
+                                notePosition.x += level1ErrorShift; // 时间太晚，向 +x 方向偏移
+                            }
+
                             Instantiate(HitDrumInputLevel1ErrorMarker, notePosition, Quaternion.identity, transform);
                         }
 
