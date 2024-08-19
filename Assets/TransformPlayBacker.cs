@@ -494,6 +494,12 @@ public class TransformPlayBacker : MonoBehaviour
 
             hitSegments.Add(segment);
 
+            // 双向关联
+            if (associatedNote != null)
+            {
+                associatedNote.associatedSegment = segment; // 在 DrumNote 中设置关联的 HitSegment
+            }
+
             // 更新 lastHitIndex
             lastHitIndex[drumHit.limb] = currentIndex;
         }
