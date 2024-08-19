@@ -1820,6 +1820,7 @@ Transform:
   - {fileID: 948393579}
   - {fileID: 1308851127}
   - {fileID: 1947823301}
+  - {fileID: 208549187}
   m_Father: {fileID: 1472043471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &203132172
@@ -1915,6 +1916,332 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+--- !u!1 &208549186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208549187}
+  - component: {fileID: 208549188}
+  m_Layer: 0
+  m_Name: RealTimeInputTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &208549187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208549186}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 174402673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208549188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208549186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05fc88a60785744fa1a92e0408f1bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformPlayBacker: {fileID: 174402672}
+  bassDrumHit:
+    m_Name: Hit Bass Drum
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4ed46345-213d-4549-9a3e-827e0af31fd1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a3b505a7-1ad0-4035-98ec-5e3afd264adc
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Bass Drum
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f1de6e83-cd8d-440c-af19-46a76568d785
+      m_Path: <MidiDevice>/note036
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Bass Drum
+      m_Flags: 0
+    m_Flags: 0
+  snareDrumHit:
+    m_Name: Hit Snare Drum
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 909f23cc-432b-4ae1-bd39-a60b0021388e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8247bdf9-0bd7-4ac5-aa16-84c6546b3f07
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Snare Drum
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 43346262-2bac-4daa-8474-91727746d7df
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Snare Drum
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 89eaa0dc-01c2-47aa-b3f5-7ea81983c11c
+      m_Path: <MidiDevice>/note038
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Snare Drum
+      m_Flags: 0
+    m_Flags: 0
+  closedHiHatHit:
+    m_Name: Hit Closed Hi Hat
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 65876184-f4ba-43e7-abba-41666dccd3fa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e7c09ac3-c0bf-420d-aa8e-c66cb085554a
+      m_Path: <Keyboard>/t
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Closed Hi Hat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a32484ab-2cd0-441f-8f74-338f153006fc
+      m_Path: <MidiDevice>/note022
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Closed Hi Hat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a6dc3005-c1b9-48f1-bebf-02d903c10757
+      m_Path: <MidiDevice>/note042
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Closed Hi Hat
+      m_Flags: 0
+    m_Flags: 0
+  tom1Hit:
+    m_Name: Hit Tom 1
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6746cf62-33a2-4450-b76f-92bf5795ea52
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 6f537a15-d5c8-4a92-8ea8-baea803a1bc7
+      m_Path: <Keyboard>/l
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 1
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b29acdf4-5321-464f-88b0-02e68d527871
+      m_Path: <Keyboard>/k
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 1
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 8273f3e0-09e2-4a7b-8db3-b53d24844371
+      m_Path: <MidiDevice>/note048
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 1
+      m_Flags: 0
+    m_Flags: 0
+  tom2Hit:
+    m_Name: Hit Tom 2
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fac43150-e5cc-4ee8-b0b1-ef38a6faf4bf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4afea576-295f-4501-8ad8-85d1d2a4d213
+      m_Path: <Keyboard>/h
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 2
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a4f105a3-0cd9-436a-b6af-d9eb5a4248d2
+      m_Path: <Keyboard>/j
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 2
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 71ace62d-24e7-4ac9-8bbe-582e7a888095
+      m_Path: <MidiDevice>/note045
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Tom 2
+      m_Flags: 0
+    m_Flags: 0
+  floorTomHit:
+    m_Name: Hit Floor Tom
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1303c74f-b22e-4d09-9ce1-e86e1c4756fa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b4b89602-09d5-4630-9c62-285e8b1a42ae
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Floor Tom
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f41cf87d-4e08-4847-930f-f245be29ead4
+      m_Path: <Keyboard>/g
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Floor Tom
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a863bd17-ba2b-457f-a826-09c49ce663aa
+      m_Path: <MidiDevice>/note043
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Floor Tom
+      m_Flags: 0
+    m_Flags: 0
+  crashHit:
+    m_Name: Hit Crash
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7655ab93-157f-499e-82ee-66eaa31e957c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 17123ede-7b9e-4a4e-bb98-f1883c1044b7
+      m_Path: <Keyboard>/o
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Crash
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2cefd6f3-3112-4511-95ff-59da00f81da8
+      m_Path: <MidiDevice>/note049
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Crash
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d0855831-9ce3-4e5b-b4da-c5c67fa8adc5
+      m_Path: <MidiDevice>/note055
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Crash
+      m_Flags: 0
+    m_Flags: 0
+  rideHit:
+    m_Name: Hit Ride
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c2174f17-78e4-44bf-a265-26fdbbd2bf80
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 844f9dda-28af-416b-953b-08d1e0d2471a
+      m_Path: <Keyboard>/p
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Ride
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2b5775c1-3a31-4195-be3e-4c2c6a0e2510
+      m_Path: <MidiDevice>/note059
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hit Ride
+      m_Flags: 0
+    m_Flags: 0
+  openHiHatHit:
+    m_Name: Open Hi Hat Hit
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 673357ba-63a5-458b-b551-d0164303ced3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0a79ab58-b992-4568-a550-47354c30400f
+      m_Path: <MidiDevice>/note046
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Open Hi Hat Hit
+      m_Flags: 0
+    - m_Name: 
+      m_Id: bf59d7fe-8632-4411-a53e-ecaac63839e3
+      m_Path: <MidiDevice>/note026
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Open Hi Hat Hit
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 8ebc5ecf-b91a-48cc-9c86-fd8c84646017
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Open Hi Hat Hit
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &209225955
 GameObject:
   m_ObjectHideFlags: 0
@@ -15544,7 +15871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1498640517
 Transform:
   m_ObjectHideFlags: 0
