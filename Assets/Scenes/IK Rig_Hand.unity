@@ -1961,8 +1961,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformPlayBacker: {fileID: 174402672}
-  HitDrumInputMarker: {fileID: 1586879070310025833, guid: 70e86912d360c184d886c5b91b157a92,
+  HitDrumInputCorrectMarker: {fileID: 1586879070310025833, guid: 70e86912d360c184d886c5b91b157a92,
     type: 3}
+  HitDrumInputLevel1ErrorMarker: {fileID: 1586879070310025833, guid: 71cd449301c646a47857e3f33e2ccfd4,
+    type: 3}
+  correctTimeTolerance: 0.1
+  level1ErrorTimeTolerance: 0.2
   bassDrumHit:
     m_Name: Hit Bass Drum
     m_Type: 0

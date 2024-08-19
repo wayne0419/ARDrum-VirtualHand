@@ -8,7 +8,9 @@ public class RealTimeInputTracker : MonoBehaviour
     // 引用 TransformPlayBacker，用于检测播放状态
     public TransformPlayBacker transformPlayBacker;
     public GameObject HitDrumInputCorrectMarker; // 预制体，用于标记正确的击打输入
+    public GameObject HitDrumInputLevel1ErrorMarker; // 预制体，用于标记 level 1 错误输入
     public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
+    public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
 
     // 鼓击打的 InputActions
     public InputAction bassDrumHit;
@@ -56,7 +58,7 @@ public class RealTimeInputTracker : MonoBehaviour
         isTracking = true;
         inputLog.Clear(); // 清除之前的数据
 
-        // 清除之前生成的所有 HitDrumInputCorrectMarker
+        // 清除之前生成的所有标记
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
@@ -152,8 +154,10 @@ public class RealTimeInputTracker : MonoBehaviour
                     // 根据播放速度调整时间误差的计算
                     float adjustedTimestamp = segmentTimestamp * transformPlayBacker.playbackData.bpm / transformPlayBacker.playBackBPM;
 
+                    float timeDifference = Mathf.Abs(timestamp - adjustedTimestamp);
+
                     // 使用 correctTimeTolerance 作为容许误差
-                    if (Mathf.Abs(timestamp - adjustedTimestamp) < correctTimeTolerance)
+                    if (timeDifference < correctTimeTolerance)
                     {
                         segment.matched = true;
                         segment.correct = true; // 标记为正确
@@ -163,6 +167,20 @@ public class RealTimeInputTracker : MonoBehaviour
                         {
                             Vector3 notePosition = segment.associatedNote.transform.position;
                             Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, transform);
+                        }
+
+                        break; // 配对后跳出循环
+                    }
+                    // 使用 level1ErrorTimeTolerance 作为容许误差
+                    else if (timeDifference < level1ErrorTimeTolerance)
+                    {
+                        segment.matched = true;
+
+                        // 在 associatedNote 的位置生成 HitDrumInputLevel1ErrorMarker
+                        if (HitDrumInputLevel1ErrorMarker != null && segment.associatedNote != null)
+                        {
+                            Vector3 notePosition = segment.associatedNote.transform.position;
+                            Instantiate(HitDrumInputLevel1ErrorMarker, notePosition, Quaternion.identity, transform);
                         }
 
                         break; // 配对后跳出循环
