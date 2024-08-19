@@ -7,6 +7,7 @@ public class RealTimeInputTracker : MonoBehaviour
 {
     // 引用 TransformPlayBacker，用于检测播放状态
     public TransformPlayBacker transformPlayBacker;
+    public GameObject HitDrumInputMarker; // 预制体，用于标记正确的击打输入
 
     // 鼓击打的 InputActions
     public InputAction bassDrumHit;
@@ -53,6 +54,12 @@ public class RealTimeInputTracker : MonoBehaviour
     {
         isTracking = true;
         inputLog.Clear(); // 清除之前的数据
+
+        // 清除之前生成的所有 HitDrumInputMarker
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         // 初始化并复制 TransformPlayBacker 的 HitSegments
         trackedHitSegments = new List<TrackedHitSegment>();
@@ -147,6 +154,14 @@ public class RealTimeInputTracker : MonoBehaviour
                     {
                         segment.matched = true;
                         segment.correct = true; // 标记为正确
+
+                        // 在 associatedNote 的位置生成 HitDrumInputMarker
+                        if (HitDrumInputMarker != null && segment.associatedNote != null)
+                        {
+                            Vector3 notePosition = segment.associatedNote.transform.position;
+                            Instantiate(HitDrumInputMarker, notePosition, Quaternion.identity, transform);
+                        }
+
                         break; // 配对后跳出循环
                     }
                 }
