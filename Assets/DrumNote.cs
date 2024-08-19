@@ -42,4 +42,30 @@ public class DrumNote : MonoBehaviour
             noteRenderer.material.color = highlightColor;
         }
     }
+
+    // 新增的功能：切换 associatedSegment 的 skip 状态并调整 DrumNote 的颜色
+    public void ToggleSkip()
+    {
+        if (associatedSegment != null)
+        {
+            // 切换 skip 状态
+            associatedSegment.skip = !associatedSegment.skip;
+
+            // 根据 skip 状态调整 DrumNote 的颜色
+            if (associatedSegment.skip)
+            {
+                SetSkippedColor(); // 如果跳过，设置为 skippedColor
+            }
+            else
+            {
+                SetDefaultColor(); // 否则，设置为 defaultColor
+            }
+        }
+    }
+
+    // 当鼠标点击此 DrumNote 时，执行 ToggleSkip
+    void OnMouseDown()
+    {
+        ToggleSkip();
+    }
 }
