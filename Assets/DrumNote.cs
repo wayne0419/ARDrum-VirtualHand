@@ -6,7 +6,7 @@ public class DrumNote : MonoBehaviour
     public Color skippedColor; // 跳过时的颜色
     public Color defaultColor; // 默认颜色
     public Color highlightColor; // 高亮时的颜色
-    public HitSegment associatedSegment; // 关联的 HitSegment
+    public TransformPlayBacker.HitSegment associatedSegment; // 关联的 HitSegment
 
     private Renderer noteRenderer;
 
