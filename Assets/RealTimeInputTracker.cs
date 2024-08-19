@@ -21,6 +21,7 @@ public class RealTimeInputTracker : MonoBehaviour
 
     private bool isTracking = false; // 用于跟踪播放状态
     private List<HitDrumInputData> inputLog; // 存储击打输入数据的日志
+    private List<TrackedHitSegment> trackedHitSegments; // 存储复制并跟踪的 HitSegment
 
     private void Awake()
     {
@@ -52,6 +53,22 @@ public class RealTimeInputTracker : MonoBehaviour
     {
         isTracking = true;
         inputLog.Clear(); // 清除之前的数据
+
+        // 初始化并复制 TransformPlayBacker 的 HitSegments
+        trackedHitSegments = new List<TrackedHitSegment>();
+        foreach (var segment in transformPlayBacker.hitSegments)
+        {
+            trackedHitSegments.Add(new TrackedHitSegment
+            {
+                limbUsed = segment.limbUsed,
+                drumHit = segment.drumHit,
+                startIdx = segment.startIdx,
+                endIdx = segment.endIdx,
+                associatedNote = segment.associatedNote,
+                matched = false,
+                correct = false
+            });
+        }
 
         // 启用所有 InputActions
         bassDrumHit.Enable();
@@ -104,13 +121,36 @@ public class RealTimeInputTracker : MonoBehaviour
     {
         if (inputAction.triggered)
         {
+            // 计算相对于播放开始时间的时间戳
+            float timestamp = Time.time - transformPlayBacker.playbackStartTime;
+            float hitValue = inputAction.ReadValue<float>();
+
             // 记录输入数据
             inputLog.Add(new HitDrumInputData
             {
                 drumType = drumType,
-                timestamp = Time.time,
-                hitValue = inputAction.ReadValue<float>()
+                timestamp = timestamp,
+                hitValue = hitValue
             });
+
+            // 检查输入时间戳是否接近任何未配对的 HitSegment 的 endIdx 时间戳
+            foreach (var segment in trackedHitSegments)
+            {
+                if (!segment.matched && segment.drumHit == drumType)
+                {
+                    float segmentTimestamp = transformPlayBacker.playbackData.dataList[segment.endIdx].timestamp;
+
+                    // 根据播放速度调整时间误差的计算
+                    float adjustedTimestamp = segmentTimestamp * transformPlayBacker.playbackData.bpm / transformPlayBacker.playBackBPM;
+
+                    if (Mathf.Abs(timestamp - adjustedTimestamp) < 0.1f) // 允许0.1秒的时间误差
+                    {
+                        segment.matched = true;
+                        segment.correct = true; // 标记为正确
+                        break; // 配对后跳出循环
+                    }
+                }
+            }
         }
     }
 
@@ -121,5 +161,13 @@ public class RealTimeInputTracker : MonoBehaviour
         public DrumType drumType; // 鼓的类型
         public float timestamp; // 时间戳
         public float hitValue; // 击打力度值
+    }
+
+    // 扩展的 HitSegment 类，用于跟踪输入配对情况
+    [Serializable]
+    private class TrackedHitSegment : TransformPlayBacker.HitSegment
+    {
+        public bool matched = false; // 是否已配对
+        public bool correct = false; // 是否为正确配对
     }
 }
