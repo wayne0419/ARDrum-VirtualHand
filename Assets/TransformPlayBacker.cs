@@ -87,6 +87,12 @@ public class TransformPlayBacker : MonoBehaviour
     private Coroutine playbackCoroutine; // 播放协程引用
     public float playbackStartTime; // 播放开始时间
 
+    // 事件：当 PlayTransformData 开始时触发
+    public event Action OnPlayTransformDataStart;
+
+    // 事件：当 PlayTransformData 结束时触发
+    public event Action OnPlayTransformDataEnd;
+
     void OnEnable()
     {
         // 每次启用时读取 JSON 文件
@@ -249,6 +255,9 @@ public class TransformPlayBacker : MonoBehaviour
 
     private IEnumerator PlayTransformData(float startTimeOffset = 0f)
     {
+        // 触发开始事件
+        OnPlayTransformDataStart?.Invoke();
+
         if (startTimeOffset > 0)
         {
             // 计算跳过时间后应该从哪个索引开始播放
@@ -284,6 +293,9 @@ public class TransformPlayBacker : MonoBehaviour
 
         // 播放到最后一个 Transform
         UpdateTransforms(currentIndex, currentIndex, 1.0f);
+
+        // 触发结束事件
+        OnPlayTransformDataEnd?.Invoke();
     }
 
     private int GetStartIndexAfterSkipTime(float skipTime)
