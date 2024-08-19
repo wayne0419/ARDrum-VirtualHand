@@ -93,6 +93,8 @@ public class TransformPlayBacker : MonoBehaviour
     // 事件：当 PlayTransformData 结束时触发
     public event Action OnPlayTransformDataEnd;
 
+    private bool isPlayingTransformData = false; // 用于跟踪是否正在执行 PlayTransformData
+
     void OnEnable()
     {
         // 每次启用时读取 JSON 文件
@@ -157,6 +159,13 @@ public class TransformPlayBacker : MonoBehaviour
         if (playbackCoroutine != null)
         {
             StopCoroutine(playbackCoroutine);
+
+            // 如果正在播放 TransformData，确保 OnPlayTransformDataEnd 被调用
+            if (isPlayingTransformData)
+            {
+                OnPlayTransformDataEnd?.Invoke();
+                isPlayingTransformData = false;
+            }
         }
 
         isPlaying = false;
@@ -257,6 +266,7 @@ public class TransformPlayBacker : MonoBehaviour
     {
         // 触发开始事件
         OnPlayTransformDataStart?.Invoke();
+        isPlayingTransformData = true;
 
         if (startTimeOffset > 0)
         {
@@ -296,6 +306,7 @@ public class TransformPlayBacker : MonoBehaviour
 
         // 触发结束事件
         OnPlayTransformDataEnd?.Invoke();
+        isPlayingTransformData = false;
     }
 
     private int GetStartIndexAfterSkipTime(float skipTime)
