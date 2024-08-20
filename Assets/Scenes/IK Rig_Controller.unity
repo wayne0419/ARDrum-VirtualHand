@@ -2053,6 +2053,7 @@ Transform:
   - {fileID: 1308851127}
   - {fileID: 1947823301}
   - {fileID: 208549187}
+  - {fileID: 1749147140}
   m_Father: {fileID: 1472043471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &203132172
@@ -5798,6 +5799,37 @@ Transform:
   - {fileID: 1797628279}
   m_Father: {fileID: 214882465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &457953163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457953164}
+  m_Layer: 6
+  m_Name: Cursor Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &457953164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457953163}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.917, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1047911194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &458115920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8881,7 +8913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825967049}
   m_Layer: 6
-  m_Name: Cursor Start
+  m_Name: Drum Sheet Cursor Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10513,7 +10545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985087901}
   m_Layer: 6
-  m_Name: Cursor End
+  m_Name: Drum Sheet Cursor End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11445,6 +11477,8 @@ Transform:
   - {fileID: 1824834992}
   - {fileID: 1301537466}
   - {fileID: 1788799827}
+  - {fileID: 457953164}
+  - {fileID: 2068111294}
   m_Father: {fileID: 1900614060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1047911195
@@ -11478,6 +11512,8 @@ MonoBehaviour:
   - {fileID: 1824834993}
   - {fileID: 1301537467}
   - {fileID: 1788799828}
+  drumSheetCursorStart: {fileID: 0}
+  drumSheetCursorEnd: {fileID: 0}
 --- !u!212 &1047911196
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13486,7 +13522,6 @@ Transform:
   - {fileID: 1172892464}
   - {fileID: 825967049}
   - {fileID: 985087901}
-  - {fileID: 1749147140}
   m_Father: {fileID: 1900614060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1285220128
@@ -13520,6 +13555,8 @@ MonoBehaviour:
   - {fileID: 439853928}
   - {fileID: 527685433}
   - {fileID: 1172892463}
+  drumSheetCursorStart: {fileID: 825967049}
+  drumSheetCursorEnd: {fileID: 985087901}
 --- !u!1001 &1285457424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19297,7 +19334,7 @@ GameObject:
   - component: {fileID: 1749147142}
   - component: {fileID: 1749147141}
   m_Layer: 6
-  m_Name: Cursor
+  m_Name: Drum Sheet Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19311,12 +19348,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749147139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.94, y: 0, z: 0}
-  m_LocalScale: {x: 0.34088752, y: 3.1350257, z: 0.34088752}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.49400002, y: 0.064, z: -2.16}
+  m_LocalScale: {x: 0.034088757, y: 0.31350258, z: 0.034088757}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1285220127}
+  m_Father: {fileID: 174402673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1749147141
 BoxCollider:
@@ -21324,6 +21361,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1580649883}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 11.505}
+--- !u!1 &2068111293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068111294}
+  m_Layer: 6
+  m_Name: Cursor End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2068111294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068111293}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.16, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1047911194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2069073346
 PrefabInstance:
   m_ObjectHideFlags: 0

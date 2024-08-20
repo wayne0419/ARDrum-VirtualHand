@@ -5,6 +5,9 @@ public class DrumSheet : MonoBehaviour
 {
     public List<DrumNote> drumNotes; // 存储所有的 DrumNote
 
+    public Transform drumSheetCursorStart; // 鼓谱光标的起始位置
+    public Transform drumSheetCursorEnd;   // 鼓谱光标的结束位置
+
     // 新增方法：找出某个 drumType 的第 i 个 DrumNote
     public DrumNote GetDrumNoteByIndex(DrumType drumType, int index)
     {
