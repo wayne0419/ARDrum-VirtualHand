@@ -75,7 +75,6 @@ public class TransformPlayBacker : MonoBehaviour
     public AudioSource openHiHatAudioSource; // 打开踩镲音效
 
     public DrumHitIndicator drumHitIndicator; // DrumHitIndicator 组件引用
-    public DrumSheetPlayer drumSheetPlayer; // DrumSheetPlayer 组件引用
 
     public TransformPlaybackData playbackData; // 播放数据
     public List<HitSegment> hitSegments; // 保存击打区段信息
@@ -170,15 +169,10 @@ public class TransformPlayBacker : MonoBehaviour
 
         isPlaying = false;
 
-        // 停止播放 Metronome 和 Drum Sheet
+        // 停止播放 Metronome
         if (metronome != null)
         {
             metronome.StopMetronome();
-        }
-
-        if (drumSheetPlayer != null)
-        {
-            drumSheetPlayer.Pause();
         }
     }
 
@@ -199,12 +193,6 @@ public class TransformPlayBacker : MonoBehaviour
 
             playbackStartTime = Time.time;
             currentIndex = 0;
-
-            // 开始播放 Drum Sheet 影片
-            if (drumSheetPlayer != null)
-            {
-                drumSheetPlayer.Play(0f, playBackBPM); // 从头开始播放，并调整速度
-            }
 
             // 使用 PlayTransformData 简化代码
             yield return PlayTransformData();
@@ -227,12 +215,6 @@ public class TransformPlayBacker : MonoBehaviour
         playbackStartTime = Time.time;
         currentIndex = 0;
 
-        // 开始播放 Drum Sheet 影片
-        if (drumSheetPlayer != null)
-        {
-            drumSheetPlayer.Play(0f, playBackBPM); // 从头开始播放，并调整速度
-        }
-
         // 播放整个 TransformPlayBackData 一次
         yield return PlayTransformData();
 
@@ -249,12 +231,6 @@ public class TransformPlayBacker : MonoBehaviour
                 metronome.bpm = playBackBPM; // 确保设置 bpm
                 metronome.StopMetronome(); // 确保 metronome 停止
                 metronome.StartMetronome(); // 重新启动 metronome
-            }
-
-            // 开始播放 Drum Sheet 影片并跳过开头一个 beat 的时间
-            if (drumSheetPlayer != null)
-            {
-                drumSheetPlayer.Play(skipBeat, playBackBPM);
             }
 
             // 调用 PlayTransformData 时传递 skipBeat 以跳过开头一个 beat 的时间
