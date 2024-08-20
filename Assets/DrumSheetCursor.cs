@@ -45,7 +45,7 @@ public class DrumSheetCursor : MonoBehaviour
             journeyLength = Vector3.Distance(startPosition, endPosition);
 
             // 将光标移动到起始位置
-            transform.position = startPosition;
+            // transform.position = startPosition;
 
             // 开始移动
             isMoving = true;
