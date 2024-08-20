@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class DrumSheetCursor : MonoBehaviour
 {
-    public DrumSheet drumSheet; // DrumSheet 的引用
     public TransformPlayBacker transformPlayBacker; // TransformPlayBacker 的引用
 
+    private DrumSheet drumSheet; // DrumSheet 的引用
     private Vector3 startPosition;
     private Vector3 endPosition;
     private float journeyLength;
     private bool isMoving = false;
-    private float startTime;
 
     private void OnEnable()
     {
-        // 订阅 TransformPlayBacker 的事件
+        // 从 TransformPlayBacker 中获取 DrumSheet 引用
         if (transformPlayBacker != null)
         {
+            drumSheet = transformPlayBacker.drumSheet;
+
+            // 订阅 TransformPlayBacker 的事件
             transformPlayBacker.OnPlayTransformDataStart += StartMoving;
             transformPlayBacker.OnPlayTransformDataEnd += StopMoving;
         }
@@ -45,9 +47,6 @@ public class DrumSheetCursor : MonoBehaviour
             // 将光标移动到起始位置
             transform.position = startPosition;
 
-            // 记录开始时间
-            startTime = Time.time;
-
             // 开始移动
             isMoving = true;
         }
@@ -62,11 +61,12 @@ public class DrumSheetCursor : MonoBehaviour
     {
         if (isMoving && journeyLength > 0)
         {
-            // 计算已经过的时间
-            float elapsedTime = Time.time - startTime;
+            // 获取 TransformPlayBacker 的当前时间戳
+            float elapsedTime = transformPlayBacker.playbackData.dataList[transformPlayBacker.currentIndex].timestamp;
 
             // 计算完成比例
-            float fracJourney = elapsedTime / transformPlayBacker.playbackData.dataList[transformPlayBacker.playbackData.dataList.Count - 1].timestamp;
+            float totalDuration = transformPlayBacker.playbackData.dataList[transformPlayBacker.playbackData.dataList.Count - 1].timestamp;
+            float fracJourney = elapsedTime / totalDuration;
 
             // 根据完成比例插值位置
             transform.position = Vector3.Lerp(startPosition, endPosition, fracJourney);
