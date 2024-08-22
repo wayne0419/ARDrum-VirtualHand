@@ -7,6 +7,9 @@ public class Metronome : MonoBehaviour
     public AudioClip metronomeSfxHigh; // 第一個 beat 的聲效
     public AudioClip metronomeSfxLow; // 其他 beat 的聲效
     public MetronomeNote[] metronomeNotes; // 存储4个 MetronomeNote
+    public Color warmUpColor = Color.gray; // 准备期间的颜色
+    public Color playColor = Color.green; // 播放期间的颜色
+    public TransformPlayBacker transformPlayBacker; // TransformPlayBacker 的引用
 
     private AudioSource audioSource;
     private Coroutine metronomeCoroutine;
@@ -18,6 +21,25 @@ public class Metronome : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // 初始化为 warmUpColor
+        SetWarmUpColor();
+
+        // 订阅 TransformPlayBacker 的事件
+        if (transformPlayBacker != null)
+        {
+            transformPlayBacker.OnPlayTransformDataStart += SetPlayColor;
+            transformPlayBacker.OnPlayTransformDataEnd += SetWarmUpColor;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (transformPlayBacker != null)
+        {
+            transformPlayBacker.OnPlayTransformDataStart -= SetPlayColor;
+            transformPlayBacker.OnPlayTransformDataEnd -= SetWarmUpColor;
         }
     }
 
@@ -86,6 +108,32 @@ public class Metronome : MonoBehaviour
             else
             {
                 metronomeNotes[i].SetOn();
+            }
+        }
+    }
+
+    private void SetPlayColor()
+    {
+        // 设置 metronomeNotes 的 onColor 为 playColor
+        SetMetronomeNotesColor(playColor);
+    }
+
+    private void SetWarmUpColor()
+    {
+        // 设置 metronomeNotes 的 onColor 为 warmUpColor
+        SetMetronomeNotesColor(warmUpColor);
+    }
+
+    private void SetMetronomeNotesColor(Color color)
+    {
+        if (metronomeNotes != null)
+        {
+            foreach (var note in metronomeNotes)
+            {
+                if (note != null)
+                {
+                    note.onColor = color;
+                }
             }
         }
     }

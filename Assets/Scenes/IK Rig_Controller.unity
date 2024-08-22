@@ -2054,6 +2054,7 @@ Transform:
   - {fileID: 1947823301}
   - {fileID: 208549187}
   - {fileID: 1749147140}
+  - {fileID: 5366975294774543385}
   m_Father: {fileID: 1472043471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &203132172
@@ -5582,6 +5583,7 @@ Transform:
   - {fileID: 1300133485}
   - {fileID: 1346506247}
   - {fileID: 16204549}
+  - {fileID: 1327760157}
   m_Father: {fileID: 1188561897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &439853927
@@ -12548,7 +12550,6 @@ Transform:
   - {fileID: 1312467314}
   - {fileID: 122985472}
   - {fileID: 842655936}
-  - {fileID: 1327760157}
   m_Father: {fileID: 1448659129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1188561898
@@ -14443,8 +14444,13 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1188561897}
+    m_TransformParent: {fileID: 430328881}
     m_Modifications:
+    - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
+        type: 3}
+      propertyPath: transformPlayBacker
+      value: 
+      objectReference: {fileID: 430328880}
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14458,7 +14464,7 @@ PrefabInstance:
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.84
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
@@ -16608,7 +16614,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 174402673}
-  - {fileID: 5366975294774543385}
   - {fileID: 85074378}
   m_Father: {fileID: 1900614060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22317,8 +22322,13 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1472043471}
+    m_TransformParent: {fileID: 174402673}
     m_Modifications:
+    - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
+        type: 3}
+      propertyPath: transformPlayBacker
+      value: 
+      objectReference: {fileID: 174402672}
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22332,7 +22342,7 @@ PrefabInstance:
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.84
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
