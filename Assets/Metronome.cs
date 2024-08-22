@@ -98,7 +98,16 @@ public class Metronome : MonoBehaviour
                 {
                     if (!isPaused)
                     {
-                        PlaySound(metronomeSfxLow);
+                        if (subBeat == 0)
+                        {
+                            // 播放主要节拍
+                            PlaySound(metronomeSfxHigh);
+                        }
+                        else
+                        {
+                            // 播放子节拍
+                            PlaySound(metronomeSfxLow);
+                        }
 
                         // Highlight the corresponding MetronomeNote based on the main beat
                         HighlightMetronomeNoteAtIndex(beatCount % 4);
