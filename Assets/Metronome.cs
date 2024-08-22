@@ -37,16 +37,6 @@ public class Metronome : MonoBehaviour
         }
     }
 
-    public void PauseMetronome()
-    {
-        isPaused = true;
-    }
-
-    public void ResumeMetronome()
-    {
-        isPaused = false;
-    }
-
     private IEnumerator MetronomeRoutine()
     {
         int beatCount = 0;
