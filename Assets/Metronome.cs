@@ -9,7 +9,7 @@ public class Metronome : MonoBehaviour
     public float bpm = 120f; // beats per minute
     public AudioClip metronomeSfxHigh; // 第一個 beat 的聲效
     public AudioClip metronomeSfxLow; // 其他 beat 的聲效
-    public MetronomeNote[] metronomeNotes; // 存储4个 MetronomeNote
+    public MetronomeNote[] metronomeNotes; // 存储 MetronomeNote，4拍模式为4个，16拍模式为16个
     public Color warmUpColor = Color.gray; // 准备期间的颜色
     public Color playColor = Color.green; // 播放期间的颜色
     public TransformPlayBacker transformPlayBacker; // TransformPlayBacker 的引用
@@ -85,8 +85,8 @@ public class Metronome : MonoBehaviour
                     }
 
                     // Highlight the corresponding MetronomeNote
-                    HighlightMetronomeNoteAtIndex(beatCount % 4);
-                    
+                    HighlightMetronomeNoteAtIndex((beatCount % 4) * 4);
+
                     beatCount++;
                 }
                 yield return new WaitForSeconds(beatDuration);
@@ -109,8 +109,8 @@ public class Metronome : MonoBehaviour
                             PlaySound(metronomeSfxLow);
                         }
 
-                        // Highlight the corresponding MetronomeNote based on the main beat
-                        HighlightMetronomeNoteAtIndex(beatCount % 4);
+                        // Highlight the corresponding MetronomeNote based on the subbeat
+                        HighlightMetronomeNoteAtIndex((beatCount % 4) * 4 + subBeat);
                     }
                     yield return new WaitForSeconds(beatDuration / 4f); // 每个 subbeat 持续时间是原来的 1/4
                 }
@@ -129,7 +129,8 @@ public class Metronome : MonoBehaviour
 
     private void HighlightMetronomeNoteAtIndex(int index)
     {
-        if (metronomeNotes == null || metronomeNotes.Length < 4)
+        if (metronomeNotes == null || (mode == MetronomeMode.FourBeats && metronomeNotes.Length < 16) ||
+            (mode == MetronomeMode.SixteenBeats && metronomeNotes.Length < 16))
             return;
 
         for (int i = 0; i < metronomeNotes.Length; i++)
