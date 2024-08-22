@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Metronome : MonoBehaviour
 {
+    public enum MetronomeMode { FourBeats, SixteenBeats } // 枚举类型，表示模式
+    public MetronomeMode mode = MetronomeMode.FourBeats; // 默认模式为4拍
+
     public float bpm = 120f; // beats per minute
     public AudioClip metronomeSfxHigh; // 第一個 beat 的聲效
     public AudioClip metronomeSfxLow; // 其他 beat 的聲效
@@ -65,24 +68,45 @@ public class Metronome : MonoBehaviour
         int beatCount = 0;
         while (true)
         {
-            float beatDuration = 60f / bpm; // Calculate beatDuration here
-            if (!isPaused)
-            {
-                if (beatCount % 4 == 0)
-                {
-                    PlaySound(metronomeSfxHigh);
-                }
-                else
-                {
-                    PlaySound(metronomeSfxLow);
-                }
+            float beatDuration = 60f / bpm; // 计算每个 beat 的持续时间
 
-                // Highlight the corresponding MetronomeNote
-                HighlightMetronomeNoteAtIndex(beatCount % 4);
-                
+            if (mode == MetronomeMode.FourBeats)
+            {
+                // 4拍模式
+                if (!isPaused)
+                {
+                    if (beatCount % 4 == 0)
+                    {
+                        PlaySound(metronomeSfxHigh);
+                    }
+                    else
+                    {
+                        PlaySound(metronomeSfxLow);
+                    }
+
+                    // Highlight the corresponding MetronomeNote
+                    HighlightMetronomeNoteAtIndex(beatCount % 4);
+                    
+                    beatCount++;
+                }
+                yield return new WaitForSeconds(beatDuration);
+            }
+            else if (mode == MetronomeMode.SixteenBeats)
+            {
+                // 16拍模式
+                for (int subBeat = 0; subBeat < 4; subBeat++)
+                {
+                    if (!isPaused)
+                    {
+                        PlaySound(metronomeSfxLow);
+
+                        // Highlight the corresponding MetronomeNote based on the main beat
+                        HighlightMetronomeNoteAtIndex(beatCount % 4);
+                    }
+                    yield return new WaitForSeconds(beatDuration / 4f); // 每个 subbeat 持续时间是原来的 1/4
+                }
                 beatCount++;
             }
-            yield return new WaitForSeconds(beatDuration);
         }
     }
 
