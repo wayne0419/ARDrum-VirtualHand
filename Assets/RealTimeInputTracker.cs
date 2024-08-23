@@ -14,7 +14,9 @@ public class RealTimeInputTracker : MonoBehaviour
     public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
     public float level1ErrorShift = 0.1f; // 当出现 level 1 错误时，标记位置的偏移量
     public float correctRate = 0f; // 正确率
+    public float level1CorrectRate = 0f; // 包含 level 1 错误的正确率
     public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示正确率
+    public TextMeshProUGUI level1CorrectRateText; // TextMeshProUGUI 用于显示包含 level 1 错误的正确率
     public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
@@ -108,12 +110,17 @@ public class RealTimeInputTracker : MonoBehaviour
         isTracking = false;
 
         // 计算正确率
-        CalculateCorrectRate();
+        CalculateCorrectRates();
 
         // 更新显示的正确率
         if (correctRateText != null)
         {
             correctRateText.text = $"Correct Rate: {correctRate:P2}";
+        }
+
+        if (level1CorrectRateText != null)
+        {
+            level1CorrectRateText.text = $"Level 1 Correct Rate: {level1CorrectRate:P2}";
         }
 
         // 禁用所有 InputActions
@@ -220,11 +227,12 @@ public class RealTimeInputTracker : MonoBehaviour
         }
     }
 
-    // 计算正确率
-    private void CalculateCorrectRate()
+    // 计算正确率和 level 1 正确率
+    private void CalculateCorrectRates()
     {
         int totalSegments = 0;
         int correctSegments = 0;
+        int level1CorrectSegments = 0;
 
         foreach (var segment in trackedHitSegments)
         {
@@ -234,11 +242,17 @@ public class RealTimeInputTracker : MonoBehaviour
                 if (segment.correct)
                 {
                     correctSegments++;
+                    level1CorrectSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectSegments++;
                 }
             }
         }
 
         correctRate = (totalSegments > 0) ? (float)correctSegments / totalSegments : 0f;
+        level1CorrectRate = (totalSegments > 0) ? (float)level1CorrectSegments / totalSegments : 0f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据

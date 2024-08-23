@@ -2339,7 +2339,9 @@ MonoBehaviour:
   level1ErrorTimeTolerance: 0.15
   level1ErrorShift: 0.2
   correctRate: 0
+  level1CorrectRate: 0
   correctRateText: {fileID: 58310951}
+  level1CorrectRateText: {fileID: 1753678370}
   markerHolder: {fileID: 1338497851}
   bassDrumHit:
     m_Name: Hit Bass Drum
