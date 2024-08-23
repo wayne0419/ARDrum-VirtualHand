@@ -78,7 +78,8 @@ public class RealTimeInputTracker : MonoBehaviour
                 skip = segment.skip, // 保留 skip 状态
                 associatedNote = segment.associatedNote,
                 matched = false,
-                correct = false
+                correct = false,
+                level1TimeError = false
             });
         }
 
@@ -176,6 +177,7 @@ public class RealTimeInputTracker : MonoBehaviour
                     else if (timeDifference < level1ErrorTimeTolerance)
                     {
                         segment.matched = true;
+                        segment.level1TimeError = true; // 标记为 level 1 时间错误
 
                         if (HitDrumInputLevel1ErrorMarker != null && segment.associatedNote != null)
                         {
@@ -216,5 +218,6 @@ public class RealTimeInputTracker : MonoBehaviour
     {
         public bool matched = false; // 是否已配对
         public bool correct = false; // 是否为正确配对
+        public bool level1TimeError = false; // 是否为 level 1 时间错误
     }
 }
