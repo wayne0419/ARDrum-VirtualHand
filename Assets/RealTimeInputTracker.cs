@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro; // 添加 TextMeshPro 的引用
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
     public float level1ErrorShift = 0.1f; // 当出现 level 1 错误时，标记位置的偏移量
     public float correctRate = 0f; // 正确率
+    public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示正确率
+    public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
     public InputAction bassDrumHit;
@@ -61,9 +64,12 @@ public class RealTimeInputTracker : MonoBehaviour
         inputLog.Clear(); // 清除之前的数据
 
         // 清除之前生成的所有标记
-        foreach (Transform child in transform)
+        if (markerHolder != null)
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in markerHolder)
+            {
+                Destroy(child.gameObject);
+            }
         }
 
         // 初始化并复制 TransformPlayBacker 的 HitSegments
@@ -103,6 +109,12 @@ public class RealTimeInputTracker : MonoBehaviour
 
         // 计算正确率
         CalculateCorrectRate();
+
+        // 更新显示的正确率
+        if (correctRateText != null)
+        {
+            correctRateText.text = $"Correct Rate: {correctRate:P2}";
+        }
 
         // 禁用所有 InputActions
         bassDrumHit.Disable();
@@ -173,7 +185,7 @@ public class RealTimeInputTracker : MonoBehaviour
                         if (HitDrumInputCorrectMarker != null && segment.associatedNote != null)
                         {
                             Vector3 notePosition = segment.associatedNote.transform.position;
-                            Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, transform);
+                            Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
                         }
 
                         break; // 配对后跳出循环
@@ -198,7 +210,7 @@ public class RealTimeInputTracker : MonoBehaviour
                                 notePosition.x += level1ErrorShift; // 时间太晚，向 +x 方向偏移
                             }
 
-                            Instantiate(HitDrumInputLevel1ErrorMarker, notePosition, Quaternion.identity, transform);
+                            Instantiate(HitDrumInputLevel1ErrorMarker, notePosition, Quaternion.identity, markerHolder);
                         }
 
                         break; // 配对后跳出循环
