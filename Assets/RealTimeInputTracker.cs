@@ -134,8 +134,9 @@ public class RealTimeInputTracker : MonoBehaviour
     {
         if (inputAction.triggered)
         {
-            // 计算相对于播放开始时间的时间戳
-            float timestamp = Time.time - transformPlayBacker.playbackStartTime;
+            // 获取当前索引的时间戳，并考虑播放速度
+            float timestamp = transformPlayBacker.playbackData.dataList[transformPlayBacker.currentIndex].timestamp 
+                              * (transformPlayBacker.playbackData.bpm / transformPlayBacker.playBackBPM);
             float hitValue = inputAction.ReadValue<float>();
 
             // 记录输入数据
