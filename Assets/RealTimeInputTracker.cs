@@ -12,6 +12,7 @@ public class RealTimeInputTracker : MonoBehaviour
     public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
     public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
     public float level1ErrorShift = 0.1f; // 当出现 level 1 错误时，标记位置的偏移量
+    public float correctRate = 0f; // 正确率
 
     // 鼓击打的 InputActions
     public InputAction bassDrumHit;
@@ -39,7 +40,7 @@ public class RealTimeInputTracker : MonoBehaviour
         if (transformPlayBacker != null)
         {
             transformPlayBacker.OnPlayTransformDataStart += StartTracking;
-            transformPlayBacker.OnPlayTransformDataEnd += StopTracking;
+            transformPlayBacker.OnPlayTransformDataEnd += StopTrackingAndCalculateCorrectRate;
         }
     }
 
@@ -49,7 +50,7 @@ public class RealTimeInputTracker : MonoBehaviour
         if (transformPlayBacker != null)
         {
             transformPlayBacker.OnPlayTransformDataStart -= StartTracking;
-            transformPlayBacker.OnPlayTransformDataEnd -= StopTracking;
+            transformPlayBacker.OnPlayTransformDataEnd -= StopTrackingAndCalculateCorrectRate;
         }
     }
 
@@ -95,10 +96,13 @@ public class RealTimeInputTracker : MonoBehaviour
         openHiHatHit.Enable();
     }
 
-    // 当 TransformPlayBacker 停止播放时，停止输入跟踪
-    private void StopTracking()
+    // 当 TransformPlayBacker 停止播放时，停止输入跟踪并计算正确率
+    private void StopTrackingAndCalculateCorrectRate()
     {
         isTracking = false;
+
+        // 计算正确率
+        CalculateCorrectRate();
 
         // 禁用所有 InputActions
         bassDrumHit.Disable();
@@ -202,6 +206,27 @@ public class RealTimeInputTracker : MonoBehaviour
                 }
             }
         }
+    }
+
+    // 计算正确率
+    private void CalculateCorrectRate()
+    {
+        int totalSegments = 0;
+        int correctSegments = 0;
+
+        foreach (var segment in trackedHitSegments)
+        {
+            if (!segment.skip)
+            {
+                totalSegments++;
+                if (segment.correct)
+                {
+                    correctSegments++;
+                }
+            }
+        }
+
+        correctRate = (totalSegments > 0) ? (float)correctSegments / totalSegments : 0f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据
