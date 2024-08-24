@@ -251,8 +251,9 @@ public class RealTimeInputTracker : MonoBehaviour
             }
         }
 
-        correctRate = (totalSegments > 0) ? (float)correctSegments / totalSegments : 0f;
-        level1CorrectRate = (totalSegments > 0) ? (float)level1CorrectSegments / totalSegments : 0f;
+        // 修改后的逻辑：如果没有段落，默认正确率为 100%
+        correctRate = (totalSegments > 0) ? (float)correctSegments / totalSegments : 1f;
+        level1CorrectRate = (totalSegments > 0) ? (float)level1CorrectSegments / totalSegments : 1f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据
