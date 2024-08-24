@@ -100,9 +100,9 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -121,4 +121,11 @@ MonoBehaviour:
   drumType: 0
   skippedColor: {r: 0, g: 0.12156863, b: 1, a: 0}
   defaultColor: {r: 0, g: 0.12156863, b: 1, a: 0.65882355}
-  highlightColor: {r: 0, g: 0.12156863, b: 1, a: 1}
+  associatedSegment:
+    limbUsed: 
+    drumHit: 0
+    startIdx: 0
+    endIdx: 0
+    skip: 0
+    associatedNote: {fileID: 0}
+  beatPosition: 0
