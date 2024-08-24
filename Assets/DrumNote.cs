@@ -7,7 +7,7 @@ public class DrumNote : MonoBehaviour
     public Color defaultColor; // 默认颜色
     public TransformPlayBacker.HitSegment associatedSegment; // 关联的 HitSegment
     public float beatPosition; // 代表这个 drumNote 所对应的 hitSegment 的节拍位置
-
+    public bool skip;
     private Renderer noteRenderer;
 
     void Awake()

@@ -127,42 +127,42 @@ public class RealTimeInputTracker : MonoBehaviour
         // 更新显示的正确率
         if (correctRateText != null)
         {
-            correctRateText.text = $"Correct Rate: {correctRate:P2}";
+            correctRateText.text = $"All: {correctRate:P2}";
         }
 
         if (level1CorrectRateText != null)
         {
-            level1CorrectRateText.text = $"Level 1 Correct Rate: {level1CorrectRate:P2}";
+            level1CorrectRateText.text = $"";
         }
 
         if (mainRhythmCorrectRateText != null)
         {
-            mainRhythmCorrectRateText.text = $"Main Rhythm Correct Rate: {mainRhythmCorrectRate:P2}";
+            mainRhythmCorrectRateText.text = $"Main Rhythm: {mainRhythmCorrectRate:P2}";
         }
 
         if (mainRhythmLevel1CorrectRateText != null)
         {
-            mainRhythmLevel1CorrectRateText.text = $"Main Rhythm Level 1 Correct Rate: {mainRhythmLevel1CorrectRate:P2}";
+            mainRhythmLevel1CorrectRateText.text = $"";
         }
 
         if (oneThreeRhythmCorrectRateText != null)
         {
-            oneThreeRhythmCorrectRateText.text = $"1 & 3 Rhythm Correct Rate: {oneThreeRhythmCorrectRate:P2}";
+            oneThreeRhythmCorrectRateText.text = $"1 & 3 Rhythm: {oneThreeRhythmCorrectRate:P2}";
         }
 
         if (oneThreeRhythmLevel1CorrectRateText != null)
         {
-            oneThreeRhythmLevel1CorrectRateText.text = $"1 & 3 Rhythm Level 1 Correct Rate: {oneThreeRhythmLevel1CorrectRate:P2}";
+            oneThreeRhythmLevel1CorrectRateText.text = $"";
         }
 
         if (twoFourRhythmCorrectRateText != null)
         {
-            twoFourRhythmCorrectRateText.text = $"2 & 4 Rhythm Correct Rate: {twoFourRhythmCorrectRate:P2}";
+            twoFourRhythmCorrectRateText.text = $"2 & 4 Rhythm: {twoFourRhythmCorrectRate:P2}";
         }
 
         if (twoFourRhythmLevel1CorrectRateText != null)
         {
-            twoFourRhythmLevel1CorrectRateText.text = $"2 & 4 Rhythm Level 1 Correct Rate: {twoFourRhythmLevel1CorrectRate:P2}";
+            twoFourRhythmLevel1CorrectRateText.text = $"";
         }
 
         // 禁用所有 InputActions
