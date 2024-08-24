@@ -2142,7 +2142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &174402672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,11 +2156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/7_test_cont.json
+  jsonFilePath: Assets/RecordedTransforms/mid2.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
-  playBackBPM: 60
+  playBackBPM: 90
   startOffsetBeat: 3
   metronome: {fileID: 5366975294774543386}
   drumSheet: {fileID: 1285220128}
@@ -23747,7 +23747,7 @@ PrefabInstance:
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.294
       objectReference: {fileID: 0}
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
