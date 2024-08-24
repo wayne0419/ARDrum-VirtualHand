@@ -17,10 +17,14 @@ public class RealTimeInputTracker : MonoBehaviour
     public float level1CorrectRate = 0f; // 总包含 level 1 错误的正确率
     public float mainRhythmCorrectRate = 0f; // 主节奏的正确率
     public float mainRhythmLevel1CorrectRate = 0f; // 主节奏包含 level 1 错误的正确率
+    public float oneThreeRhythmCorrectRate = 0f; // 1和3拍节奏的正确率
+    public float oneThreeRhythmLevel1CorrectRate = 0f; // 1和3拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示总正确率
     public TextMeshProUGUI level1CorrectRateText; // TextMeshProUGUI 用于显示总包含 level 1 错误的正确率
     public TextMeshProUGUI mainRhythmCorrectRateText; // TextMeshProUGUI 用于显示主节奏的正确率
     public TextMeshProUGUI mainRhythmLevel1CorrectRateText; // TextMeshProUGUI 用于显示主节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI oneThreeRhythmCorrectRateText; // TextMeshProUGUI 用于显示1和3拍节奏的正确率
+    public TextMeshProUGUI oneThreeRhythmLevel1CorrectRateText; // TextMeshProUGUI 用于显示1和3拍节奏包含 level 1 错误的正确率
     public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
@@ -135,6 +139,16 @@ public class RealTimeInputTracker : MonoBehaviour
         if (mainRhythmLevel1CorrectRateText != null)
         {
             mainRhythmLevel1CorrectRateText.text = $"Main Rhythm Level 1 Correct Rate: {mainRhythmLevel1CorrectRate:P2}";
+        }
+
+        if (oneThreeRhythmCorrectRateText != null)
+        {
+            oneThreeRhythmCorrectRateText.text = $"1 & 3 Rhythm Correct Rate: {oneThreeRhythmCorrectRate:P2}";
+        }
+
+        if (oneThreeRhythmLevel1CorrectRateText != null)
+        {
+            oneThreeRhythmLevel1CorrectRateText.text = $"1 & 3 Rhythm Level 1 Correct Rate: {oneThreeRhythmLevel1CorrectRate:P2}";
         }
 
         // 禁用所有 InputActions
@@ -252,6 +266,10 @@ public class RealTimeInputTracker : MonoBehaviour
         int correctMainRhythmSegments = 0;
         int level1CorrectMainRhythmSegments = 0;
 
+        int totalOneThreeRhythmSegments = 0;
+        int correctOneThreeRhythmSegments = 0;
+        int level1CorrectOneThreeRhythmSegments = 0;
+
         foreach (var segment in trackedHitSegments)
         {
             if (!segment.skip)
@@ -282,6 +300,22 @@ public class RealTimeInputTracker : MonoBehaviour
                         level1CorrectMainRhythmSegments++;
                     }
                 }
+
+                // 计算 1 和 3 拍节奏的正确率
+                if (segment.associatedNote != null && ((segment.associatedNote.beatPosition >= 1 && segment.associatedNote.beatPosition < 2) ||
+                                                       (segment.associatedNote.beatPosition >= 3 && segment.associatedNote.beatPosition < 4)))
+                {
+                    totalOneThreeRhythmSegments++;
+                    if (segment.correct)
+                    {
+                        correctOneThreeRhythmSegments++;
+                        level1CorrectOneThreeRhythmSegments++;
+                    }
+                    else if (segment.level1TimeError)
+                    {
+                        level1CorrectOneThreeRhythmSegments++;
+                    }
+                }
             }
         }
 
@@ -291,6 +325,9 @@ public class RealTimeInputTracker : MonoBehaviour
 
         mainRhythmCorrectRate = (totalMainRhythmSegments > 0) ? (float)correctMainRhythmSegments / totalMainRhythmSegments : 1f;
         mainRhythmLevel1CorrectRate = (totalMainRhythmSegments > 0) ? (float)level1CorrectMainRhythmSegments / totalMainRhythmSegments : 1f;
+
+        oneThreeRhythmCorrectRate = (totalOneThreeRhythmSegments > 0) ? (float)correctOneThreeRhythmSegments / totalOneThreeRhythmSegments : 1f;
+        oneThreeRhythmLevel1CorrectRate = (totalOneThreeRhythmSegments > 0) ? (float)level1CorrectOneThreeRhythmSegments / totalOneThreeRhythmSegments : 1f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据
