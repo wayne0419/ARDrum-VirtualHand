@@ -6,7 +6,7 @@ public class DrumNote : MonoBehaviour
     public Color skippedColor; // 跳过时的颜色
     public Color defaultColor; // 默认颜色
     public TransformPlayBacker.HitSegment associatedSegment; // 关联的 HitSegment
-    public float beatPosition; // 代表这个 drumNote 所对应的 hitSegment 的节拍位置
+    public float beatPosition; // 代表这个 drumNote 所对应的 hitSegment 的 beatPosition
 
     private Renderer noteRenderer;
 
@@ -35,29 +35,39 @@ public class DrumNote : MonoBehaviour
         }
     }
 
-    // 新增的功能：切换 associatedSegment 的 skip 状态并调整 DrumNote 的颜色
-    public void ToggleSkip()
+    // 新增的功能：设置 associatedSegment 的 skip 状态为 true 并调整 DrumNote 的颜色
+    public void SetSkip()
     {
         if (associatedSegment != null)
         {
-            // 切换 skip 状态
-            associatedSegment.skip = !associatedSegment.skip;
+            associatedSegment.skip = true;
+            SetSkippedColor(); // 设置为 skippedColor
+        }
+    }
 
-            // 根据 skip 状态调整 DrumNote 的颜色
-            if (associatedSegment.skip)
-            {
-                SetSkippedColor(); // 如果跳过，设置为 skippedColor
-            }
-            else
-            {
-                SetDefaultColor(); // 否则，设置为 defaultColor
-            }
+    // 新增的功能：设置 associatedSegment 的 skip 状态为 false 并调整 DrumNote 的颜色
+    public void SetUnSkip()
+    {
+        if (associatedSegment != null)
+        {
+            associatedSegment.skip = false;
+            SetDefaultColor(); // 设置为 defaultColor
         }
     }
 
     // 当鼠标点击此 DrumNote 时，执行 ToggleSkip
     void OnMouseDown()
     {
-        ToggleSkip();
+        if (associatedSegment != null)
+        {
+            if (associatedSegment.skip)
+            {
+                SetUnSkip();
+            }
+            else
+            {
+                SetSkip();
+            }
+        }
     }
 }
