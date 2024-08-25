@@ -25,4 +25,23 @@ public class DrumSheet : MonoBehaviour
         }
         return null; // 如果找不到对应的 DrumNote，则返回 null
     }
+
+    // 更新后的方法：设置所有使用指定 limb 的 DrumNote 为跳过或不跳过状态
+    public void SetDrumNoteSkipStateForLimb(string limb, bool skipState)
+    {
+        foreach (DrumNote note in drumNotes)
+        {
+            if (note.associatedSegment != null && note.associatedSegment.limbUsed == limb)
+            {
+                if (skipState)
+                {
+                    note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                }
+                else
+                {
+                    note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                }
+            }
+        }
+    }
 }
