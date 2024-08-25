@@ -33,6 +33,19 @@ public class RealTimeInputTracker : MonoBehaviour
     public float bothHandEightBeatLevel1CorrectRate = 0f; // 双手八拍节奏包含 level 1 错误的正确率
     public float bothHandSixteenBeatCorrectRate = 0f; // 双手十六拍节奏的正确率
     public float bothHandSixteenBeatLevel1CorrectRate = 0f; // 双手十六拍节奏包含 level 1 错误的正确率
+    public float rightHandRightFeetFourBeatCorrectRate = 0f; // 右手右腳四拍节奏的正确率
+    public float rightHandRightFeetFourBeatLevel1CorrectRate = 0f; // 右手右腳四拍节奏包含 level 1 错误的正确率
+    public float rightHandRightFeetEightBeatCorrectRate = 0f; // 右手右腳八拍节奏的正确率
+    public float rightHandRightFeetEightBeatLevel1CorrectRate = 0f; // 右手右腳八拍节奏包含 level 1 错误的正确率
+    public float rightHandRightFeetSixteenBeatCorrectRate = 0f; // 右手右腳十六拍节奏的正确率
+    public float rightHandRightFeetSixteenBeatLevel1CorrectRate = 0f; // 右手右腳十六拍节奏包含 level 1 错误的正确率
+
+    public float rightHandLeftHandRightFeetFourBeatCorrectRate = 0f; // 右手左手右腳四拍节奏的正确率
+    public float rightHandLeftHandRightFeetFourBeatLevel1CorrectRate = 0f; // 右手左手右腳四拍节奏包含 level 1 错误的正确率
+    public float rightHandLeftHandRightFeetEightBeatCorrectRate = 0f; // 右手左手右腳八拍节奏的正确率
+    public float rightHandLeftHandRightFeetEightBeatLevel1CorrectRate = 0f; // 右手左手右腳八拍节奏包含 level 1 错误的正确率
+    public float rightHandLeftHandRightFeetSixteenBeatCorrectRate = 0f; // 右手左手右腳十六拍节奏的正确率
+    public float rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate = 0f; // 右手左手右腳十六拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示总正确率
     public TextMeshProUGUI level1CorrectRateText; // TextMeshProUGUI 用于显示总包含 level 1 错误的正确率
     public TextMeshProUGUI mainRhythmCorrectRateText; // TextMeshProUGUI 用于显示主节奏的正确率
@@ -53,6 +66,18 @@ public class RealTimeInputTracker : MonoBehaviour
     public TextMeshProUGUI bothHandEightBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示双手8拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI bothHandSixteenBeatCorrectRateText; // TextMeshProUGUI 用于显示双手十六拍节奏的正确率
     public TextMeshProUGUI bothHandSixteenBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示双手十六拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandRightFeetFourBeatCorrectRateText; // TextMeshProUGUI 用于显示右手右腳4拍节奏的正确率
+    public TextMeshProUGUI rightHandRightFeetFourBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手右腳4拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandRightFeetEightBeatCorrectRateText; // TextMeshProUGUI 用于显示右手右腳8拍节奏的正确率
+    public TextMeshProUGUI rightHandRightFeetEightBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手右腳8拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandRightFeetSixteenBeatCorrectRateText; // TextMeshProUGUI 用于显示右手右腳十六拍节奏的正确率
+    public TextMeshProUGUI rightHandRightFeetSixteenBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手右腳十六拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandLeftHandRightFeetFourBeatCorrectRateText; // TextMeshProUGUI 用于显示右手左手右腳4拍节奏的正确率
+    public TextMeshProUGUI rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手左手右腳4拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandLeftHandRightFeetEightBeatCorrectRateText; // TextMeshProUGUI 用于显示右手左手右腳8拍节奏的正确率
+    public TextMeshProUGUI rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手左手右腳8拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandLeftHandRightFeetSixteenBeatCorrectRateText; // TextMeshProUGUI 用于显示右手左手右腳十六拍节奏的正确率
+    public TextMeshProUGUI rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手左手右腳十六拍节奏包含 level 1 错误的正确率
     public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
@@ -191,63 +216,124 @@ public class RealTimeInputTracker : MonoBehaviour
 
         if (rightHandFourBeatCorrectRateText != null)
         {
-            rightHandFourBeatCorrectRateText.text = $"Right Hand 4 Beat Correct Rate: {rightHandFourBeatCorrectRate:P2}";
+            rightHandFourBeatCorrectRateText.text = $"{rightHandFourBeatCorrectRate:P2}";
         }
 
         if (rightHandFourBeatLevel1CorrectRateText != null)
         {
-            rightHandFourBeatLevel1CorrectRateText.text = $"Right Hand 4 Beat Level 1 Correct Rate: {rightHandFourBeatLevel1CorrectRate:P2}";
+            rightHandFourBeatLevel1CorrectRateText.text = $"{rightHandFourBeatLevel1CorrectRate:P2}";
         }
 
         if (rightHandEightBeatCorrectRateText != null)
         {
-            rightHandEightBeatCorrectRateText.text = $"Right Hand 8 Beat Correct Rate: {rightHandEightBeatCorrectRate:P2}";
+            rightHandEightBeatCorrectRateText.text = $"{rightHandEightBeatCorrectRate:P2}";
         }
 
         if (rightHandEightBeatLevel1CorrectRateText != null)
         {
-            rightHandEightBeatLevel1CorrectRateText.text = $"Right Hand 8 Beat Level 1 Correct Rate: {rightHandEightBeatLevel1CorrectRate:P2}";
+            rightHandEightBeatLevel1CorrectRateText.text = $"{rightHandEightBeatLevel1CorrectRate:P2}";
         }
 
         if (rightHandSixteenBeatCorrectRateText != null)
         {
-            rightHandSixteenBeatCorrectRateText.text = $"Right Hand 16 Beat Correct Rate: {rightHandSixteenBeatCorrectRate:P2}";
+            rightHandSixteenBeatCorrectRateText.text = $"{rightHandSixteenBeatCorrectRate:P2}";
         }
 
         if (rightHandSixteenBeatLevel1CorrectRateText != null)
         {
-            rightHandSixteenBeatLevel1CorrectRateText.text = $"Right Hand 16 Beat Level 1 Correct Rate: {rightHandSixteenBeatLevel1CorrectRate:P2}";
+            rightHandSixteenBeatLevel1CorrectRateText.text = $"{rightHandSixteenBeatLevel1CorrectRate:P2}";
         }
 
         if (bothHandFourBeatCorrectRateText != null)
         {
-            bothHandFourBeatCorrectRateText.text = $"Both Hands 4 Beat Correct Rate: {bothHandFourBeatCorrectRate:P2}";
+            bothHandFourBeatCorrectRateText.text = $"{bothHandFourBeatCorrectRate:P2}";
         }
 
         if (bothHandFourBeatLevel1CorrectRateText != null)
         {
-            bothHandFourBeatLevel1CorrectRateText.text = $"Both Hands 4 Beat Level 1 Correct Rate: {bothHandFourBeatLevel1CorrectRate:P2}";
+            bothHandFourBeatLevel1CorrectRateText.text = $"{bothHandFourBeatLevel1CorrectRate:P2}";
         }
 
         if (bothHandEightBeatCorrectRateText != null)
         {
-            bothHandEightBeatCorrectRateText.text = $"Both Hands 8 Beat Correct Rate: {bothHandEightBeatCorrectRate:P2}";
+            bothHandEightBeatCorrectRateText.text = $"{bothHandEightBeatCorrectRate:P2}";
         }
 
         if (bothHandEightBeatLevel1CorrectRateText != null)
         {
-            bothHandEightBeatLevel1CorrectRateText.text = $"Both Hands 8 Beat Level 1 Correct Rate: {bothHandEightBeatLevel1CorrectRate:P2}";
+            bothHandEightBeatLevel1CorrectRateText.text = $"{bothHandEightBeatLevel1CorrectRate:P2}";
         }
 
         if (bothHandSixteenBeatCorrectRateText != null)
         {
-            bothHandSixteenBeatCorrectRateText.text = $"Both Hands 16 Beat Correct Rate: {bothHandSixteenBeatCorrectRate:P2}";
+            bothHandSixteenBeatCorrectRateText.text = $"{bothHandSixteenBeatCorrectRate:P2}";
         }
 
         if (bothHandSixteenBeatLevel1CorrectRateText != null)
         {
-            bothHandSixteenBeatLevel1CorrectRateText.text = $"Both Hands 16 Beat Level 1 Correct Rate: {bothHandSixteenBeatLevel1CorrectRate:P2}";
+            bothHandSixteenBeatLevel1CorrectRateText.text = $"{bothHandSixteenBeatLevel1CorrectRate:P2}";
         }
+
+        if (rightHandRightFeetFourBeatCorrectRateText != null)
+        {
+            rightHandRightFeetFourBeatCorrectRateText.text = $"{rightHandRightFeetFourBeatCorrectRate:P2}";
+        }
+
+        if (rightHandRightFeetFourBeatLevel1CorrectRateText != null)
+        {
+            rightHandRightFeetFourBeatLevel1CorrectRateText.text = $"{rightHandRightFeetFourBeatLevel1CorrectRate:P2}";
+        }
+
+        if (rightHandRightFeetEightBeatCorrectRateText != null)
+        {
+            rightHandRightFeetEightBeatCorrectRateText.text = $"{rightHandRightFeetEightBeatCorrectRate:P2}";
+        }
+
+        if (rightHandRightFeetEightBeatLevel1CorrectRateText != null)
+        {
+            rightHandRightFeetEightBeatLevel1CorrectRateText.text = $"{rightHandRightFeetEightBeatLevel1CorrectRate:P2}";
+        }
+
+        if  (rightHandRightFeetSixteenBeatCorrectRateText != null)
+        {
+            rightHandRightFeetSixteenBeatCorrectRateText.text = $"{rightHandRightFeetSixteenBeatCorrectRate:P2}";
+        }
+
+        if (rightHandRightFeetSixteenBeatLevel1CorrectRateText != null)
+        {
+            rightHandRightFeetSixteenBeatLevel1CorrectRateText.text = $"{rightHandRightFeetSixteenBeatLevel1CorrectRate:P2}";
+        }
+
+        if (rightHandLeftHandRightFeetFourBeatCorrectRateText != null)
+        {
+            rightHandLeftHandRightFeetFourBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetFourBeatCorrectRate:P2}";
+        }
+
+        if (rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText != null)
+        {
+            rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetFourBeatLevel1CorrectRate:P2}";
+        }
+
+        if (rightHandLeftHandRightFeetEightBeatCorrectRateText != null)
+        {
+            rightHandLeftHandRightFeetEightBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetEightBeatCorrectRate:P2}";
+        }
+
+        if (rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText != null)
+        {
+            rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetEightBeatLevel1CorrectRate:P2}";
+        }
+
+        if  (rightHandLeftHandRightFeetSixteenBeatCorrectRateText != null)
+        {
+            rightHandLeftHandRightFeetSixteenBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetSixteenBeatCorrectRate:P2}";
+        }
+
+        if (rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText != null)
+        {
+            rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate:P2}";
+        }
+
 
         // 禁用所有 InputActions
         bassDrumHit.Disable();
@@ -395,6 +481,30 @@ public class RealTimeInputTracker : MonoBehaviour
         int totalBothHandSixteenBeatSegments = 0;
         int correctBothHandSixteenBeatSegments = 0;
         int level1CorrectBothHandSixteenBeatSegments = 0;
+
+        int totalRightHandRightFeetFourBeatSegments = 0;
+        int correctRightHandRightFeetFourBeatSegments = 0;
+        int level1CorrectRightHandRightFeetFourBeatSegments = 0;
+
+        int totalRightHandRightFeetEightBeatSegments = 0;
+        int correctRightHandRightFeetEightBeatSegments = 0;
+        int level1CorrectRightHandRightFeetEightBeatSegments = 0;
+
+        int totalRightHandRightFeetSixteenBeatSegments = 0;
+        int correctRightHandRightFeetSixteenBeatSegments = 0;
+        int level1CorrectRightHandRightFeetSixteenBeatSegments = 0;
+
+        int totalRightHandLeftHandRightFeetFourBeatSegments = 0;
+        int correctRightHandLeftHandRightFeetFourBeatSegments = 0;
+        int level1CorrectRightHandLeftHandRightFeetFourBeatSegments = 0;
+
+        int totalRightHandLeftHandRightFeetEightBeatSegments = 0;
+        int correctRightHandLeftHandRightFeetEightBeatSegments = 0;
+        int level1CorrectRightHandLeftHandRightFeetEightBeatSegments = 0;
+
+        int totalRightHandLeftHandRightFeetSixteenBeatSegments = 0;
+        int correctRightHandLeftHandRightFeetSixteenBeatSegments = 0;
+        int level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments = 0;
 
         foreach (var segment in trackedHitSegments)
         {
@@ -577,6 +687,125 @@ public class RealTimeInputTracker : MonoBehaviour
                     level1CorrectBothHandSixteenBeatSegments++;
                 }
             }
+
+            // 计算右手右腳四拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
+            {
+                totalRightHandRightFeetFourBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandRightFeetFourBeatSegments++;
+                    level1CorrectRightHandRightFeetFourBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandRightFeetFourBeatSegments++;
+                }
+            }
+
+            // 计算右手右腳八拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.5 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.5))
+            {
+                totalRightHandRightFeetEightBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandRightFeetEightBeatSegments++;
+                    level1CorrectRightHandRightFeetEightBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandRightFeetEightBeatSegments++;
+                }
+            }
+
+            // 计算右手右腳十六拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
+                 segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.25 ||
+                 segment.associatedNote.beatPosition == 2.5 || segment.associatedNote.beatPosition == 2.75 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.25 ||
+                 segment.associatedNote.beatPosition == 3.5 || segment.associatedNote.beatPosition == 3.75 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.25 ||
+                 segment.associatedNote.beatPosition == 4.5 || segment.associatedNote.beatPosition == 4.75))
+            {
+                totalRightHandRightFeetSixteenBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandRightFeetSixteenBeatSegments++;
+                    level1CorrectRightHandRightFeetSixteenBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandRightFeetSixteenBeatSegments++;
+                }
+            }
+
+            // 计算右手左手右腳四拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
+            {
+                totalRightHandLeftHandRightFeetFourBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandLeftHandRightFeetFourBeatSegments++;
+                    level1CorrectRightHandLeftHandRightFeetFourBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandLeftHandRightFeetFourBeatSegments++;
+                }
+            }
+
+            // 计算右手左手右腳八拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.5 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.5))
+            {
+                totalRightHandLeftHandRightFeetEightBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandLeftHandRightFeetEightBeatSegments++;
+                    level1CorrectRightHandLeftHandRightFeetEightBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandLeftHandRightFeetEightBeatSegments++;
+                }
+            }
+
+            // 计算右手左手右腳十六拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
+                 segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.25 ||
+                 segment.associatedNote.beatPosition == 2.5 || segment.associatedNote.beatPosition == 2.75 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.25 ||
+                 segment.associatedNote.beatPosition == 3.5 || segment.associatedNote.beatPosition == 3.75 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.25 ||
+                 segment.associatedNote.beatPosition == 4.5 || segment.associatedNote.beatPosition == 4.75))
+            {
+                totalRightHandLeftHandRightFeetSixteenBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandLeftHandRightFeetSixteenBeatSegments++;
+                    level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments++;
+                }
+            }
+
         }
 
         // 修改后的逻辑：如果没有段落，默认正确率为 100%
@@ -609,6 +838,24 @@ public class RealTimeInputTracker : MonoBehaviour
 
         bothHandSixteenBeatCorrectRate = (totalBothHandSixteenBeatSegments > 0) ? (float)correctBothHandSixteenBeatSegments / totalBothHandSixteenBeatSegments : 1f;
         bothHandSixteenBeatLevel1CorrectRate = (totalBothHandSixteenBeatSegments > 0) ? (float)level1CorrectBothHandSixteenBeatSegments / totalBothHandSixteenBeatSegments : 1f;
+
+        rightHandRightFeetFourBeatCorrectRate = (totalRightHandRightFeetFourBeatSegments > 0) ? (float)correctRightHandRightFeetFourBeatSegments / totalRightHandRightFeetFourBeatSegments : 1f;
+        rightHandRightFeetFourBeatLevel1CorrectRate = (totalRightHandRightFeetFourBeatSegments > 0) ? (float)level1CorrectRightHandRightFeetFourBeatSegments / totalRightHandRightFeetFourBeatSegments : 1f;
+
+        rightHandRightFeetEightBeatCorrectRate = (totalRightHandRightFeetEightBeatSegments > 0) ? (float)correctRightHandRightFeetEightBeatSegments / totalRightHandRightFeetEightBeatSegments : 1f;
+        rightHandRightFeetEightBeatLevel1CorrectRate = (totalRightHandRightFeetEightBeatSegments > 0) ? (float)level1CorrectRightHandRightFeetEightBeatSegments / totalRightHandRightFeetEightBeatSegments : 1f;
+
+        rightHandRightFeetSixteenBeatCorrectRate = (totalRightHandRightFeetSixteenBeatSegments > 0) ? (float)correctRightHandRightFeetSixteenBeatSegments / totalRightHandRightFeetSixteenBeatSegments : 1f;
+        rightHandRightFeetSixteenBeatLevel1CorrectRate = (totalRightHandRightFeetSixteenBeatSegments > 0) ? (float)level1CorrectRightHandRightFeetSixteenBeatSegments / totalRightHandRightFeetSixteenBeatSegments : 1f;
+
+        rightHandLeftHandRightFeetFourBeatCorrectRate = (totalRightHandLeftHandRightFeetFourBeatSegments > 0) ? (float)correctRightHandLeftHandRightFeetFourBeatSegments / totalRightHandLeftHandRightFeetFourBeatSegments : 1f;
+        rightHandLeftHandRightFeetFourBeatLevel1CorrectRate = (totalRightHandLeftHandRightFeetFourBeatSegments > 0) ? (float)level1CorrectRightHandLeftHandRightFeetFourBeatSegments / totalRightHandLeftHandRightFeetFourBeatSegments : 1f;
+
+        rightHandLeftHandRightFeetEightBeatCorrectRate = (totalRightHandLeftHandRightFeetEightBeatSegments > 0) ? (float)correctRightHandLeftHandRightFeetEightBeatSegments / totalRightHandLeftHandRightFeetEightBeatSegments : 1f;
+        rightHandLeftHandRightFeetEightBeatLevel1CorrectRate = (totalRightHandLeftHandRightFeetEightBeatSegments > 0) ? (float)level1CorrectRightHandLeftHandRightFeetEightBeatSegments / totalRightHandLeftHandRightFeetEightBeatSegments : 1f;
+
+        rightHandLeftHandRightFeetSixteenBeatCorrectRate = (totalRightHandLeftHandRightFeetSixteenBeatSegments > 0) ? (float)correctRightHandLeftHandRightFeetSixteenBeatSegments / totalRightHandLeftHandRightFeetSixteenBeatSegments : 1f;
+        rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate = (totalRightHandLeftHandRightFeetSixteenBeatSegments > 0) ? (float)level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments / totalRightHandLeftHandRightFeetSixteenBeatSegments : 1f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据
