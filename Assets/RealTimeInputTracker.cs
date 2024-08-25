@@ -25,6 +25,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public float rightHandFourBeatLevel1CorrectRate = 0f; // 右手四拍节奏包含 level 1 错误的正确率
     public float rightHandEightBeatCorrectRate = 0f; // 右手八拍节奏的正确率
     public float rightHandEightBeatLevel1CorrectRate = 0f; // 右手八拍节奏包含 level 1 错误的正确率
+    public float rightHandSixteenBeatCorrectRate = 0f; // 右手十六拍节奏的正确率
+    public float rightHandSixteenBeatLevel1CorrectRate = 0f; // 右手十六拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示总正确率
     public TextMeshProUGUI level1CorrectRateText; // TextMeshProUGUI 用于显示总包含 level 1 错误的正确率
     public TextMeshProUGUI mainRhythmCorrectRateText; // TextMeshProUGUI 用于显示主节奏的正确率
@@ -37,6 +39,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public TextMeshProUGUI rightHandFourBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手四拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI rightHandEightBeatCorrectRateText; // TextMeshProUGUI 用于显示右手八拍节奏的正确率
     public TextMeshProUGUI rightHandEightBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手八拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandSixteenBeatCorrectRateText; // TextMeshProUGUI 用于显示右手十六拍节奏的正确率
+    public TextMeshProUGUI rightHandSixteenBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手十六拍节奏包含 level 1 错误的正确率
     public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
@@ -175,22 +179,32 @@ public class RealTimeInputTracker : MonoBehaviour
 
         if (rightHandFourBeatCorrectRateText != null)
         {
-            rightHandFourBeatCorrectRateText.text = $"Right Hand Four Beat Correct Rate: {rightHandFourBeatCorrectRate:P2}";
+            rightHandFourBeatCorrectRateText.text = $"Right Hand 4 Beat Correct Rate: {rightHandFourBeatCorrectRate:P2}";
         }
 
         if (rightHandFourBeatLevel1CorrectRateText != null)
         {
-            rightHandFourBeatLevel1CorrectRateText.text = $"Right Hand Four Beat Level 1 Correct Rate: {rightHandFourBeatLevel1CorrectRate:P2}";
+            rightHandFourBeatLevel1CorrectRateText.text = $"Right Hand 4 Beat Level 1 Correct Rate: {rightHandFourBeatLevel1CorrectRate:P2}";
         }
 
         if (rightHandEightBeatCorrectRateText != null)
         {
-            rightHandEightBeatCorrectRateText.text = $"Right Hand Eight Beat Correct Rate: {rightHandEightBeatCorrectRate:P2}";
+            rightHandEightBeatCorrectRateText.text = $"Right Hand 8 Beat Correct Rate: {rightHandEightBeatCorrectRate:P2}";
         }
 
         if (rightHandEightBeatLevel1CorrectRateText != null)
         {
-            rightHandEightBeatLevel1CorrectRateText.text = $"Right Hand Eight Beat Level 1 Correct Rate: {rightHandEightBeatLevel1CorrectRate:P2}";
+            rightHandEightBeatLevel1CorrectRateText.text = $"Right Hand 8 Beat Level 1 Correct Rate: {rightHandEightBeatLevel1CorrectRate:P2}";
+        }
+
+        if (rightHandSixteenBeatCorrectRateText != null)
+        {
+            rightHandSixteenBeatCorrectRateText.text = $"Right Hand 16 Beat Correct Rate: {rightHandSixteenBeatCorrectRate:P2}";
+        }
+
+        if (rightHandSixteenBeatLevel1CorrectRateText != null)
+        {
+            rightHandSixteenBeatLevel1CorrectRateText.text = $"Right Hand 16 Beat Level 1 Correct Rate: {rightHandSixteenBeatLevel1CorrectRate:P2}";
         }
 
         // 禁用所有 InputActions
@@ -324,6 +338,10 @@ public class RealTimeInputTracker : MonoBehaviour
         int correctRightHandEightBeatSegments = 0;
         int level1CorrectRightHandEightBeatSegments = 0;
 
+        int totalRightHandSixteenBeatSegments = 0;
+        int correctRightHandSixteenBeatSegments = 0;
+        int level1CorrectRightHandSixteenBeatSegments = 0;
+
         foreach (var segment in trackedHitSegments)
         {
             if (!segment.skip)
@@ -406,11 +424,11 @@ public class RealTimeInputTracker : MonoBehaviour
             }
 
             // 计算右手八拍节奏的正确率
-            if (segment.limbUsed == "righthand" && segment.associatedNote != null && 
-                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5f ||
-                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5f ||
-                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.5f ||
-                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.5f))
+            if (segment.limbUsed == "righthand" && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.5 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.5))
             {
                 totalRightHandEightBeatSegments++;
                 if (segment.correct)
@@ -421,6 +439,29 @@ public class RealTimeInputTracker : MonoBehaviour
                 else if (segment.level1TimeError)
                 {
                     level1CorrectRightHandEightBeatSegments++;
+                }
+            }
+
+            // 计算右手十六拍节奏的正确率
+            if (segment.limbUsed == "righthand" && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
+                 segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.25 ||
+                 segment.associatedNote.beatPosition == 2.5 || segment.associatedNote.beatPosition == 2.75 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.25 ||
+                 segment.associatedNote.beatPosition == 3.5 || segment.associatedNote.beatPosition == 3.75 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.25 ||
+                 segment.associatedNote.beatPosition == 4.5 || segment.associatedNote.beatPosition == 4.75))
+            {
+                totalRightHandSixteenBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandSixteenBeatSegments++;
+                    level1CorrectRightHandSixteenBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandSixteenBeatSegments++;
                 }
             }
         }
@@ -443,6 +484,9 @@ public class RealTimeInputTracker : MonoBehaviour
 
         rightHandEightBeatCorrectRate = (totalRightHandEightBeatSegments > 0) ? (float)correctRightHandEightBeatSegments / totalRightHandEightBeatSegments : 1f;
         rightHandEightBeatLevel1CorrectRate = (totalRightHandEightBeatSegments > 0) ? (float)level1CorrectRightHandEightBeatSegments / totalRightHandEightBeatSegments : 1f;
+
+        rightHandSixteenBeatCorrectRate = (totalRightHandSixteenBeatSegments > 0) ? (float)correctRightHandSixteenBeatSegments / totalRightHandSixteenBeatSegments : 1f;
+        rightHandSixteenBeatLevel1CorrectRate = (totalRightHandSixteenBeatSegments > 0) ? (float)level1CorrectRightHandSixteenBeatSegments / totalRightHandSixteenBeatSegments : 1f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据
