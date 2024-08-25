@@ -21,6 +21,9 @@ public class RealTimeInputTracker : MonoBehaviour
     public float oneThreeRhythmLevel1CorrectRate = 0f; // 1和3拍节奏包含 level 1 错误的正确率
     public float twoFourRhythmCorrectRate = 0f; // 2和4拍节奏的正确率
     public float twoFourRhythmLevel1CorrectRate = 0f; // 2和4拍节奏包含 level 1 错误的正确率
+    public float rightHandFourBeatCorrectRate = 0f; // 右手四拍节奏的正确率
+    public float rightHandFourBeatLevel1CorrectRate = 0f; // 右手四拍节奏包含 level 1 错误的正确率
+
     public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示总正确率
     public TextMeshProUGUI level1CorrectRateText; // TextMeshProUGUI 用于显示总包含 level 1 错误的正确率
     public TextMeshProUGUI mainRhythmCorrectRateText; // TextMeshProUGUI 用于显示主节奏的正确率
@@ -29,6 +32,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public TextMeshProUGUI oneThreeRhythmLevel1CorrectRateText; // TextMeshProUGUI 用于显示1和3拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI twoFourRhythmCorrectRateText; // TextMeshProUGUI 用于显示2和4拍节奏的正确率
     public TextMeshProUGUI twoFourRhythmLevel1CorrectRateText; // TextMeshProUGUI 用于显示2和4拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI rightHandFourBeatCorrectRateText; // TextMeshProUGUI 用于显示右手四拍节奏的正确率
+    public TextMeshProUGUI rightHandFourBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手四拍节奏包含 level 1 错误的正确率
     public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
@@ -165,6 +170,16 @@ public class RealTimeInputTracker : MonoBehaviour
             twoFourRhythmLevel1CorrectRateText.text = $"2 & 4 Rhythm Level 1 Correct Rate: {twoFourRhythmLevel1CorrectRate:P2}";
         }
 
+        if (rightHandFourBeatCorrectRateText != null)
+        {
+            rightHandFourBeatCorrectRateText.text = $"Right Hand Four Beat Correct Rate: {rightHandFourBeatCorrectRate:P2}";
+        }
+
+        if (rightHandFourBeatLevel1CorrectRateText != null)
+        {
+            rightHandFourBeatLevel1CorrectRateText.text = $"Right Hand Four Beat Level 1 Correct Rate: {rightHandFourBeatLevel1CorrectRate:P2}";
+        }
+
         // 禁用所有 InputActions
         bassDrumHit.Disable();
         snareDrumHit.Disable();
@@ -288,6 +303,10 @@ public class RealTimeInputTracker : MonoBehaviour
         int correctTwoFourRhythmSegments = 0;
         int level1CorrectTwoFourRhythmSegments = 0;
 
+        int totalRightHandFourBeatSegments = 0;
+        int correctRightHandFourBeatSegments = 0;
+        int level1CorrectRightHandFourBeatSegments = 0;
+
         foreach (var segment in trackedHitSegments)
         {
             if (!segment.skip)
@@ -351,6 +370,23 @@ public class RealTimeInputTracker : MonoBehaviour
                     }
                 }
             }
+
+            // 计算右手四拍节奏的正确率
+            if (segment.limbUsed == "righthand" && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
+            {
+                totalRightHandFourBeatSegments++;
+                if (segment.correct)
+                {
+                    correctRightHandFourBeatSegments++;
+                    level1CorrectRightHandFourBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectRightHandFourBeatSegments++;
+                }
+            }
         }
 
         // 修改后的逻辑：如果没有段落，默认正确率为 100%
@@ -365,6 +401,9 @@ public class RealTimeInputTracker : MonoBehaviour
 
         twoFourRhythmCorrectRate = (totalTwoFourRhythmSegments > 0) ? (float)correctTwoFourRhythmSegments / totalTwoFourRhythmSegments : 1f;
         twoFourRhythmLevel1CorrectRate = (totalTwoFourRhythmSegments > 0) ? (float)level1CorrectTwoFourRhythmSegments / totalTwoFourRhythmSegments : 1f;
+
+        rightHandFourBeatCorrectRate = (totalRightHandFourBeatSegments > 0) ? (float)correctRightHandFourBeatSegments / totalRightHandFourBeatSegments : 1f;
+        rightHandFourBeatLevel1CorrectRate = (totalRightHandFourBeatSegments > 0) ? (float)level1CorrectRightHandFourBeatSegments / totalRightHandFourBeatSegments : 1f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据
