@@ -27,6 +27,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public float rightHandEightBeatLevel1CorrectRate = 0f; // 右手八拍节奏包含 level 1 错误的正确率
     public float rightHandSixteenBeatCorrectRate = 0f; // 右手十六拍节奏的正确率
     public float rightHandSixteenBeatLevel1CorrectRate = 0f; // 右手十六拍节奏包含 level 1 错误的正确率
+    public float bothHandSixteenBeatCorrectRate = 0f; // 双手十六拍节奏的正确率
+    public float bothHandSixteenBeatLevel1CorrectRate = 0f; // 双手十六拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI correctRateText; // TextMeshProUGUI 用于显示总正确率
     public TextMeshProUGUI level1CorrectRateText; // TextMeshProUGUI 用于显示总包含 level 1 错误的正确率
     public TextMeshProUGUI mainRhythmCorrectRateText; // TextMeshProUGUI 用于显示主节奏的正确率
@@ -41,6 +43,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public TextMeshProUGUI rightHandEightBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手八拍节奏包含 level 1 错误的正确率
     public TextMeshProUGUI rightHandSixteenBeatCorrectRateText; // TextMeshProUGUI 用于显示右手十六拍节奏的正确率
     public TextMeshProUGUI rightHandSixteenBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示右手十六拍节奏包含 level 1 错误的正确率
+    public TextMeshProUGUI bothHandSixteenBeatCorrectRateText; // TextMeshProUGUI 用于显示双手十六拍节奏的正确率
+    public TextMeshProUGUI bothHandSixteenBeatLevel1CorrectRateText; // TextMeshProUGUI 用于显示双手十六拍节奏包含 level 1 错误的正确率
     public Transform markerHolder; // 用于存放生成的 marker 的父级对象
 
     // 鼓击打的 InputActions
@@ -207,6 +211,16 @@ public class RealTimeInputTracker : MonoBehaviour
             rightHandSixteenBeatLevel1CorrectRateText.text = $"Right Hand 16 Beat Level 1 Correct Rate: {rightHandSixteenBeatLevel1CorrectRate:P2}";
         }
 
+        if (bothHandSixteenBeatCorrectRateText != null)
+        {
+            bothHandSixteenBeatCorrectRateText.text = $"Both Hands 16 Beat Correct Rate: {bothHandSixteenBeatCorrectRate:P2}";
+        }
+
+        if (bothHandSixteenBeatLevel1CorrectRateText != null)
+        {
+            bothHandSixteenBeatLevel1CorrectRateText.text = $"Both Hands 16 Beat Level 1 Correct Rate: {bothHandSixteenBeatLevel1CorrectRate:P2}";
+        }
+
         // 禁用所有 InputActions
         bassDrumHit.Disable();
         snareDrumHit.Disable();
@@ -342,6 +356,10 @@ public class RealTimeInputTracker : MonoBehaviour
         int correctRightHandSixteenBeatSegments = 0;
         int level1CorrectRightHandSixteenBeatSegments = 0;
 
+        int totalBothHandSixteenBeatSegments = 0;
+        int correctBothHandSixteenBeatSegments = 0;
+        int level1CorrectBothHandSixteenBeatSegments = 0;
+
         foreach (var segment in trackedHitSegments)
         {
             if (!segment.skip)
@@ -464,6 +482,29 @@ public class RealTimeInputTracker : MonoBehaviour
                     level1CorrectRightHandSixteenBeatSegments++;
                 }
             }
+
+            // 计算双手十六拍节奏的正确率
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+                (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
+                 segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
+                 segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.25 ||
+                 segment.associatedNote.beatPosition == 2.5 || segment.associatedNote.beatPosition == 2.75 ||
+                 segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.25 ||
+                 segment.associatedNote.beatPosition == 3.5 || segment.associatedNote.beatPosition == 3.75 ||
+                 segment.associatedNote.beatPosition == 4 || segment.associatedNote.beatPosition == 4.25 ||
+                 segment.associatedNote.beatPosition == 4.5 || segment.associatedNote.beatPosition == 4.75))
+            {
+                totalBothHandSixteenBeatSegments++;
+                if (segment.correct)
+                {
+                    correctBothHandSixteenBeatSegments++;
+                    level1CorrectBothHandSixteenBeatSegments++;
+                }
+                else if (segment.level1TimeError)
+                {
+                    level1CorrectBothHandSixteenBeatSegments++;
+                }
+            }
         }
 
         // 修改后的逻辑：如果没有段落，默认正确率为 100%
@@ -487,6 +528,9 @@ public class RealTimeInputTracker : MonoBehaviour
 
         rightHandSixteenBeatCorrectRate = (totalRightHandSixteenBeatSegments > 0) ? (float)correctRightHandSixteenBeatSegments / totalRightHandSixteenBeatSegments : 1f;
         rightHandSixteenBeatLevel1CorrectRate = (totalRightHandSixteenBeatSegments > 0) ? (float)level1CorrectRightHandSixteenBeatSegments / totalRightHandSixteenBeatSegments : 1f;
+
+        bothHandSixteenBeatCorrectRate = (totalBothHandSixteenBeatSegments > 0) ? (float)correctBothHandSixteenBeatSegments / totalBothHandSixteenBeatSegments : 1f;
+        bothHandSixteenBeatLevel1CorrectRate = (totalBothHandSixteenBeatSegments > 0) ? (float)level1CorrectBothHandSixteenBeatSegments / totalBothHandSixteenBeatSegments : 1f;
     }
 
     // 序列化的类，用于存储每次击打的输入数据

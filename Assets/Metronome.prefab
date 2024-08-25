@@ -259,6 +259,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 2-2
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -370,6 +375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 2-3
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -465,6 +475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
@@ -577,6 +592,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 4-2
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -688,6 +708,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 2-4
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -783,6 +808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
@@ -895,6 +925,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 4-4
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -1005,6 +1040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 4-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
@@ -1117,6 +1157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 3-4
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -1227,6 +1272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 1-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
@@ -1339,6 +1389,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 1-2
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -1434,6 +1489,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
@@ -1546,6 +1606,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 3-3
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -1657,6 +1722,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metronome Note 3-2
       objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
       propertyPath: highlightColor.b
@@ -1752,6 +1822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
@@ -1863,6 +1938,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome Note 1-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487413336486260703, guid: faf9dd8c0efe38f4d801168f1bb0941d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5047527246737796802, guid: faf9dd8c0efe38f4d801168f1bb0941d,
         type: 3}
