@@ -34,7 +34,7 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
 
     }
     public Selector selector;
-    public DrumSheet drumSheet;
+    public TransformPlayBacker transformPlayBacker;
     
 
     
@@ -92,79 +92,79 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
                 ToggleSkipForBeats(4f);
                 break;
             case Selector.RightHand4Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 2f, 3f, 4f}, new string[]{"righthand"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 2f, 3f, 4f}, new string[]{"righthand"}, false);
                 break;
             case Selector.RightHand8Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f}, new string[]{"righthand"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f}, new string[]{"righthand"}, false);
                 break;
             case Selector.RightHand16Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f}, new string[]{"righthand"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f}, new string[]{"righthand"}, false);
                 break;
             case Selector.BothHand4Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 2f, 3f, 4f}, new string[]{"righthand", "lefthand"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 2f, 3f, 4f}, new string[]{"righthand", "lefthand"}, false);
                 break;
             case Selector.BothHand8Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f}, new string[]{"righthand", "lefthand"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f}, new string[]{"righthand", "lefthand"}, false);
                 break;
             case Selector.BothHand16Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f}, new string[]{"righthand", "lefthand"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f}, new string[]{"righthand", "lefthand"}, false);
                 break;
             case Selector.RightHandRightFeet4Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 2f, 3f, 4f}, new string[]{"righthand", "rightfeet"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 2f, 3f, 4f}, new string[]{"righthand", "rightfeet"}, false);
                 break;
             case Selector.RightHandRightFeet8Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f}, new string[]{"righthand", "rightfeet"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f}, new string[]{"righthand", "rightfeet"}, false);
                 break;
             case Selector.RightHandRightFeet16Beat:
-                drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
-                drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f}, new string[]{"righthand", "rightfeet"}, false);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, true);
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatsAndLimbs(new float[] {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f}, new string[]{"righthand", "rightfeet"}, false);
                 break;
         }
     }
 
     void ToggleSkipForLimbs(string limb) {
-        foreach (DrumNote note in drumSheet.drumNotes)
+        foreach (DrumNote note in transformPlayBacker.drumSheet.drumNotes)
         {
             if (note.associatedSegment != null && note.associatedSegment.limbUsed == limb)
             {
                 if (note.associatedSegment.skip)
-                    drumSheet.SetDrumNoteSkipStateForLimb(limb, false);
+                    transformPlayBacker.drumSheet.SetDrumNoteSkipStateForLimb(limb, false);
                 else
-                    drumSheet.SetDrumNoteSkipStateForLimb(limb, true);
+                    transformPlayBacker.drumSheet.SetDrumNoteSkipStateForLimb(limb, true);
                 break;
             }
         }
     }
     void ToggleSkipForBeats(float beat) {
-        foreach (DrumNote note in drumSheet.drumNotes)
+        foreach (DrumNote note in transformPlayBacker.drumSheet.drumNotes)
         {
             if (note.associatedSegment != null && note.beatPosition >= beat && note.beatPosition < beat + 1f)
             {
                 if (note.associatedSegment.skip)
-                    drumSheet.SetDrumNoteSkipStateForBeatRange(beat, beat + 1f, false);
+                    transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(beat, beat + 1f, false);
                 else
-                    drumSheet.SetDrumNoteSkipStateForBeatRange(beat, beat + 1f, true);
+                    transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(beat, beat + 1f, true);
                 break;
             }
         }
     }
     void ToggleSkipForDrumType(DrumType drumType) {
-        foreach (DrumNote note in drumSheet.drumNotes)
+        foreach (DrumNote note in transformPlayBacker.drumSheet.drumNotes)
         {
             if (note.associatedSegment != null && note.drumType == drumType)
             {
                 if (note.associatedSegment.skip)
-                    drumSheet.SetDrumNoteSkipStateForDrumType(drumType, false);
+                    transformPlayBacker.drumSheet.SetDrumNoteSkipStateForDrumType(drumType, false);
                 else
-                    drumSheet.SetDrumNoteSkipStateForDrumType(drumType, true);
+                    transformPlayBacker.drumSheet.SetDrumNoteSkipStateForDrumType(drumType, true);
                 break;
             }
         }
