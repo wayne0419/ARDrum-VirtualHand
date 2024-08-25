@@ -82,4 +82,28 @@ public class DrumSheet : MonoBehaviour
             }
         }
     }
+
+    // 新增方法：根据提供的 beats 和 limbs 设置 DrumNote 的跳过状态
+    public void SetDrumNoteSkipStateForBeatsAndLimbs(float[] beats, string[] limbs, bool skipState)
+    {
+        foreach (DrumNote note in drumNotes)
+        {
+            // 检查 DrumNote 的 limbUsed 是否在提供的 limbs 数组中
+            if (note.associatedSegment != null && System.Array.Exists(limbs, limb => limb == note.associatedSegment.limbUsed))
+            {
+                // 检查 DrumNote 的 beatPosition 是否在提供的 beats 数组中
+                if (System.Array.Exists(beats, beat => Mathf.Approximately(beat, note.beatPosition)))
+                {
+                    if (skipState)
+                    {
+                        note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                    }
+                    else
+                    {
+                        note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                    }
+                }
+            }
+        }
+    }
 }
