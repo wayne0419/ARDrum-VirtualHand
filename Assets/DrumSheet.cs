@@ -63,4 +63,23 @@ public class DrumSheet : MonoBehaviour
             }
         }
     }
+
+    // 更新后的方法：设置所有 drumType 符合的 DrumNote 为跳过或不跳过状态
+    public void SetDrumNoteSkipStateForDrumType(DrumType drumType, bool skipState)
+    {
+        foreach (DrumNote note in drumNotes)
+        {
+            if (note.drumType == drumType)
+            {
+                if (skipState)
+                {
+                    note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                }
+                else
+                {
+                    note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                }
+            }
+        }
+    }
 }
