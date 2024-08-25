@@ -33,7 +33,8 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
         RightHandRightFeet16Beat,
         RightHandLeftHandRightFeet4Beat,
         RightHandLeftHandRightFeet8Beat,
-        RightHandLeftHandRightFeet16Beat
+        RightHandLeftHandRightFeet16Beat,
+        All
 
     }
     public Selector selector;
@@ -43,6 +44,9 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
     
     void OnMouseDown() {
         switch(selector) {
+            case Selector.All:
+                transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, false);
+                break;
             case Selector.righthand:
                 ToggleSkipForLimbs("righthand");
                 break;

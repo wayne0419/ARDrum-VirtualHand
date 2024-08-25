@@ -176,164 +176,163 @@ public class RealTimeInputTracker : MonoBehaviour
         // 更新显示的正确率
         if (correctRateText != null)
         {
-            correctRateText.text = $"Correct Rate: {correctRate:P2}";
+            correctRateText.text = $"Correct Rate: {correctRate:P0}";
         }
 
         if (level1CorrectRateText != null)
         {
-            level1CorrectRateText.text = $"Level 1 Correct Rate: {level1CorrectRate:P2}";
+            level1CorrectRateText.text = $"Level 1 Correct Rate: {level1CorrectRate:P0}";
         }
 
         if (mainRhythmCorrectRateText != null)
         {
-            mainRhythmCorrectRateText.text = $"Main Rhythm Correct Rate: {mainRhythmCorrectRate:P2}";
+            mainRhythmCorrectRateText.text = $"Main Rhythm Correct Rate: {mainRhythmCorrectRate:P0}";
         }
 
         if (mainRhythmLevel1CorrectRateText != null)
         {
-            mainRhythmLevel1CorrectRateText.text = $"Main Rhythm Level 1 Correct Rate: {mainRhythmLevel1CorrectRate:P2}";
+            mainRhythmLevel1CorrectRateText.text = $"Main Rhythm Level 1 Correct Rate: {mainRhythmLevel1CorrectRate:P0}";
         }
 
         if (oneThreeRhythmCorrectRateText != null)
         {
-            oneThreeRhythmCorrectRateText.text = $"1 & 3 Rhythm Correct Rate: {oneThreeRhythmCorrectRate:P2}";
+            oneThreeRhythmCorrectRateText.text = $"1 & 3 Rhythm Correct Rate: {oneThreeRhythmCorrectRate:P0}";
         }
 
         if (oneThreeRhythmLevel1CorrectRateText != null)
         {
-            oneThreeRhythmLevel1CorrectRateText.text = $"1 & 3 Rhythm Level 1 Correct Rate: {oneThreeRhythmLevel1CorrectRate:P2}";
+            oneThreeRhythmLevel1CorrectRateText.text = $"1 & 3 Rhythm Level 1 Correct Rate: {oneThreeRhythmLevel1CorrectRate:P0}";
         }
 
         if (twoFourRhythmCorrectRateText != null)
         {
-            twoFourRhythmCorrectRateText.text = $"2 & 4 Rhythm Correct Rate: {twoFourRhythmCorrectRate:P2}";
+            twoFourRhythmCorrectRateText.text = $"2 & 4 Rhythm Correct Rate: {twoFourRhythmCorrectRate:P0}";
         }
 
         if (twoFourRhythmLevel1CorrectRateText != null)
         {
-            twoFourRhythmLevel1CorrectRateText.text = $"2 & 4 Rhythm Level 1 Correct Rate: {twoFourRhythmLevel1CorrectRate:P2}";
+            twoFourRhythmLevel1CorrectRateText.text = $"2 & 4 Rhythm Level 1 Correct Rate: {twoFourRhythmLevel1CorrectRate:P0}";
         }
 
         if (rightHandFourBeatCorrectRateText != null)
         {
-            rightHandFourBeatCorrectRateText.text = $"{rightHandFourBeatCorrectRate:P2}";
+            rightHandFourBeatCorrectRateText.text = $"{rightHandFourBeatCorrectRate:P0}";
         }
 
         if (rightHandFourBeatLevel1CorrectRateText != null)
         {
-            rightHandFourBeatLevel1CorrectRateText.text = $"{rightHandFourBeatLevel1CorrectRate:P2}";
+            rightHandFourBeatLevel1CorrectRateText.text = $"{rightHandFourBeatLevel1CorrectRate:P0}";
         }
 
         if (rightHandEightBeatCorrectRateText != null)
         {
-            rightHandEightBeatCorrectRateText.text = $"{rightHandEightBeatCorrectRate:P2}";
+            rightHandEightBeatCorrectRateText.text = $"{rightHandEightBeatCorrectRate:P0}";
         }
 
         if (rightHandEightBeatLevel1CorrectRateText != null)
         {
-            rightHandEightBeatLevel1CorrectRateText.text = $"{rightHandEightBeatLevel1CorrectRate:P2}";
+            rightHandEightBeatLevel1CorrectRateText.text = $"{rightHandEightBeatLevel1CorrectRate:P0}";
         }
 
         if (rightHandSixteenBeatCorrectRateText != null)
         {
-            rightHandSixteenBeatCorrectRateText.text = $"{rightHandSixteenBeatCorrectRate:P2}";
+            rightHandSixteenBeatCorrectRateText.text = $"{rightHandSixteenBeatCorrectRate:P0}";
         }
 
         if (rightHandSixteenBeatLevel1CorrectRateText != null)
         {
-            rightHandSixteenBeatLevel1CorrectRateText.text = $"{rightHandSixteenBeatLevel1CorrectRate:P2}";
+            rightHandSixteenBeatLevel1CorrectRateText.text = $"{rightHandSixteenBeatLevel1CorrectRate:P0}";
         }
 
         if (bothHandFourBeatCorrectRateText != null)
         {
-            bothHandFourBeatCorrectRateText.text = $"{bothHandFourBeatCorrectRate:P2}";
+            bothHandFourBeatCorrectRateText.text = $"{bothHandFourBeatCorrectRate:P0}";
         }
 
         if (bothHandFourBeatLevel1CorrectRateText != null)
         {
-            bothHandFourBeatLevel1CorrectRateText.text = $"{bothHandFourBeatLevel1CorrectRate:P2}";
+            bothHandFourBeatLevel1CorrectRateText.text = $"{bothHandFourBeatLevel1CorrectRate:P0}";
         }
 
         if (bothHandEightBeatCorrectRateText != null)
         {
-            bothHandEightBeatCorrectRateText.text = $"{bothHandEightBeatCorrectRate:P2}";
+            bothHandEightBeatCorrectRateText.text = $"{bothHandEightBeatCorrectRate:P0}";
         }
 
         if (bothHandEightBeatLevel1CorrectRateText != null)
         {
-            bothHandEightBeatLevel1CorrectRateText.text = $"{bothHandEightBeatLevel1CorrectRate:P2}";
+            bothHandEightBeatLevel1CorrectRateText.text = $"{bothHandEightBeatLevel1CorrectRate:P0}";
         }
 
         if (bothHandSixteenBeatCorrectRateText != null)
         {
-            bothHandSixteenBeatCorrectRateText.text = $"{bothHandSixteenBeatCorrectRate:P2}";
+            bothHandSixteenBeatCorrectRateText.text = $"{bothHandSixteenBeatCorrectRate:P0}";
         }
 
         if (bothHandSixteenBeatLevel1CorrectRateText != null)
         {
-            bothHandSixteenBeatLevel1CorrectRateText.text = $"{bothHandSixteenBeatLevel1CorrectRate:P2}";
+            bothHandSixteenBeatLevel1CorrectRateText.text = $"{bothHandSixteenBeatLevel1CorrectRate:P0}";
         }
 
         if (rightHandRightFeetFourBeatCorrectRateText != null)
         {
-            rightHandRightFeetFourBeatCorrectRateText.text = $"{rightHandRightFeetFourBeatCorrectRate:P2}";
+            rightHandRightFeetFourBeatCorrectRateText.text = $"{rightHandRightFeetFourBeatCorrectRate:P0}";
         }
 
         if (rightHandRightFeetFourBeatLevel1CorrectRateText != null)
         {
-            rightHandRightFeetFourBeatLevel1CorrectRateText.text = $"{rightHandRightFeetFourBeatLevel1CorrectRate:P2}";
+            rightHandRightFeetFourBeatLevel1CorrectRateText.text = $"{rightHandRightFeetFourBeatLevel1CorrectRate:P0}";
         }
 
         if (rightHandRightFeetEightBeatCorrectRateText != null)
         {
-            rightHandRightFeetEightBeatCorrectRateText.text = $"{rightHandRightFeetEightBeatCorrectRate:P2}";
+            rightHandRightFeetEightBeatCorrectRateText.text = $"{rightHandRightFeetEightBeatCorrectRate:P0}";
         }
 
         if (rightHandRightFeetEightBeatLevel1CorrectRateText != null)
         {
-            rightHandRightFeetEightBeatLevel1CorrectRateText.text = $"{rightHandRightFeetEightBeatLevel1CorrectRate:P2}";
+            rightHandRightFeetEightBeatLevel1CorrectRateText.text = $"{rightHandRightFeetEightBeatLevel1CorrectRate:P0}";
         }
 
         if  (rightHandRightFeetSixteenBeatCorrectRateText != null)
         {
-            rightHandRightFeetSixteenBeatCorrectRateText.text = $"{rightHandRightFeetSixteenBeatCorrectRate:P2}";
+            rightHandRightFeetSixteenBeatCorrectRateText.text = $"{rightHandRightFeetSixteenBeatCorrectRate:P0}";
         }
 
         if (rightHandRightFeetSixteenBeatLevel1CorrectRateText != null)
         {
-            rightHandRightFeetSixteenBeatLevel1CorrectRateText.text = $"{rightHandRightFeetSixteenBeatLevel1CorrectRate:P2}";
+            rightHandRightFeetSixteenBeatLevel1CorrectRateText.text = $"{rightHandRightFeetSixteenBeatLevel1CorrectRate:P0}";
         }
 
         if (rightHandLeftHandRightFeetFourBeatCorrectRateText != null)
         {
-            rightHandLeftHandRightFeetFourBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetFourBeatCorrectRate:P2}";
+            rightHandLeftHandRightFeetFourBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetFourBeatCorrectRate:P0}";
         }
 
         if (rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText != null)
         {
-            rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetFourBeatLevel1CorrectRate:P2}";
+            rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetFourBeatLevel1CorrectRate:P0}";
         }
 
         if (rightHandLeftHandRightFeetEightBeatCorrectRateText != null)
         {
-            rightHandLeftHandRightFeetEightBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetEightBeatCorrectRate:P2}";
+            rightHandLeftHandRightFeetEightBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetEightBeatCorrectRate:P0}";
         }
 
         if (rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText != null)
         {
-            rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetEightBeatLevel1CorrectRate:P2}";
+            rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetEightBeatLevel1CorrectRate:P0}";
         }
 
         if  (rightHandLeftHandRightFeetSixteenBeatCorrectRateText != null)
         {
-            rightHandLeftHandRightFeetSixteenBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetSixteenBeatCorrectRate:P2}";
+            rightHandLeftHandRightFeetSixteenBeatCorrectRateText.text = $"{rightHandLeftHandRightFeetSixteenBeatCorrectRate:P0}";
         }
 
         if (rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText != null)
         {
-            rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate:P2}";
+            rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText.text = $"{rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate:P0}";
         }
-
 
         // 禁用所有 InputActions
         bassDrumHit.Disable();
