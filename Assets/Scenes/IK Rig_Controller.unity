@@ -7758,8 +7758,6 @@ MonoBehaviour:
       levelController: {fileID: 1380845781}
     - levelName: 
       levelController: {fileID: 1643759047}
-  - stageName: RightHand + RightFeet
-    levels:
     - levelName: 
       levelController: {fileID: 1825534007}
     - levelName: 
@@ -7778,7 +7776,8 @@ MonoBehaviour:
       levelController: {fileID: 1173905265}
     - levelName: 
       levelController: {fileID: 1357433553}
-  inputTracker: {fileID: 0}
+  inputTracker: {fileID: 208549188}
+  correctRatePassThreshold: 0.75
 --- !u!4 &498918696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
@@ -25500,7 +25499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1966646294}
   m_Layer: 0
-  m_Name: ---------------------------
+  m_Name: ------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

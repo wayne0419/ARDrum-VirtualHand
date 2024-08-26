@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     public List<Stage> stages;
     public RealTimeInputTracker inputTracker; // 引用 RealTimeInputTracker
     private int currentFocusedStageIndex;  // 当前 focused 的 stage 索引
+    public float correctRatePassThreshold = 0.9f; // 通过的正确率阈值
 
     private void Start()
     {
@@ -78,7 +79,6 @@ public class LevelManager : MonoBehaviour
         if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count)
         {
             Stage currentStage = stages[currentFocusedStageIndex];
-            bool allLevelsPassed = true; // 标记当前阶段的所有 level 是否都通过
 
             foreach (var level in currentStage.levels)
             {
@@ -92,40 +92,40 @@ public class LevelManager : MonoBehaviour
                     switch (controller.trackCorrectRate)
                     {
                         case LevelController.TrackCorrectRate.RightHand4Beat:
-                            isPassed = inputTracker.rightHandFourBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHand8Beat:
-                            isPassed = inputTracker.rightHandEightBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHand16Beat:
-                            isPassed = inputTracker.rightHandSixteenBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.BothHand4Beat:
-                            isPassed = inputTracker.bothHandFourBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.bothHandFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.BothHand8Beat:
-                            isPassed = inputTracker.bothHandEightBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.bothHandEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.BothHand16Beat:
-                            isPassed = inputTracker.bothHandSixteenBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.bothHandSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandRightFeet4Beat:
-                            isPassed = inputTracker.rightHandRightFeetFourBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandRightFeetFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandRightFeet8Beat:
-                            isPassed = inputTracker.rightHandRightFeetEightBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandRightFeetEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandRightFeet16Beat:
-                            isPassed = inputTracker.rightHandRightFeetSixteenBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandRightFeetSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandLeftHandRightFeet4Beat:
-                            isPassed = inputTracker.rightHandLeftHandRightFeetFourBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandLeftHandRightFeetFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandLeftHandRightFeet8Beat:
-                            isPassed = inputTracker.rightHandLeftHandRightFeetEightBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandLeftHandRightFeetEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandLeftHandRightFeet16Beat:
-                            isPassed = inputTracker.rightHandLeftHandRightFeetSixteenBeatCorrectRate > 0.9f;
+                            isPassed = inputTracker.rightHandLeftHandRightFeetSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                     }
 
@@ -134,17 +134,35 @@ public class LevelManager : MonoBehaviour
                     {
                         controller.SetPassed();
                     }
-                    else
-                    {
-                        allLevelsPassed = false; // 只要有一个 level 没有通过，设置为 false
-                    }
                 }
             }
 
-            // 如果当前阶段的所有 level 都通过了
-            if (allLevelsPassed && currentFocusedStageIndex < stages.Count - 1)
+            // 检查当前 focused stage 的所有 level 是否都通过
+            CheckFocusedLevelPassed();
+        }
+    }
+
+    private void CheckFocusedLevelPassed()
+    {
+        if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count)
+        {
+            Stage currentStage = stages[currentFocusedStageIndex];
+
+            // 检查所有 level 是否都通过
+            bool allPassed = true;
+            foreach (var level in currentStage.levels)
             {
-                // 将当前阶段的所有 level 设为 unfocused
+                if (level.levelController != null && !level.levelController.passed)
+                {
+                    allPassed = false;
+                    break;
+                }
+            }
+
+            if (allPassed)
+            {
+                // 当前 stage 所有 level 都通过了
+                // 将当前 stage 的 level 设置为未聚焦
                 foreach (var level in currentStage.levels)
                 {
                     if (level.levelController != null)
@@ -153,16 +171,18 @@ public class LevelManager : MonoBehaviour
                     }
                 }
 
-                // 设定下一个阶段的所有 level 为 unlocked 和 focused
+                // 聚焦下一个 stage
                 currentFocusedStageIndex++;
-                Stage nextStage = stages[currentFocusedStageIndex];
-
-                foreach (var level in nextStage.levels)
+                if (currentFocusedStageIndex < stages.Count)
                 {
-                    if (level.levelController != null)
+                    Stage nextStage = stages[currentFocusedStageIndex];
+                    foreach (var level in nextStage.levels)
                     {
-                        level.levelController.SetUnLocked();
-                        level.levelController.SetFocused();
+                        if (level.levelController != null)
+                        {
+                            level.levelController.SetUnLocked();
+                            level.levelController.SetFocused();
+                        }
                     }
                 }
             }
