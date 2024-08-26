@@ -728,7 +728,7 @@ public class RealTimeInputTracker : MonoBehaviour
             }
 
             // 计算右手右腳十六拍节奏的正确率
-            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
                  segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
                  segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.25 ||
@@ -809,7 +809,6 @@ public class RealTimeInputTracker : MonoBehaviour
                 }
             }
 
-            OnFinishCalculateCorrectRate.Invoke();
         }
 
         // 修改后的逻辑：如果没有段落，默认正确率为 100%
@@ -860,6 +859,9 @@ public class RealTimeInputTracker : MonoBehaviour
 
         rightHandLeftHandRightFeetSixteenBeatCorrectRate = (totalRightHandLeftHandRightFeetSixteenBeatSegments > 0) ? (float)correctRightHandLeftHandRightFeetSixteenBeatSegments / totalRightHandLeftHandRightFeetSixteenBeatSegments : 1f;
         rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate = (totalRightHandLeftHandRightFeetSixteenBeatSegments > 0) ? (float)level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments / totalRightHandLeftHandRightFeetSixteenBeatSegments : 1f;
+
+        // 触发结束事件
+        OnFinishCalculateCorrectRate.Invoke();
     }
 
     // 序列化的类，用于存储每次击打的输入数据
