@@ -50,6 +50,7 @@ public class Metronome : MonoBehaviour
                 // 先暫停播放，再調整 bpm
                 transformPlayBacker.StopPlayBack();
                 transformPlayBacker.playBackBPM += 5;
+                transformPlayBacker.StartPlayBack();
             }
         } 
         else if (Input.GetKeyDown(KeyCode.KeypadMinus)) {
@@ -57,6 +58,7 @@ public class Metronome : MonoBehaviour
                 // 先暫停播放，再調整 bpm
                 transformPlayBacker.StopPlayBack();
                 transformPlayBacker.playBackBPM -= 5;
+                transformPlayBacker.StartPlayBack();
             }
         }
     }
