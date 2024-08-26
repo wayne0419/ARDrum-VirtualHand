@@ -5,8 +5,13 @@ public class LevelController : MonoBehaviour
     public Color lockedColor = Color.gray;      // 锁定时的颜色
     public Color focusedColor = Color.yellow;   // 聚焦时的颜色
     public Color unfocusedColor = Color.white;  // 非聚焦时的颜色
+    public Color passedColor = Color.green;     // 通过时的颜色
     public bool focused = false;                // 表示关卡是否被聚焦
     public bool locked = false;                 // 表示关卡是否被锁定
+    public bool passed = false;                 // 表示关卡是否通过
+    private Renderer levelRenderer;             // 对应关卡对象的渲染器组件
+
+    // 新增的枚举类型，用于指定追踪的正确率类型
     public enum TrackCorrectRate
     {
         RightHand4Beat,
@@ -22,8 +27,8 @@ public class LevelController : MonoBehaviour
         RightHandLeftHandRightFeet8Beat,
         RightHandLeftHandRightFeet16Beat
     }
-    public TrackCorrectRate trackCorrectRate;
-    private Renderer levelRenderer;             // 对应关卡对象的渲染器组件
+
+    public TrackCorrectRate trackCorrectRate;   // 用于指定该关卡追踪的正确率类型
 
     private void Awake()
     {
@@ -70,9 +75,19 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    // 将关卡设置为通过状态
+    public void SetPassed()
+    {
+        passed = true;
+        if (levelRenderer != null)
+        {
+            levelRenderer.material.color = passedColor; // 设置为通过时的颜色
+        }
+    }
+
     // 根据给定的值设置关卡的外观
     public void SetAppearanceByValue(int value)
     {
-        
+        // 根据值来设置外观逻辑
     }
 }
