@@ -7740,42 +7740,26 @@ MonoBehaviour:
   stages:
   - stageName: RightHand
     levels:
-    - levelName: 
-      levelController: {fileID: 1087612742}
-    - levelName: 
-      levelController: {fileID: 4993429213500439376}
-    - levelName: 
-      levelController: {fileID: 592763849}
-    - levelName: 
-      levelController: {fileID: 2001221564}
-  - stageName: RightHand + LeftHand
+    - {fileID: 1087612742}
+    - {fileID: 4993429213500439376}
+    - {fileID: 592763849}
+    - {fileID: 2001221564}
+  - stageName: RightHand + LeftHand & RightHand + RightFeet
     levels:
-    - levelName: 
-      levelController: {fileID: 1522572655}
-    - levelName: 
-      levelController: {fileID: 316162619}
-    - levelName: 
-      levelController: {fileID: 1380845781}
-    - levelName: 
-      levelController: {fileID: 1643759047}
-    - levelName: 
-      levelController: {fileID: 1825534007}
-    - levelName: 
-      levelController: {fileID: 254936256}
-    - levelName: 
-      levelController: {fileID: 2080488887}
-    - levelName: 
-      levelController: {fileID: 2063959711}
+    - {fileID: 1522572655}
+    - {fileID: 316162619}
+    - {fileID: 1380845781}
+    - {fileID: 1643759047}
+    - {fileID: 1825534007}
+    - {fileID: 254936256}
+    - {fileID: 2080488887}
+    - {fileID: 2063959711}
   - stageName: RightHand + LeftHand + RightFeet
     levels:
-    - levelName: 
-      levelController: {fileID: 804913027}
-    - levelName: 
-      levelController: {fileID: 1938930653}
-    - levelName: 
-      levelController: {fileID: 1173905265}
-    - levelName: 
-      levelController: {fileID: 1357433553}
+    - {fileID: 804913027}
+    - {fileID: 1938930653}
+    - {fileID: 1173905265}
+    - {fileID: 1357433553}
   inputTracker: {fileID: 208549188}
   correctRatePassThreshold: 0.75
 --- !u!4 &498918696 stripped

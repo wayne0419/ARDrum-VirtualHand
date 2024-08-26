@@ -4,17 +4,10 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [System.Serializable]
-    public class Level
-    {
-        public string levelName; 
-        public LevelController levelController;
-    }
-
-    [System.Serializable]
     public class Stage
     {
-        public string stageName;
-        public List<Level> levels;
+        public string stageName; // 阶段名称
+        public List<LevelController> levels; // 存储所有关卡的列表
     }
 
     public List<Stage> stages;
@@ -52,22 +45,22 @@ public class LevelManager : MonoBehaviour
             if (i == currentFocusedStageIndex)
             {
                 // 设置第一个 stage 的所有 level 为 focused 状态
-                foreach (var level in stage.levels)
+                foreach (var levelController in stage.levels)
                 {
-                    if (level.levelController != null)
+                    if (levelController != null)
                     {
-                        level.levelController.SetFocused();
+                        levelController.SetFocused();
                     }
                 }
             }
             else
             {
                 // 其他 stage 的 level 设置为 locked 状态
-                foreach (var level in stage.levels)
+                foreach (var levelController in stage.levels)
                 {
-                    if (level.levelController != null)
+                    if (levelController != null)
                     {
-                        level.levelController.SetLocked();
+                        levelController.SetLocked();
                     }
                 }
             }
@@ -80,10 +73,8 @@ public class LevelManager : MonoBehaviour
         {
             Stage currentStage = stages[currentFocusedStageIndex];
 
-            foreach (var level in currentStage.levels)
+            foreach (var controller in currentStage.levels)
             {
-                LevelController controller = level.levelController;
-                
                 if (controller != null && controller.focused)
                 {
                     bool isPassed = false;
@@ -150,9 +141,9 @@ public class LevelManager : MonoBehaviour
 
             // 检查所有 level 是否都通过
             bool allPassed = true;
-            foreach (var level in currentStage.levels)
+            foreach (var controller in currentStage.levels)
             {
-                if (level.levelController != null && !level.levelController.passed)
+                if (controller != null && !controller.passed)
                 {
                     allPassed = false;
                     break;
@@ -163,11 +154,11 @@ public class LevelManager : MonoBehaviour
             {
                 // 当前 stage 所有 level 都通过了
                 // 将当前 stage 的 level 设置为未聚焦
-                foreach (var level in currentStage.levels)
+                foreach (var controller in currentStage.levels)
                 {
-                    if (level.levelController != null)
+                    if (controller != null)
                     {
-                        level.levelController.SetUnFocused();
+                        controller.SetUnFocused();
                     }
                 }
 
@@ -176,12 +167,12 @@ public class LevelManager : MonoBehaviour
                 if (currentFocusedStageIndex < stages.Count)
                 {
                     Stage nextStage = stages[currentFocusedStageIndex];
-                    foreach (var level in nextStage.levels)
+                    foreach (var controller in nextStage.levels)
                     {
-                        if (level.levelController != null)
+                        if (controller != null)
                         {
-                            level.levelController.SetUnLocked();
-                            level.levelController.SetFocused();
+                            controller.SetUnLocked();
+                            controller.SetFocused();
                         }
                     }
                 }
