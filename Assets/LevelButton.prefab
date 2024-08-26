@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6873103606659382610}
   - component: {fileID: 6143883232456317714}
   - component: {fileID: 4791576465064748440}
+  - component: {fileID: 2409660144216753863}
   - component: {fileID: 3776845958310773239}
   m_Layer: 9
   m_Name: LevelButton
@@ -100,12 +101,32 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 6.1232336e-17}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2409660144216753863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030383785756315726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd9730c707dc9b4ba9aa1f5c7b79bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  focusedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  unfocusedColor: {r: 1, g: 1, b: 1, a: 1}
+  passedColor: {r: 0, g: 1, b: 0, a: 1}
+  focused: 0
+  locked: 0
+  passed: 0
+  trackCorrectRate: 0
 --- !u!114 &3776845958310773239
 MonoBehaviour:
   m_ObjectHideFlags: 0
