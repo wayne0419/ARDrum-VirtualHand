@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
 
     public List<Stage> stages;
     public RealTimeInputTracker inputTracker; // 引用 RealTimeInputTracker
+    private int currentFocusedStageIndex;  // 当前 focused 的 stage 索引
 
     private void Start()
     {
@@ -39,13 +40,17 @@ public class LevelManager : MonoBehaviour
         // 订阅 RealTimeInputTracker 的事件
         inputTracker.OnFinishCalculateCorrectRate += CheckFocusedLevelsCorrectRate;
 
+        // 初始化 currentFocusedStageIndex
+        currentFocusedStageIndex = 0;
+
         // 初始化阶段和关卡的状态
         for (int i = 0; i < stages.Count; i++)
         {
             Stage stage = stages[i];
 
-            if (i == 0)
+            if (i == currentFocusedStageIndex)
             {
+                // 设置第一个 stage 的所有 level 为 focused 状态
                 foreach (var level in stage.levels)
                 {
                     if (level.levelController != null)
@@ -56,6 +61,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
+                // 其他 stage 的 level 设置为 locked 状态
                 foreach (var level in stage.levels)
                 {
                     if (level.levelController != null)
@@ -69,9 +75,12 @@ public class LevelManager : MonoBehaviour
 
     private void CheckFocusedLevelsCorrectRate()
     {
-        foreach (var stage in stages)
+        if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count)
         {
-            foreach (var level in stage.levels)
+            Stage currentStage = stages[currentFocusedStageIndex];
+            bool allLevelsPassed = true; // 标记当前阶段的所有 level 是否都通过
+
+            foreach (var level in currentStage.levels)
             {
                 LevelController controller = level.levelController;
                 
@@ -124,6 +133,36 @@ public class LevelManager : MonoBehaviour
                     if (isPassed)
                     {
                         controller.SetPassed();
+                    }
+                    else
+                    {
+                        allLevelsPassed = false; // 只要有一个 level 没有通过，设置为 false
+                    }
+                }
+            }
+
+            // 如果当前阶段的所有 level 都通过了
+            if (allLevelsPassed && currentFocusedStageIndex < stages.Count - 1)
+            {
+                // 将当前阶段的所有 level 设为 unfocused
+                foreach (var level in currentStage.levels)
+                {
+                    if (level.levelController != null)
+                    {
+                        level.levelController.SetUnFocused();
+                    }
+                }
+
+                // 设定下一个阶段的所有 level 为 unlocked 和 focused
+                currentFocusedStageIndex++;
+                Stage nextStage = stages[currentFocusedStageIndex];
+
+                foreach (var level in nextStage.levels)
+                {
+                    if (level.levelController != null)
+                    {
+                        level.levelController.SetUnLocked();
+                        level.levelController.SetFocused();
                     }
                 }
             }
