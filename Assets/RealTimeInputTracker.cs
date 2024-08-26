@@ -95,6 +95,10 @@ public class RealTimeInputTracker : MonoBehaviour
     private List<HitDrumInputData> inputLog; // 存储击打输入数据的日志
     private List<TrackedHitSegment> trackedHitSegments; // 存储复制并跟踪的 HitSegment
 
+    // 事件：当 CalculateCorrectRates() 結束时触发
+    public event Action OnFinishCalculateCorrectRate;
+
+
     private void Awake()
     {
         inputLog = new List<HitDrumInputData>(); // 初始化输入日志列表
@@ -805,6 +809,7 @@ public class RealTimeInputTracker : MonoBehaviour
                 }
             }
 
+            OnFinishCalculateCorrectRate.Invoke();
         }
 
         // 修改后的逻辑：如果没有段落，默认正确率为 100%
