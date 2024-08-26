@@ -86,6 +86,8 @@ public class TransformPlayBacker : MonoBehaviour
     private Coroutine playbackCoroutine; // 播放协程引用
     public float playbackStartTime; // 播放开始时间
 
+    public GameObject PlayBackVirtualMan; // 新增的 GameObject 用于播放虚拟人物
+
     // 事件：当 PlayTransformData 开始时触发
     public event Action OnPlayTransformDataStart;
 
@@ -121,6 +123,22 @@ public class TransformPlayBacker : MonoBehaviour
             else
             {
                 StopPlayBack();
+            }
+        }
+
+        // 新增虚拟人物的激活控制
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            if (PlayBackVirtualMan != null)
+            {
+                PlayBackVirtualMan.SetActive(true);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            if (PlayBackVirtualMan != null)
+            {
+                PlayBackVirtualMan.SetActive(false);
             }
         }
     }
