@@ -2682,6 +2682,8 @@ MonoBehaviour:
   rideAudioSource: {fileID: 1407571837}
   openHiHatAudioSource: {fileID: 1416786295}
   drumHitIndicator: {fileID: 1580649882}
+  PlayBackVirtualMan: {fileID: 0}
+  drumAudio: {fileID: 0}
   playbackData:
     bpm: 0
     dataList: []
@@ -6539,6 +6541,8 @@ MonoBehaviour:
   rideAudioSource: {fileID: 1407571837}
   openHiHatAudioSource: {fileID: 1416786295}
   drumHitIndicator: {fileID: 962698970}
+  PlayBackVirtualMan: {fileID: 0}
+  drumAudio: {fileID: 0}
   playbackData:
     bpm: 0
     dataList: []
@@ -17378,6 +17382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Level: All'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
@@ -30589,6 +30598,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 493734123}
     m_Modifications:
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: lockedColor.b
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: lockedColor.g
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: lockedColor.r
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: passedColor.b
+      value: 0.16392453
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: passedColor.g
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: passedColor.r
+      value: 0.16392453
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: unfocusedColor.b
+      value: 0.13814859
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: unfocusedColor.g
+      value: 0.2830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409660144216753863, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: unfocusedColor.r
+      value: 0.12849057
+      objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: transformPlayBacker
