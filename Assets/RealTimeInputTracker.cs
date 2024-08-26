@@ -180,7 +180,7 @@ public class RealTimeInputTracker : MonoBehaviour
         // 更新显示的正确率
         if (correctRateText != null)
         {
-            correctRateText.text = $"Correct Rate: {correctRate:P0}";
+            correctRateText.text = $"{correctRate:P0} \nCorrect";
         }
 
         if (level1CorrectRateText != null)
@@ -692,7 +692,7 @@ public class RealTimeInputTracker : MonoBehaviour
             }
 
             // 计算右手右腳四拍节奏的正确率
-            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
                  segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
             {
@@ -709,7 +709,7 @@ public class RealTimeInputTracker : MonoBehaviour
             }
 
             // 计算右手右腳八拍节奏的正确率
-            if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
+            if ((segment.limbUsed == "righthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
                  segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
                  segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 3.5 ||
