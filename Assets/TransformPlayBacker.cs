@@ -75,6 +75,8 @@ public class TransformPlayBacker : MonoBehaviour
     public AudioSource openHiHatAudioSource; // 打开踩镲音效
 
     public DrumHitIndicator drumHitIndicator; // DrumHitIndicator 组件引用
+    public GameObject PlayBackVirtualMan; // 新增 PlayBackVirtualMan
+    public GameObject drumAudio; // 新增 drumAudio
 
     public TransformPlaybackData playbackData; // 播放数据
     public List<HitSegment> hitSegments; // 保存击打区段信息
@@ -85,8 +87,6 @@ public class TransformPlayBacker : MonoBehaviour
     public bool allowInputControl = true; // 是否允许通过按空格键来控制
     private Coroutine playbackCoroutine; // 播放协程引用
     public float playbackStartTime; // 播放开始时间
-
-    public GameObject PlayBackVirtualMan; // 新增的 GameObject 用于播放虚拟人物
 
     // 事件：当 PlayTransformData 开始时触发
     public event Action OnPlayTransformDataStart;
@@ -126,20 +126,40 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 新增虚拟人物的激活控制
-        if (Input.GetKeyDown(KeyCode.Keypad9))
+        // 按下 Keypad9 激活 PlayBackVirtualMan
+        if (Input.GetKeyDown(KeyCode.Keypad9) && PlayBackVirtualMan != null)
         {
-            if (PlayBackVirtualMan != null)
-            {
-                PlayBackVirtualMan.SetActive(true);
-            }
+            PlayBackVirtualMan.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad8))
+
+        // 按下 Keypad8 取消激活 PlayBackVirtualMan
+        if (Input.GetKeyDown(KeyCode.Keypad8) && PlayBackVirtualMan != null)
         {
-            if (PlayBackVirtualMan != null)
-            {
-                PlayBackVirtualMan.SetActive(false);
-            }
+            PlayBackVirtualMan.SetActive(false);
+        }
+
+        // 按下 Keypad6 激活 drumHitIndicator
+        if (Input.GetKeyDown(KeyCode.Keypad6) && drumHitIndicator != null)
+        {
+            drumHitIndicator.gameObject.SetActive(true);
+        }
+
+        // 按下 Keypad5 取消激活 drumHitIndicator
+        if (Input.GetKeyDown(KeyCode.Keypad5) && drumHitIndicator != null)
+        {
+            drumHitIndicator.gameObject.SetActive(false);
+        }
+
+        // 按下 Keypad3 激活 drumAudio
+        if (Input.GetKeyDown(KeyCode.Keypad3) && drumAudio != null)
+        {
+            drumAudio.SetActive(true);
+        }
+
+        // 按下 Keypad2 取消激活 drumAudio
+        if (Input.GetKeyDown(KeyCode.Keypad2) && drumAudio != null)
+        {
+            drumAudio.SetActive(false);
         }
     }
 

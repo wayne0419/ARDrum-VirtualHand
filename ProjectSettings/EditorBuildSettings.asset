@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IK Rig_Controller.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/IK Rig_Hand.unity
+    guid: fd49f94e1b10a2b4da7b30aa86116822
+  - enabled: 1
+    path: Assets/Samples/Meta XR Interaction SDK OVR Samples/65.0.0/Example Scenes/RayExamples.unity
+    guid: 1b2d3f90c0f50b94cb910c66c773d00d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a0a4826a82998de43bd3d88029e52052,
       type: 2}
