@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class LevelManager : MonoBehaviour
     public RealTimeInputTracker inputTracker; // 引用 RealTimeInputTracker
     private int currentFocusedStageIndex;  // 当前 focused 的 stage 索引
     public float correctRatePassThreshold = 0.9f; // 通过的正确率阈值
+
+    // 新增的 Action，用于在晋级到下一个 stage 时调用
+    public Action OnStageAdvanced;
 
     private void Start()
     {
@@ -175,6 +179,9 @@ public class LevelManager : MonoBehaviour
                             controller.SetFocused();
                         }
                     }
+
+                    // 在晋级到下一个 stage 时调用 Action
+                    OnStageAdvanced?.Invoke();
                 }
             }
         }
