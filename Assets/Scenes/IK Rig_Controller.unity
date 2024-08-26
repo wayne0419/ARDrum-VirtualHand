@@ -29252,26 +29252,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
-      propertyPath: playColor.b
-      value: 0.49019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
-        type: 3}
-      propertyPath: playColor.g
-      value: 0.49019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
-        type: 3}
-      propertyPath: playColor.r
-      value: 0.49019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
-        type: 3}
-      propertyPath: warmUpColor.a
-      value: 0.12156863
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337672981296107455, guid: f1371b3bbf280564b8ea4be999f7cd95,
-        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
@@ -29329,11 +29309,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Metronome
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482096712831883971, guid: f1371b3bbf280564b8ea4be999f7cd95,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

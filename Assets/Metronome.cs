@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Metronome : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Metronome : MonoBehaviour
     public Color warmUpColor = Color.gray; // 准备期间的颜色
     public Color playColor = Color.green; // 播放期间的颜色
     public TransformPlayBacker transformPlayBacker; // TransformPlayBacker 的引用
+    public TextMeshProUGUI bpmText;
 
     private AudioSource audioSource;
     private Coroutine metronomeCoroutine;
@@ -34,6 +36,28 @@ public class Metronome : MonoBehaviour
         {
             transformPlayBacker.OnPlayTransformDataStart += SetPlayColor;
             transformPlayBacker.OnPlayTransformDataEnd += SetWarmUpColor;
+        }
+    }
+
+    void Update() {
+        // 更新 bpmText
+        if (bpmText != null && transformPlayBacker != null) {
+            bpmText.text = transformPlayBacker.playBackBPM.ToString();
+        }
+        // Input 調整 bpm
+        if (Input.GetKeyDown(KeyCode.KeypadPlus)) {
+            if (transformPlayBacker != null) {
+                // 先暫停播放，再調整 bpm
+                transformPlayBacker.StopPlayBack();
+                transformPlayBacker.playBackBPM += 5;
+            }
+        } 
+        else if (Input.GetKeyDown(KeyCode.KeypadMinus)) {
+            if (transformPlayBacker != null) {
+                // 先暫停播放，再調整 bpm
+                transformPlayBacker.StopPlayBack();
+                transformPlayBacker.playBackBPM -= 5;
+            }
         }
     }
 
