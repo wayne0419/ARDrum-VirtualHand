@@ -50,6 +50,7 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
     }
     void Update() {
         if (inputAction.triggered) {
+            Debug.Log("SetDrumNoteSkipState");
             OnMouseDown();
         }
     }

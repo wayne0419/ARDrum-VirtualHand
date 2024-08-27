@@ -3613,7 +3613,7 @@ MonoBehaviour:
   playBackBPM: 120
   startOffsetBeat: 3
   metronome: {fileID: 5366975294774543386}
-  drumSheet: {fileID: 363586393025577521}
+  drumSheet: {fileID: 1503055853}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
   closedHiHatAudioSource: {fileID: 273501198}
@@ -5325,7 +5325,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -7398,7 +7398,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -10116,7 +10116,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -10370,7 +10370,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -11594,7 +11594,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -18147,7 +18147,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -21441,7 +21441,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -26719,7 +26719,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 2
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -27741,7 +27741,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -29336,7 +29336,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4218536273910776678, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -32713,7 +32713,7 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: beatPosition
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}

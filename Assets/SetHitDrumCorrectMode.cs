@@ -16,6 +16,7 @@ public class SetHitDrumCorrectMode : MonoBehaviour
     }
     void Update() {
         if (inputAction.triggered) {
+            Debug.Log("SetHitDrumCorrectMode");
             OnMouseDown();
         }
     }
