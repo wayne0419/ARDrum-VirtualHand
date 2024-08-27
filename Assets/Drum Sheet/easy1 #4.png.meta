@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: easy1_0
+      name: easy1 #4_0
       rect:
         serializedVersion: 2
         x: 143
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      easy1_0: -1937380009
+      easy1 #4_0: -1937380009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

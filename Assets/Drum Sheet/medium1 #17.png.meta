@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 65253e7dea6619d49983dbc5763c95e8
+guid: 4fc7171b6bdf88440a8f8dbf5f90699a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: easy2_0
+      name: medium1 #17_0
       rect:
         serializedVersion: 2
-        x: 137
-        y: 29
-        width: 713
-        height: 310
+        x: 140
+        y: 27
+        width: 754
+        height: 311
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8cf662908c237c458d36c325604a565
-      internalID: -1893156710
+      spriteID: 3843158ab6ddf6246832d291e4d05f1d
+      internalID: -1109509412
       vertices: []
       indices: 
       edges: []
@@ -133,7 +133,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 465be42e7b632394782604271c6dda51
     internalID: 0
     vertices: []
     indices: 
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      easy2_0: -1893156710
+      medium1 #17_0: -1109509412
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
