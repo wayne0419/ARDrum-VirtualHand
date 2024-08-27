@@ -101,7 +101,6 @@ public class RealTimeInputTracker : MonoBehaviour
             });
         }
 
-        expectedHitIndex = 0; // 初始化预期的击打顺序索引
 
         // 启用所有 InputActions
         bassDrumHit.Enable();
