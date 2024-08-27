@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SetDrumNoteSkipStateButton : MonoBehaviour
 {
@@ -39,9 +40,19 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
     }
     public Selector selector;
     public TransformPlayBacker transformPlayBacker;
-    
+    public InputAction inputAction;
 
-    
+    void OnEnable() {
+        inputAction.Enable();
+    }
+    void OnDisable() {
+        inputAction.Disable();
+    }
+    void Update() {
+        if (inputAction.triggered) {
+            OnMouseDown();
+        }
+    }
     void OnMouseDown() {
         switch(selector) {
             case Selector.All:

@@ -1686,9 +1686,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/leftBracket
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -1749,6 +1774,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/leftBracket
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3551,7 +3606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/mid2.json
+  jsonFilePath: Assets/RecordedTransforms/medium1.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
@@ -6948,9 +7003,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/w
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -7011,6 +7091,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/w
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8227,9 +8337,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/o
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -8290,6 +8425,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/o
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12538,9 +12703,34 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/q
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -12601,6 +12791,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/q
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13548,9 +13768,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/rightBracket
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -13611,6 +13856,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/rightBracket
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14458,9 +14733,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/u
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -14521,6 +14821,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/u
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20305,9 +20635,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/i
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -20368,6 +20723,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/i
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23377,9 +23762,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/f
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 3972902988269524507, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23440,6 +23855,31 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 5c9e63e3-30c9-4575-8c97-8f8fc9f8015b
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/f
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23785,9 +24225,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -23848,6 +24313,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25384,9 +25879,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -25447,6 +25967,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25588,9 +26138,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/j
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 3972902988269524507, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25651,6 +26231,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/j
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26326,7 +26936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1503055852
 Transform:
   m_ObjectHideFlags: 0
@@ -26728,9 +27338,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/p
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -26791,6 +27426,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/p
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27984,9 +28649,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/e
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -28047,6 +28737,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/e
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29143,9 +29863,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/t
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 4030383785756315726, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_Name
@@ -29206,6 +29951,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/t
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31423,9 +32198,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/semicolon
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 3972902988269524507, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31486,6 +32291,36 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Id
+      value: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e145624c-9db7-46df-9a38-f0a0f82c12a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/semicolon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37275,7 +38110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &994117146406804694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37540,9 +38375,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: cc9c08f3-3ba9-4b8d-a18d-047e1b009085
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/a
+      objectReference: {fileID: 0}
+    - target: {fileID: 774987583017374330, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     - target: {fileID: 3972902988269524507, guid: 1bcf77a7ccdefdc43be75796999d4928,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37603,6 +38463,31 @@ PrefabInstance:
       propertyPath: inputTracker
       value: 
       objectReference: {fileID: 208549188}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: fef20c6f-10ca-4659-84bc-b1273260a155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/a
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511715923614689628, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
