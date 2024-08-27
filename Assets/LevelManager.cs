@@ -73,6 +73,12 @@ public class LevelManager : MonoBehaviour
 
     private void CheckFocusedLevelsCorrectRate()
     {
+        // CorrectOrderMode 不能用來通關
+        if (correctRateCalculator.inputTracker.currentMode == RealTimeInputTracker.CorrectMode.CorrectOrderMode) {
+            return;
+        }
+
+        // 检查当前聚焦的 stage 的所有 level 是否都通过
         if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count)
         {
             Stage currentStage = stages[currentFocusedStageIndex];
