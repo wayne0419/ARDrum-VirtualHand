@@ -7011,6 +7011,7 @@ MonoBehaviour:
   metronome: {fileID: 1340986489}
   animationClip: {fileID: 7400000, guid: 5ee8067b6ae8eb74fa66453237f6c03a, type: 2}
   allowInputControl: 1
+  transformPlayBacker: {fileID: 174402672}
   bassDrumHit:
     m_Name: Hit Bass Drum
     m_Type: 0
@@ -16779,6 +16780,7 @@ MonoBehaviour:
   metronome: {fileID: 0}
   animationClip: {fileID: 7400000, guid: 5ee8067b6ae8eb74fa66453237f6c03a, type: 2}
   allowInputControl: 0
+  transformPlayBacker: {fileID: 0}
   bassDrumHit:
     m_Name: Hit Bass Drum
     m_Type: 0
@@ -28698,7 +28700,7 @@ PrefabInstance:
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.288
       objectReference: {fileID: 0}
     - target: {fileID: 4031528645791695978, guid: f1371b3bbf280564b8ea4be999f7cd95,
         type: 3}

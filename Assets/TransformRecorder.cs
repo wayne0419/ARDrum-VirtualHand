@@ -70,6 +70,7 @@ public class TransformRecorder : MonoBehaviour
     public Metronome metronome; // 参考 Metronome 组件
     public AnimationClip animationClip; // 用于第三组 Transform 的 AnimationClip
     public bool allowInputControl = true; // 是否允许通过空白键操控
+    public TransformPlayBacker transformPlayBacker; // TransformPlayBacker 组件
 
     // Input Actions
     public InputAction bassDrumHit;
@@ -238,6 +239,12 @@ public class TransformRecorder : MonoBehaviour
         File.WriteAllText(filePath, json);
 
         Debug.Log("Transform data saved to " + filePath);
+
+        // 修改 transformPlayBacker 的 jsonFilePath
+        if (transformPlayBacker != null)
+        {
+            transformPlayBacker.jsonFilePath = filePath;
+        }
     }
 
     [System.Serializable]
