@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public List<Stage> stages;
-    public RealTimeInputTracker inputTracker; // 引用 RealTimeInputTracker
+    public CorrectRateCalculator correctRateCalculator; // 引用 CorrectRateCalculator
     private int currentFocusedStageIndex;  // 当前 focused 的 stage 索引
     public float correctRatePassThreshold = 0.9f; // 通过的正确率阈值
 
@@ -29,14 +29,14 @@ public class LevelManager : MonoBehaviour
         }
 
         // 确保 inputTracker 不为空
-        if (inputTracker == null)
+        if (correctRateCalculator == null)
         {
             Debug.LogError("LevelManager: RealTimeInputTracker reference is null.");
             return;
         }
 
         // 订阅 RealTimeInputTracker 的事件
-        inputTracker.OnFinishCalculateCorrectRate += CheckFocusedLevelsCorrectRate;
+        correctRateCalculator.OnFinishCalculateCorrectRate += CheckFocusedLevelsCorrectRate;
 
         // 初始化 currentFocusedStageIndex
         currentFocusedStageIndex = 0;
@@ -87,40 +87,40 @@ public class LevelManager : MonoBehaviour
                     switch (controller.trackCorrectRate)
                     {
                         case LevelController.TrackCorrectRate.RightHand4Beat:
-                            isPassed = inputTracker.rightHandFourBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHand8Beat:
-                            isPassed = inputTracker.rightHandEightBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHand16Beat:
-                            isPassed = inputTracker.rightHandSixteenBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.BothHand4Beat:
-                            isPassed = inputTracker.bothHandFourBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.bothHandFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.BothHand8Beat:
-                            isPassed = inputTracker.bothHandEightBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.bothHandEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.BothHand16Beat:
-                            isPassed = inputTracker.bothHandSixteenBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.bothHandSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandRightFeet4Beat:
-                            isPassed = inputTracker.rightHandRightFeetFourBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandRightFeetFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandRightFeet8Beat:
-                            isPassed = inputTracker.rightHandRightFeetEightBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandRightFeetEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandRightFeet16Beat:
-                            isPassed = inputTracker.rightHandRightFeetSixteenBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandRightFeetSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandLeftHandRightFeet4Beat:
-                            isPassed = inputTracker.rightHandLeftHandRightFeetFourBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandLeftHandRightFeetFourBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandLeftHandRightFeet8Beat:
-                            isPassed = inputTracker.rightHandLeftHandRightFeetEightBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandLeftHandRightFeetEightBeatCorrectRate >= correctRatePassThreshold;
                             break;
                         case LevelController.TrackCorrectRate.RightHandLeftHandRightFeet16Beat:
-                            isPassed = inputTracker.rightHandLeftHandRightFeetSixteenBeatCorrectRate >= correctRatePassThreshold;
+                            isPassed = correctRateCalculator.rightHandLeftHandRightFeetSixteenBeatCorrectRate >= correctRatePassThreshold;
                             break;
                     }
 
@@ -181,7 +181,7 @@ public class LevelManager : MonoBehaviour
                     }
 
                     // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
-                    inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
+                    correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
 
                     // 在晋级到下一个 stage 时调用 Action
                     OnStageAdvanced?.Invoke();

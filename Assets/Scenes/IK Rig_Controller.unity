@@ -3470,6 +3470,8 @@ GameObject:
   m_Component:
   - component: {fileID: 208549187}
   - component: {fileID: 208549188}
+  - component: {fileID: 208549190}
+  - component: {fileID: 208549189}
   m_Layer: 0
   m_Name: RealTimeInputTracker
   m_TagString: Untagged
@@ -3514,70 +3516,6 @@ MonoBehaviour:
   correctTimeTolerance: 0.075
   level1ErrorTimeTolerance: 0.15
   level1ErrorShift: 0.2
-  correctRate: 0
-  level1CorrectRate: 0
-  mainRhythmCorrectRate: 0
-  mainRhythmLevel1CorrectRate: 0
-  oneThreeRhythmCorrectRate: 0
-  oneThreeRhythmLevel1CorrectRate: 0
-  twoFourRhythmCorrectRate: 0
-  twoFourRhythmLevel1CorrectRate: 0
-  rightHandFourBeatCorrectRate: 0
-  rightHandFourBeatLevel1CorrectRate: 0
-  rightHandEightBeatCorrectRate: 0
-  rightHandEightBeatLevel1CorrectRate: 0
-  rightHandSixteenBeatCorrectRate: 0
-  rightHandSixteenBeatLevel1CorrectRate: 0
-  bothHandFourBeatCorrectRate: 0
-  bothHandFourBeatLevel1CorrectRate: 0
-  bothHandEightBeatCorrectRate: 0
-  bothHandEightBeatLevel1CorrectRate: 0
-  bothHandSixteenBeatCorrectRate: 0
-  bothHandSixteenBeatLevel1CorrectRate: 0
-  rightHandRightFeetFourBeatCorrectRate: 0
-  rightHandRightFeetFourBeatLevel1CorrectRate: 0
-  rightHandRightFeetEightBeatCorrectRate: 0
-  rightHandRightFeetEightBeatLevel1CorrectRate: 0
-  rightHandRightFeetSixteenBeatCorrectRate: 0
-  rightHandRightFeetSixteenBeatLevel1CorrectRate: 0
-  rightHandLeftHandRightFeetFourBeatCorrectRate: 0
-  rightHandLeftHandRightFeetFourBeatLevel1CorrectRate: 0
-  rightHandLeftHandRightFeetEightBeatCorrectRate: 0
-  rightHandLeftHandRightFeetEightBeatLevel1CorrectRate: 0
-  rightHandLeftHandRightFeetSixteenBeatCorrectRate: 0
-  rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate: 0
-  correctRateText: {fileID: 58310951}
-  level1CorrectRateText: {fileID: 1753678370}
-  mainRhythmCorrectRateText: {fileID: 1140630074}
-  mainRhythmLevel1CorrectRateText: {fileID: 1319723061}
-  oneThreeRhythmCorrectRateText: {fileID: 280108230}
-  oneThreeRhythmLevel1CorrectRateText: {fileID: 1648765329}
-  twoFourRhythmCorrectRateText: {fileID: 981920735}
-  twoFourRhythmLevel1CorrectRateText: {fileID: 631204700}
-  rightHandFourBeatCorrectRateText: {fileID: 357422542}
-  rightHandFourBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandEightBeatCorrectRateText: {fileID: 1437075282}
-  rightHandEightBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandSixteenBeatCorrectRateText: {fileID: 602060259}
-  rightHandSixteenBeatLevel1CorrectRateText: {fileID: 0}
-  bothHandFourBeatCorrectRateText: {fileID: 1964977444}
-  bothHandFourBeatLevel1CorrectRateText: {fileID: 0}
-  bothHandEightBeatCorrectRateText: {fileID: 986664262}
-  bothHandEightBeatLevel1CorrectRateText: {fileID: 0}
-  bothHandSixteenBeatCorrectRateText: {fileID: 120463961}
-  bothHandSixteenBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandRightFeetFourBeatCorrectRateText: {fileID: 2089113055}
-  rightHandRightFeetFourBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandRightFeetEightBeatCorrectRateText: {fileID: 26853577}
-  rightHandRightFeetEightBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandRightFeetSixteenBeatCorrectRateText: {fileID: 151427911}
-  rightHandRightFeetSixteenBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandLeftHandRightFeetFourBeatCorrectRateText: {fileID: 1913727012}
-  rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandLeftHandRightFeetEightBeatCorrectRateText: {fileID: 1091013839}
-  rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText: {fileID: 0}
-  rightHandLeftHandRightFeetSixteenBeatCorrectRateText: {fileID: 1236809201}
-  rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText: {fileID: 0}
   markerHolder: {fileID: 1338497851}
   bassDrumHit:
     m_Name: Hit Bass Drum
@@ -3860,6 +3798,96 @@ MonoBehaviour:
       m_Action: Open Hi Hat Hit
       m_Flags: 0
     m_Flags: 0
+--- !u!114 &208549189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208549186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e308119de1d4a68428de3cf30c9ec517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctRateCalculator: {fileID: 208549190}
+  correctRateText: {fileID: 58310951}
+  level1CorrectRateText: {fileID: 1753678370}
+  mainRhythmCorrectRateText: {fileID: 1140630074}
+  mainRhythmLevel1CorrectRateText: {fileID: 1319723061}
+  oneThreeRhythmCorrectRateText: {fileID: 280108230}
+  oneThreeRhythmLevel1CorrectRateText: {fileID: 1648765329}
+  twoFourRhythmCorrectRateText: {fileID: 981920735}
+  twoFourRhythmLevel1CorrectRateText: {fileID: 631204700}
+  rightHandFourBeatCorrectRateText: {fileID: 357422542}
+  rightHandFourBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandEightBeatCorrectRateText: {fileID: 1437075282}
+  rightHandEightBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandSixteenBeatCorrectRateText: {fileID: 602060259}
+  rightHandSixteenBeatLevel1CorrectRateText: {fileID: 0}
+  bothHandFourBeatCorrectRateText: {fileID: 1964977444}
+  bothHandFourBeatLevel1CorrectRateText: {fileID: 0}
+  bothHandEightBeatCorrectRateText: {fileID: 986664262}
+  bothHandEightBeatLevel1CorrectRateText: {fileID: 0}
+  bothHandSixteenBeatCorrectRateText: {fileID: 120463961}
+  bothHandSixteenBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandRightFeetFourBeatCorrectRateText: {fileID: 2089113055}
+  rightHandRightFeetFourBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandRightFeetEightBeatCorrectRateText: {fileID: 26853577}
+  rightHandRightFeetEightBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandRightFeetSixteenBeatCorrectRateText: {fileID: 151427911}
+  rightHandRightFeetSixteenBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandLeftHandRightFeetFourBeatCorrectRateText: {fileID: 1913727012}
+  rightHandLeftHandRightFeetFourBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandLeftHandRightFeetEightBeatCorrectRateText: {fileID: 1091013839}
+  rightHandLeftHandRightFeetEightBeatLevel1CorrectRateText: {fileID: 0}
+  rightHandLeftHandRightFeetSixteenBeatCorrectRateText: {fileID: 1236809201}
+  rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRateText: {fileID: 0}
+--- !u!114 &208549190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208549186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53aa524938f5534bbb7d2b52d23f166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputTracker: {fileID: 208549188}
+  correctRate: 0
+  level1CorrectRate: 0
+  mainRhythmCorrectRate: 0
+  mainRhythmLevel1CorrectRate: 0
+  oneThreeRhythmCorrectRate: 0
+  oneThreeRhythmLevel1CorrectRate: 0
+  twoFourRhythmCorrectRate: 0
+  twoFourRhythmLevel1CorrectRate: 0
+  rightHandFourBeatCorrectRate: 0
+  rightHandFourBeatLevel1CorrectRate: 0
+  rightHandEightBeatCorrectRate: 0
+  rightHandEightBeatLevel1CorrectRate: 0
+  rightHandSixteenBeatCorrectRate: 0
+  rightHandSixteenBeatLevel1CorrectRate: 0
+  bothHandFourBeatCorrectRate: 0
+  bothHandFourBeatLevel1CorrectRate: 0
+  bothHandEightBeatCorrectRate: 0
+  bothHandEightBeatLevel1CorrectRate: 0
+  bothHandSixteenBeatCorrectRate: 0
+  bothHandSixteenBeatLevel1CorrectRate: 0
+  rightHandRightFeetFourBeatCorrectRate: 0
+  rightHandRightFeetFourBeatLevel1CorrectRate: 0
+  rightHandRightFeetEightBeatCorrectRate: 0
+  rightHandRightFeetEightBeatLevel1CorrectRate: 0
+  rightHandRightFeetSixteenBeatCorrectRate: 0
+  rightHandRightFeetSixteenBeatLevel1CorrectRate: 0
+  rightHandLeftHandRightFeetFourBeatCorrectRate: 0
+  rightHandLeftHandRightFeetFourBeatLevel1CorrectRate: 0
+  rightHandLeftHandRightFeetEightBeatCorrectRate: 0
+  rightHandLeftHandRightFeetEightBeatLevel1CorrectRate: 0
+  rightHandLeftHandRightFeetSixteenBeatCorrectRate: 0
+  rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate: 0
 --- !u!1 &209225955
 GameObject:
   m_ObjectHideFlags: 0
@@ -8780,7 +8808,7 @@ MonoBehaviour:
     - {fileID: 1938930653}
     - {fileID: 1173905265}
     - {fileID: 1357433553}
-  inputTracker: {fileID: 208549188}
+  correctRateCalculator: {fileID: 0}
   correctRatePassThreshold: 0.75
 --- !u!114 &497135782 stripped
 MonoBehaviour:
@@ -23743,7 +23771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1536122059
 Transform:
   m_ObjectHideFlags: 0
@@ -32714,7 +32742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &994117146406804694
 PrefabInstance:
   m_ObjectHideFlags: 0
