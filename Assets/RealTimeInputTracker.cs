@@ -18,6 +18,8 @@ public class RealTimeInputTracker : MonoBehaviour
     public TransformPlayBacker transformPlayBacker;
     public GameObject HitDrumInputCorrectMarker; // 预制体，用于标记正确的击打输入
     public GameObject HitDrumInputLevel1ErrorMarker; // 预制体，用于标记 level 1 错误输入
+    public GameObject HitDrumInputErrorMarker; // 预制体，用于标记 Error
+
     public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
     public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
     public float level1ErrorShift = 0.1f; // 当出现 level 1 错误时，标记位置的偏移量
@@ -245,7 +247,8 @@ public class RealTimeInputTracker : MonoBehaviour
             }
         }
 
-
+        // 檢查所有 beatPosition == currentBeatPosition 是否有匹配
+        bool findMatched = false;
         foreach (var segment in trackedHitSegments)
         {
             if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition) {
@@ -261,10 +264,31 @@ public class RealTimeInputTracker : MonoBehaviour
                         Vector3 notePosition = segment.associatedNote.transform.position;
                         Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
                     }
+                    findMatched = true;
                     break;
                 }
             }
         }
+
+        // 如果完全沒有匹配，就把下一個segment標記為 matched 但是錯誤
+        if (!findMatched) {
+            foreach (var segment in trackedHitSegments)
+            {
+                if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition) {
+                    segment.matched = true;
+                    segment.correct = false;
+
+                    // 在 associatedNote 的位置生成 HitDrumInputErrorMarker
+                    if (HitDrumInputErrorMarker != null && segment.associatedNote != null)
+                    {
+                        Vector3 notePosition = segment.associatedNote.transform.position;
+                        Instantiate(HitDrumInputErrorMarker, notePosition, Quaternion.identity, markerHolder);
+                    }
+                    break;
+                }
+            }
+        }
+        
     }
 
     public List<TrackedHitSegment> GetTrackedHitSegments()

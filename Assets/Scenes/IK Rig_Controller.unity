@@ -3895,6 +3895,8 @@ MonoBehaviour:
     type: 3}
   HitDrumInputLevel1ErrorMarker: {fileID: 1586879070310025833, guid: 71cd449301c646a47857e3f33e2ccfd4,
     type: 3}
+  HitDrumInputErrorMarker: {fileID: 5183185376375504978, guid: 83c8d019967ee494280170acb2834d7a,
+    type: 3}
   correctTimeTolerance: 0.075
   level1ErrorTimeTolerance: 0.15
   level1ErrorShift: 0.2
@@ -9926,7 +9928,7 @@ MonoBehaviour:
     - {fileID: 1938930653}
     - {fileID: 1173905265}
     - {fileID: 1357433553}
-  correctRateCalculator: {fileID: 0}
+  correctRateCalculator: {fileID: 208549190}
   correctRatePassThreshold: 0.75
 --- !u!1001 &496370361
 PrefabInstance:
