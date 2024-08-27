@@ -39,7 +39,6 @@ public class RealTimeInputTracker : MonoBehaviour
     private List<HitDrumInputData> inputLog; // 存储击打输入数据的日志
     private List<TrackedHitSegment> trackedHitSegments; // 存储复制并跟踪的 HitSegment
 
-    private int expectedHitIndex; // 期待的击打顺序索引
 
     // 事件：当 StopTracking() 結束时触发
     public event Action OnFinishTracking;
@@ -172,17 +171,17 @@ public class RealTimeInputTracker : MonoBehaviour
             // 根据当前模式执行不同的正确性判断
             if (currentMode == CorrectMode.CorrectRhythmMode)
             {
-                CheckCorrectRhythmMode(drumType, timestamp);
+                CheckHitDrumCorrectRhythmMode(drumType, timestamp);
             }
             else if (currentMode == CorrectMode.CorrectOrderMode)
             {
-                CheckCorrectOrderMode(drumType);
+                CheckHitDrumCorrectOrderMode(drumType);
             }
         }
     }
 
     // 检查是否在 CorrectRhythmMode 中正确击打
-    private void CheckCorrectRhythmMode(DrumType drumType, float timestamp)
+    private void CheckHitDrumCorrectRhythmMode(DrumType drumType, float timestamp)
     {
         foreach (var segment in trackedHitSegments)
         {
@@ -236,24 +235,34 @@ public class RealTimeInputTracker : MonoBehaviour
     }
 
     // 检查是否在 CorrectOrderMode 中正确击打
-    private void CheckCorrectOrderMode(DrumType drumType)
+    private void CheckHitDrumCorrectOrderMode(DrumType drumType)
     {
-        if (expectedHitIndex < trackedHitSegments.Count)
+        // 計算 currentBeatPosition : 目前unskipped && unmatched 中最小的 beatPosiiton
+        float currentBeatPosition = float.PositiveInfinity;
+        foreach (var segment in trackedHitSegments)
         {
-            var expectedSegment = trackedHitSegments[expectedHitIndex];
+            if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition < currentBeatPosition) {
+                currentBeatPosition = segment.associatedNote.beatPosition;
+            }
+        }
 
-            // 检查击打顺序是否正确
-            if (expectedSegment.drumHit == drumType && !expectedSegment.skip)
-            {
-                expectedSegment.matched = true;
-                expectedSegment.correct = true; // 标记为正确
-                expectedHitIndex++; // 更新预期的击打顺序索引
 
-                // 在 associatedNote 的位置生成 HitDrumInputCorrectMarker
-                if (HitDrumInputCorrectMarker != null && expectedSegment.associatedNote != null)
+        foreach (var segment in trackedHitSegments)
+        {
+            if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition) {
+                // 允许任何具有相同 beatPosition 的 segment 被击打
+                if (segment.drumHit == drumType)
                 {
-                    Vector3 notePosition = expectedSegment.associatedNote.transform.position;
-                    Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
+                    segment.matched = true;
+                    segment.correct = true; // 标记为正确
+
+                    // 在 associatedNote 的位置生成 HitDrumInputCorrectMarker
+                    if (HitDrumInputCorrectMarker != null && segment.associatedNote != null)
+                    {
+                        Vector3 notePosition = segment.associatedNote.transform.position;
+                        Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
+                    }
+                    break;
                 }
             }
         }
