@@ -28061,6 +28061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1598823643}
+  - component: {fileID: 1598823644}
   m_Layer: 0
   m_Name: Virtual Drum
   m_TagString: Untagged
@@ -28094,6 +28095,45 @@ Transform:
   - {fileID: 838600164}
   m_Father: {fileID: 1900614060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1598823644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598823642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42aefd4b6a48eb042a48cdbde11cfaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToggleOnOffInput:
+    m_Name: Toggle On Off Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a133bc9b-b56a-40a1-ab1c-626d27946958
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ee2f80b9-8b27-4029-b1b4-767fdd614cf3
+      m_Path: <OculusTouchController>{RightHand}/secondaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Toggle On Off Input
+      m_Flags: 0
+    m_Flags: 0
+  drumList:
+  - {fileID: 1404241796}
+  - {fileID: 1436070715}
+  - {fileID: 1367406192}
+  - {fileID: 1654630122}
+  - {fileID: 2106054726}
+  - {fileID: 746918696}
+  - {fileID: 2129246393}
+  - {fileID: 506476282}
+  - {fileID: 838600163}
 --- !u!1 &1599766024 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
