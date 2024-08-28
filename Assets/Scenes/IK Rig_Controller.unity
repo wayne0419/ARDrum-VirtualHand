@@ -4862,7 +4862,7 @@ GameObject:
   - component: {fileID: 239089957}
   - component: {fileID: 239089956}
   - component: {fileID: 239089955}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: RequiredBPMCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8009,7 +8009,7 @@ GameObject:
   - component: {fileID: 360874749}
   - component: {fileID: 360874751}
   - component: {fileID: 360874750}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: requiredBPMText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10482,7 +10482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 493734123}
   - component: {fileID: 493734124}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15979,7 +15979,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1984
+    m_Bits: 4032
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 1
@@ -22929,6 +22929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776845958310773239, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
       propertyPath: transformPlayBacker
       value: 
       objectReference: {fileID: 174402672}
@@ -22991,6 +22996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868383607977785942, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34665,7 +34675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ed46877160a12489c4eff1856dd837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  studyMode: 0
+  studyMode: 1
   MRDrumObjects:
   - {fileID: 1467304540}
   - {fileID: 493734122}
