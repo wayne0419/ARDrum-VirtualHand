@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2464493091414466024}
   - component: {fileID: 5687734484668725037}
   - component: {fileID: 4682867627305316385}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: bpmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 6836534644983371306}
   - component: {fileID: 692933595120586031}
   - component: {fileID: 3036617942119983941}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
