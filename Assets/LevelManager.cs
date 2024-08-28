@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class LevelManager : MonoBehaviour
     public CorrectRateCalculator correctRateCalculator; // 引用 CorrectRateCalculator
     private int currentFocusedStageIndex;  // 当前 focused 的 stage 索引
     public float correctRatePassThreshold = 0.9f; // 通过的正确率阈值
+    public float requiredBPM; // 需要达到的 BPM
+    public TextMeshProUGUI requiredBPMText; // 显示需要达到的 BPM 的 Text
 
     // 新增的 Action，用于在晋级到下一个 stage 时调用
     public Action OnStageAdvanced;
@@ -71,10 +74,36 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    void OnEnable() {
+        // 初始化 requiredBPMText
+        UpdateRequiredBPMText();
+    }
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            requiredBPM += 5f;
+            UpdateRequiredBPMText();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            requiredBPM -= 5f;
+            UpdateRequiredBPMText();
+        }
+        
+    }
+    void UpdateRequiredBPMText() {
+        // 更新 requiredBPMText
+        if (requiredBPMText != null) {
+            requiredBPMText.text = requiredBPM.ToString();
+        }
+    }
+
     private void CheckFocusedLevelsCorrectRate()
     {
         // CorrectOrderMode 不能用來通關
         if (correctRateCalculator.inputTracker.currentMode == RealTimeInputTracker.CorrectMode.CorrectOrderMode) {
+            return;
+        }
+        // bpm 小於 required bpm 不能通關
+        if (correctRateCalculator.inputTracker.transformPlayBacker.playBackBPM < requiredBPM) {
             return;
         }
 
