@@ -19,6 +19,7 @@ public class RealTimeInputTracker : MonoBehaviour
     public GameObject HitDrumInputCorrectMarker; // 预制体，用于标记正确的击打输入
     public GameObject HitDrumInputLevel1ErrorMarker; // 预制体，用于标记 level 1 错误输入
     public GameObject HitDrumInputErrorMarker; // 预制体，用于标记 Error
+    public GameObject HitDrumInputMissMarker; // 预制体，用于标记 Miss
 
     public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
     public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
@@ -184,6 +185,8 @@ public class RealTimeInputTracker : MonoBehaviour
     // 检查是否在 CorrectRhythmMode 中正确击打
     private void CheckHitDrumCorrectRhythmMode(DrumType drumType, float timestamp)
     {
+        bool matched = false;  // 用于跟踪是否有匹配的 segment
+
         foreach (var segment in trackedHitSegments)
         {
             if (!segment.matched && !segment.skip && segment.drumHit == drumType)
@@ -205,6 +208,7 @@ public class RealTimeInputTracker : MonoBehaviour
                         Vector3 notePosition = segment.associatedNote.transform.position;
                         Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
                     }
+                    matched = true;
                     break; // 配对后跳出循环
                 }
                 // 使用 level1ErrorTimeTolerance 作为容许误差
@@ -229,11 +233,50 @@ public class RealTimeInputTracker : MonoBehaviour
 
                         Instantiate(HitDrumInputLevel1ErrorMarker, notePosition, Quaternion.identity, markerHolder);
                     }
+                    matched = true;
                     break; // 配对后跳出循环
                 }
             }
         }
+
+        // 如果没有任何匹配的 segment，则生成 MissMarker
+        if (!matched)
+        {
+            if (HitDrumInputMissMarker != null && transformPlayBacker.drumSheetCursor != null)
+            {
+                Vector3 cursorPosition = transformPlayBacker.drumSheetCursor.transform.position;
+                if (drumType == DrumType.Crash) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetCrashRowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.OpenHiHat) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetOpenHiHatRowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.ClosedHiHat) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetClosedHiHatRowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.Ride) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetRideRowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.Tom1) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetTom1RowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.Tom2) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetTom2RowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.FloorTom) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetFloorTomRowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.SnareDrum) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetSnareRowAnchor.transform.position.y;
+                }
+                else if (drumType == DrumType.BassDrum) {
+                    cursorPosition.y = transformPlayBacker.drumSheet.drumSheetBassRowAnchor.transform.position.y;
+                }
+                Instantiate(HitDrumInputMissMarker, cursorPosition, Quaternion.identity, markerHolder);
+            }
+        }
     }
+
 
     // 检查是否在 CorrectOrderMode 中正确击打
     private void CheckHitDrumCorrectOrderMode(DrumType drumType)

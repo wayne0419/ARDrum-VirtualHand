@@ -63,6 +63,7 @@ public class TransformPlayBacker : MonoBehaviour
     public float startOffsetBeat; // 开始播放前的偏移节拍数
     public Metronome metronome; // Metronome 组件引用
     public DrumSheet drumSheet; // 引用 DrumSheet 组件
+    public DrumSheetCursor drumSheetCursor; // drum sheet 的 cursor
 
     public AudioSource bassDrumAudioSource; // 大鼓音效
     public AudioSource snareDrumAudioSource; // 小军鼓音效

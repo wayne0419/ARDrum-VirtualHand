@@ -7,6 +7,16 @@ public class DrumSheet : MonoBehaviour
 
     public Transform drumSheetCursorStart; // 鼓谱光标的起始位置
     public Transform drumSheetCursorEnd;   // 鼓谱光标的结束位置
+    public Transform drumSheetCrashRowAnchor;  // Crash 的錨點
+    public Transform drumSheetOpenHiHatRowAnchor;  // Open HiHat 的錨點
+    public Transform drumSheetClosedHiHatRowAnchor;  // Closed HiHat 的錨點
+    public Transform drumSheetRideRowAnchor;  // Ride 的錨點
+    public Transform drumSheetTom1RowAnchor;  // Tom1 的錨點
+    public Transform drumSheetTom2RowAnchor;  // Tom2 的錨點
+    public Transform drumSheetSnareRowAnchor;  // Snare 的錨點
+    public Transform drumSheetFloorTomRowAnchor;  // Floor Tom 的錨點
+    public Transform drumSheetBassRowAnchor;  // Bass 的錨點
+    public Transform drumSheetFloorHiHatRowAnchor;  // FloorHiHat 的錨點
 
     // 新增方法：找出某个 drumType 的第 i 个 DrumNote
     public DrumNote GetDrumNoteByIndex(DrumType drumType, int index)

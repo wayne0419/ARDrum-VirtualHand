@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7254711648370076046}
   - component: {fileID: 2979956842013861276}
   - component: {fileID: 2149146164947728353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HitDrumInputCrossMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
