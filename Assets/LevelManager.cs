@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
 
     // 新增的 Action，用于在晋级到下一个 stage 时调用
     public Action OnStageAdvanced;
+    // 新增的 Action，用于在 levle pass 时调用
+    public Action OnLevelPassed;
 
     private void Start()
     {
@@ -38,8 +40,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        // 订阅 RealTimeInputTracker 的事件
-        correctRateCalculator.OnFinishCalculateCorrectRate += CheckFocusedLevelsCorrectRate;
+        
 
         // 初始化 currentFocusedStageIndex
         currentFocusedStageIndex = 0;
@@ -75,8 +76,15 @@ public class LevelManager : MonoBehaviour
     }
 
     void OnEnable() {
+        // 订阅 RealTimeInputTracker 的事件
+        correctRateCalculator.OnFinishCalculateCorrectRate += CheckFocusedLevelsCorrectRate;
+
         // 初始化 requiredBPMText
         UpdateRequiredBPMText();
+    }
+    void OnDisable() {
+        // 取消订阅 RealTimeInputTracker 的事件
+        correctRateCalculator.OnFinishCalculateCorrectRate -= CheckFocusedLevelsCorrectRate;
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
@@ -163,6 +171,7 @@ public class LevelManager : MonoBehaviour
                     if (isPassed)
                     {
                         controller.SetPassed();
+                        OnLevelPassed?.Invoke();
                     }
                 }
             }

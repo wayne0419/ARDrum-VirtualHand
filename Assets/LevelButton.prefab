@@ -142,6 +142,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selector: 17
   transformPlayBacker: {fileID: 0}
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e06b62fc-fd56-4f9d-9c5b-fa9a4222eab1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &7868383607977785942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +165,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputTracker: {fileID: 0}
   correctMode: 0
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2669b789-a964-4125-9f9b-ef08e3fcdebc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
