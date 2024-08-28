@@ -611,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &20143205
 Transform:
   m_ObjectHideFlags: 0
@@ -3187,7 +3187,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144288181}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ed02b32077fd08941859b2c45a380053, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ce3b50201989f60458dbbaec1b669baa, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -3676,14 +3676,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/easy1.json
+  jsonFilePath: Assets/RecordedTransforms/medium2.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
   playBackBPM: 120
   startOffsetBeat: 3
   metronome: {fileID: 5366975294774543386}
-  drumSheet: {fileID: 20143206}
+  drumSheet: {fileID: 1084646077}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
   closedHiHatAudioSource: {fileID: 273501198}
@@ -19495,7 +19495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1084646076
 Transform:
   m_ObjectHideFlags: 0
@@ -34847,6 +34847,7 @@ MonoBehaviour:
   - {fileID: 1946559802}
   - {fileID: 1581453967}
   - {fileID: 2096156230}
+  - {fileID: 997340094}
   - {fileID: 1039062300}
   baselineObjects:
   - {fileID: 144288181}
