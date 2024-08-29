@@ -4382,7 +4382,7 @@ MonoBehaviour:
     type: 3}
   HitDrumInputErrorMarker: {fileID: 5183185376375504978, guid: 83c8d019967ee494280170acb2834d7a,
     type: 3}
-  HitDrumInputMissMarker: {fileID: 5183185376375504978, guid: 83c8d019967ee494280170acb2834d7a,
+  HitDrumInputMissMarker: {fileID: 5183185376375504978, guid: cf12c3265072a844db46f9eb45aa11f6,
     type: 3}
   correctTimeTolerance: 0.075
   level1ErrorTimeTolerance: 0.15
