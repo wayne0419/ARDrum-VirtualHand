@@ -84,6 +84,11 @@ public class LevelController : MonoBehaviour
             levelRenderer.material.color = passedColor; // 设置为通过时的颜色
         }
     }
+    // 将关卡设置为通过状态
+    public void SetUnPassed()
+    {
+        passed = false;
+    }
 
     // 根据给定的值设置关卡的外观
     public void SetAppearanceByValue(int value)

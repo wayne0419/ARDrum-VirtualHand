@@ -4033,7 +4033,7 @@ GameObject:
   - component: {fileID: 187916491}
   - component: {fileID: 187916490}
   m_Layer: 7
-  m_Name: RightHand LeftHand
+  m_Name: Stage 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4078,9 +4078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RH + LH
-
-'
+  m_text: Stage 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10033,7 +10031,7 @@ GameObject:
   - component: {fileID: 455242101}
   - component: {fileID: 455242100}
   m_Layer: 7
-  m_Name: RightHand RightFeet
+  m_Name: Stage3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10055,7 +10053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.95, y: 16.399998}
+  m_AnchoredPosition: {x: -22.37, y: 16.399998}
   m_SizeDelta: {x: 10.11, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455242100
@@ -10078,9 +10076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RH + RF
-
-'
+  m_text: Stage 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11197,7 +11193,7 @@ MonoBehaviour:
     - {fileID: 1357433553}
   correctRateCalculator: {fileID: 208549190}
   correctRatePassThreshold: 0.7
-  requiredBPM: 0
+  requiredBPM: 160
   requiredBPMText: {fileID: 360874750}
 --- !u!114 &493734125
 MonoBehaviour:
@@ -15497,7 +15493,7 @@ GameObject:
   - component: {fileID: 820551123}
   - component: {fileID: 820551122}
   m_Layer: 7
-  m_Name: RightHand
+  m_Name: Stage 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15519,7 +15515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56.1, y: 16.4}
+  m_AnchoredPosition: {x: -57.63, y: 16.4}
   m_SizeDelta: {x: 10.11, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &820551122
@@ -15542,9 +15538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RH
-
-'
+  m_text: Stage 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19868,7 +19862,7 @@ GameObject:
   - component: {fileID: 1048850478}
   - component: {fileID: 1048850477}
   m_Layer: 7
-  m_Name: RightHand LeftHand RightFeet
+  m_Name: Stage 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19890,7 +19884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.03, y: 16.400002}
+  m_AnchoredPosition: {x: -5.65, y: 16.400002}
   m_SizeDelta: {x: 10.11, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048850477
@@ -19913,9 +19907,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RH + LH+ RF
-
-'
+  m_text: Stage 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

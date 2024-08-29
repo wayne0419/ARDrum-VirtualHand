@@ -150,6 +150,12 @@ public class RealTimeInputTracker : MonoBehaviour
             CheckAndLogInput(rideHit, DrumType.Ride);
             CheckAndLogInput(openHiHatHit, DrumType.OpenHiHat);
         }
+        if (Input.GetKeyDown(KeyCode.Keypad7)) {
+            markerHolder.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4)) {
+            markerHolder.gameObject.SetActive(false);
+        }
     }
 
     // 检查 InputAction 是否触发并记录击打数据

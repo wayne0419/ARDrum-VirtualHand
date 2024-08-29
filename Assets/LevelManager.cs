@@ -95,6 +95,12 @@ public class LevelManager : MonoBehaviour
             requiredBPM -= 5f;
             UpdateRequiredBPMText();
         }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            GoNextStage();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            GoPreviousStage();
+        }
         
     }
     void UpdateRequiredBPMText() {
@@ -200,36 +206,84 @@ public class LevelManager : MonoBehaviour
 
             if (allPassed)
             {
-                // 当前 stage 所有 level 都通过了
-                // 将当前 stage 的 level 设置为未聚焦
-                foreach (var controller in currentStage.levels)
+                GoNextStage();
+            }
+        }
+    }
+
+    void GoNextStage()
+    {
+        if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count - 1) {
+            Stage currentStage = stages[currentFocusedStageIndex];
+
+            // 当前 stage 所有 level 都通过了
+            // 将当前 stage 的 level 设置为未聚焦
+            foreach (var controller in currentStage.levels)
+            {
+                if (controller != null)
+                {
+                    controller.SetUnFocused();
+                }
+            }
+
+            // 聚焦下一个 stage
+            currentFocusedStageIndex++;
+            if (currentFocusedStageIndex < stages.Count)
+            {
+                Stage nextStage = stages[currentFocusedStageIndex];
+                foreach (var controller in nextStage.levels)
                 {
                     if (controller != null)
                     {
-                        controller.SetUnFocused();
+                        controller.SetUnLocked();
+                        controller.SetFocused();
                     }
                 }
 
-                // 聚焦下一个 stage
-                currentFocusedStageIndex++;
-                if (currentFocusedStageIndex < stages.Count)
+                // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
+                correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
+
+                // 在晋级到下一个 stage 时调用 Action
+                OnStageAdvanced?.Invoke();
+            }
+        }
+    }
+    void GoPreviousStage()
+    {
+        if (currentFocusedStageIndex > 0 && currentFocusedStageIndex < stages.Count) {
+            Stage currentStage = stages[currentFocusedStageIndex];
+
+            // 当前 stage 所有 level 都通过了
+            // 将当前 stage 的 level 设置为未聚焦
+            foreach (var controller in currentStage.levels)
+            {
+                if (controller != null)
                 {
-                    Stage nextStage = stages[currentFocusedStageIndex];
-                    foreach (var controller in nextStage.levels)
-                    {
-                        if (controller != null)
-                        {
-                            controller.SetUnLocked();
-                            controller.SetFocused();
-                        }
-                    }
-
-                    // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
-                    correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
-
-                    // 在晋级到下一个 stage 时调用 Action
-                    OnStageAdvanced?.Invoke();
+                    controller.SetUnPassed();
+                    controller.SetUnFocused();
+                    controller.SetLocked();
                 }
+            }
+
+            // 聚焦上一个 stage
+            currentFocusedStageIndex--;
+            if (currentFocusedStageIndex >= 0)
+            {
+                Stage previousStage = stages[currentFocusedStageIndex];
+                foreach (var controller in previousStage.levels)
+                {
+                    if (controller != null)
+                    {
+                        controller.SetUnLocked();
+                        controller.SetFocused();
+                    }
+                }
+
+                // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
+                correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
+
+                // 在晋级到上一个 stage 时调用 Action
+                OnStageAdvanced?.Invoke();
             }
         }
     }
