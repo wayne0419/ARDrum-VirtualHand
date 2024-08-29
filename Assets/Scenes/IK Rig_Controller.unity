@@ -10399,7 +10399,7 @@ MonoBehaviour:
   targetTransform2: {fileID: 1636075968}
   targetTransform3: {fileID: 991976842}
   folderPath: Assets/RecordedTransforms
-  bpm: 40
+  bpm: 60
   recordDelayBeats: 3
   recordDurationBeats: 5
   metronome: {fileID: 1340986489}

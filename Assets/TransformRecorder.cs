@@ -212,9 +212,9 @@ public class TransformRecorder : MonoBehaviour
         for (int i = 0; i < transformDataList.Count; i++)
         {
             float timestamp = transformDataList[i].timestamp;
-            if (timestamp <= endTime && timestamp >= endTime - clipLength)
+            if (timestamp <= endTime && timestamp >= endTime - clipLength * (120f / bpm))   // feetkick animation是以 120 BPM 为基准的, 根據 record bpm 進行調整
             {
-                float animationTime = timestamp - (endTime - clipLength); // 将 animationClip 的末尾对齐到 endTime
+                float animationTime = (timestamp - (endTime - clipLength * (120f / bpm)))/(120f / bpm); // 将 animationClip 的末尾对齐到 endTime    // feetkick animation是以 120 BPM 为基准的, 根據 record bpm 進行調整
                 animationClip.SampleAnimation(targetTransform3.gameObject, animationTime);
                 transformDataList[i].position3 = targetTransform3.position;
                 transformDataList[i].rotation3 = targetTransform3.rotation;
