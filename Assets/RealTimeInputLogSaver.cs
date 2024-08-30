@@ -33,9 +33,9 @@ public class RealTimeInputLogSaver : MonoBehaviour
         };
 
         // 檔名
-        string timestamp = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        string timestamp = System.DateTime.Now.ToString("yyyyMMddHHmmss");
         int fileCount = Directory.GetFiles(directoryPath, "*.json").Length;
-        string filePath = Path.Combine(directoryPath, fileCount + "_" + inputTracker.transformPlayBacker.playBackBPM + "bpm.json");
+        string filePath = Path.Combine(directoryPath, fileCount + "_" + inputTracker.transformPlayBacker.playBackBPM + "bpm_" + timestamp + ".json");
 
         // Convert the data to JSON and save it to the file
         string json = JsonUtility.ToJson(logData, true);
