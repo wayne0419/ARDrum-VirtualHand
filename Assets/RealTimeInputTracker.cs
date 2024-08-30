@@ -39,7 +39,7 @@ public class RealTimeInputTracker : MonoBehaviour
     public InputAction openHiHatHit;
 
     private bool isTracking = false; // 用于跟踪播放状态
-    private List<HitDrumInputData> inputLog; // 存储击打输入数据的日志
+    public List<HitDrumInputData> inputLog; // 存储击打输入数据的日志
     private List<TrackedHitSegment> trackedHitSegments; // 存储复制并跟踪的 HitSegment
 
 
@@ -347,7 +347,7 @@ public class RealTimeInputTracker : MonoBehaviour
 
     // 序列化的类，用于存储每次击打的输入数据
     [Serializable]
-    private class HitDrumInputData
+    public class HitDrumInputData
     {
         public DrumType drumType; // 鼓的类型
         public float timestamp; // 时间戳

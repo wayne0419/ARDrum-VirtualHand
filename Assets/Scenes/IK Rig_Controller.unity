@@ -4338,6 +4338,7 @@ GameObject:
   - component: {fileID: 208549188}
   - component: {fileID: 208549190}
   - component: {fileID: 208549189}
+  - component: {fileID: 208549191}
   m_Layer: 0
   m_Name: RealTimeInputTracker
   m_TagString: Untagged
@@ -4669,6 +4670,7 @@ MonoBehaviour:
       m_Action: Open Hi Hat Hit
       m_Flags: 0
     m_Flags: 0
+  inputLog: []
 --- !u!114 &208549189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4759,6 +4761,20 @@ MonoBehaviour:
   rightHandLeftHandRightFeetEightBeatLevel1CorrectRate: 0
   rightHandLeftHandRightFeetSixteenBeatCorrectRate: 0
   rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate: 0
+--- !u!114 &208549191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208549186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a11bf754d398904c9c35856d4752786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputTracker: {fileID: 208549188}
+  directoryPath: HitDrumInputLogs/user1
 --- !u!1 &209225955
 GameObject:
   m_ObjectHideFlags: 0
