@@ -5,6 +5,7 @@ using UnityEngine;
 public class RealTimeInputLogSaver : MonoBehaviour
 {
     public RealTimeInputTracker inputTracker; // Reference to the RealTimeInputTracker component
+    public CorrectRateCalculator correctRateCalculator;
     public string directoryPath;
 
     private void Update()
@@ -28,6 +29,7 @@ public class RealTimeInputLogSaver : MonoBehaviour
         InputLogData logData = new InputLogData
         {
             playBackBPM = inputTracker.transformPlayBacker.playBackBPM,
+            correctRate = correctRateCalculator.correctRate,
             jsonFilePath = inputTracker.transformPlayBacker.jsonFilePath,
             inputLog = inputTracker.inputLog
         };
@@ -35,7 +37,7 @@ public class RealTimeInputLogSaver : MonoBehaviour
         // 檔名
         string timestamp = System.DateTime.Now.ToString("yyyyMMddHHmmss");
         int fileCount = Directory.GetFiles(directoryPath, "*.json").Length;
-        string filePath = Path.Combine(directoryPath, fileCount + "_" + inputTracker.transformPlayBacker.playBackBPM + "bpm_" + timestamp + ".json");
+        string filePath = Path.Combine(directoryPath, fileCount + "_" + inputTracker.transformPlayBacker.playBackBPM + "bpm_" + $"{correctRateCalculator.correctRate:P0}_" + timestamp + ".json");
 
         // Convert the data to JSON and save it to the file
         string json = JsonUtility.ToJson(logData, true);
@@ -49,6 +51,7 @@ public class RealTimeInputLogSaver : MonoBehaviour
     {
         
         public float playBackBPM;
+        public float correctRate;
         public string jsonFilePath;
         public List<RealTimeInputTracker.HitDrumInputData> inputLog;
     }

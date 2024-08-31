@@ -4774,6 +4774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputTracker: {fileID: 208549188}
+  correctRateCalculator: {fileID: 208549190}
   directoryPath: HitDrumInputLogs/user1
 --- !u!1 &209225955
 GameObject:
