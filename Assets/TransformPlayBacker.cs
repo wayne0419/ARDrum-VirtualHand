@@ -127,6 +127,18 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
+        // 按下 Keypad1 切換成 mode A
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            playMode = PlayMode.A;
+        }
+
+        // 按下 Keypad0 切換成 mode B
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            playMode = PlayMode.B;
+        }
+
         // 按下 Keypad9 激活 PlayBackVirtualMan
         if (Input.GetKeyDown(KeyCode.Keypad9) && PlayBackVirtualMan != null)
         {
