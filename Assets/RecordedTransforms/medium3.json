@@ -5869,7 +5869,7 @@
             },
             "bassDrumHit": {
                 "value": 0.6692913770675659,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -6021,7 +6021,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.7322834730148315,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -7245,7 +7245,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.39370080828666687,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -8541,7 +8541,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8110236525535583,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -8605,7 +8605,7 @@
             },
             "bassDrumHit": {
                 "value": 0.7874016165733337,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -9909,7 +9909,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.32283467054367065,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -11129,7 +11129,7 @@
             },
             "snareDrumHit": {
                 "value": 0.5118110775947571,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "closedHiHatHit": {
                 "value": 0.0,
@@ -12501,7 +12501,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.4409448802471161,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -13645,7 +13645,7 @@
             },
             "bassDrumHit": {
                 "value": 0.8976377844810486,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -13869,7 +13869,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8976377844810486,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -15021,7 +15021,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.4566929042339325,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -16453,7 +16453,7 @@
             },
             "bassDrumHit": {
                 "value": 0.9448819160461426,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -16461,7 +16461,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8425197005271912,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -17685,7 +17685,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.36220473051071167,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -19117,7 +19117,7 @@
             },
             "bassDrumHit": {
                 "value": 0.960629940032959,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -19125,7 +19125,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8425197005271912,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -20277,7 +20277,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.3779527544975281,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -21641,7 +21641,7 @@
             },
             "snareDrumHit": {
                 "value": 0.5039370656013489,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "closedHiHatHit": {
                 "value": 0.0,
@@ -22869,7 +22869,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.4960629940032959,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -24229,7 +24229,7 @@
             },
             "bassDrumHit": {
                 "value": 1.0,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -24309,7 +24309,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8818897604942322,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -25533,7 +25533,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.4566929042339325,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,

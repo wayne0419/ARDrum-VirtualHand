@@ -71,7 +71,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.186358642578125
+            "timestamp": -0.13635864257812502
         },
         {
             "position1": {
@@ -143,7 +143,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.1722900390625
+            "timestamp": -0.12229003906250001
         },
         {
             "position1": {
@@ -215,7 +215,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.15843505859375
+            "timestamp": -0.10843505859375001
         },
         {
             "position1": {
@@ -287,7 +287,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.1447021484375
+            "timestamp": -0.09470214843750001
         },
         {
             "position1": {
@@ -359,7 +359,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.130389404296875
+            "timestamp": -0.08038940429687501
         },
         {
             "position1": {
@@ -431,7 +431,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.11665649414062501
+            "timestamp": -0.06665649414062501
         },
         {
             "position1": {
@@ -503,7 +503,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.10292358398437501
+            "timestamp": -0.05292358398437501
         },
         {
             "position1": {
@@ -575,7 +575,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.08894653320312501
+            "timestamp": -0.03894653320312501
         },
         {
             "position1": {
@@ -647,7 +647,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.07521362304687501
+            "timestamp": -0.02521362304687501
         },
         {
             "position1": {
@@ -719,7 +719,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.06099243164062501
+            "timestamp": -0.010992431640625008
         },
         {
             "position1": {
@@ -791,7 +791,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.04722900390625001
+            "timestamp": 0.0027709960937499917
         },
         {
             "position1": {
@@ -863,7 +863,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.03346557617187501
+            "timestamp": 0.01653442382812499
         },
         {
             "position1": {
@@ -935,7 +935,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.01967163085937501
+            "timestamp": 0.03032836914062499
         },
         {
             "position1": {
@@ -1007,7 +1007,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": -0.005603027343750011
+            "timestamp": 0.04439697265624999
         },
         {
             "position1": {
@@ -1079,7 +1079,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.008496093749999989
+            "timestamp": 0.05849609374999999
         },
         {
             "position1": {
@@ -1151,7 +1151,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.02201538085937499
+            "timestamp": 0.07201538085937499
         },
         {
             "position1": {
@@ -1223,7 +1223,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.03605346679687499
+            "timestamp": 0.08605346679687499
         },
         {
             "position1": {
@@ -1295,7 +1295,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.04993896484374999
+            "timestamp": 0.09993896484374999
         },
         {
             "position1": {
@@ -1367,7 +1367,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.06400756835937499
+            "timestamp": 0.11400756835937499
         },
         {
             "position1": {
@@ -1439,7 +1439,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.07749633789062499
+            "timestamp": 0.12749633789062498
         },
         {
             "position1": {
@@ -1511,7 +1511,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.09180908203124999
+            "timestamp": 0.14180908203124998
         },
         {
             "position1": {
@@ -1583,7 +1583,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.10590820312499999
+            "timestamp": 0.15590820312499998
         },
         {
             "position1": {
@@ -1655,7 +1655,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.11933593749999999
+            "timestamp": 0.16933593749999998
         },
         {
             "position1": {
@@ -1727,7 +1727,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.1328857421875
+            "timestamp": 0.18288574218749998
         },
         {
             "position1": {
@@ -1799,7 +1799,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.147076416015625
+            "timestamp": 0.19707641601562498
         },
         {
             "position1": {
@@ -1871,7 +1871,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.16090087890625
+            "timestamp": 0.21090087890624998
         },
         {
             "position1": {
@@ -1943,7 +1943,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.174969482421875
+            "timestamp": 0.22496948242187498
         },
         {
             "position1": {
@@ -2015,7 +2015,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.1887939453125
+            "timestamp": 0.23879394531249998
         },
         {
             "position1": {
@@ -2087,7 +2087,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.203045654296875
+            "timestamp": 0.253045654296875
         },
         {
             "position1": {
@@ -2159,7 +2159,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.21656494140625
+            "timestamp": 0.26656494140625
         },
         {
             "position1": {
@@ -2231,7 +2231,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.230572509765625
+            "timestamp": 0.280572509765625
         },
         {
             "position1": {
@@ -2303,7 +2303,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.244427490234375
+            "timestamp": 0.294427490234375
         },
         {
             "position1": {
@@ -2375,7 +2375,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.258099365234375
+            "timestamp": 0.308099365234375
         },
         {
             "position1": {
@@ -2447,7 +2447,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.27247314453125
+            "timestamp": 0.32247314453125
         },
         {
             "position1": {
@@ -2519,7 +2519,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.286175537109375
+            "timestamp": 0.336175537109375
         },
         {
             "position1": {
@@ -2591,7 +2591,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.30054931640625
+            "timestamp": 0.35054931640625
         },
         {
             "position1": {
@@ -2663,7 +2663,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.31385498046875
+            "timestamp": 0.36385498046875
         },
         {
             "position1": {
@@ -2735,7 +2735,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.327435302734375
+            "timestamp": 0.377435302734375
         },
         {
             "position1": {
@@ -2807,7 +2807,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.3416259765625
+            "timestamp": 0.3916259765625
         },
         {
             "position1": {
@@ -2879,7 +2879,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.355267333984375
+            "timestamp": 0.405267333984375
         },
         {
             "position1": {
@@ -2951,7 +2951,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.369366455078125
+            "timestamp": 0.419366455078125
         },
         {
             "position1": {
@@ -3023,7 +3023,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.383221435546875
+            "timestamp": 0.433221435546875
         },
         {
             "position1": {
@@ -3095,7 +3095,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.397320556640625
+            "timestamp": 0.447320556640625
         },
         {
             "position1": {
@@ -3167,7 +3167,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.411175537109375
+            "timestamp": 0.461175537109375
         },
         {
             "position1": {
@@ -3239,7 +3239,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.425091552734375
+            "timestamp": 0.475091552734375
         },
         {
             "position1": {
@@ -3311,7 +3311,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.43885498046875
+            "timestamp": 0.48885498046875
         },
         {
             "position1": {
@@ -3383,7 +3383,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.4527099609375
+            "timestamp": 0.5027099609375
         },
         {
             "position1": {
@@ -3455,7 +3455,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.466900634765625
+            "timestamp": 0.516900634765625
         },
         {
             "position1": {
@@ -3527,7 +3527,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.4805419921875
+            "timestamp": 0.5305419921875
         },
         {
             "position1": {
@@ -3599,7 +3599,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.494244384765625
+            "timestamp": 0.544244384765625
         },
         {
             "position1": {
@@ -3671,7 +3671,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.508892822265625
+            "timestamp": 0.5588928222656251
         },
         {
             "position1": {
@@ -3743,7 +3743,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.52235107421875
+            "timestamp": 0.5723510742187501
         },
         {
             "position1": {
@@ -3815,7 +3815,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.536114501953125
+            "timestamp": 0.5861145019531251
         },
         {
             "position1": {
@@ -3887,7 +3887,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.55
+            "timestamp": 0.6000000000000001
         },
         {
             "position1": {
@@ -3959,7 +3959,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.563885498046875
+            "timestamp": 0.6138854980468751
         },
         {
             "position1": {
@@ -4031,7 +4031,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.57752685546875
+            "timestamp": 0.6275268554687501
         },
         {
             "position1": {
@@ -4103,7 +4103,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.59156494140625
+            "timestamp": 0.6415649414062501
         },
         {
             "position1": {
@@ -4175,7 +4175,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.605572509765625
+            "timestamp": 0.6555725097656251
         },
         {
             "position1": {
@@ -4247,7 +4247,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.619305419921875
+            "timestamp": 0.6693054199218751
         },
         {
             "position1": {
@@ -4319,7 +4319,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.633251953125
+            "timestamp": 0.6832519531250001
         },
         {
             "position1": {
@@ -4391,7 +4391,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.647015380859375
+            "timestamp": 0.6970153808593751
         },
         {
             "position1": {
@@ -4463,7 +4463,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.660809326171875
+            "timestamp": 0.7108093261718751
         },
         {
             "position1": {
@@ -4535,7 +4535,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.67493896484375
+            "timestamp": 0.7249389648437501
         },
         {
             "position1": {
@@ -4607,7 +4607,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.68916015625
+            "timestamp": 0.7391601562500001
         },
         {
             "position1": {
@@ -4679,7 +4679,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.702862548828125
+            "timestamp": 0.7528625488281251
         },
         {
             "position1": {
@@ -4751,7 +4751,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.7163818359375
+            "timestamp": 0.7663818359375001
         },
         {
             "position1": {
@@ -4823,7 +4823,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.730419921875
+            "timestamp": 0.7804199218750001
         },
         {
             "position1": {
@@ -4895,7 +4895,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.744732666015625
+            "timestamp": 0.7947326660156251
         },
         {
             "position1": {
@@ -4967,7 +4967,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.7581298828125
+            "timestamp": 0.8081298828125001
         },
         {
             "position1": {
@@ -5039,7 +5039,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.77235107421875
+            "timestamp": 0.8223510742187501
         },
         {
             "position1": {
@@ -5111,7 +5111,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.786114501953125
+            "timestamp": 0.8361145019531251
         },
         {
             "position1": {
@@ -5183,7 +5183,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.800152587890625
+            "timestamp": 0.8501525878906251
         },
         {
             "position1": {
@@ -5255,7 +5255,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.813824462890625
+            "timestamp": 0.8638244628906251
         },
         {
             "position1": {
@@ -5327,7 +5327,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.827587890625
+            "timestamp": 0.8775878906250001
         },
         {
             "position1": {
@@ -5399,7 +5399,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.84150390625
+            "timestamp": 0.8915039062500001
         },
         {
             "position1": {
@@ -5471,7 +5471,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.8552978515625
+            "timestamp": 0.9052978515625001
         },
         {
             "position1": {
@@ -5543,7 +5543,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.86951904296875
+            "timestamp": 0.9195190429687501
         },
         {
             "position1": {
@@ -5615,7 +5615,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.88331298828125
+            "timestamp": 0.9333129882812501
         },
         {
             "position1": {
@@ -5687,7 +5687,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.897198486328125
+            "timestamp": 0.9471984863281251
         },
         {
             "position1": {
@@ -5759,7 +5759,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.911297607421875
+            "timestamp": 0.9612976074218751
         },
         {
             "position1": {
@@ -5831,7 +5831,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.92493896484375
+            "timestamp": 0.9749389648437501
         },
         {
             "position1": {
@@ -5903,7 +5903,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.938916015625
+            "timestamp": 0.9889160156250001
         },
         {
             "position1": {
@@ -5975,7 +5975,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.95283203125
+            "timestamp": 1.00283203125
         },
         {
             "position1": {
@@ -6047,7 +6047,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.966595458984375
+            "timestamp": 1.016595458984375
         },
         {
             "position1": {
@@ -6119,7 +6119,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.980633544921875
+            "timestamp": 1.030633544921875
         },
         {
             "position1": {
@@ -6191,7 +6191,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 0.994305419921875
+            "timestamp": 1.044305419921875
         },
         {
             "position1": {
@@ -6229,7 +6229,7 @@
             },
             "bassDrumHit": {
                 "value": 0.6141732335090637,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -6237,7 +6237,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8425197005271912,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -6263,7 +6263,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.008587646484375
+            "timestamp": 1.058587646484375
         },
         {
             "position1": {
@@ -6335,7 +6335,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.0237548828125
+            "timestamp": 1.0737548828125
         },
         {
             "position1": {
@@ -6407,7 +6407,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.036297607421875
+            "timestamp": 1.086297607421875
         },
         {
             "position1": {
@@ -6479,7 +6479,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.04981689453125
+            "timestamp": 1.09981689453125
         },
         {
             "position1": {
@@ -6551,7 +6551,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.063763427734375
+            "timestamp": 1.113763427734375
         },
         {
             "position1": {
@@ -6623,7 +6623,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.077801513671875
+            "timestamp": 1.127801513671875
         },
         {
             "position1": {
@@ -6695,7 +6695,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.091656494140625
+            "timestamp": 1.141656494140625
         },
         {
             "position1": {
@@ -6767,7 +6767,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.10584716796875
+            "timestamp": 1.15584716796875
         },
         {
             "position1": {
@@ -6839,7 +6839,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.119366455078125
+            "timestamp": 1.169366455078125
         },
         {
             "position1": {
@@ -6911,7 +6911,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.133160400390625
+            "timestamp": 1.183160400390625
         },
         {
             "position1": {
@@ -6983,7 +6983,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.14759521484375
+            "timestamp": 1.19759521484375
         },
         {
             "position1": {
@@ -7055,7 +7055,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.161236572265625
+            "timestamp": 1.211236572265625
         },
         {
             "position1": {
@@ -7127,7 +7127,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.17518310546875
+            "timestamp": 1.22518310546875
         },
         {
             "position1": {
@@ -7199,7 +7199,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.18897705078125
+            "timestamp": 1.23897705078125
         },
         {
             "position1": {
@@ -7271,7 +7271,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.2033203125
+            "timestamp": 1.2533203125
         },
         {
             "position1": {
@@ -7343,7 +7343,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.21668701171875
+            "timestamp": 1.26668701171875
         },
         {
             "position1": {
@@ -7415,7 +7415,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.230908203125
+            "timestamp": 1.280908203125
         },
         {
             "position1": {
@@ -7487,7 +7487,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.2449462890625
+            "timestamp": 1.2949462890625
         },
         {
             "position1": {
@@ -7533,7 +7533,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.39370080828666687,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -7559,7 +7559,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.258251953125
+            "timestamp": 1.308251953125
         },
         {
             "position1": {
@@ -7631,7 +7631,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.2725341796875
+            "timestamp": 1.3225341796875
         },
         {
             "position1": {
@@ -7703,7 +7703,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.286297607421875
+            "timestamp": 1.336297607421875
         },
         {
             "position1": {
@@ -7775,7 +7775,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.30006103515625
+            "timestamp": 1.35006103515625
         },
         {
             "position1": {
@@ -7847,7 +7847,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.313824462890625
+            "timestamp": 1.363824462890625
         },
         {
             "position1": {
@@ -7919,7 +7919,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.327862548828125
+            "timestamp": 1.377862548828125
         },
         {
             "position1": {
@@ -7991,7 +7991,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.342388916015625
+            "timestamp": 1.392388916015625
         },
         {
             "position1": {
@@ -8063,7 +8063,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.3555419921875
+            "timestamp": 1.4055419921875
         },
         {
             "position1": {
@@ -8135,7 +8135,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.3694580078125
+            "timestamp": 1.4194580078125
         },
         {
             "position1": {
@@ -8207,7 +8207,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.3836181640625
+            "timestamp": 1.4336181640625
         },
         {
             "position1": {
@@ -8279,7 +8279,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.397198486328125
+            "timestamp": 1.447198486328125
         },
         {
             "position1": {
@@ -8351,7 +8351,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.411572265625
+            "timestamp": 1.461572265625
         },
         {
             "position1": {
@@ -8423,7 +8423,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.42530517578125
+            "timestamp": 1.47530517578125
         },
         {
             "position1": {
@@ -8495,7 +8495,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.43922119140625
+            "timestamp": 1.48922119140625
         },
         {
             "position1": {
@@ -8567,7 +8567,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.45289306640625
+            "timestamp": 1.50289306640625
         },
         {
             "position1": {
@@ -8639,7 +8639,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.46693115234375
+            "timestamp": 1.51693115234375
         },
         {
             "position1": {
@@ -8711,7 +8711,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.480755615234375
+            "timestamp": 1.530755615234375
         },
         {
             "position1": {
@@ -8783,7 +8783,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.494610595703125
+            "timestamp": 1.544610595703125
         },
         {
             "position1": {
@@ -8829,7 +8829,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.6377952694892883,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -8855,7 +8855,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.50904541015625
+            "timestamp": 1.55904541015625
         },
         {
             "position1": {
@@ -8927,7 +8927,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.52259521484375
+            "timestamp": 1.57259521484375
         },
         {
             "position1": {
@@ -8999,7 +8999,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.5359619140625
+            "timestamp": 1.5859619140625
         },
         {
             "position1": {
@@ -9071,7 +9071,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.5501220703125
+            "timestamp": 1.6001220703125
         },
         {
             "position1": {
@@ -9143,7 +9143,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.563916015625
+            "timestamp": 1.613916015625
         },
         {
             "position1": {
@@ -9215,7 +9215,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.5777099609375
+            "timestamp": 1.6277099609375
         },
         {
             "position1": {
@@ -9287,7 +9287,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.591900634765625
+            "timestamp": 1.641900634765625
         },
         {
             "position1": {
@@ -9359,7 +9359,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.605755615234375
+            "timestamp": 1.655755615234375
         },
         {
             "position1": {
@@ -9431,7 +9431,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.619671630859375
+            "timestamp": 1.669671630859375
         },
         {
             "position1": {
@@ -9503,7 +9503,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.633465576171875
+            "timestamp": 1.683465576171875
         },
         {
             "position1": {
@@ -9575,7 +9575,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.647442626953125
+            "timestamp": 1.697442626953125
         },
         {
             "position1": {
@@ -9647,7 +9647,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.661328125
+            "timestamp": 1.711328125
         },
         {
             "position1": {
@@ -9719,7 +9719,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.6753662109375
+            "timestamp": 1.7253662109375
         },
         {
             "position1": {
@@ -9791,7 +9791,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.6890380859375
+            "timestamp": 1.7390380859375
         },
         {
             "position1": {
@@ -9863,7 +9863,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.702862548828125
+            "timestamp": 1.752862548828125
         },
         {
             "position1": {
@@ -9935,7 +9935,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.7166259765625
+            "timestamp": 1.7666259765625
         },
         {
             "position1": {
@@ -9981,7 +9981,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.33858269453048706,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -10007,7 +10007,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.7306640625
+            "timestamp": 1.7806640625
         },
         {
             "position1": {
@@ -10079,7 +10079,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.74500732421875
+            "timestamp": 1.79500732421875
         },
         {
             "position1": {
@@ -10151,7 +10151,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.758526611328125
+            "timestamp": 1.808526611328125
         },
         {
             "position1": {
@@ -10223,7 +10223,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.77271728515625
+            "timestamp": 1.82271728515625
         },
         {
             "position1": {
@@ -10295,7 +10295,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.78638916015625
+            "timestamp": 1.83638916015625
         },
         {
             "position1": {
@@ -10367,7 +10367,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.800091552734375
+            "timestamp": 1.850091552734375
         },
         {
             "position1": {
@@ -10439,7 +10439,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.81416015625
+            "timestamp": 1.86416015625
         },
         {
             "position1": {
@@ -10511,7 +10511,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.828167724609375
+            "timestamp": 1.878167724609375
         },
         {
             "position1": {
@@ -10583,7 +10583,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.842083740234375
+            "timestamp": 1.892083740234375
         },
         {
             "position1": {
@@ -10655,7 +10655,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.855755615234375
+            "timestamp": 1.905755615234375
         },
         {
             "position1": {
@@ -10727,7 +10727,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.869610595703125
+            "timestamp": 1.919610595703125
         },
         {
             "position1": {
@@ -10799,7 +10799,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.883740234375
+            "timestamp": 1.933740234375
         },
         {
             "position1": {
@@ -10871,7 +10871,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.897412109375
+            "timestamp": 1.947412109375
         },
         {
             "position1": {
@@ -10943,7 +10943,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.911541748046875
+            "timestamp": 1.961541748046875
         },
         {
             "position1": {
@@ -11015,7 +11015,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.925274658203125
+            "timestamp": 1.975274658203125
         },
         {
             "position1": {
@@ -11087,7 +11087,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.93922119140625
+            "timestamp": 1.98922119140625
         },
         {
             "position1": {
@@ -11159,7 +11159,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.95313720703125
+            "timestamp": 2.00313720703125
         },
         {
             "position1": {
@@ -11231,7 +11231,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.967022705078125
+            "timestamp": 2.017022705078125
         },
         {
             "position1": {
@@ -11303,7 +11303,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.981121826171875
+            "timestamp": 2.031121826171875
         },
         {
             "position1": {
@@ -11345,7 +11345,7 @@
             },
             "snareDrumHit": {
                 "value": 0.5669291615486145,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "closedHiHatHit": {
                 "value": 0.0,
@@ -11375,7 +11375,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 1.994671630859375
+            "timestamp": 2.044671630859375
         },
         {
             "position1": {
@@ -11447,7 +11447,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.009228515625
+            "timestamp": 2.0592285156249996
         },
         {
             "position1": {
@@ -11519,7 +11519,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.02271728515625
+            "timestamp": 2.0727172851562496
         },
         {
             "position1": {
@@ -11591,7 +11591,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.036236572265625
+            "timestamp": 2.0862365722656246
         },
         {
             "position1": {
@@ -11663,7 +11663,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.05030517578125
+            "timestamp": 2.1003051757812496
         },
         {
             "position1": {
@@ -11735,7 +11735,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.06416015625
+            "timestamp": 2.1141601562499996
         },
         {
             "position1": {
@@ -11807,7 +11807,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.0783203125
+            "timestamp": 2.1283203124999996
         },
         {
             "position1": {
@@ -11879,7 +11879,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.092083740234375
+            "timestamp": 2.1420837402343746
         },
         {
             "position1": {
@@ -11951,7 +11951,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.10621337890625
+            "timestamp": 2.1562133789062496
         },
         {
             "position1": {
@@ -12023,7 +12023,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.11988525390625
+            "timestamp": 2.1698852539062496
         },
         {
             "position1": {
@@ -12095,7 +12095,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.133526611328125
+            "timestamp": 2.1835266113281246
         },
         {
             "position1": {
@@ -12167,7 +12167,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.148052978515625
+            "timestamp": 2.1980529785156246
         },
         {
             "position1": {
@@ -12239,7 +12239,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.161541748046875
+            "timestamp": 2.2115417480468746
         },
         {
             "position1": {
@@ -12311,7 +12311,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.1756103515625
+            "timestamp": 2.2256103515624996
         },
         {
             "position1": {
@@ -12383,7 +12383,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.18934326171875
+            "timestamp": 2.2393432617187496
         },
         {
             "position1": {
@@ -12455,7 +12455,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.203289794921875
+            "timestamp": 2.2532897949218746
         },
         {
             "position1": {
@@ -12527,7 +12527,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.21680908203125
+            "timestamp": 2.2668090820312496
         },
         {
             "position1": {
@@ -12573,7 +12573,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.4251968562602997,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -12599,7 +12599,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.23084716796875
+            "timestamp": 2.2808471679687496
         },
         {
             "position1": {
@@ -12671,7 +12671,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.24500732421875
+            "timestamp": 2.2950073242187496
         },
         {
             "position1": {
@@ -12743,7 +12743,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.258526611328125
+            "timestamp": 2.3085266113281246
         },
         {
             "position1": {
@@ -12815,7 +12815,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.272869873046875
+            "timestamp": 2.3228698730468746
         },
         {
             "position1": {
@@ -12887,7 +12887,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.286419677734375
+            "timestamp": 2.3364196777343746
         },
         {
             "position1": {
@@ -12959,7 +12959,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.300579833984375
+            "timestamp": 2.3505798339843746
         },
         {
             "position1": {
@@ -13031,7 +13031,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.31409912109375
+            "timestamp": 2.3640991210937496
         },
         {
             "position1": {
@@ -13103,7 +13103,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.328167724609375
+            "timestamp": 2.3781677246093746
         },
         {
             "position1": {
@@ -13175,7 +13175,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.342144775390625
+            "timestamp": 2.3921447753906246
         },
         {
             "position1": {
@@ -13247,7 +13247,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.355694580078125
+            "timestamp": 2.4056945800781246
         },
         {
             "position1": {
@@ -13319,7 +13319,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.3697021484375
+            "timestamp": 2.4197021484374996
         },
         {
             "position1": {
@@ -13391,7 +13391,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.38404541015625
+            "timestamp": 2.4340454101562496
         },
         {
             "position1": {
@@ -13463,7 +13463,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.397503662109375
+            "timestamp": 2.4475036621093746
         },
         {
             "position1": {
@@ -13535,7 +13535,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.4116943359375
+            "timestamp": 2.4616943359374996
         },
         {
             "position1": {
@@ -13607,7 +13607,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.425701904296875
+            "timestamp": 2.4757019042968746
         },
         {
             "position1": {
@@ -13679,7 +13679,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.439251708984375
+            "timestamp": 2.4892517089843746
         },
         {
             "position1": {
@@ -13751,7 +13751,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.453045654296875
+            "timestamp": 2.5030456542968746
         },
         {
             "position1": {
@@ -13797,7 +13797,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.6614173650741577,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -13823,7 +13823,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.466961669921875
+            "timestamp": 2.5169616699218746
         },
         {
             "position1": {
@@ -13895,7 +13895,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.48121337890625
+            "timestamp": 2.5312133789062496
         },
         {
             "position1": {
@@ -13967,7 +13967,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.4947021484375
+            "timestamp": 2.5447021484374996
         },
         {
             "position1": {
@@ -14039,7 +14039,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.50916748046875
+            "timestamp": 2.5591674804687496
         },
         {
             "position1": {
@@ -14111,7 +14111,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.5227783203125
+            "timestamp": 2.5727783203124996
         },
         {
             "position1": {
@@ -14183,7 +14183,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.5364501953125
+            "timestamp": 2.5864501953124996
         },
         {
             "position1": {
@@ -14255,7 +14255,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.550823974609375
+            "timestamp": 2.6008239746093746
         },
         {
             "position1": {
@@ -14327,7 +14327,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.564556884765625
+            "timestamp": 2.6145568847656246
         },
         {
             "position1": {
@@ -14399,7 +14399,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.578564453125
+            "timestamp": 2.6285644531249996
         },
         {
             "position1": {
@@ -14471,7 +14471,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.592327880859375
+            "timestamp": 2.6423278808593746
         },
         {
             "position1": {
@@ -14543,7 +14543,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.606060791015625
+            "timestamp": 2.6560607910156246
         },
         {
             "position1": {
@@ -14615,7 +14615,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.6199462890625
+            "timestamp": 2.6699462890624996
         },
         {
             "position1": {
@@ -14687,7 +14687,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.63367919921875
+            "timestamp": 2.6836791992187496
         },
         {
             "position1": {
@@ -14759,7 +14759,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.64808349609375
+            "timestamp": 2.6980834960937496
         },
         {
             "position1": {
@@ -14831,7 +14831,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.661907958984375
+            "timestamp": 2.7119079589843746
         },
         {
             "position1": {
@@ -14903,7 +14903,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.6758544921875
+            "timestamp": 2.7258544921874996
         },
         {
             "position1": {
@@ -14949,7 +14949,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.4409448802471161,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -14975,7 +14975,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.689556884765625
+            "timestamp": 2.7395568847656246
         },
         {
             "position1": {
@@ -15047,7 +15047,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.703564453125
+            "timestamp": 2.7535644531249996
         },
         {
             "position1": {
@@ -15119,7 +15119,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.717510986328125
+            "timestamp": 2.7675109863281246
         },
         {
             "position1": {
@@ -15191,7 +15191,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.73121337890625
+            "timestamp": 2.7812133789062496
         },
         {
             "position1": {
@@ -15263,7 +15263,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.74537353515625
+            "timestamp": 2.7953735351562496
         },
         {
             "position1": {
@@ -15335,7 +15335,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.759075927734375
+            "timestamp": 2.8090759277343746
         },
         {
             "position1": {
@@ -15407,7 +15407,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.77265625
+            "timestamp": 2.8226562499999996
         },
         {
             "position1": {
@@ -15479,7 +15479,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.787030029296875
+            "timestamp": 2.8370300292968746
         },
         {
             "position1": {
@@ -15551,7 +15551,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.800640869140625
+            "timestamp": 2.8506408691406246
         },
         {
             "position1": {
@@ -15623,7 +15623,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.814556884765625
+            "timestamp": 2.8645568847656246
         },
         {
             "position1": {
@@ -15695,7 +15695,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.828656005859375
+            "timestamp": 2.8786560058593746
         },
         {
             "position1": {
@@ -15767,7 +15767,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.8426025390625
+            "timestamp": 2.8926025390624996
         },
         {
             "position1": {
@@ -15839,7 +15839,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.855816650390625
+            "timestamp": 2.9058166503906246
         },
         {
             "position1": {
@@ -15911,7 +15911,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.870068359375
+            "timestamp": 2.9200683593749996
         },
         {
             "position1": {
@@ -15983,7 +15983,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.883831787109375
+            "timestamp": 2.9338317871093746
         },
         {
             "position1": {
@@ -16055,7 +16055,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.897320556640625
+            "timestamp": 2.9473205566406246
         },
         {
             "position1": {
@@ -16127,7 +16127,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.91175537109375
+            "timestamp": 2.9617553710937496
         },
         {
             "position1": {
@@ -16199,7 +16199,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.92548828125
+            "timestamp": 2.9754882812499996
         },
         {
             "position1": {
@@ -16271,7 +16271,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.93922119140625
+            "timestamp": 2.9892211914062496
         },
         {
             "position1": {
@@ -16317,7 +16317,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8818897604942322,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -16343,7 +16343,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.9531982421875
+            "timestamp": 3.0031982421874996
         },
         {
             "position1": {
@@ -16381,7 +16381,7 @@
             },
             "bassDrumHit": {
                 "value": 0.7244094610214233,
-                "limb": "unspecified"
+                "limb": "rightfeet"
             },
             "snareDrumHit": {
                 "value": 0.0,
@@ -16415,7 +16415,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.966839599609375
+            "timestamp": 3.0168395996093746
         },
         {
             "position1": {
@@ -16487,7 +16487,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.981182861328125
+            "timestamp": 3.0311828613281246
         },
         {
             "position1": {
@@ -16559,7 +16559,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 2.994671630859375
+            "timestamp": 3.0446716308593746
         },
         {
             "position1": {
@@ -16631,7 +16631,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.008587646484375
+            "timestamp": 3.0585876464843746
         },
         {
             "position1": {
@@ -16703,7 +16703,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.02247314453125
+            "timestamp": 3.0724731445312496
         },
         {
             "position1": {
@@ -16775,7 +16775,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.03651123046875
+            "timestamp": 3.0865112304687496
         },
         {
             "position1": {
@@ -16847,7 +16847,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.050457763671875
+            "timestamp": 3.1004577636718746
         },
         {
             "position1": {
@@ -16919,7 +16919,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.064404296875
+            "timestamp": 3.1144042968749996
         },
         {
             "position1": {
@@ -16991,7 +16991,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.078167724609375
+            "timestamp": 3.1281677246093746
         },
         {
             "position1": {
@@ -17063,7 +17063,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.09193115234375
+            "timestamp": 3.1419311523437496
         },
         {
             "position1": {
@@ -17135,7 +17135,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.1057861328125
+            "timestamp": 3.1557861328124996
         },
         {
             "position1": {
@@ -17207,7 +17207,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.119732666015625
+            "timestamp": 3.1697326660156246
         },
         {
             "position1": {
@@ -17279,7 +17279,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.133526611328125
+            "timestamp": 3.1835266113281246
         },
         {
             "position1": {
@@ -17351,7 +17351,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.14759521484375
+            "timestamp": 3.1975952148437496
         },
         {
             "position1": {
@@ -17423,7 +17423,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.161572265625
+            "timestamp": 3.2115722656249996
         },
         {
             "position1": {
@@ -17495,7 +17495,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.17518310546875
+            "timestamp": 3.2251831054687496
         },
         {
             "position1": {
@@ -17567,7 +17567,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.189251708984375
+            "timestamp": 3.2392517089843746
         },
         {
             "position1": {
@@ -17639,7 +17639,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.203228759765625
+            "timestamp": 3.2532287597656246
         },
         {
             "position1": {
@@ -17685,7 +17685,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.39370080828666687,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -17711,7 +17711,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.217144775390625
+            "timestamp": 3.2671447753906246
         },
         {
             "position1": {
@@ -17783,7 +17783,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.23109130859375
+            "timestamp": 3.2810913085937496
         },
         {
             "position1": {
@@ -17855,7 +17855,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.245159912109375
+            "timestamp": 3.2951599121093746
         },
         {
             "position1": {
@@ -17927,7 +17927,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.2588623046875
+            "timestamp": 3.3088623046874996
         },
         {
             "position1": {
@@ -17999,7 +17999,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.27283935546875
+            "timestamp": 3.3228393554687496
         },
         {
             "position1": {
@@ -18071,7 +18071,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.286663818359375
+            "timestamp": 3.3366638183593746
         },
         {
             "position1": {
@@ -18143,7 +18143,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.30067138671875
+            "timestamp": 3.3506713867187496
         },
         {
             "position1": {
@@ -18215,7 +18215,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.314373779296875
+            "timestamp": 3.3643737792968746
         },
         {
             "position1": {
@@ -18287,7 +18287,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.328289794921875
+            "timestamp": 3.3782897949218746
         },
         {
             "position1": {
@@ -18359,7 +18359,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.34217529296875
+            "timestamp": 3.3921752929687496
         },
         {
             "position1": {
@@ -18431,7 +18431,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.355938720703125
+            "timestamp": 3.4059387207031246
         },
         {
             "position1": {
@@ -18503,7 +18503,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.37000732421875
+            "timestamp": 3.4200073242187496
         },
         {
             "position1": {
@@ -18575,7 +18575,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.384075927734375
+            "timestamp": 3.4340759277343746
         },
         {
             "position1": {
@@ -18647,7 +18647,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.397625732421875
+            "timestamp": 3.4476257324218746
         },
         {
             "position1": {
@@ -18719,7 +18719,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.4124267578125
+            "timestamp": 3.4624267578124996
         },
         {
             "position1": {
@@ -18791,7 +18791,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.425640869140625
+            "timestamp": 3.4756408691406246
         },
         {
             "position1": {
@@ -18837,7 +18837,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.6062992215156555,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -18863,7 +18863,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.439434814453125
+            "timestamp": 3.4894348144531246
         },
         {
             "position1": {
@@ -18935,7 +18935,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.453228759765625
+            "timestamp": 3.5032287597656246
         },
         {
             "position1": {
@@ -19007,7 +19007,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.467266845703125
+            "timestamp": 3.5172668457031246
         },
         {
             "position1": {
@@ -19079,7 +19079,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.48145751953125
+            "timestamp": 3.5314575195312496
         },
         {
             "position1": {
@@ -19151,7 +19151,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.49500732421875
+            "timestamp": 3.5450073242187496
         },
         {
             "position1": {
@@ -19223,7 +19223,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.509259033203125
+            "timestamp": 3.5592590332031246
         },
         {
             "position1": {
@@ -19295,7 +19295,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.523175048828125
+            "timestamp": 3.5731750488281246
         },
         {
             "position1": {
@@ -19367,7 +19367,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.536541748046875
+            "timestamp": 3.5865417480468746
         },
         {
             "position1": {
@@ -19439,7 +19439,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.551190185546875
+            "timestamp": 3.6011901855468746
         },
         {
             "position1": {
@@ -19511,7 +19511,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.564495849609375
+            "timestamp": 3.6144958496093746
         },
         {
             "position1": {
@@ -19583,7 +19583,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.578472900390625
+            "timestamp": 3.6284729003906246
         },
         {
             "position1": {
@@ -19655,7 +19655,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.5923583984375
+            "timestamp": 3.6423583984374996
         },
         {
             "position1": {
@@ -19727,7 +19727,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.6062744140625
+            "timestamp": 3.6562744140624996
         },
         {
             "position1": {
@@ -19799,7 +19799,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.62049560546875
+            "timestamp": 3.6704956054687496
         },
         {
             "position1": {
@@ -19871,7 +19871,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.634014892578125
+            "timestamp": 3.6840148925781246
         },
         {
             "position1": {
@@ -19943,7 +19943,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.6480224609375
+            "timestamp": 3.6980224609374996
         },
         {
             "position1": {
@@ -20015,7 +20015,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.661907958984375
+            "timestamp": 3.7119079589843746
         },
         {
             "position1": {
@@ -20061,7 +20061,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.5039370656013489,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -20087,7 +20087,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.67640380859375
+            "timestamp": 3.7264038085937496
         },
         {
             "position1": {
@@ -20159,7 +20159,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.689617919921875
+            "timestamp": 3.7396179199218746
         },
         {
             "position1": {
@@ -20231,7 +20231,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.70338134765625
+            "timestamp": 3.7533813476562496
         },
         {
             "position1": {
@@ -20303,7 +20303,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.717236328125
+            "timestamp": 3.7672363281249996
         },
         {
             "position1": {
@@ -20375,7 +20375,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.73115234375
+            "timestamp": 3.7811523437499996
         },
         {
             "position1": {
@@ -20447,7 +20447,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.745159912109375
+            "timestamp": 3.7951599121093746
         },
         {
             "position1": {
@@ -20519,7 +20519,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.758770751953125
+            "timestamp": 3.8087707519531246
         },
         {
             "position1": {
@@ -20591,7 +20591,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.772747802734375
+            "timestamp": 3.8227478027343746
         },
         {
             "position1": {
@@ -20663,7 +20663,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.78675537109375
+            "timestamp": 3.8367553710937496
         },
         {
             "position1": {
@@ -20735,7 +20735,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.800701904296875
+            "timestamp": 3.8507019042968746
         },
         {
             "position1": {
@@ -20807,7 +20807,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.814862060546875
+            "timestamp": 3.8648620605468746
         },
         {
             "position1": {
@@ -20879,7 +20879,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.828656005859375
+            "timestamp": 3.8786560058593746
         },
         {
             "position1": {
@@ -20951,7 +20951,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.8423583984375
+            "timestamp": 3.8923583984374996
         },
         {
             "position1": {
@@ -21023,7 +21023,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.85596923828125
+            "timestamp": 3.9059692382812496
         },
         {
             "position1": {
@@ -21095,7 +21095,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.869976806640625
+            "timestamp": 3.9199768066406246
         },
         {
             "position1": {
@@ -21167,7 +21167,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.884197998046875
+            "timestamp": 3.9341979980468746
         },
         {
             "position1": {
@@ -21239,7 +21239,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.897930908203125
+            "timestamp": 3.9479309082031246
         },
         {
             "position1": {
@@ -21281,7 +21281,7 @@
             },
             "snareDrumHit": {
                 "value": 0.5118110775947571,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "closedHiHatHit": {
                 "value": 0.0,
@@ -21311,7 +21311,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.91212158203125
+            "timestamp": 3.9621215820312496
         },
         {
             "position1": {
@@ -21383,7 +21383,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.925732421875
+            "timestamp": 3.9757324218749996
         },
         {
             "position1": {
@@ -21455,7 +21455,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.939678955078125
+            "timestamp": 3.9896789550781246
         },
         {
             "position1": {
@@ -21527,7 +21527,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.953656005859375
+            "timestamp": 4.003656005859375
         },
         {
             "position1": {
@@ -21599,7 +21599,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.96748046875
+            "timestamp": 4.01748046875
         },
         {
             "position1": {
@@ -21671,7 +21671,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.981304931640625
+            "timestamp": 4.031304931640625
         },
         {
             "position1": {
@@ -21743,7 +21743,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 3.995526123046875
+            "timestamp": 4.045526123046875
         },
         {
             "position1": {
@@ -21815,7 +21815,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.009228515625
+            "timestamp": 4.059228515625
         },
         {
             "position1": {
@@ -21887,7 +21887,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.023297119140625
+            "timestamp": 4.073297119140625
         },
         {
             "position1": {
@@ -21959,7 +21959,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.036907958984375
+            "timestamp": 4.086907958984375
         },
         {
             "position1": {
@@ -22031,7 +22031,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.05115966796875
+            "timestamp": 4.10115966796875
         },
         {
             "position1": {
@@ -22103,7 +22103,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.064984130859375
+            "timestamp": 4.114984130859375
         },
         {
             "position1": {
@@ -22175,7 +22175,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.078656005859375
+            "timestamp": 4.128656005859375
         },
         {
             "position1": {
@@ -22247,7 +22247,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.092724609375
+            "timestamp": 4.142724609375
         },
         {
             "position1": {
@@ -22319,7 +22319,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.10694580078125
+            "timestamp": 4.15694580078125
         },
         {
             "position1": {
@@ -22391,7 +22391,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.12098388671875
+            "timestamp": 4.17098388671875
         },
         {
             "position1": {
@@ -22463,7 +22463,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.134228515625
+            "timestamp": 4.184228515625
         },
         {
             "position1": {
@@ -22535,7 +22535,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.148358154296875
+            "timestamp": 4.198358154296875
         },
         {
             "position1": {
@@ -22581,7 +22581,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.5118110775947571,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -22607,7 +22607,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.16187744140625
+            "timestamp": 4.21187744140625
         },
         {
             "position1": {
@@ -22679,7 +22679,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.175885009765625
+            "timestamp": 4.225885009765625
         },
         {
             "position1": {
@@ -22751,7 +22751,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.190045166015625
+            "timestamp": 4.240045166015625
         },
         {
             "position1": {
@@ -22823,7 +22823,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.203656005859375
+            "timestamp": 4.253656005859375
         },
         {
             "position1": {
@@ -22895,7 +22895,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.21778564453125
+            "timestamp": 4.26778564453125
         },
         {
             "position1": {
@@ -22967,7 +22967,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.231427001953125
+            "timestamp": 4.281427001953125
         },
         {
             "position1": {
@@ -23039,7 +23039,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.2451904296875
+            "timestamp": 4.2951904296875
         },
         {
             "position1": {
@@ -23111,7 +23111,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.258892822265625
+            "timestamp": 4.308892822265625
         },
         {
             "position1": {
@@ -23183,7 +23183,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.272869873046875
+            "timestamp": 4.322869873046875
         },
         {
             "position1": {
@@ -23255,7 +23255,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.287030029296875
+            "timestamp": 4.337030029296875
         },
         {
             "position1": {
@@ -23327,7 +23327,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.3008544921875
+            "timestamp": 4.3508544921875
         },
         {
             "position1": {
@@ -23399,7 +23399,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.314862060546875
+            "timestamp": 4.364862060546875
         },
         {
             "position1": {
@@ -23471,7 +23471,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.3289306640625
+            "timestamp": 4.3789306640625
         },
         {
             "position1": {
@@ -23543,7 +23543,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.342694091796875
+            "timestamp": 4.392694091796875
         },
         {
             "position1": {
@@ -23615,7 +23615,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.356732177734375
+            "timestamp": 4.406732177734375
         },
         {
             "position1": {
@@ -23687,7 +23687,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.370343017578125
+            "timestamp": 4.420343017578125
         },
         {
             "position1": {
@@ -23759,7 +23759,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.384259033203125
+            "timestamp": 4.434259033203125
         },
         {
             "position1": {
@@ -23805,7 +23805,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.8031496405601501,
-                "limb": "unspecified"
+                "limb": "righthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -23831,7 +23831,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.397900390625
+            "timestamp": 4.447900390625
         },
         {
             "position1": {
@@ -23903,7 +23903,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.4123046875
+            "timestamp": 4.4623046875
         },
         {
             "position1": {
@@ -23975,7 +23975,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.426190185546875
+            "timestamp": 4.476190185546875
         },
         {
             "position1": {
@@ -24047,7 +24047,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.4397705078125
+            "timestamp": 4.4897705078125
         },
         {
             "position1": {
@@ -24119,7 +24119,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.453594970703125
+            "timestamp": 4.503594970703125
         },
         {
             "position1": {
@@ -24191,7 +24191,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.467572021484375
+            "timestamp": 4.517572021484375
         },
         {
             "position1": {
@@ -24263,7 +24263,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.48194580078125
+            "timestamp": 4.53194580078125
         },
         {
             "position1": {
@@ -24335,7 +24335,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.4954345703125
+            "timestamp": 4.5454345703125
         },
         {
             "position1": {
@@ -24407,7 +24407,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.509197998046875
+            "timestamp": 4.559197998046875
         },
         {
             "position1": {
@@ -24479,7 +24479,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.523052978515625
+            "timestamp": 4.573052978515625
         },
         {
             "position1": {
@@ -24551,7 +24551,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.536846923828125
+            "timestamp": 4.586846923828125
         },
         {
             "position1": {
@@ -24623,7 +24623,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.551007080078125
+            "timestamp": 4.601007080078125
         },
         {
             "position1": {
@@ -24695,7 +24695,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.564923095703125
+            "timestamp": 4.614923095703125
         },
         {
             "position1": {
@@ -24767,7 +24767,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.578533935546875
+            "timestamp": 4.628533935546875
         },
         {
             "position1": {
@@ -24839,7 +24839,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.59266357421875
+            "timestamp": 4.64266357421875
         },
         {
             "position1": {
@@ -24911,7 +24911,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.60657958984375
+            "timestamp": 4.65657958984375
         },
         {
             "position1": {
@@ -24983,7 +24983,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.62073974609375
+            "timestamp": 4.67073974609375
         },
         {
             "position1": {
@@ -25029,7 +25029,7 @@
             },
             "closedHiHatHit": {
                 "value": 0.5590551495552063,
-                "limb": "unspecified"
+                "limb": "lefthand"
             },
             "tom1Hit": {
                 "value": 0.0,
@@ -25055,7 +25055,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.6345947265625
+            "timestamp": 4.6845947265625
         },
         {
             "position1": {
@@ -25127,7 +25127,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.64857177734375
+            "timestamp": 4.69857177734375
         },
         {
             "position1": {
@@ -25199,7 +25199,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.662335205078125
+            "timestamp": 4.712335205078125
         },
         {
             "position1": {
@@ -25271,7 +25271,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.676007080078125
+            "timestamp": 4.726007080078125
         },
         {
             "position1": {
@@ -25343,7 +25343,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.69007568359375
+            "timestamp": 4.74007568359375
         },
         {
             "position1": {
@@ -25415,7 +25415,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.703900146484375
+            "timestamp": 4.753900146484375
         },
         {
             "position1": {
@@ -25487,7 +25487,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.71790771484375
+            "timestamp": 4.76790771484375
         },
         {
             "position1": {
@@ -25559,7 +25559,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.731732177734375
+            "timestamp": 4.781732177734375
         },
         {
             "position1": {
@@ -25631,7 +25631,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.745526123046875
+            "timestamp": 4.795526123046875
         },
         {
             "position1": {
@@ -25703,7 +25703,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.75928955078125
+            "timestamp": 4.80928955078125
         },
         {
             "position1": {
@@ -25775,7 +25775,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.77296142578125
+            "timestamp": 4.82296142578125
         },
         {
             "position1": {
@@ -25847,7 +25847,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.787335205078125
+            "timestamp": 4.837335205078125
         },
         {
             "position1": {
@@ -25919,7 +25919,7 @@
                 "value": 0.0,
                 "limb": "no limb"
             },
-            "timestamp": 4.801129150390625
+            "timestamp": 4.851129150390625
         }
     ]
 }
