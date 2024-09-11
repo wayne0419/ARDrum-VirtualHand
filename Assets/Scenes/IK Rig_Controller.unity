@@ -49768,6 +49768,16 @@ PrefabInstance:
       propertyPath: bodyGroups.Array.data[10].color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2717541816723224480, guid: 9a50fe01f2f914947b91629e1861b433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417750063209497202, guid: 9a50fe01f2f914947b91629e1861b433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3748162833028224774, guid: 9a50fe01f2f914947b91629e1861b433,
         type: 3}
       propertyPath: m_Name
