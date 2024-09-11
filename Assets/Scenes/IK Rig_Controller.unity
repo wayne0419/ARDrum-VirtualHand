@@ -642,7 +642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &20143205
 Transform:
   m_ObjectHideFlags: 0
@@ -1791,7 +1791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &58310950
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3938,7 +3938,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144288181}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ed02b32077fd08941859b2c45a380053, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 2882bda1b707e6c4e822df14cc83ee07, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -4476,14 +4476,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/easy1.json
+  jsonFilePath: Assets/RecordedTransforms/medium1.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
   playBackBPM: 120
   startOffsetBeat: 3
   metronome: {fileID: 5366975294774543386}
-  drumSheet: {fileID: 20143206}
+  drumSheet: {fileID: 1503055853}
   drumSheetCursor: {fileID: 1749147144}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
@@ -4762,7 +4762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 2
+  m_text: Part 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11431,7 +11431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 3
+  m_text: Part 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17788,7 +17788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 1
+  m_text: Part 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23039,7 +23039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 4
+  m_text: Part 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -34503,7 +34503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1503055852
 Transform:
   m_ObjectHideFlags: 0
