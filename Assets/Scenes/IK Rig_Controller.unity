@@ -4476,14 +4476,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  jsonFilePath: Assets/RecordedTransforms/medium1.json
+  jsonFilePath: Assets/RecordedTransforms/4_1e2a3e4a.json
   targetTransform1: {fileID: 700748216}
   targetTransform2: {fileID: 1608038245}
   targetTransform3: {fileID: 490815198}
   playBackBPM: 120
   startOffsetBeat: 3
   metronome: {fileID: 5366975294774543386}
-  drumSheet: {fileID: 1503055853}
+  drumSheet: {fileID: 363586393025577521}
   drumSheetCursor: {fileID: 1749147144}
   bassDrumAudioSource: {fileID: 1449333153}
   snareDrumAudioSource: {fileID: 347021384}
@@ -34719,7 +34719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1503055852
 Transform:
   m_ObjectHideFlags: 0
@@ -48555,7 +48555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &994117146406804694
 PrefabInstance:
   m_ObjectHideFlags: 0
