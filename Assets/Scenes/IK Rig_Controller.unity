@@ -2132,6 +2132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand LeftHand RightFeet 8 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6137,7 +6142,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239089953}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -9014,6 +9019,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand 8 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10852,6 +10862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Level: RightHand RightFeet 16 Beat'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
@@ -13335,22 +13350,32 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: defaultColor.b
-      value: 0
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: defaultColor.g
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: defaultColor.r
-      value: 1
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: skippedColor.b
-      value: 0
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: skippedColor.g
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: skippedColor.r
-      value: 1
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -16435,6 +16460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand 4 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17811,6 +17841,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand LeftHand RightFeet 16 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19011,6 +19046,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand RightFeet 4 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19931,7 +19971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &935881451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27677,6 +27717,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand RightFeet 8 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29752,6 +29797,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31214,6 +31264,11 @@ PrefabInstance:
       propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
       value: Input
       objectReference: {fileID: 0}
+    - target: {fileID: 9003112879887445693, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31597,6 +31652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Level: RightHand LeftHand  4 Beat'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
@@ -33516,6 +33576,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand LeftHand  16 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33864,6 +33929,11 @@ PrefabInstance:
         type: 3}
       propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
       value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003112879887445693, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34695,22 +34765,32 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: defaultColor.b
-      value: 0
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: defaultColor.g
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: defaultColor.r
-      value: 1
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: skippedColor.b
-      value: 0
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: skippedColor.g
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: skippedColor.r
-      value: 1
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -35556,6 +35636,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Level: RightHand LeftHand RightFeet 4 Beat'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
@@ -36685,22 +36770,32 @@ PrefabInstance:
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: defaultColor.b
-      value: 0
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: defaultColor.g
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: defaultColor.r
-      value: 1
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: skippedColor.b
-      value: 0
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
+        type: 3}
+      propertyPath: skippedColor.g
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
       propertyPath: skippedColor.r
-      value: 1
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 2193526522424794951, guid: 90129c8479bb0d043b7ad80c466a959f,
         type: 3}
@@ -37326,6 +37421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Level: RightHand 16 Beat'
       objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37765,7 +37865,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610008241}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -38570,6 +38670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Level: RightHand LeftHand  8 Beat'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143883232456317714, guid: a4f3e6e6c087f7f4fbae1056aa424735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252142296543328098, guid: a4f3e6e6c087f7f4fbae1056aa424735,
         type: 3}
@@ -41294,6 +41399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
       value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003112879887445693, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49238,6 +49348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: inputAction.m_SingletonActionBindings.Array.data[0].m_Action
       value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003112879887445693, guid: 1bcf77a7ccdefdc43be75796999d4928,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
