@@ -20,7 +20,7 @@ public class SetHitDrumCorrectMode : MonoBehaviour
             OnMouseDown();
         }
     }
-    void OnMouseDown() {
+    public void OnMouseDown() {
         inputTracker.currentMode = correctMode;
     }
 }

@@ -54,7 +54,7 @@ public class SetDrumNoteSkipStateButton : MonoBehaviour
             OnMouseDown();
         }
     }
-    void OnMouseDown() {
+    public void OnMouseDown() {
         switch(selector) {
             case Selector.All:
                 transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(1f, 5f, false);

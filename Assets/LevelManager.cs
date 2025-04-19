@@ -237,11 +237,13 @@ public class LevelManager : MonoBehaviour
                     {
                         controller.SetUnLocked();
                         controller.SetFocused();
+                        controller.GetComponent<SetDrumNoteSkipStateButton>().OnMouseDown();
+                        controller.GetComponent<SetHitDrumCorrectMode>().OnMouseDown();
                     }
                 }
 
-                // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
-                correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
+                // // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
+                // correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
 
                 // 在晋级到下一个 stage 时调用 Action
                 OnStageAdvanced?.Invoke();
