@@ -119,4 +119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selector: 0
-  drumSheet: {fileID: 0}
+  transformPlayBacker: {fileID: 0}
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ab992407-20c7-43d0-850d-99de1a472145
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
