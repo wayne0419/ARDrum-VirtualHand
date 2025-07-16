@@ -77,8 +77,11 @@ crashlytics-build.properties
 ./vscode/
 
 # Unity 
+./Library/
 ./Logs/
 ./Packages/
+./ProjectSettings/
+./Temp/
 ./UserSettings/
 
 # git
