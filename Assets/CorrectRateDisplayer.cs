@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using TMPro; // 添加 TextMeshPro 的引用
+using TMPro; // Include TextMeshPro namespace for UI text components.
 using UnityEngine;
 
 public class CorrectRateDisplayer : MonoBehaviour
 {
-    // 引用 RealTimeInputTracker 以獲取擊打數據
+    // Reference to the CorrectRateCalculator, which provides the calculated accuracy rates.
     public CorrectRateCalculator correctRateCalculator;
 
-    // TextMeshProUGUI 用於顯示正確率
+    // TextMeshProUGUI components for displaying various accuracy rates in the UI.
     public TextMeshProUGUI correctRateText;
     public TextMeshProUGUI level1CorrectRateText;
     public TextMeshProUGUI mainRhythmCorrectRateText;
@@ -46,7 +46,7 @@ public class CorrectRateDisplayer : MonoBehaviour
     {
         if (correctRateCalculator != null)
         {
-            // 订阅 OnFinishCalculateCorrectRate 事件
+            // Subscribe to the OnFinishCalculateCorrectRate event to update display when calculations are complete.
             correctRateCalculator.OnFinishCalculateCorrectRate += UpdateCorrectRateDisplay;
         }
     }
@@ -55,13 +55,15 @@ public class CorrectRateDisplayer : MonoBehaviour
     {
         if (correctRateCalculator != null)
         {
-            // 取消订阅 OnFinishCalculateCorrectRate 事件
+            // Unsubscribe from the OnFinishCalculateCorrectRate event to prevent memory leaks and ensure proper cleanup.
             correctRateCalculator.OnFinishCalculateCorrectRate -= UpdateCorrectRateDisplay;
         }
     }
 
-    
-    // 更新显示的正确率
+    /// <summary>
+    /// Updates all TextMeshProUGUI fields with the latest accuracy rates retrieved from the CorrectRateCalculator.
+    /// Rates are formatted as percentages.
+    /// </summary>
     private void UpdateCorrectRateDisplay()
     {
         if (correctRateText != null)
