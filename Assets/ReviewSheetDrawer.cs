@@ -3,38 +3,40 @@ using UnityEngine;
 
 public class ReviewSheetDrawer : MonoBehaviour
 {
-    public ReviewManager reviewManager;
-    public Transform reviewSheetContainer; // 用于容纳打击点的 Transform
+    public ReviewManager reviewManager; // Reference to the ReviewManager, which provides user and target hit data.
+    public Transform reviewSheetContainer; // The parent Transform under which all visual hit points will be instantiated.
 
-    // 线条渲染器设置
-    public float timeScale = 1.0f; // 时间刻度，用于调整视觉化的时间间隔
-    public float yOffset = 2.0f; // 每个鼓的垂直偏移量
-    public float pointSizeX = 0.2f; // 打击点的 X 轴大小
-    public float pointSizeY = 0.2f; // 打击点的 Y 轴大小
-    public float pointSizeZ = 0.2f; // 打击点的 Z 轴大小
-    public GameObject pointPrefab; // 预制体用于打击点
+    // Visual settings for rendering the hit points.
+    public float timeScale = 1.0f; // Multiplier for the timestamp to control horizontal spacing of points.
+    public float yOffset = 2.0f;   // Vertical spacing between different drum rows.
+    public float pointSizeX = 0.2f; // X-axis scale for each instantiated hit point.
+    public float pointSizeY = 0.2f; // Y-axis scale for each instantiated hit point.
+    public float pointSizeZ = 0.2f; // Z-axis scale for each instantiated hit point.
+    public GameObject pointPrefab; // The prefab GameObject to instantiate for each drum hit point.
 
-    // 用于视觉化的颜色
-    public Color userColor = Color.blue; // 用户打击点的颜色
-    public Color targetColor = Color.red; // 目标打击点的颜色
+    // Colors for distinguishing user and target hits.
+    public Color userColor = Color.blue;   // Color for the user's drum hit points.
+    public Color targetColor = Color.red; // Color for the target's drum hit points.
 
-    private List<GameObject> points = new List<GameObject>();
+    private List<GameObject> points = new List<GameObject>(); // A list to keep track of all instantiated hit point GameObjects.
 
     private void OnEnable()
     {
+        // Validate essential references.
         if (reviewManager == null)
         {
-            Debug.LogWarning("ReviewManager is not assigned.");
+            Debug.LogWarning("ReviewManager is not assigned. Cannot draw review sheet.");
             return;
         }
 
         if (reviewSheetContainer == null)
         {
-            Debug.LogWarning("ReviewSheetContainer is not assigned.");
+            Debug.LogWarning("ReviewSheetContainer is not assigned. Cannot draw review sheet.");
             return;
         }
 
-        // 绘制用户打击点
+        // Draw the user's drum hits for each drum type.
+        // The `yIndex` parameter provides a vertical offset to separate different drum types visually.
         DrawDrumHits(reviewManager.userSnareDrumHits, userColor, 0);
         DrawDrumHits(reviewManager.userBassDrumHits, userColor, 1);
         DrawDrumHits(reviewManager.userClosedHiHatHits, userColor, 2);
@@ -45,7 +47,8 @@ public class ReviewSheetDrawer : MonoBehaviour
         DrawDrumHits(reviewManager.userRideHits, userColor, 7);
         DrawDrumHits(reviewManager.userOpenHiHatHits, userColor, 8);
 
-        // 绘制目标打击点
+        // Draw the target's drum hits for each drum type.
+        // A slight offset (e.g., 0.5f) is added to `yIndex` to place target hits slightly above/below user hits on the same row.
         DrawDrumHits(reviewManager.targetSnareDrumHits, targetColor, 0.5f);
         DrawDrumHits(reviewManager.targetBassDrumHits, targetColor, 1.5f);
         DrawDrumHits(reviewManager.targetClosedHiHatHits, targetColor, 2.5f);
@@ -57,25 +60,44 @@ public class ReviewSheetDrawer : MonoBehaviour
         DrawDrumHits(reviewManager.targetOpenHiHatHits, targetColor, 8.5f);
     }
 
+    /// <summary>
+    /// Instantiates and positions visual points for a given list of drum hits.
+    /// </summary>
+    /// <param name="drumHits">A list of `TransformDataIndex` representing drum hit events.</param>
+    /// <param name="color">The color to apply to the instantiated points.</param>
+    /// <param name="yIndex">A vertical index used to calculate the Y position of the points, separating drum types.</param>
     private void DrawDrumHits(List<ReviewManager.TransformDataIndex> drumHits, Color color, float yIndex)
     {
         foreach (var hit in drumHits)
         {
+            // Calculate the local position for the point. X is based on timestamp and timeScale, Y on yIndex and yOffset.
             Vector3 position = new Vector3(hit.data.timestamp * timeScale, yOffset * yIndex, 0);
+            
+            // Instantiate the point prefab as a child of the reviewSheetContainer.
             GameObject point = Instantiate(pointPrefab, reviewSheetContainer);
-            point.transform.localPosition = position; // 使用 localPosition 确保相对于 reviewSheetContainer 的位置
-            point.GetComponent<Renderer>().material.color = color;
+            point.transform.localPosition = position; // Set local position relative to the container.
+            
+            // Set the color of the point's material.
+            Renderer pointRenderer = point.GetComponent<Renderer>();
+            if (pointRenderer != null)
+            {
+                pointRenderer.material.color = color;
+            }
+            
+            // Set the scale of the point.
             point.transform.localScale = new Vector3(pointSizeX, pointSizeY, pointSizeZ);
-            points.Add(point);
+            
+            points.Add(point); // Add the instantiated point to the list for later cleanup.
         }
     }
 
     private void OnDisable()
     {
+        // Destroy all instantiated points when the script is disabled to clean up the scene.
         foreach (var point in points)
         {
             Destroy(point);
         }
-        points.Clear();
+        points.Clear(); // Clear the list.
     }
 }
