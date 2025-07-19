@@ -1,33 +1,34 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; // Required for Unity's new Input System.
 
 public class RealTimeInputTracker : MonoBehaviour
 {
-    // 新增的枚举类型来表示正确性判断模式
+    /// <summary>
+    /// Defines the modes for judging the correctness of drum hits.
+    /// </summary>
     public enum CorrectMode
     {
-        CorrectRhythmMode, // 基于时间误差的模式
-        CorrectOrderMode   // 基于顺序的模式
+        CorrectRhythmMode, // Judgment based on timing accuracy (within a time tolerance).
+        CorrectOrderMode   // Judgment based on the sequence of hits, allowing any correct drum type at the current beat.
     }
 
-    public CorrectMode currentMode = CorrectMode.CorrectRhythmMode; // 当前的判断模式
+    public CorrectMode currentMode = CorrectMode.CorrectRhythmMode; // The currently active correctness judgment mode.
 
-    // 引用 TransformPlayBacker，用于检测播放状态
-    public TransformPlayBacker transformPlayBacker;
-    public GameObject HitDrumInputCorrectMarker; // 预制体，用于标记正确的击打输入
-    public GameObject HitDrumInputLevel1ErrorMarker; // 预制体，用于标记 level 1 错误输入
-    public GameObject HitDrumInputErrorMarker; // 预制体，用于标记 Error
-    public GameObject HitDrumInputMissMarker; // 预制体，用于标记 Miss
+    public TransformPlayBacker transformPlayBacker; // Reference to the TransformPlayBacker to monitor playback state and data.
+    public GameObject HitDrumInputCorrectMarker;     // Prefab for visual feedback of a perfectly timed hit.
+    public GameObject HitDrumInputLevel1ErrorMarker; // Prefab for visual feedback of a Level 1 timing error (minor deviation).
+    public GameObject HitDrumInputErrorMarker;       // Prefab for visual feedback of an incorrect hit (e.g., wrong drum in order mode).
+    public GameObject HitDrumInputMissMarker;        // Prefab for visual feedback when a required hit is missed or an extra hit occurs.
 
-    public float correctTimeTolerance = 0.1f; // 配对时的时间误差容许值，单位为秒
-    public float level1ErrorTimeTolerance = 0.2f; // level 1 错误的时间误差容许值，单位为秒
-    public float level1ErrorShift = 0.1f; // 当出现 level 1 错误时，标记位置的偏移量
+    public float correctTimeTolerance = 0.1f;     // Time window (in seconds) for a hit to be considered perfectly correct.
+    public float level1ErrorTimeTolerance = 0.2f; // Time window (in seconds) for a hit to be considered a Level 1 error.
+    public float level1ErrorShift = 0.1f;         // Visual offset for Level 1 error markers to indicate early/late hits.
     
-    public Transform markerHolder; // 用于存放生成的 marker 的父级对象
+    public Transform markerHolder; // Parent Transform for all generated hit markers to keep the hierarchy clean.
 
-    // 鼓击打的 InputActions
+    // InputActions for various drum hits. These should be set up in the Unity Input System.
     public InputAction bassDrumHit;
     public InputAction snareDrumHit;
     public InputAction closedHiHatHit;
@@ -38,22 +39,21 @@ public class RealTimeInputTracker : MonoBehaviour
     public InputAction rideHit;
     public InputAction openHiHatHit;
 
-    private bool isTracking = false; // 用于跟踪播放状态
-    public List<HitDrumInputData> inputLog; // 存储击打输入数据的日志
-    private List<TrackedHitSegment> trackedHitSegments; // 存储复制并跟踪的 HitSegment
+    private bool isTracking = false; // Flag to indicate if real-time input tracking is active.
+    public List<HitDrumInputData> inputLog; // A log of all recorded drum input events.
+    private List<TrackedHitSegment> trackedHitSegments; // A working copy of HitSegments from playback data, used for tracking matches.
 
-
-    // 事件：当 StopTracking() 結束时触发
+    // Event triggered when the tracking session concludes (i.e., StopTracking() is called).
     public event Action OnFinishTracking;
 
     private void Awake()
     {
-        inputLog = new List<HitDrumInputData>(); // 初始化输入日志列表
+        inputLog = new List<HitDrumInputData>(); // Initialize the input log.
     }
 
     private void OnEnable()
     {
-        // 订阅 TransformPlayBacker 的播放事件
+        // Subscribe to TransformPlayBacker's playback events to control tracking.
         if (transformPlayBacker != null)
         {
             transformPlayBacker.OnPlayTransformDataStart += StartTracking;
@@ -63,7 +63,7 @@ public class RealTimeInputTracker : MonoBehaviour
 
     private void OnDisable()
     {
-        // 取消订阅 TransformPlayBacker 的播放事件
+        // Unsubscribe from playback events to prevent memory leaks.
         if (transformPlayBacker != null)
         {
             transformPlayBacker.OnPlayTransformDataStart -= StartTracking;
@@ -71,13 +71,17 @@ public class RealTimeInputTracker : MonoBehaviour
         }
     }
 
-    // 当 TransformPlayBacker 开始播放时，启动输入跟踪
+    /// <summary>
+    /// Initiates real-time input tracking.
+    /// Clears previous data, destroys old markers, initializes tracked segments, and enables InputActions.
+    /// This method is typically called when TransformPlayBacker starts playing.
+    /// </summary>
     private void StartTracking()
     {
         isTracking = true;
-        inputLog.Clear(); // 清除之前的数据
+        inputLog.Clear(); // Clear any historical input data.
 
-        // 清除之前生成的所有标记
+        // Destroy all previously generated visual markers.
         if (markerHolder != null)
         {
             foreach (Transform child in markerHolder)
@@ -86,7 +90,8 @@ public class RealTimeInputTracker : MonoBehaviour
             }
         }
 
-        // 初始化并复制 TransformPlayBacker 的 HitSegments
+        // Create a deep copy of the TransformPlayBacker's hit segments for tracking.
+        // This allows modification (e.g., `matched` status) without affecting the original data.
         trackedHitSegments = new List<TrackedHitSegment>();
         foreach (var segment in transformPlayBacker.hitSegments)
         {
@@ -96,16 +101,15 @@ public class RealTimeInputTracker : MonoBehaviour
                 drumHit = segment.drumHit,
                 startIdx = segment.startIdx,
                 endIdx = segment.endIdx,
-                skip = segment.skip, // 保留 skip 状态
+                skip = segment.skip, // Preserve the 'skip' status from the original segment.
                 associatedNote = segment.associatedNote,
-                matched = false,
-                correct = false,
-                level1TimeError = false
+                matched = false, // Initialize as unmatched.
+                correct = false, // Initialize as incorrect.
+                level1TimeError = false // Initialize as no Level 1 error.
             });
         }
 
-
-        // 启用所有 InputActions
+        // Enable all defined InputActions to start listening for input.
         bassDrumHit.Enable();
         snareDrumHit.Enable();
         closedHiHatHit.Enable();
@@ -117,13 +121,17 @@ public class RealTimeInputTracker : MonoBehaviour
         openHiHatHit.Enable();
     }
 
-    // 当 TransformPlayBacker 停止播放时，停止输入跟踪
+    /// <summary>
+    /// Stops real-time input tracking.
+    /// Disables InputActions and triggers the OnFinishTracking event.
+    /// This method is typically called when TransformPlayBacker stops playing.
+    /// </summary>
     private void StopTracking()
     {
         isTracking = false;
-        OnFinishTracking?.Invoke();
+        OnFinishTracking?.Invoke(); // Notify subscribers that tracking has finished.
 
-        // 禁用所有 InputActions
+        // Disable all InputActions to stop listening for input.
         bassDrumHit.Disable();
         snareDrumHit.Disable();
         closedHiHatHit.Disable();
@@ -139,7 +147,7 @@ public class RealTimeInputTracker : MonoBehaviour
     {
         if (isTracking)
         {
-            // 检查每个 InputAction 是否触发并记录事件
+            // Continuously check and log input for each drum type.
             CheckAndLogInput(bassDrumHit, DrumType.BassDrum);
             CheckAndLogInput(snareDrumHit, DrumType.SnareDrum);
             CheckAndLogInput(closedHiHatHit, DrumType.ClosedHiHat);
@@ -150,25 +158,33 @@ public class RealTimeInputTracker : MonoBehaviour
             CheckAndLogInput(rideHit, DrumType.Ride);
             CheckAndLogInput(openHiHatHit, DrumType.OpenHiHat);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad7)) {
+        // Debug input for toggling marker visibility.
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
             markerHolder.gameObject.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad4)) {
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
             markerHolder.gameObject.SetActive(false);
         }
     }
 
-    // 检查 InputAction 是否触发并记录击打数据
+    /// <summary>
+    /// Checks if a given InputAction was triggered in the current frame and logs the hit data.
+    /// It then calls the appropriate correctness check based on the `currentMode`.
+    /// </summary>
+    /// <param name="inputAction">The InputAction to check (e.g., bassDrumHit).</param>
+    /// <param name="drumType">The DrumType associated with this input action.</param>
     private void CheckAndLogInput(InputAction inputAction, DrumType drumType)
     {
         if (inputAction.triggered)
         {
-            // 获取当前索引的时间戳，并考虑播放速度
+            // Get the current timestamp from the playback data, adjusted for playback speed.
             float timestamp = transformPlayBacker.playbackData.dataList[transformPlayBacker.currentIndex].timestamp 
                               * (transformPlayBacker.playbackData.bpm / transformPlayBacker.playBackBPM);
-            float hitValue = inputAction.ReadValue<float>();
+            float hitValue = inputAction.ReadValue<float>(); // Get the input value (e.g., pressure).
 
-            // 记录输入数据
+            // Log the input event.
             inputLog.Add(new HitDrumInputData
             {
                 drumType = drumType,
@@ -176,7 +192,7 @@ public class RealTimeInputTracker : MonoBehaviour
                 hitValue = hitValue
             });
 
-            // 根据当前模式执行不同的正确性判断
+            // Perform correctness check based on the current mode.
             if (currentMode == CorrectMode.CorrectRhythmMode)
             {
                 CheckHitDrumCorrectRhythmMode(drumType, timestamp);
@@ -188,69 +204,76 @@ public class RealTimeInputTracker : MonoBehaviour
         }
     }
 
-    // 检查是否在 CorrectRhythmMode 中正确击打
+    /// <summary>
+    /// Checks if a drum hit is correct in `CorrectRhythmMode`.
+    /// This mode focuses on the timing accuracy of the hit relative to expected drum segments.
+    /// </summary>
+    /// <param name="drumType">The type of drum that was hit.</param>
+    /// <param name="timestamp">The timestamp of the user's hit.</param>
     private void CheckHitDrumCorrectRhythmMode(DrumType drumType, float timestamp)
     {
-        bool matched = false;  // 用于跟踪是否有匹配的 segment
+        bool matched = false; // Flag to indicate if the user's hit successfully matched any expected segment.
 
         foreach (var segment in trackedHitSegments)
         {
+            // Only consider segments that haven't been matched yet, are not skipped, and match the drum type.
             if (!segment.matched && !segment.skip && segment.drumHit == drumType)
             {
+                // Get the expected timestamp for the end of the segment, adjusted for current playback BPM.
                 float segmentTimestamp = transformPlayBacker.playbackData.dataList[segment.endIdx].timestamp;
-                // 根据播放速度调整时间误差的计算
                 float adjustedTimestamp = segmentTimestamp * transformPlayBacker.playbackData.bpm / transformPlayBacker.playBackBPM;
                 float timeDifference = Mathf.Abs(timestamp - adjustedTimestamp);
 
-                // 使用 correctTimeTolerance 作为容许误差
+                // Check for perfect correctness within `correctTimeTolerance`.
                 if (timeDifference < correctTimeTolerance)
                 {
                     segment.matched = true;
-                    segment.correct = true; // 标记为正确
+                    segment.correct = true; // Mark as perfectly correct.
 
-                    // 在 associatedNote 的位置生成 HitDrumInputCorrectMarker
+                    // Instantiate a correct marker at the associated drum note's position.
                     if (HitDrumInputCorrectMarker != null && segment.associatedNote != null)
                     {
                         Vector3 notePosition = segment.associatedNote.transform.position;
                         Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
                     }
                     matched = true;
-                    break; // 配对后跳出循环
+                    break; // A match was found, exit the loop.
                 }
-                // 使用 level1ErrorTimeTolerance 作为容许误差
+                // Check for Level 1 error within `level1ErrorTimeTolerance`.
                 else if (timeDifference < level1ErrorTimeTolerance)
                 {
                     segment.matched = true;
-                    segment.level1TimeError = true; // 标记为 level 1 时间错误
+                    segment.level1TimeError = true; // Mark as a Level 1 timing error.
 
                     if (HitDrumInputLevel1ErrorMarker != null && segment.associatedNote != null)
                     {
                         Vector3 notePosition = segment.associatedNote.transform.position;
 
-                        // 根据 hitDrumInput 时间相对于 segment 的时间早晚来决定偏移方向
+                        // Offset the marker visually to indicate if the hit was early or late.
                         if (timestamp < adjustedTimestamp)
                         {
-                            notePosition.x -= level1ErrorShift; // 时间太早，向 -x 方向偏移
+                            notePosition.x -= level1ErrorShift; // Hit too early, shift left.
                         }
                         else
                         {
-                            notePosition.x += level1ErrorShift; // 时间太晚，向 +x 方向偏移
+                            notePosition.x += level1ErrorShift; // Hit too late, shift right.
                         }
 
                         Instantiate(HitDrumInputLevel1ErrorMarker, notePosition, Quaternion.identity, markerHolder);
                     }
                     matched = true;
-                    break; // 配对后跳出循环
+                    break; // A match was found, exit the loop.
                 }
             }
         }
 
-        // 如果没有任何匹配的 segment，则生成 MissMarker
+        // If no matching segment was found for the user's hit, it's considered a "Miss" or an extra hit.
         if (!matched)
         {
             if (HitDrumInputMissMarker != null && transformPlayBacker.drumSheetCursor != null)
             {
                 Vector3 cursorPosition = transformPlayBacker.drumSheetCursor.transform.position;
+                // Adjust the Y position of the miss marker to align with the corresponding drum row on the sheet.
                 if (drumType == DrumType.Crash) {
                     cursorPosition.y = transformPlayBacker.drumSheet.drumSheetCrashRowAnchor.transform.position.y;
                 }
@@ -283,83 +306,100 @@ public class RealTimeInputTracker : MonoBehaviour
         }
     }
 
-
-    // 检查是否在 CorrectOrderMode 中正确击打
+    /// <summary>
+    /// Checks if a drum hit is correct in `CorrectOrderMode`.
+    /// This mode focuses on hitting the correct drum(s) at the current expected beat position, regardless of precise timing within the beat.
+    /// </summary>
+    /// <param name="drumType">The type of drum that was hit by the user.</param>
     private void CheckHitDrumCorrectOrderMode(DrumType drumType)
     {
-        // 計算 currentBeatPosition : 目前unskipped && unmatched 中最小的 beatPosiiton
+        // Find the smallest beat position among all unmatched and unskipped segments.
+        // This represents the "current" beat that the player is expected to hit.
         float currentBeatPosition = float.PositiveInfinity;
         foreach (var segment in trackedHitSegments)
         {
-            if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition < currentBeatPosition) {
+            if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition < currentBeatPosition)
+            {
                 currentBeatPosition = segment.associatedNote.beatPosition;
             }
         }
 
-        // 檢查所有 beatPosition == currentBeatPosition 是否有匹配
+        // Check if the user's hit matches any unskipped, unmatched segment at the `currentBeatPosition`.
         bool findMatched = false;
         foreach (var segment in trackedHitSegments)
         {
-            if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition) {
-                // 允许任何具有相同 beatPosition 的 segment 被击打
+            if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition)
+            {
+                // If the hit drum type matches an expected drum type at this beat position, mark it as correct.
                 if (segment.drumHit == drumType)
                 {
                     segment.matched = true;
-                    segment.correct = true; // 标记为正确
+                    segment.correct = true; // Mark as correct.
 
-                    // 在 associatedNote 的位置生成 HitDrumInputCorrectMarker
+                    // Instantiate a correct marker.
                     if (HitDrumInputCorrectMarker != null && segment.associatedNote != null)
                     {
                         Vector3 notePosition = segment.associatedNote.transform.position;
                         Instantiate(HitDrumInputCorrectMarker, notePosition, Quaternion.identity, markerHolder);
                     }
                     findMatched = true;
-                    break;
+                    break; // A correct match was found, exit the loop.
                 }
             }
         }
 
-        // 如果完全沒有匹配，就把下一個segment標記為 matched 但是錯誤
-        if (!findMatched) {
+        // If the user's hit did not match any expected segment at `currentBeatPosition` (i.e., it was an incorrect drum or an extra hit),
+        // then mark the *next* expected segment at `currentBeatPosition` as an error.
+        if (!findMatched)
+        {
             foreach (var segment in trackedHitSegments)
             {
-                if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition) {
+                if (!segment.matched && !segment.skip && segment.associatedNote.beatPosition == currentBeatPosition)
+                {
                     segment.matched = true;
-                    segment.correct = false;
+                    segment.correct = false; // Mark as incorrect.
 
-                    // 在 associatedNote 的位置生成 HitDrumInputErrorMarker
+                    // Instantiate an error marker.
                     if (HitDrumInputErrorMarker != null && segment.associatedNote != null)
                     {
                         Vector3 notePosition = segment.associatedNote.transform.position;
                         Instantiate(HitDrumInputErrorMarker, notePosition, Quaternion.identity, markerHolder);
                     }
-                    break;
+                    break; // Mark only the first unmatched segment at this beat as an error.
                 }
             }
         }
-        
     }
 
+    /// <summary>
+    /// Returns the list of tracked hit segments, including their matched and correctness status.
+    /// </summary>
+    /// <returns>A List of TrackedHitSegment objects.</returns>
     public List<TrackedHitSegment> GetTrackedHitSegments()
     {
         return trackedHitSegments;
     }
 
-    // 序列化的类，用于存储每次击打的输入数据
+    /// <summary>
+    /// Serializable class to store data for each recorded drum input.
+    /// </summary>
     [Serializable]
     public class HitDrumInputData
     {
-        public DrumType drumType; // 鼓的类型
-        public float timestamp; // 时间戳
-        public float hitValue; // 击打力度值
+        public DrumType drumType; // The type of drum that was hit.
+        public float timestamp;   // The timestamp (in seconds) when the hit occurred.
+        public float hitValue;    // The intensity or value of the hit (e.g., pressure, velocity).
     }
 
-    // 扩展的 HitSegment 类，用于跟踪输入配对情况
+    /// <summary>
+    /// Extends the base HitSegment class to include tracking-specific properties
+    /// for matching user input against expected hits.
+    /// </summary>
     [Serializable]
     public class TrackedHitSegment : TransformPlayBacker.HitSegment
     {
-        public bool matched = false; // 是否已配对
-        public bool correct = false; // 是否为正确配对
-        public bool level1TimeError = false; // 是否为 level 1 时间错误
+        public bool matched = false;       // True if this segment has been successfully matched by a user input.
+        public bool correct = false;       // True if the matched input was perfectly correct (within `correctTimeTolerance`).
+        public bool level1TimeError = false; // True if the matched input was a Level 1 timing error (within `level1ErrorTimeTolerance`).
     }
 }
