@@ -3,27 +3,27 @@ using UnityEngine;
 
 public class HandMovementPathRenderer : MonoBehaviour
 {
-    public TransformPlayBacker transformPlayBacker;
-    public LineRenderer lineRenderer1;
-    public LineRenderer lineRenderer2;
-    public float lineWidth = 0.1f;
-    public int preHitNumber = 5;
-    public int postHitNumber = 5;
-    public int resolution = 5; // 每隔多少点采样一个
+    public TransformPlayBacker transformPlayBacker; // Reference to the playback controller.
+    public LineRenderer lineRenderer1; // LineRenderer for the left hand's movement path.
+    public LineRenderer lineRenderer2; // LineRenderer for the right hand's movement path.
+    public float lineWidth = 0.1f; // The width of the rendered path lines.
+    public int preHitNumber = 5;   // Number of hit events to look back for defining the start of the path segment.
+    public int postHitNumber = 5;  // Number of hit events to look forward for defining the end of the path segment.
+    public int resolution = 5;     // The sampling interval for path points. A value of 5 means one point is sampled every 5 data frames.
 
-    public Transform LeftHandDrumStickTipAnchor;
-    public Transform RightHandDrumStickTipAnchor;
+    public Transform LeftHandDrumStickTipAnchor;  // Anchor to calculate the left drumstick tip position relative to the controller.
+    public Transform RightHandDrumStickTipAnchor; // Anchor to calculate the right drumstick tip position relative to the controller.
 
-    public GameObject leftHandHighPoint; // 用于左手高亮的对象
-    public GameObject rightHandHighPoint; // 用于右手高亮的对象
-    public GameObject leftHandStartPoint; // 用于左手路径开始点的对象
-    public GameObject rightHandStartPoint; // 用于右手路径开始点的对象
-    public GameObject leftHandEndPoint; // 用于左手路径结束点的对象
-    public GameObject rightHandEndPoint; // 用于右手路径结束点的对象
+    public GameObject leftHandHighPoint;   // The GameObject used as a visual marker for the left hand's highest point in the path segment.
+    public GameObject rightHandHighPoint;  // The GameObject used as a visual marker for the right hand's highest point.
+    public GameObject leftHandStartPoint;  // The GameObject used as a visual marker for the left hand's path start point.
+    public GameObject rightHandStartPoint; // The GameObject used as a visual marker for the right hand's path start point.
+    public GameObject leftHandEndPoint;    // The GameObject used as a visual marker for the left hand's path end point.
+    public GameObject rightHandEndPoint;   // The GameObject used as a visual marker for the right hand's path end point.
 
-    public bool highlightHighestPointEnabled = true; // 控制是否启用高亮
+    public bool highlightHighestPointEnabled = true; // Toggles the visibility of the key point markers (start, end, high point).
 
-    // 记录路径范围的最高点、开始点和结束点的位置和时间戳
+    // Stores the position and timestamp of the key points of the current path segment for external access (e.g., by HandMovementFeedback).
     public Vector3 leftHandHighestPointPosition;
     public Vector3 leftHandStartPointPosition;
     public Vector3 leftHandEndPointPosition;
@@ -46,6 +46,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             return;
         }
 
+        // Initialize LineRenderers if they are not assigned.
         if (lineRenderer1 == null)
         {
             GameObject lineObj1 = new GameObject("LineRenderer1");
@@ -62,7 +63,7 @@ public class HandMovementPathRenderer : MonoBehaviour
         }
         InitializeLineRenderer(lineRenderer2);
 
-        // 确保高亮对象已被分配
+        // Ensure the highlight GameObjects are assigned in the Inspector.
         if (leftHandHighPoint == null)
         {
             Debug.LogError("Left hand high point is not assigned.");
@@ -122,7 +123,7 @@ public class HandMovementPathRenderer : MonoBehaviour
         int currentIndex = transformPlayBacker.currentIndex;
         float currentTime = transformPlayBacker.playbackData.dataList[currentIndex].timestamp;
 
-        // 找到 preHitNumber 个左手击打事件之前的索引
+        // Find the start index for the left-hand path by looking back `preHitNumber` hit events.
         int startIndex1 = currentIndex;
         int leftHandHitCount = 0;
         while (startIndex1 > 0 && leftHandHitCount < preHitNumber)
@@ -134,7 +135,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             }
         }
 
-        // 找到 postHitNumber 个左手击打事件之后的索引
+        // Find the end index for the left-hand path by looking forward `postHitNumber` hit events.
         int endIndex1 = currentIndex;
         leftHandHitCount = 0;
         while (endIndex1 < transformPlayBacker.playbackData.dataList.Count - 1 && leftHandHitCount < postHitNumber)
@@ -146,7 +147,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             }
         }
 
-        // 找到 preHitNumber 个右手击打事件之前的索引
+        // Find the start index for the right-hand path by looking back `preHitNumber` hit events.
         int startIndex2 = currentIndex;
         int rightHandHitCount = 0;
         while (startIndex2 > 0 && rightHandHitCount < preHitNumber)
@@ -158,7 +159,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             }
         }
 
-        // 找到 postHitNumber 个右手击打事件之后的索引
+        // Find the end index for the right-hand path by looking forward `postHitNumber` hit events.
         int endIndex2 = currentIndex;
         rightHandHitCount = 0;
         while (endIndex2 < transformPlayBacker.playbackData.dataList.Count - 1 && rightHandHitCount < postHitNumber)
@@ -170,7 +171,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             }
         }
 
-        // 收集左手路径点
+        // Collect path points for the left hand based on the calculated range and resolution.
         for (int i = startIndex1; i <= endIndex1; i += resolution)
         {
             var data = transformPlayBacker.playbackData.dataList[i];
@@ -178,7 +179,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             positions1.Add(leftStickTipPosition);
         }
 
-        // 收集右手路径点
+        // Collect path points for the right hand.
         for (int i = startIndex2; i <= endIndex2; i += resolution)
         {
             var data = transformPlayBacker.playbackData.dataList[i];
@@ -186,14 +187,14 @@ public class HandMovementPathRenderer : MonoBehaviour
             positions2.Add(rightStickTipPosition);
         }
 
-        // 设置 LineRenderer 的路径点
+        // Set the collected points for the LineRenderers to draw the paths.
         lineRenderer1.positionCount = positions1.Count;
         lineRenderer1.SetPositions(positions1.ToArray());
 
         lineRenderer2.positionCount = positions2.Count;
         lineRenderer2.SetPositions(positions2.ToArray());
 
-        // 记录路径范围的最高点、开始点和结束点
+        // Record the highest, start, and end points of the path segment.
         if (positions1.Count > 0)
         {
             leftHandStartPointPosition = positions1[0];
@@ -212,7 +213,7 @@ public class HandMovementPathRenderer : MonoBehaviour
             (rightHandHighestPointPosition, rightHandHighestPointTimestamp) = GetHighestPointAndTimestamp(positions2, startIndex2, endIndex2);
         }
 
-        // 高亮路径的最高点、开始点和结束点
+        // Highlight the key points of the path (highest, start, end) if enabled.
         if (highlightHighestPointEnabled)
         {
             HighlightPoint(leftHandHighPoint, leftHandHighestPointPosition);
@@ -224,6 +225,7 @@ public class HandMovementPathRenderer : MonoBehaviour
         }
         else
         {
+            // Deactivate highlight objects if highlighting is disabled.
             if (leftHandHighPoint != null)
             {
                 leftHandHighPoint.SetActive(false);
