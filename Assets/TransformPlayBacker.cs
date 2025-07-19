@@ -6,115 +6,133 @@ using System.IO;
 
 public class TransformPlayBacker : MonoBehaviour
 {
+    /// <summary>
+    /// Represents a single drum hit event with its intensity and the limb used.
+    /// </summary>
     [Serializable]
     public class DrumHit
     {
-        public float value; // 鼓击打的力度值
-        public string limb; // 使用的肢体
+        public float value; // The intensity or velocity of the drum hit.
+        public string limb; // The limb (e.g., "lefthand", "righthand", "rightfeet") used for the hit.
     }
 
+    /// <summary>
+    /// Stores the transform data (position, rotation) for multiple tracked objects
+    /// and drum hit information at a specific timestamp.
+    /// </summary>
     [Serializable]
     public class TransformData
     {
-        public Vector3 position1; // 第一个 Transform 的位置
-        public Quaternion rotation1; // 第一个 Transform 的旋转
-        public Vector3 position2; // 第二个 Transform 的位置
-        public Quaternion rotation2; // 第二个 Transform 的旋转
-        public Vector3 position3; // 第三个 Transform 的位置
-        public Quaternion rotation3; // 第三个 Transform 的旋转
-        public float timestamp; // 时间戳
-        public DrumHit bassDrumHit; // 大鼓的击打
-        public DrumHit snareDrumHit; // 小军鼓的击打
-        public DrumHit closedHiHatHit; // 闭合的踩镲的击打
-        public DrumHit tom1Hit; // Tom1 鼓的击打
-        public DrumHit tom2Hit; // Tom2 鼓的击打
-        public DrumHit floorTomHit; // 地板鼓的击打
-        public DrumHit crashHit; // 碰镲的击打
-        public DrumHit rideHit; // Ride镲的击打
-        public DrumHit openHiHatHit; // 打开的踩镲的击打
+        public Vector3 position1; // Position of the first tracked Transform (e.g., left hand).
+        public Quaternion rotation1; // Rotation of the first tracked Transform.
+        public Vector3 position2; // Position of the second tracked Transform (e.g., right hand).
+        public Quaternion rotation2; // Rotation of the second tracked Transform.
+        public Vector3 position3; // Position of the third tracked Transform (e.g., right foot).
+        public Quaternion rotation3; // Rotation of the third tracked Transform.
+        public float timestamp; // The time (in seconds) at which this data was recorded.
+        public DrumHit bassDrumHit; // Hit data for the Bass Drum.
+        public DrumHit snareDrumHit; // Hit data for the Snare Drum.
+        public DrumHit closedHiHatHit; // Hit data for the Closed Hi-Hat.
+        public DrumHit tom1Hit; // Hit data for Tom 1.
+        public DrumHit tom2Hit; // Hit data for Tom 2.
+        public DrumHit floorTomHit; // Hit data for the Floor Tom.
+        public DrumHit crashHit; // Hit data for the Crash Cymbal.
+        public DrumHit rideHit; // Hit data for the Ride Cymbal.
+        public DrumHit openHiHatHit; // Hit data for the Open Hi-Hat.
     }
 
+    /// <summary>
+    /// A container class for a list of TransformData, including the original BPM of the recording.
+    /// </summary>
     [Serializable]
     public class TransformPlaybackData
     {
-        public float bpm; // 记录的节拍速度
-        public List<TransformData> dataList; // 记录的 Transform 数据列表
+        public float bpm; // The BPM at which the original data was recorded.
+        public List<TransformData> dataList; // The list of recorded TransformData points.
     }
 
+    /// <summary>
+    /// Represents a segment of a drum hit, defining its start and end indices in the data list,
+    /// the limb used, the drum type, and whether it should be skipped during playback/tracking.
+    /// </summary>
     [Serializable]
     public class HitSegment
     {
-        public string limbUsed; // 这个击打使用的肢体
-        public DrumType drumHit; // 被击打的鼓类型
-        public int startIdx; // 该段的开始索引
-        public int endIdx; // 该段的结束索引
-        public bool skip; // 是否跳过这个区段
-        public DrumNote associatedNote; // 关联的 DrumNote
+        public string limbUsed; // The limb associated with this hit segment.
+        public DrumType drumHit; // The type of drum hit in this segment.
+        public int startIdx; // The starting index in `playbackData.dataList` for this segment.
+        public int endIdx; // The ending index in `playbackData.dataList` for this segment.
+        public bool skip; // Flag to indicate if this segment should be skipped (e.g., for practice modes).
+        public DrumNote associatedNote; // Reference to the visual DrumNote object on the drum sheet.
     }
 
-    public enum PlayMode { A, B } // 播放模式枚举
-    public PlayMode playMode = PlayMode.A; // 默认播放模式为 A
+    /// <summary>
+    /// Defines different playback modes.
+    /// </summary>
+    public enum PlayMode { A, B }
+    public PlayMode playMode = PlayMode.A; // The current playback mode, defaults to A.
 
-    public string jsonFilePath; // JSON 文件的路径
-    public Transform targetTransform1; // 第一个 Transform 对象 (左手)
-    public Transform targetTransform2; // 第二个 Transform 对象 (右手)
-    public Transform targetTransform3; // 第三个 Transform 对象 (右脚)
-    public float playBackBPM; // 用于调整播放速度
-    public float startOffsetBeat; // 开始播放前的偏移节拍数
-    public Metronome metronome; // Metronome 组件引用
-    public DrumSheet drumSheet; // 引用 DrumSheet 组件
-    public DrumSheetCursor drumSheetCursor; // drum sheet 的 cursor
+    public string jsonFilePath; // Path to the JSON file containing recorded transform data.
+    public Transform targetTransform1; // The first Transform object to animate (e.g., left hand controller).
+    public Transform targetTransform2; // The second Transform object to animate (e.g., right hand controller).
+    public Transform targetTransform3; // The third Transform object to animate (e.g., right foot controller).
+    public float playBackBPM; // The desired BPM for playback. This will scale the original recording's speed.
+    public float startOffsetBeat; // Number of beats to wait before starting the actual playback data.
+    public Metronome metronome; // Reference to the Metronome component for synchronization.
+    public DrumSheet drumSheet; // Reference to the DrumSheet component for managing drum notes.
+    public DrumSheetCursor drumSheetCursor; // Reference to the DrumSheetCursor for visual tracking.
 
-    public AudioSource bassDrumAudioSource; // 大鼓音效
-    public AudioSource snareDrumAudioSource; // 小军鼓音效
-    public AudioSource closedHiHatAudioSource; // 闭合踩镲音效
-    public AudioSource tom1AudioSource; // Tom1 鼓音效
-    public AudioSource tom2AudioSource; // Tom2 鼓音效
-    public AudioSource floorTomAudioSource; // 地板鼓音效
-    public AudioSource crashAudioSource; // 碰镲音效
-    public AudioSource rideAudioSource; // Ride镲音效
-    public AudioSource openHiHatAudioSource; // 打开踩镲音效
+    // AudioSources for playing drum hit sounds.
+    public AudioSource bassDrumAudioSource;
+    public AudioSource snareDrumAudioSource;
+    public AudioSource closedHiHatAudioSource;
+    public AudioSource tom1AudioSource;
+    public AudioSource tom2AudioSource;
+    public AudioSource floorTomAudioSource;
+    public AudioSource crashAudioSource;
+    public AudioSource rideAudioSource;
+    public AudioSource openHiHatAudioSource;
 
-    public DrumHitIndicator drumHitIndicator; // DrumHitIndicator 组件引用
-    public GameObject PlayBackVirtualMan; // 新增 PlayBackVirtualMan
-    public GameObject drumAudio; // 新增 drumAudio
+    public DrumHitIndicator drumHitIndicator; // Reference to the DrumHitIndicator for visual hit feedback.
+    public GameObject PlayBackVirtualMan; // The GameObject representing the virtual player (can be toggled).
+    public GameObject drumAudio; // The GameObject containing drum audio components (can be toggled).
 
-    public TransformPlaybackData playbackData; // 播放数据
-    public List<HitSegment> hitSegments; // 保存击打区段信息
-    public int currentIndex; // 当前播放的索引
-    private float playbackSpeedMultiplier; // 播放速度倍率
-    private float offsetDuration; // 播放前的偏移时长
-    public bool isPlaying = false; // 播放状态标志
-    public bool allowInputControl = true; // 是否允许通过按空格键来控制
-    private Coroutine playbackCoroutine; // 播放协程引用
-    public float playbackStartTime; // 播放开始时间
+    public TransformPlaybackData playbackData; // The loaded playback data from the JSON file.
+    public List<HitSegment> hitSegments; // List of generated hit segments from the playback data.
+    public int currentIndex; // The current index in `playbackData.dataList` being processed.
+    private float playbackSpeedMultiplier; // Calculated multiplier to adjust playback speed based on BPM.
+    private float offsetDuration; // Calculated duration of the initial offset in seconds.
+    public bool isPlaying = false; // Flag indicating if playback is currently active.
+    public bool allowInputControl = true; // Flag to enable/disable Spacebar control for playback.
+    private Coroutine playbackCoroutine; // Reference to the currently running playback coroutine.
+    public float playbackStartTime; // The Unity `Time.time` when the current playback segment started.
 
-    // 事件：当 PlayTransformData 开始时触发
+    // Event triggered when the PlayTransformData coroutine begins.
     public event Action OnPlayTransformDataStart;
 
-    // 事件：当 PlayTransformData 结束时触发
+    // Event triggered when the PlayTransformData coroutine ends.
     public event Action OnPlayTransformDataEnd;
 
-    private bool isPlayingTransformData = false; // 用于跟踪是否正在执行 PlayTransformData
+    private bool isPlayingTransformData = false; // Internal flag to track if the core playback coroutine is active.
 
     void OnEnable()
     {
-        // 每次启用时读取 JSON 文件
+        // Load the JSON file containing playback data every time the component is enabled.
         LoadJsonFile(jsonFilePath);
 
-        // 初始化 drumHitIndicator
+        // Initialize the drum hit indicator.
         if (drumHitIndicator != null)
         {
             drumHitIndicator.Initialize();
         }
 
-        // 生成区段信息
+        // Generate hit segments from the loaded playback data.
         GenerateHitSegments();
     }
 
     void Update()
     {
-        // 如果允许输入控制且按下空格键，启动或停止播放
+        // Handle Spacebar input to toggle playback if allowed.
         if (allowInputControl && Input.GetKeyDown(KeyCode.Space))
         {
             if (!isPlaying)
@@ -127,58 +145,50 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 按下 Keypad1 切換成 mode A
+        // Input for switching playback modes.
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             playMode = PlayMode.A;
         }
-
-        // 按下 Keypad0 切換成 mode B
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             playMode = PlayMode.B;
         }
 
-        // 按下 Keypad9 激活 PlayBackVirtualMan
+        // Input for toggling visibility of virtual man, drum hit indicator, and drum audio.
         if (Input.GetKeyDown(KeyCode.Keypad9) && PlayBackVirtualMan != null)
         {
             PlayBackVirtualMan.SetActive(true);
         }
-
-        // 按下 Keypad8 取消激活 PlayBackVirtualMan
         if (Input.GetKeyDown(KeyCode.Keypad8) && PlayBackVirtualMan != null)
         {
             PlayBackVirtualMan.SetActive(false);
         }
-
-        // 按下 Keypad6 激活 drumHitIndicator
         if (Input.GetKeyDown(KeyCode.Keypad6) && drumHitIndicator != null)
         {
             drumHitIndicator.gameObject.SetActive(true);
         }
-
-        // 按下 Keypad5 取消激活 drumHitIndicator
         if (Input.GetKeyDown(KeyCode.Keypad5) && drumHitIndicator != null)
         {
             drumHitIndicator.gameObject.SetActive(false);
         }
-
-        // 按下 Keypad3 激活 drumAudio
         if (Input.GetKeyDown(KeyCode.Keypad3) && drumAudio != null)
         {
             drumAudio.SetActive(true);
         }
-
-        // 按下 Keypad2 取消激活 drumAudio
         if (Input.GetKeyDown(KeyCode.Keypad2) && drumAudio != null)
         {
             drumAudio.SetActive(false);
         }
     }
 
+    /// <summary>
+    /// Starts the playback process based on the selected `playMode`.
+    /// Calculates playback speed and offset duration.
+    /// </summary>
     public void StartPlayBack()
     {
-        // 根据播放数据初始化播放速度倍率和偏移时长
+        // Calculate the playback speed multiplier and initial offset duration.
         if (playbackData != null)
         {
             playbackSpeedMultiplier = playBackBPM / playbackData.bpm;
@@ -192,7 +202,7 @@ public class TransformPlayBacker : MonoBehaviour
 
         isPlaying = true;
 
-        // 根据播放模式启动不同的 coroutine
+        // Start the appropriate playback coroutine based on the current mode.
         if (playMode == PlayMode.A)
         {
             playbackCoroutine = StartCoroutine(PlayBackCoroutineA());
@@ -203,14 +213,18 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the current playback process.
+    /// Halts the playback coroutine and stops the metronome.
+    /// </summary>
     public void StopPlayBack()
     {
-        // 停止播放协程
+        // Stop the active playback coroutine.
         if (playbackCoroutine != null)
         {
             StopCoroutine(playbackCoroutine);
 
-            // 如果正在播放 TransformData，确保 OnPlayTransformDataEnd 被调用
+            // Ensure the OnPlayTransformDataEnd event is triggered if the core playback was active.
             if (isPlayingTransformData)
             {
                 OnPlayTransformDataEnd?.Invoke();
@@ -220,125 +234,145 @@ public class TransformPlayBacker : MonoBehaviour
 
         isPlaying = false;
 
-        // 停止播放 Metronome
+        // Stop the metronome.
         if (metronome != null)
         {
             metronome.StopMetronome();
         }
     }
 
+    /// <summary>
+    /// Playback Coroutine for Mode A: Continuous loop of the entire recorded data.
+    /// Includes an initial offset and continuous metronome synchronization.
+    /// </summary>
     private IEnumerator PlayBackCoroutineA()
     {
-        while (isPlaying)
+        while (isPlaying) // Loop indefinitely as long as `isPlaying` is true.
         {
-            // 开始播放 Metronome
+            // Start/restart the metronome with the current playback BPM.
             if (metronome != null)
             {
-                metronome.bpm = playBackBPM; // 确保设置 bpm
-                metronome.StopMetronome(); // 确保 metronome 停止
-                metronome.StartMetronome(); // 重新启动 metronome
+                metronome.bpm = playBackBPM;
+                metronome.StopMetronome(); // Ensure it's stopped before restarting to prevent multiple instances.
+                metronome.StartMetronome();
             }
 
-            // 播放空白记录
+            // Wait for the initial blank offset duration.
             yield return new WaitForSeconds(offsetDuration);
 
-            playbackStartTime = Time.time;
-            currentIndex = 0;
+            playbackStartTime = Time.time; // Record the actual start time of data playback.
+            currentIndex = 0; // Reset index to start from the beginning of the data.
 
-            // 使用 PlayTransformData 简化代码
+            // Play through the entire transform data.
             yield return PlayTransformData();
         }
     }
 
+    /// <summary>
+    /// Playback Coroutine for Mode B: Plays the entire recorded data once,
+    /// then loops from the second beat onwards.
+    /// </summary>
     private IEnumerator PlayBackCoroutineB()
     {
-        // 开始播放 Metronome
+        // Start/restart the metronome.
         if (metronome != null)
         {
-            metronome.bpm = playBackBPM; // 确保设置 bpm
-            metronome.StopMetronome(); // 确保 metronome 停止
-            metronome.StartMetronome(); // 重新启动 metronome
+            metronome.bpm = playBackBPM;
+            metronome.StopMetronome();
+            metronome.StartMetronome();
         }
 
-        // 播放空白记录
+        // Wait for the initial blank offset duration.
         yield return new WaitForSeconds(offsetDuration);
 
         playbackStartTime = Time.time;
         currentIndex = 0;
 
-        // 播放整个 TransformPlayBackData 一次
+        // Play the entire TransformPlayBackData once.
         yield return PlayTransformData();
 
-        // 循环播放 TransformPlayBackData 跳过开头一个 beat 的时间
+        // Loop playback, skipping the first beat's duration.
         while (isPlaying)
         {
             playbackStartTime = Time.time;
 
+            // Calculate the time duration of one beat at the original recording's BPM.
             float skipBeat = 1f;
 
-            // 重置 Metronome
+            // Reset Metronome for the loop.
             if (metronome != null)
             {
-                metronome.bpm = playBackBPM; // 确保设置 bpm
-                metronome.StopMetronome(); // 确保 metronome 停止
-                metronome.StartMetronome(); // 重新启动 metronome
+                metronome.bpm = playBackBPM;
+                metronome.StopMetronome();
+                metronome.StartMetronome();
             }
 
-            // 调用 PlayTransformData 时传递 skipBeat 以跳过开头一个 beat 的时间
+            // Play TransformData, starting from an offset (skipping the first beat).
             yield return PlayTransformData(skipBeat * (60f / playbackData.bpm));
         }
     }
 
+    /// <summary>
+    /// Core coroutine for playing back transform data.
+    /// Interpolates transform positions/rotations and triggers drum hits.
+    /// </summary>
+    /// <param name="startTimeOffset">An offset in seconds to start playback from within the data list.</param>
     private IEnumerator PlayTransformData(float startTimeOffset = 0f)
     {
-        // 触发开始事件
-        OnPlayTransformDataStart?.Invoke();
+        OnPlayTransformDataStart?.Invoke(); // Trigger the start event.
         isPlayingTransformData = true;
 
         if (startTimeOffset > 0)
         {
-            // 计算跳过时间后应该从哪个索引开始播放
+            // Determine the starting index in the data list based on the `startTimeOffset`.
             currentIndex = GetStartIndexAfterSkipTime(startTimeOffset);
         }
 
+        // Loop through the data list until the end.
         while (currentIndex < playbackData.dataList.Count - 1)
         {
+            // Calculate elapsed time, adjusted by playback speed multiplier and initial offset.
             float elapsedTime = (Time.time - playbackStartTime) * playbackSpeedMultiplier + startTimeOffset;
 
-            // 检查是否跳过了多个元素
+            // Advance `currentIndex` if the elapsed time has passed the next data point's timestamp.
+            // This handles cases where frames are skipped or playback is very fast.
             while (currentIndex < playbackData.dataList.Count - 1 && elapsedTime >= playbackData.dataList[currentIndex + 1].timestamp)
             {
-                // 如果被跳过的元素中有击打事件，播放相应音效
+                // If a data point is skipped, ensure its drum hits are still processed.
                 CheckAndPlayDrumHits(playbackData.dataList[currentIndex]);
                 currentIndex++;
             }
 
+            // If there are still data points to process, interpolate transforms.
             if (currentIndex < playbackData.dataList.Count - 1)
             {
                 float targetTime = playbackData.dataList[currentIndex].timestamp;
                 float nextTime = playbackData.dataList[currentIndex + 1].timestamp;
 
-                // 计算插值因子
+                // Calculate the interpolation factor (t) between the current and next data points.
                 float t = Mathf.InverseLerp(targetTime, nextTime, elapsedTime);
 
-                // 使用线性插值更新 Transform
+                // Update the target Transforms using linear interpolation.
                 UpdateTransforms(currentIndex, currentIndex + 1, t);
             }
 
-            yield return null;
+            yield return null; // Wait for the next frame.
         }
 
-        // 播放到最后一个 Transform
+        // Ensure the last transform data is applied when playback finishes.
         UpdateTransforms(currentIndex, currentIndex, 1.0f);
 
-        // 触发结束事件
-        OnPlayTransformDataEnd?.Invoke();
+        OnPlayTransformDataEnd?.Invoke(); // Trigger the end event.
         isPlayingTransformData = false;
     }
 
+    /// <summary>
+    /// Finds the index in `playbackData.dataList` corresponding to a given skip time.
+    /// </summary>
+    /// <param name="skipTime">The time (in seconds) to skip to.</param>
+    /// <returns>The index of the first data point whose timestamp is greater than or equal to `skipTime`.</returns>
     private int GetStartIndexAfterSkipTime(float skipTime)
     {
-        // 找到第一个 timestamp 大于 skipTime 的索引
         for (int i = 0; i < playbackData.dataList.Count; i++)
         {
             if (playbackData.dataList[i].timestamp >= skipTime)
@@ -346,9 +380,13 @@ public class TransformPlayBacker : MonoBehaviour
                 return i;
             }
         }
-        return 0; // 如果所有 timestamp 都小于 skipTime，则从头开始
+        return 0; // If skipTime is beyond all data, start from the beginning.
     }
 
+    /// <summary>
+    /// Loads transform playback data from a JSON file.
+    /// </summary>
+    /// <param name="path">The file path to the JSON data.</param>
     void LoadJsonFile(string path)
     {
         if (File.Exists(path))
@@ -362,26 +400,34 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the positions and rotations of the target Transforms by interpolating
+    /// between two data points from the `playbackData`.
+    /// Transforms are only updated if their corresponding segment is not marked as skipped.
+    /// </summary>
+    /// <param name="indexA">The index of the first data point.</param>
+    /// <param name="indexB">The index of the second data point.</param>
+    /// <param name="t">The interpolation factor (0.0 to 1.0).</param>
     void UpdateTransforms(int indexA, int indexB, float t)
     {
         TransformData dataA = playbackData.dataList[indexA];
         TransformData dataB = playbackData.dataList[indexB];
 
-        // 更新左手 (对应 position1 和 rotation1)
+        // Update left hand (position1 and rotation1) if not skipped.
         if (!IsCurrentSegmentSkipped(indexA, "lefthand"))
         {
             targetTransform1.position = Vector3.Lerp(dataA.position1, dataB.position1, t);
             targetTransform1.rotation = Quaternion.Lerp(dataA.rotation1, dataB.rotation1, t);
         }
 
-        // 更新右手 (对应 position2 和 rotation2)
+        // Update right hand (position2 and rotation2) if not skipped.
         if (!IsCurrentSegmentSkipped(indexA, "righthand"))
         {
             targetTransform2.position = Vector3.Lerp(dataA.position2, dataB.position2, t);
             targetTransform2.rotation = Quaternion.Lerp(dataA.rotation2, dataB.rotation2, t);
         }
 
-        // 更新右脚 (对应 position3 和 rotation3)
+        // Update right foot (position3 and rotation3) if not skipped.
         if (!IsCurrentSegmentSkipped(indexA, "rightfeet"))
         {
             targetTransform3.position = Vector3.Lerp(dataA.position3, dataB.position3, t);
@@ -389,9 +435,14 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks the current `TransformData` for drum hit events and plays corresponding audio
+    /// and visual indicators, provided the segment is not skipped.
+    /// </summary>
+    /// <param name="data">The current TransformData to check for hits.</param>
     void CheckAndPlayDrumHits(TransformData data)
     {
-        // 播放大鼓击打音效
+        // Play Bass Drum hit audio and trigger indicator if hit value > 0 and not skipped.
         if (data.bassDrumHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.bassDrumHit.limb))
         {
             PlayDrumHit(bassDrumAudioSource, data.bassDrumHit.value);
@@ -401,7 +452,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放小军鼓击打音效
+        // Play Snare Drum hit audio and trigger indicator.
         if (data.snareDrumHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.snareDrumHit.limb))
         {
             PlayDrumHit(snareDrumAudioSource, data.snareDrumHit.value);
@@ -411,7 +462,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放闭合踩镲击打音效
+        // Play Closed Hi-Hat hit audio and trigger indicator.
         if (data.closedHiHatHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.closedHiHatHit.limb))
         {
             PlayDrumHit(closedHiHatAudioSource, data.closedHiHatHit.value);
@@ -421,7 +472,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放 Tom1 鼓击打音效
+        // Play Tom 1 hit audio and trigger indicator.
         if (data.tom1Hit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.tom1Hit.limb))
         {
             PlayDrumHit(tom1AudioSource, data.tom1Hit.value);
@@ -431,7 +482,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放 Tom2 鼓击打音效
+        // Play Tom 2 hit audio and trigger indicator.
         if (data.tom2Hit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.tom2Hit.limb))
         {
             PlayDrumHit(tom2AudioSource, data.tom2Hit.value);
@@ -441,7 +492,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放地板鼓击打音效
+        // Play Floor Tom hit audio and trigger indicator.
         if (data.floorTomHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.floorTomHit.limb))
         {
             PlayDrumHit(floorTomAudioSource, data.floorTomHit.value);
@@ -451,7 +502,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放碰镲击打音效
+        // Play Crash Cymbal hit audio and trigger indicator.
         if (data.crashHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.crashHit.limb))
         {
             PlayDrumHit(crashAudioSource, data.crashHit.value);
@@ -461,7 +512,7 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放 Ride 镲击打音效
+        // Play Ride Cymbal hit audio and trigger indicator.
         if (data.rideHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.rideHit.limb))
         {
             PlayDrumHit(rideAudioSource, data.rideHit.value);
@@ -471,10 +522,10 @@ public class TransformPlayBacker : MonoBehaviour
             }
         }
 
-        // 播放打开踩镲击打音效
+        // Play Open Hi-Hat hit audio and trigger indicator.
         if (data.openHiHatHit.value > 0f && !IsCurrentSegmentSkipped(currentIndex, data.openHiHatHit.limb))
         {
-            PlayDrumHit(openHiHatAudioSource, data.openHiHatHit.value); // 处理 openHiHatHit
+            PlayDrumHit(openHiHatAudioSource, data.openHiHatHit.value);
             if (drumHitIndicator != null)
             {
                 drumHitIndicator.TriggerOpenHiHat(data.openHiHatHit.limb);
@@ -482,6 +533,11 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays a drum hit sound through the given AudioSource with a specified volume.
+    /// </summary>
+    /// <param name="audioSource">The AudioSource component to play the sound.</param>
+    /// <param name="volume">The volume at which to play the sound.</param>
     void PlayDrumHit(AudioSource audioSource, float volume)
     {
         if (audioSource != null)
@@ -491,15 +547,23 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generates `HitSegment` objects from the `playbackData`.
+    /// Each segment represents a continuous period of time between drum hits by a specific limb.
+    /// It also associates each segment with its corresponding `DrumNote` on the drum sheet.
+    /// </summary>
     void GenerateHitSegments()
     {
         hitSegments = new List<HitSegment>();
+        // Tracks the last index where a hit occurred for each limb, used to define segment start.
         Dictionary<string, int> lastHitIndex = new Dictionary<string, int>();
-        Dictionary<DrumType, int> drumHitCounter = new Dictionary<DrumType, int>(); // 用于计数每种类型的 DrumNote
+        // Counts hits for each drum type to correctly associate with `DrumNote` objects by index.
+        Dictionary<DrumType, int> drumHitCounter = new Dictionary<DrumType, int>();
 
         for (int i = 0; i < playbackData.dataList.Count; i++)
         {
             var data = playbackData.dataList[i];
+            // Process each possible drum hit type in the current data frame.
             ProcessHit(data.bassDrumHit, DrumType.BassDrum, i, lastHitIndex, drumHitCounter);
             ProcessHit(data.snareDrumHit, DrumType.SnareDrum, i, lastHitIndex, drumHitCounter);
             ProcessHit(data.closedHiHatHit, DrumType.ClosedHiHat, i, lastHitIndex, drumHitCounter);
@@ -512,15 +576,25 @@ public class TransformPlayBacker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Helper method to process a single drum hit within a `TransformData` frame.
+    /// It creates a `HitSegment` if a hit occurred and associates it with a `DrumNote`.
+    /// </summary>
+    /// <param name="drumHit">The DrumHit object (e.g., data.bassDrumHit).</param>
+    /// <param name="drumType">The DrumType enum value for this hit.</param>
+    /// <param name="currentIndex">The current index in the `playbackData.dataList`.</param>
+    /// <param name="lastHitIndex">Dictionary tracking the last hit index for each limb.</param>
+    /// <param name="drumHitCounter">Dictionary counting hits for each drum type.</param>
     void ProcessHit(DrumHit drumHit, DrumType drumType, int currentIndex, Dictionary<string, int> lastHitIndex, Dictionary<DrumType, int> drumHitCounter)
     {
-        if (drumHit.value > 0)
+        if (drumHit.value > 0) // If a hit occurred (value > 0).
         {
-            // 计算击打区段的开始和结束索引
+            // Determine the start index of this hit segment. It's either the index after the last hit
+            // by the same limb, or 0 if it's the first hit for that limb.
             int startIdx = lastHitIndex.ContainsKey(drumHit.limb) ? lastHitIndex[drumHit.limb] + 1 : 0;
-            int endIdx = currentIndex;
+            int endIdx = currentIndex; // The end index of the segment is the current data index.
 
-            // 计算这是该类型的第几个 hit
+            // Increment the counter for this specific drum type to get its sequential index.
             if (!drumHitCounter.ContainsKey(drumType))
             {
                 drumHitCounter[drumType] = 0;
@@ -528,33 +602,40 @@ public class TransformPlayBacker : MonoBehaviour
             int hitIndex = drumHitCounter[drumType];
             drumHitCounter[drumType]++;
 
-            // 连接 hitSegment 和 DrumNote 的代码
+            // Get the corresponding visual DrumNote from the DrumSheet based on type and sequential index.
             DrumNote associatedNote = drumSheet.GetDrumNoteByIndex(drumType, hitIndex);
 
-            // 创建新的 HitSegment 并添加到列表
+            // Create and add the new HitSegment.
             HitSegment segment = new HitSegment
             {
                 limbUsed = drumHit.limb,
                 drumHit = drumType,
                 startIdx = startIdx,
                 endIdx = endIdx,
-                skip = false, // 默认不跳过这个区段
-                associatedNote = associatedNote // 关联的 DrumNote
+                skip = false, // Default to not skipped.
+                associatedNote = associatedNote // Link to the visual DrumNote.
             };
 
             hitSegments.Add(segment);
 
-            // 双向关联
+            // Establish a bidirectional link: set the associatedSegment in the DrumNote.
             if (associatedNote != null)
             {
-                associatedNote.associatedSegment = segment; // 在 DrumNote 中设置关联的 HitSegment
+                associatedNote.associatedSegment = segment;
             }
 
-            // 更新 lastHitIndex
+            // Update the last hit index for the limb that just hit.
             lastHitIndex[drumHit.limb] = currentIndex;
         }
     }
 
+    /// <summary>
+    /// Checks if the current playback index falls within a `HitSegment` that is marked as skipped
+    /// for a specific limb.
+    /// </summary>
+    /// <param name="currentIndex">The current index in the playback data list.</param>
+    /// <param name="limb">The limb to check (e.g., "lefthand", "righthand").</param>
+    /// <returns>True if the current index is within a skipped segment for the given limb, false otherwise.</returns>
     bool IsCurrentSegmentSkipped(int currentIndex, string limb)
     {
         foreach (var segment in hitSegments)
