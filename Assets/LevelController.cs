@@ -2,16 +2,19 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public Color lockedColor = Color.gray;      // 锁定时的颜色
-    public Color focusedColor = Color.yellow;   // 聚焦时的颜色
-    public Color unfocusedColor = Color.white;  // 非聚焦时的颜色
-    public Color passedColor = Color.green;     // 通过时的颜色
-    public bool focused = false;                // 表示关卡是否被聚焦
-    public bool locked = false;                 // 表示关卡是否被锁定
-    public bool passed = false;                 // 表示关卡是否通过
-    private Renderer levelRenderer;             // 对应关卡对象的渲染器组件
+    public Color lockedColor = Color.gray;      // Color applied when the level is locked.
+    public Color focusedColor = Color.yellow;   // Color applied when the level is focused (selected).
+    public Color unfocusedColor = Color.white;  // Color applied when the level is not focused.
+    public Color passedColor = Color.green;     // Color applied when the level has been successfully passed.
+    public bool focused = false;                // Indicates if this level is currently focused.
+    public bool locked = false;                 // Indicates if this level is currently locked.
+    public bool passed = false;                 // Indicates if this level has been passed.
+    private Renderer levelRenderer;             // The Renderer component of the level's GameObject.
 
-    // 新增的枚举类型，用于指定追踪的正确率类型
+    /// <summary>
+    /// Defines the specific type of accuracy rate this level tracks.
+    /// This enum allows different levels to be associated with different performance metrics.
+    /// </summary>
     public enum TrackCorrectRate
     {
         RightHand4Beat,
@@ -28,18 +31,20 @@ public class LevelController : MonoBehaviour
         RightHandLeftHandRightFeet16Beat
     }
 
-    public TrackCorrectRate trackCorrectRate;   // 用于指定该关卡追踪的正确率类型
+    public TrackCorrectRate trackCorrectRate;   // The specific accuracy rate type this level is designed to track.
 
     private void Awake()
     {
         levelRenderer = GetComponent<Renderer>();
         if (levelRenderer == null)
         {
-            Debug.LogError("LevelController 需要一个 Renderer 组件。");
+            Debug.LogError("LevelController requires a Renderer component on its GameObject.");
         }
     }
 
-    // 将关卡设置为锁定状态
+    /// <summary>
+    /// Sets the level to a locked state, visually represented by the lockedColor.
+    /// </summary>
     public void SetLocked()
     {
         locked = true;
@@ -49,13 +54,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    // 将关卡设置为未锁定状态
+    /// <summary>
+    /// Sets the level to an unlocked state. Note: This method does not change the visual color,
+    /// as the visual state is typically managed by SetFocused/SetUnFocused or SetPassed.
+    /// </summary>
     public void SetUnLocked()
     {
         locked = false;
     }
 
-    // 将关卡设置为聚焦状态
+    /// <summary>
+    /// Sets the level to a focused state, visually represented by the focusedColor.
+    /// </summary>
     public void SetFocused()
     {
         focused = true;
@@ -65,7 +75,9 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    // 将关卡设置为非聚焦状态
+    /// <summary>
+    /// Sets the level to an unfocused state, visually represented by the unfocusedColor.
+    /// </summary>
     public void SetUnFocused()
     {
         focused = false;
@@ -75,24 +87,34 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    // 将关卡设置为通过状态
+    /// <summary>
+    /// Sets the level to a passed state, visually represented by the passedColor.
+    /// </summary>
     public void SetPassed()
     {
         passed = true;
         if (levelRenderer != null)
         {
-            levelRenderer.material.color = passedColor; // 设置为通过时的颜色
+            levelRenderer.material.color = passedColor; // Apply the passed color.
         }
     }
-    // 将关卡设置为通过状态
+
+    /// <summary>
+    /// Sets the level to an unpassed state. Note: This method does not change the visual color,
+    /// as the visual state is typically managed by SetFocused/SetUnFocused or SetLocked.
+    /// </summary>
     public void SetUnPassed()
     {
         passed = false;
     }
 
-    // 根据给定的值设置关卡的外观
+    /// <summary>
+    /// Placeholder method to set the level's appearance based on an arbitrary integer value.
+    /// The specific logic for how 'value' affects appearance would be implemented here.
+    /// </summary>
+    /// <param name="value">An integer value to influence the level's appearance.</param>
     public void SetAppearanceByValue(int value)
     {
-        // 根据值来设置外观逻辑
+        // Implement logic to change appearance based on 'value' here.
     }
 }
