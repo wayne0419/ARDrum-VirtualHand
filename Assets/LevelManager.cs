@@ -8,51 +8,49 @@ public class LevelManager : MonoBehaviour
     [System.Serializable]
     public class Stage
     {
-        public string stageName; // 阶段名称
-        public List<LevelController> levels; // 存储所有关卡的列表
+        public string stageName; // The name of this stage.
+        public List<LevelController> levels; // A list of all LevelControllers belonging to this stage.
     }
 
-    public List<Stage> stages;
-    public CorrectRateCalculator correctRateCalculator; // 引用 CorrectRateCalculator
-    private int currentFocusedStageIndex;  // 当前 focused 的 stage 索引
-    public float correctRatePassThreshold = 0.9f; // 通过的正确率阈值
-    public float requiredBPM; // 需要达到的 BPM
-    public TextMeshProUGUI requiredBPMText; // 显示需要达到的 BPM 的 Text
+    public List<Stage> stages; // A list of all stages in the game.
+    public CorrectRateCalculator correctRateCalculator; // Reference to the CorrectRateCalculator for checking performance.
+    private int currentFocusedStageIndex;  // The index of the currently focused (active) stage.
+    public float correctRatePassThreshold = 0.9f; // The minimum accuracy rate required to pass a level (e.g., 0.9 for 90%).
+    public float requiredBPM; // The minimum BPM (Beats Per Minute) required to pass levels in the current stage.
+    public TextMeshProUGUI requiredBPMText; // TextMeshProUGUI component to display the required BPM.
 
-    // 新增的 Action，用于在晋级到下一个 stage 时调用
+    // Action event triggered when the player advances to the next stage.
     public Action OnStageAdvanced;
-    // 新增的 Action，用于在 levle pass 时调用
+    // Action event triggered when a single level is passed.
     public Action OnLevelPassed;
 
     private void Start()
     {
-        // 确保 stages 列表不为空
+        // Validate that the stages list is populated.
         if (stages == null || stages.Count == 0)
         {
-            Debug.LogError("LevelManager: Stages list is empty or null.");
+            Debug.LogError("LevelManager: Stages list is empty or null. Please populate it in the Inspector.");
             return;
         }
 
-        // 确保 inputTracker 不为空
+        // Validate that the CorrectRateCalculator is assigned.
         if (correctRateCalculator == null)
         {
-            Debug.LogError("LevelManager: RealTimeInputTracker reference is null.");
+            Debug.LogError("LevelManager: CorrectRateCalculator reference is null. Please assign it in the Inspector.");
             return;
         }
-
         
-
-        // 初始化 currentFocusedStageIndex
+        // Initialize the current focused stage to the first one.
         currentFocusedStageIndex = 0;
 
-        // 初始化阶段和关卡的状态
+        // Set the initial state for all stages and their levels.
         for (int i = 0; i < stages.Count; i++)
         {
             Stage stage = stages[i];
 
             if (i == currentFocusedStageIndex)
             {
-                // 设置第一个 stage 的所有 level 为 focused 状态
+                // Set all levels in the initial focused stage to 'focused' state.
                 foreach (var levelController in stage.levels)
                 {
                     if (levelController != null)
@@ -63,7 +61,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                // 其他 stage 的 level 设置为 locked 状态
+                // Set all levels in other stages to 'locked' state.
                 foreach (var levelController in stage.levels)
                 {
                     if (levelController != null)
@@ -75,64 +73,87 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void OnEnable() {
-        // 订阅 RealTimeInputTracker 的事件
+    void OnEnable()
+    {
+        // Subscribe to the OnFinishCalculateCorrectRate event from CorrectRateCalculator
+        // to automatically check level pass conditions after accuracy is calculated.
         correctRateCalculator.OnFinishCalculateCorrectRate += CheckFocusedLevelsCorrectRate;
 
-        // 初始化 requiredBPMText
+        // Initialize the displayed required BPM text.
         UpdateRequiredBPMText();
     }
-    void OnDisable() {
-        // 取消订阅 RealTimeInputTracker 的事件
+
+    void OnDisable()
+    {
+        // Unsubscribe from the event to prevent memory leaks.
         correctRateCalculator.OnFinishCalculateCorrectRate -= CheckFocusedLevelsCorrectRate;
     }
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+
+    void Update()
+    {
+        // Handle input for adjusting BPM and navigating stages for testing/debugging.
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
             requiredBPM += 5f;
             UpdateRequiredBPMText();
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
             requiredBPM -= 5f;
             UpdateRequiredBPMText();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
             GoNextStage();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
             GoPreviousStage();
         }
-        
     }
-    void UpdateRequiredBPMText() {
-        // 更新 requiredBPMText
-        if (requiredBPMText != null) {
+
+    /// <summary>
+    /// Updates the UI text displaying the required BPM.
+    /// </summary>
+    void UpdateRequiredBPMText()
+    {
+        if (requiredBPMText != null)
+        {
             requiredBPMText.text = requiredBPM.ToString();
         }
     }
 
+    /// <summary>
+    /// Checks the accuracy rates of the currently focused levels against their pass thresholds.
+    /// This method is called after the CorrectRateCalculator finishes its calculations.
+    /// </summary>
     private void CheckFocusedLevelsCorrectRate()
     {
-        // CorrectOrderMode 不能用來通關
-        if (correctRateCalculator.inputTracker.currentMode == RealTimeInputTracker.CorrectMode.CorrectOrderMode) {
+        // Levels cannot be passed if the current mode is "CorrectOrderMode".
+        if (correctRateCalculator.inputTracker.currentMode == RealTimeInputTracker.CorrectMode.CorrectOrderMode)
+        {
             return;
         }
-        // bpm 小於 required bpm 不能通關
-        if (correctRateCalculator.inputTracker.transformPlayBacker.playBackBPM < requiredBPM) {
+        // Levels cannot be passed if the current playback BPM is below the required BPM.
+        if (correctRateCalculator.inputTracker.transformPlayBacker.playBackBPM < requiredBPM)
+        {
             return;
         }
 
-        // 检查当前聚焦的 stage 的所有 level 是否都通过
+        // Ensure there is a focused stage to check.
         if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count)
         {
             Stage currentStage = stages[currentFocusedStageIndex];
 
+            // Iterate through all levels in the current stage.
             foreach (var controller in currentStage.levels)
             {
+                // Only check levels that are currently focused.
                 if (controller != null && controller.focused)
                 {
                     bool isPassed = false;
 
-                    // 根据 TrackCorrectRate 检查对应的正确率
+                    // Use a switch statement to check the correct rate based on the level's configured TrackCorrectRate type.
                     switch (controller.trackCorrectRate)
                     {
                         case LevelController.TrackCorrectRate.RightHand4Beat:
@@ -173,7 +194,7 @@ public class LevelManager : MonoBehaviour
                             break;
                     }
 
-                    // 如果超过阈值，设置为通过
+                    // If the level's pass condition is met, mark it as passed and trigger the OnLevelPassed event.
                     if (isPassed)
                     {
                         controller.SetPassed();
@@ -182,42 +203,51 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            // 检查当前 focused stage 的所有 level 是否都通过
+            // After checking all individual levels, check if the entire focused stage has been passed.
             CheckFocusedLevelPassed();
         }
     }
 
+    /// <summary>
+    /// Checks if all levels within the currently focused stage have been passed.
+    /// If so, it triggers advancement to the next stage.
+    /// </summary>
     private void CheckFocusedLevelPassed()
     {
         if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count)
         {
             Stage currentStage = stages[currentFocusedStageIndex];
 
-            // 检查所有 level 是否都通过
             bool allPassed = true;
             foreach (var controller in currentStage.levels)
             {
                 if (controller != null && !controller.passed)
                 {
-                    allPassed = false;
+                    allPassed = false; // If any level is not passed, the stage is not complete.
                     break;
                 }
             }
 
             if (allPassed)
             {
-                GoNextStage();
+                GoNextStage(); // Advance to the next stage if all levels are passed.
             }
         }
     }
 
+    /// <summary>
+    /// Transitions the game to the next stage.
+    /// Unfocuses the current stage's levels and focuses the next stage's levels.
+    /// Also triggers the OnStageAdvanced event.
+    /// </summary>
     void GoNextStage()
     {
-        if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count - 1) {
+        // Ensure there is a next stage to go to.
+        if (currentFocusedStageIndex >= 0 && currentFocusedStageIndex < stages.Count - 1)
+        {
             Stage currentStage = stages[currentFocusedStageIndex];
 
-            // 当前 stage 所有 level 都通过了
-            // 将当前 stage 的 level 设置为未聚焦
+            // Unfocus all levels in the current stage.
             foreach (var controller in currentStage.levels)
             {
                 if (controller != null)
@@ -226,37 +256,47 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            // 聚焦下一个 stage
+            // Advance to the next stage index.
             currentFocusedStageIndex++;
             if (currentFocusedStageIndex < stages.Count)
             {
                 Stage nextStage = stages[currentFocusedStageIndex];
+                // Unlock and focus all levels in the new stage.
                 foreach (var controller in nextStage.levels)
                 {
                     if (controller != null)
                     {
                         controller.SetUnLocked();
                         controller.SetFocused();
-                        controller.GetComponent<SetDrumNoteSkipStateButton>().OnMouseDown();
-                        controller.GetComponent<SetHitDrumCorrectMode>().OnMouseDown();
+                        // Automatically trigger the associated skip state and correct mode buttons for the new level.
+                        controller.GetComponent<SetDrumNoteSkipStateButton>()?.OnMouseDown();
+                        controller.GetComponent<SetHitDrumCorrectMode>()?.OnMouseDown();
                     }
                 }
 
-                // // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
+                // Reset all drum notes and hit segments to unskipped state for the new stage.
+                // This ensures a clean slate for the new level's tracking.
                 // correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
 
-                // 在晋级到下一个 stage 时调用 Action
+                // Invoke the OnStageAdvanced event.
                 OnStageAdvanced?.Invoke();
             }
         }
     }
+
+    /// <summary>
+    /// Transitions the game to the previous stage.
+    /// Unpasses, unfocuses, and locks the current stage's levels, then focuses the previous stage's levels.
+    /// Also triggers the OnStageAdvanced event.
+    /// </summary>
     void GoPreviousStage()
     {
-        if (currentFocusedStageIndex > 0 && currentFocusedStageIndex < stages.Count) {
+        // Ensure there is a previous stage to go to.
+        if (currentFocusedStageIndex > 0 && currentFocusedStageIndex < stages.Count)
+        {
             Stage currentStage = stages[currentFocusedStageIndex];
 
-            // 当前 stage 所有 level 都通过了
-            // 将当前 stage 的 level 设置为未聚焦
+            // Unpass, unfocus, and lock all levels in the current stage.
             foreach (var controller in currentStage.levels)
             {
                 if (controller != null)
@@ -267,11 +307,12 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            // 聚焦上一个 stage
+            // Revert to the previous stage index.
             currentFocusedStageIndex--;
             if (currentFocusedStageIndex >= 0)
             {
                 Stage previousStage = stages[currentFocusedStageIndex];
+                // Unlock and focus all levels in the previous stage.
                 foreach (var controller in previousStage.levels)
                 {
                     if (controller != null)
@@ -281,10 +322,10 @@ public class LevelManager : MonoBehaviour
                     }
                 }
 
-                // 将所有 drumNotes 和 hitSegments 设置为 unskipped 状态
+                // Reset all drum notes and hit segments to unskipped state for the previous stage.
                 correctRateCalculator.inputTracker.transformPlayBacker.drumSheet.SetDrumNoteSkipStateForBeatRange(-1f, 100f, false);
 
-                // 在晋级到上一个 stage 时调用 Action
+                // Invoke the OnStageAdvanced event.
                 OnStageAdvanced?.Invoke();
             }
         }
