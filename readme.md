@@ -3,7 +3,7 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<img src="readme_materials/MRDrum logo black background.png#gh-light-mode-only" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
+<img src="readme_materials/MRDrum logo transparent background - black.png#gh-light-mode-only" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
 <img src="readme_materials/MRDrum logo transparent background.png#gh-dark-mode-only" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
 
 <!-- ![](<readme_materials/MRDrum logo black background.png#gh-light-mode-only>) -->
