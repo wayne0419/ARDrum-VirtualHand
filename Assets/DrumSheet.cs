@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class DrumSheet : MonoBehaviour
 {
-    public List<DrumNote> drumNotes; // 存储所有的 DrumNote
+    public List<DrumNote> drumNotes; // A list containing all DrumNote objects in the drum sheet.
 
-    public Transform drumSheetCursorStart; // 鼓谱光标的起始位置
-    public Transform drumSheetCursorEnd;   // 鼓谱光标的结束位置
-    public Transform drumSheetCrashRowAnchor;  // Crash 的錨點
-    public Transform drumSheetOpenHiHatRowAnchor;  // Open HiHat 的錨點
-    public Transform drumSheetClosedHiHatRowAnchor;  // Closed HiHat 的錨點
-    public Transform drumSheetRideRowAnchor;  // Ride 的錨點
-    public Transform drumSheetTom1RowAnchor;  // Tom1 的錨點
-    public Transform drumSheetTom2RowAnchor;  // Tom2 的錨點
-    public Transform drumSheetSnareRowAnchor;  // Snare 的錨點
-    public Transform drumSheetFloorTomRowAnchor;  // Floor Tom 的錨點
-    public Transform drumSheetBassRowAnchor;  // Bass 的錨點
-    public Transform drumSheetFloorHiHatRowAnchor;  // FloorHiHat 的錨點
+    public Transform drumSheetCursorStart; // The starting position for the drum sheet cursor.
+    public Transform drumSheetCursorEnd;   // The ending position for the drum sheet cursor.
+    public Transform drumSheetCrashRowAnchor;  // Anchor point for the Crash cymbal row on the drum sheet.
+    public Transform drumSheetOpenHiHatRowAnchor;  // Anchor point for the Open Hi-Hat row.
+    public Transform drumSheetClosedHiHatRowAnchor;  // Anchor point for the Closed Hi-Hat row.
+    public Transform drumSheetRideRowAnchor;  // Anchor point for the Ride cymbal row.
+    public Transform drumSheetTom1RowAnchor;  // Anchor point for the Tom 1 row.
+    public Transform drumSheetTom2RowAnchor;  // Anchor point for the Tom 2 row.
+    public Transform drumSheetSnareRowAnchor;  // Anchor point for the Snare drum row.
+    public Transform drumSheetFloorTomRowAnchor;  // Anchor point for the Floor Tom row.
+    public Transform drumSheetBassRowAnchor;  // Anchor point for the Bass drum row.
+    public Transform drumSheetFloorHiHatRowAnchor;  // Anchor point for the Foot Hi-Hat row.
 
-    // 新增方法：找出某个 drumType 的第 i 个 DrumNote
+    /// <summary>
+    /// Retrieves a DrumNote of a specific type by its index within that type.
+    /// </summary>
+    /// <param name="drumType">The type of drum to search for.</param>
+    /// <param name="index">The zero-based index of the note within the specified drum type.</param>
+    /// <returns>The DrumNote at the given index for the specified drum type, or null if not found.</returns>
     public DrumNote GetDrumNoteByIndex(DrumType drumType, int index)
     {
         int count = 0;
@@ -33,10 +38,14 @@ public class DrumSheet : MonoBehaviour
                 count++;
             }
         }
-        return null; // 如果找不到对应的 DrumNote，则返回 null
+        return null; // Return null if no matching DrumNote is found.
     }
 
-    // 更新后的方法：设置所有使用指定 limb 的 DrumNote 为跳过或不跳过状态
+    /// <summary>
+    /// Sets the skip state (skipped or unskipped) for all DrumNotes associated with a specific limb.
+    /// </summary>
+    /// <param name="limb">The limb identifier (e.g., "lefthand", "righthand") to filter notes by.</param>
+    /// <param name="skipState">True to mark notes as skipped, false to unmark them.</param>
     public void SetDrumNoteSkipStateForLimb(string limb, bool skipState)
     {
         foreach (DrumNote note in drumNotes)
@@ -45,17 +54,23 @@ public class DrumSheet : MonoBehaviour
             {
                 if (skipState)
                 {
-                    note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                    note.SetSkip(); // Mark the note as skipped.
                 }
                 else
                 {
-                    note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                    note.SetUnSkip(); // Unmark the note as skipped.
                 }
             }
         }
     }
 
-    // 更新后的方法：设置所有 beatPosition 在 [beatStart, beatEnd) 范围内的 DrumNote 为跳过或不跳过状态
+    /// <summary>
+    /// Sets the skip state for all DrumNotes whose beat position falls within a specified range.
+    /// The range is inclusive for the start beat and exclusive for the end beat.
+    /// </summary>
+    /// <param name="beatStart">The starting beat position of the range (inclusive).</param>
+    /// <param name="beatEnd">The ending beat position of the range (exclusive).</param>
+    /// <param name="skipState">True to mark notes as skipped, false to unmark them.</param>
     public void SetDrumNoteSkipStateForBeatRange(float beatStart, float beatEnd, bool skipState)
     {
         foreach (DrumNote note in drumNotes)
@@ -64,17 +79,21 @@ public class DrumSheet : MonoBehaviour
             {
                 if (skipState)
                 {
-                    note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                    note.SetSkip(); // Mark the note as skipped.
                 }
                 else
                 {
-                    note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                    note.SetUnSkip(); // Unmark the note as skipped.
                 }
             }
         }
     }
 
-    // 更新后的方法：设置所有 drumType 符合的 DrumNote 为跳过或不跳过状态
+    /// <summary>
+    /// Sets the skip state for all DrumNotes of a specific drum type.
+    /// </summary>
+    /// <param name="drumType">The type of drum (e.g., DrumType.Snare) to filter notes by.</param>
+    /// <param name="skipState">True to mark notes as skipped, false to unmark them.</param>
     public void SetDrumNoteSkipStateForDrumType(DrumType drumType, bool skipState)
     {
         foreach (DrumNote note in drumNotes)
@@ -83,34 +102,39 @@ public class DrumSheet : MonoBehaviour
             {
                 if (skipState)
                 {
-                    note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                    note.SetSkip(); // Mark the note as skipped.
                 }
                 else
                 {
-                    note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                    note.SetUnSkip(); // Unmark the note as skipped.
                 }
             }
         }
     }
 
-    // 新增方法：根据提供的 beats 和 limbs 设置 DrumNote 的跳过状态
+    /// <summary>
+    /// Sets the skip state for DrumNotes that match both a specific beat position and a specific limb.
+    /// </summary>
+    /// <param name="beats">An array of beat positions to match.</param>
+    /// <param name="limbs">An array of limb identifiers to match.</param>
+    /// <param name="skipState">True to mark notes as skipped, false to unmark them.</param>
     public void SetDrumNoteSkipStateForBeatsAndLimbs(float[] beats, string[] limbs, bool skipState)
     {
         foreach (DrumNote note in drumNotes)
         {
-            // 检查 DrumNote 的 limbUsed 是否在提供的 limbs 数组中
+            // Check if the DrumNote's associated limb is present in the provided limbs array.
             if (note.associatedSegment != null && System.Array.Exists(limbs, limb => limb == note.associatedSegment.limbUsed))
             {
-                // 检查 DrumNote 的 beatPosition 是否在提供的 beats 数组中
+                // Check if the DrumNote's beat position is approximately equal to any beat in the provided beats array.
                 if (System.Array.Exists(beats, beat => Mathf.Approximately(beat, note.beatPosition)))
                 {
                     if (skipState)
                     {
-                        note.SetSkip(); // 如果 skipState 为 true，则设置为跳过状态
+                        note.SetSkip(); // Mark the note as skipped.
                     }
                     else
                     {
-                        note.SetUnSkip(); // 如果 skipState 为 false，则设置为不跳过状态
+                        note.SetUnSkip(); // Unmark the note as skipped.
                     }
                 }
             }
