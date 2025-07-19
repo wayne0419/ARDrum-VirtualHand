@@ -45,9 +45,10 @@
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
-    - [Usage](#usage)
-    - [Testing](#testing)
-- [Roadmap](#roadmap)
+    - [Usage - Record](#usage---record)
+	- [Usage - Playback](#usage---playback)
+    <!-- - [Testing](#testing) -->
+<!-- - [Roadmap](#roadmap) -->
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
@@ -407,7 +408,7 @@ There are two ways to use the record phase features:
 
 To record in the buid application:
 
-1. **Follow [Usage - Playback Section](#Usage---Playback) step 1~5**
+1. **Follow [Usage - Playback Section](#usage---playback) step 1~5**
 
 2. **Enter record phase**
 
