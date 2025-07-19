@@ -3,7 +3,7 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<img src="readme_materials/MRDrum logo transparent background.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
+<img src="readme_materials/MRDrum logo black background.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
 
 # ARDRUM-VIRTUALHAND
 
