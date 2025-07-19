@@ -67,7 +67,7 @@ ACM CHI 2025 [MR.Drum: Designing Mixed Reality Interfaces to Support Structured 
 
 The original paper introduced the idea of utilizing the concept of micro-progression to break through the long-standing challenge of using AR to learn/train complex (temporally and physically) skills, drumming, as an example.
 
-As the research and evaluation are detailed in the paper, this document focuses on the system itself. The following sections will cover its features, project structure, and a brief overview of the codebase.
+As the research and evaluation are detailed in the paper, this document focuses on the system itself. The following sections will cover its features, project structure, usage instruction, and a brief overview of the codebase.
 
 Let’s get started!
 
