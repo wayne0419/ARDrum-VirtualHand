@@ -1,54 +1,54 @@
 using System;
 using System.Collections.Generic;
-using TMPro; // 添加 TextMeshPro 的引用
+using TMPro; // Necessary for TextMeshPro integration if used elsewhere, though not directly in this script.
 using UnityEngine;
 
 public class CorrectRateCalculator : MonoBehaviour
 {
-    // 引用 RealTimeInputTracker 以獲取擊打數據
+    // Reference to RealTimeInputTracker to obtain hit data.
     public RealTimeInputTracker inputTracker;
     public event Action OnFinishCalculateCorrectRate;
 
-    // 各种节奏的正确率
-    public float correctRate = 0f; // 总正确率
-    public float level1CorrectRate = 0f; // 总包含 level 1 错误的正确率
-    public float mainRhythmCorrectRate = 0f; // 主节奏的正确率
-    public float mainRhythmLevel1CorrectRate = 0f; // 主节奏包含 level 1 错误的正确率
-    public float oneThreeRhythmCorrectRate = 0f; // 1和3拍节奏的正确率
-    public float oneThreeRhythmLevel1CorrectRate = 0f; // 1和3拍节奏包含 level 1 错误的正确率
-    public float twoFourRhythmCorrectRate = 0f; // 2和4拍节奏的正确率
-    public float twoFourRhythmLevel1CorrectRate = 0f; // 2和4拍节奏包含 level 1 错误的正确率
-    public float rightHandFourBeatCorrectRate = 0f; // 右手四拍节奏的正确率
-    public float rightHandFourBeatLevel1CorrectRate = 0f; // 右手四拍节奏包含 level 1 错误的正确率
-    public float rightHandEightBeatCorrectRate = 0f; // 右手八拍节奏的正确率
-    public float rightHandEightBeatLevel1CorrectRate = 0f; // 右手八拍节奏包含 level 1 错误的正确率
-    public float rightHandSixteenBeatCorrectRate = 0f; // 右手十六拍节奏的正确率
-    public float rightHandSixteenBeatLevel1CorrectRate = 0f; // 右手十六拍节奏包含 level 1 错误的正确率
-    public float bothHandFourBeatCorrectRate = 0f; // 双手四拍节奏的正确率
-    public float bothHandFourBeatLevel1CorrectRate = 0f; // 双手四拍节奏包含 level 1 错误的正确率
-    public float bothHandEightBeatCorrectRate = 0f; // 双手八拍节奏的正确率
-    public float bothHandEightBeatLevel1CorrectRate = 0f; // 双手八拍节奏包含 level 1 错误的正确率
-    public float bothHandSixteenBeatCorrectRate = 0f; // 双手十六拍节奏的正确率
-    public float bothHandSixteenBeatLevel1CorrectRate = 0f; // 双手十六拍节奏包含 level 1 错误的正确率
-    public float rightHandRightFeetFourBeatCorrectRate = 0f; // 右手右腳四拍节奏的正确率
-    public float rightHandRightFeetFourBeatLevel1CorrectRate = 0f; // 右手右腳四拍节奏包含 level 1 错误的正确率
-    public float rightHandRightFeetEightBeatCorrectRate = 0f; // 右手右腳八拍节奏的正确率
-    public float rightHandRightFeetEightBeatLevel1CorrectRate = 0f; // 右手右腳八拍节奏包含 level 1 错误的正确率
-    public float rightHandRightFeetSixteenBeatCorrectRate = 0f; // 右手右腳十六拍节奏的正确率
-    public float rightHandRightFeetSixteenBeatLevel1CorrectRate = 0f; // 右手右腳十六拍节奏包含 level 1 错误的正确率
+    // Accuracy rates for various rhythmic patterns.
+    public float correctRate = 0f; // Overall accuracy rate.
+    public float level1CorrectRate = 0f; // Overall accuracy rate including Level 1 errors (minor timing deviations).
+    public float mainRhythmCorrectRate = 0f; // Accuracy rate for main beat positions (1, 2, 3, 4).
+    public float mainRhythmLevel1CorrectRate = 0f; // Main rhythm accuracy including Level 1 errors.
+    public float oneThreeRhythmCorrectRate = 0f; // Accuracy rate for beats 1 and 3.
+    public float oneThreeRhythmLevel1CorrectRate = 0f; // Beats 1 and 3 accuracy including Level 1 errors.
+    public float twoFourRhythmCorrectRate = 0f; // Accuracy rate for beats 2 and 4.
+    public float twoFourRhythmLevel1CorrectRate = 0f; // Beats 2 and 4 accuracy including Level 1 errors.
+    public float rightHandFourBeatCorrectRate = 0f; // Right-hand accuracy for quarter notes.
+    public float rightHandFourBeatLevel1CorrectRate = 0f; // Right-hand quarter note accuracy including Level 1 errors.
+    public float rightHandEightBeatCorrectRate = 0f; // Right-hand accuracy for eighth notes.
+    public float rightHandEightBeatLevel1CorrectRate = 0f; // Right-hand eighth note accuracy including Level 1 errors.
+    public float rightHandSixteenBeatCorrectRate = 0f; // Right-hand accuracy for sixteenth notes.
+    public float rightHandSixteenBeatLevel1CorrectRate = 0f; // Right-hand sixteenth note accuracy including Level 1 errors.
+    public float bothHandFourBeatCorrectRate = 0f; // Both-hand accuracy for quarter notes.
+    public float bothHandFourBeatLevel1CorrectRate = 0f; // Both-hand quarter note accuracy including Level 1 errors.
+    public float bothHandEightBeatCorrectRate = 0f; // Both-hand accuracy for eighth notes.
+    public float bothHandEightBeatLevel1CorrectRate = 0f; // Both-hand eighth note accuracy including Level 1 errors.
+    public float bothHandSixteenBeatCorrectRate = 0f; // Both-hand accuracy for sixteenth notes.
+    public float bothHandSixteenBeatLevel1CorrectRate = 0f; // Both-hand sixteenth note accuracy including Level 1 errors.
+    public float rightHandRightFeetFourBeatCorrectRate = 0f; // Right hand and right foot accuracy for quarter notes.
+    public float rightHandRightFeetFourBeatLevel1CorrectRate = 0f; // Right hand/foot quarter note accuracy including Level 1 errors.
+    public float rightHandRightFeetEightBeatCorrectRate = 0f; // Right hand and right foot accuracy for eighth notes.
+    public float rightHandRightFeetEightBeatLevel1CorrectRate = 0f; // Right hand/foot eighth note accuracy including Level 1 errors.
+    public float rightHandRightFeetSixteenBeatCorrectRate = 0f; // Right hand and right foot accuracy for sixteenth notes.
+    public float rightHandRightFeetSixteenBeatLevel1CorrectRate = 0f; // Right hand/foot sixteenth note accuracy including Level 1 errors.
 
-    public float rightHandLeftHandRightFeetFourBeatCorrectRate = 0f; // 右手左手右腳四拍节奏的正确率
-    public float rightHandLeftHandRightFeetFourBeatLevel1CorrectRate = 0f; // 右手左手右腳四拍节奏包含 level 1 错误的正确率
-    public float rightHandLeftHandRightFeetEightBeatCorrectRate = 0f; // 右手左手右腳八拍节奏的正确率
-    public float rightHandLeftHandRightFeetEightBeatLevel1CorrectRate = 0f; // 右手左手右腳八拍节奏包含 level 1 错误的正确率
-    public float rightHandLeftHandRightFeetSixteenBeatCorrectRate = 0f; // 右手左手右腳十六拍节奏的正确率
-    public float rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate = 0f; // 右手左手右腳十六拍节奏包含 level 1 错误的正确率
+    public float rightHandLeftHandRightFeetFourBeatCorrectRate = 0f; // Right hand, left hand, and right foot accuracy for quarter notes.
+    public float rightHandLeftHandRightFeetFourBeatLevel1CorrectRate = 0f; // All three limbs quarter note accuracy including Level 1 errors.
+    public float rightHandLeftHandRightFeetEightBeatCorrectRate = 0f; // Right hand, left hand, and right foot accuracy for eighth notes.
+    public float rightHandLeftHandRightFeetEightBeatLevel1CorrectRate = 0f; // All three limbs eighth note accuracy including Level 1 errors.
+    public float rightHandLeftHandRightFeetSixteenBeatCorrectRate = 0f; // Right hand, left hand, and right foot accuracy for sixteenth notes.
+    public float rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate = 0f; // All three limbs sixteenth note accuracy including Level 1 errors.
 
     private void OnEnable()
     {
         if (inputTracker != null)
         {
-            // 订阅 OnFinishTracking 事件
+            // Subscribe to the OnFinishTracking event to trigger calculation.
             inputTracker.OnFinishTracking += CalculateCorrectRates;
         }
     }
@@ -57,12 +57,15 @@ public class CorrectRateCalculator : MonoBehaviour
     {
         if (inputTracker != null)
         {
-            // 取消订阅 OnFinishTracking 事件
+            // Unsubscribe from the OnFinishTracking event to prevent memory leaks.
             inputTracker.OnFinishTracking -= CalculateCorrectRates;
         }
     }
 
-    // 计算正确率和 level 1 正确率
+    /// <summary>
+    /// Calculates various accuracy rates and Level 1 accuracy rates based on tracked hit segments.
+    /// Level 1 accuracy includes hits that were within an acceptable, but not perfect, timing window.
+    /// </summary>
     public void CalculateCorrectRates()
     {
         int totalSegments = 0;
@@ -129,23 +132,24 @@ public class CorrectRateCalculator : MonoBehaviour
         int correctRightHandLeftHandRightFeetSixteenBeatSegments = 0;
         int level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments = 0;
 
-        // 遍历所有跟踪的 HitSegment
+        // Iterate through all tracked HitSegments to accumulate counts.
         foreach (var segment in inputTracker.GetTrackedHitSegments())
         {
+            // Calculate overall accuracy, excluding skipped segments.
             if (!segment.skip)
             {
                 totalSegments++;
                 if (segment.correct)
                 {
                     correctSegments++;
-                    level1CorrectSegments++;
+                    level1CorrectSegments++; // Perfect hits also count as Level 1 correct.
                 }
                 else if (segment.level1TimeError)
                 {
-                    level1CorrectSegments++;
+                    level1CorrectSegments++; // Level 1 errors count towards Level 1 accuracy.
                 }
 
-                // 计算主节奏的正确率
+                // Calculate main rhythm accuracy (beats 1, 2, 3, 4).
                 if (segment.associatedNote != null && (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
                     segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
                 {
@@ -161,7 +165,7 @@ public class CorrectRateCalculator : MonoBehaviour
                     }
                 }
 
-                // 计算 1 和 3 拍节奏的正确率
+                // Calculate accuracy for beats 1 and 3.
                 if (segment.associatedNote != null && ((segment.associatedNote.beatPosition >= 1 && segment.associatedNote.beatPosition < 2) ||
                                                        (segment.associatedNote.beatPosition >= 3 && segment.associatedNote.beatPosition < 4)))
                 {
@@ -177,7 +181,7 @@ public class CorrectRateCalculator : MonoBehaviour
                     }
                 }
 
-                // 计算 2 和 4 拍节奏的正确率
+                // Calculate accuracy for beats 2 and 4.
                 if (segment.associatedNote != null && ((segment.associatedNote.beatPosition >= 2 && segment.associatedNote.beatPosition < 3) ||
                                                        (segment.associatedNote.beatPosition >= 4 && segment.associatedNote.beatPosition < 5)))
                 {
@@ -194,7 +198,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手四拍节奏的正确率
+            // Calculate right-hand accuracy for quarter notes.
             if (segment.limbUsed == "righthand" && segment.associatedNote != null && 
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
                  segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
@@ -211,7 +215,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手八拍节奏的正确率
+            // Calculate right-hand accuracy for eighth notes.
             if (segment.limbUsed == "righthand" && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
                  segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
@@ -230,7 +234,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手十六拍节奏的正确率
+            // Calculate right-hand accuracy for sixteenth notes.
             if (segment.limbUsed == "righthand" && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
                  segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
@@ -253,7 +257,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算双手四拍节奏的正确率
+            // Calculate both-hand accuracy for quarter notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
                  segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
@@ -270,7 +274,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算双手八拍节奏的正确率
+            // Calculate both-hand accuracy for eighth notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
                  segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
@@ -289,7 +293,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算双手十六拍节奏的正确率
+            // Calculate both-hand accuracy for sixteenth notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
                  segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
@@ -312,7 +316,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手右腳四拍节奏的正确率
+            // Calculate right-hand and right-foot accuracy for quarter notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
                  segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
@@ -329,7 +333,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手右腳八拍节奏的正确率
+            // Calculate right-hand and right-foot accuracy for eighth notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
                  segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
@@ -348,7 +352,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手右腳十六拍节奏的正确率
+            // Calculate right-hand and right-foot accuracy for sixteenth notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
                  segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
@@ -371,7 +375,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手左手右腳四拍节奏的正确率
+            // Calculate right-hand, left-hand, and right-foot accuracy for quarter notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 2 || 
                  segment.associatedNote.beatPosition == 3 || segment.associatedNote.beatPosition == 4))
@@ -388,7 +392,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手左手右腳八拍节奏的正确率
+            // Calculate right-hand, left-hand, and right-foot accuracy for eighth notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.5 || 
                  segment.associatedNote.beatPosition == 2 || segment.associatedNote.beatPosition == 2.5 ||
@@ -407,7 +411,7 @@ public class CorrectRateCalculator : MonoBehaviour
                 }
             }
 
-            // 计算右手左手右腳十六拍节奏的正确率
+            // Calculate right-hand, left-hand, and right-foot accuracy for sixteenth notes.
             if ((segment.limbUsed == "righthand" || segment.limbUsed == "lefthand" || segment.limbUsed == "rightfeet") && segment.associatedNote != null &&
                 (segment.associatedNote.beatPosition == 1 || segment.associatedNote.beatPosition == 1.25 ||
                  segment.associatedNote.beatPosition == 1.5 || segment.associatedNote.beatPosition == 1.75 ||
@@ -432,7 +436,8 @@ public class CorrectRateCalculator : MonoBehaviour
 
         }
 
-        // 如果没有段落，默认正确率为 100%
+        // Calculate and assign the final accuracy rates.
+        // If no segments are present, default to 100% accuracy to avoid division by zero.
         correctRate = (totalSegments > 0) ? (float)correctSegments / totalSegments : 1f;
         level1CorrectRate = (totalSegments > 0) ? (float)level1CorrectSegments / totalSegments : 1f;
 
@@ -481,7 +486,7 @@ public class CorrectRateCalculator : MonoBehaviour
         rightHandLeftHandRightFeetSixteenBeatCorrectRate = (totalRightHandLeftHandRightFeetSixteenBeatSegments > 0) ? (float)correctRightHandLeftHandRightFeetSixteenBeatSegments / totalRightHandLeftHandRightFeetSixteenBeatSegments : 1f;
         rightHandLeftHandRightFeetSixteenBeatLevel1CorrectRate = (totalRightHandLeftHandRightFeetSixteenBeatSegments > 0) ? (float)level1CorrectRightHandLeftHandRightFeetSixteenBeatSegments / totalRightHandLeftHandRightFeetSixteenBeatSegments : 1f;
 
-        // 触发结束事件
+        // Trigger the completion event for other components to react.
         OnFinishCalculateCorrectRate?.Invoke();
     }
 }
