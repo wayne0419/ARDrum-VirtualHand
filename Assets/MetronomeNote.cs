@@ -2,24 +2,27 @@ using UnityEngine;
 
 public class MetronomeNote : MonoBehaviour
 {
-    public Color onColor = Color.white; // 当音符被激活时的颜色
-    public Color highlightColor = Color.yellow; // 当音符被高亮时的颜色
+    public Color onColor = Color.white;     // The color of the note when it is active but not highlighted.
+    public Color highlightColor = Color.yellow; // The color of the note when it is specifically highlighted (e.g., on the downbeat).
 
-    private Renderer noteRenderer;
+    private Renderer noteRenderer; // The Renderer component responsible for displaying the note.
 
     private void Awake()
     {
-        // 获取对象的渲染器组件
+        // Get the Renderer component attached to this GameObject.
         noteRenderer = GetComponent<Renderer>();
 
-        // 初始化时，将音符颜色设置为默认颜色
+        // Initialize the note's color to its default 'onColor' when the object awakes.
         if (noteRenderer != null)
         {
             noteRenderer.material.color = onColor;
         }
     }
 
-    // 将音符设置为 onColor
+    /// <summary>
+    /// Sets the note's visual color to the predefined 'onColor'.
+    /// This typically represents an active but not emphasized beat.
+    /// </summary>
     public void SetOn()
     {
         if (noteRenderer != null)
@@ -28,7 +31,10 @@ public class MetronomeNote : MonoBehaviour
         }
     }
 
-    // 将音符设置为 highlightColor
+    /// <summary>
+    /// Sets the note's visual color to the predefined 'highlightColor'.
+    /// This typically represents an emphasized beat, like the first beat of a measure.
+    /// </summary>
     public void SetHighlight()
     {
         if (noteRenderer != null)
