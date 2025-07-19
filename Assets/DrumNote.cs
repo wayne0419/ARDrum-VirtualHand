@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class DrumNote : MonoBehaviour
 {
-    public DrumType drumType; // 鼓的类型
-    public Color skippedColor; // 跳过时的颜色
-    public Color defaultColor; // 默认颜色
-    public TransformPlayBacker.HitSegment associatedSegment; // 关联的 HitSegment
-    public float beatPosition; // 代表这个 drumNote 所对应的 hitSegment 的 beatPosition
+    public DrumType drumType; // Specifies the type of drum this note represents.
+    public Color skippedColor; // The color applied to the note when it is marked as skipped.
+    public Color defaultColor; // The default color of the note.
+    public TransformPlayBacker.HitSegment associatedSegment; // The HitSegment data associated with this visual drum note.
+    public float beatPosition; // The beat position in the song that this drum note corresponds to.
 
-    private Renderer noteRenderer;
+    private Renderer noteRenderer; // The renderer component responsible for displaying the drum note.
 
     void Awake()
     {
         noteRenderer = GetComponent<Renderer>();
         if (noteRenderer != null)
         {
-            noteRenderer.material.color = defaultColor; // 设置为默认颜色
+            noteRenderer.material.color = defaultColor; // Initialize the note's color to its default.
         }
     }
 
+    /// <summary>
+    /// Sets the material color of the drum note to the predefined skippedColor.
+    /// </summary>
     public void SetSkippedColor()
     {
         if (noteRenderer != null)
@@ -27,6 +30,9 @@ public class DrumNote : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the material color of the drum note back to its predefined defaultColor.
+    /// </summary>
     public void SetDefaultColor()
     {
         if (noteRenderer != null)
@@ -35,38 +41,47 @@ public class DrumNote : MonoBehaviour
         }
     }
 
-    // 新增的功能：设置 associatedSegment 的 skip 状态为 true 并调整 DrumNote 的颜色
+    /// <summary>
+    /// Marks the associated HitSegment as 'skipped' and updates the visual drum note's color
+    /// to reflect its skipped status.
+    /// </summary>
     public void SetSkip()
     {
         if (associatedSegment != null)
         {
             associatedSegment.skip = true;
-            SetSkippedColor(); // 设置为 skippedColor
+            SetSkippedColor(); // Change the note's visual appearance to skipped.
         }
     }
 
-    // 新增的功能：设置 associatedSegment 的 skip 状态为 false 并调整 DrumNote 的颜色
+    /// <summary>
+    /// Unmarks the associated HitSegment as 'skipped' and reverts the visual drum note's color
+    /// to its default appearance.
+    /// </summary>
     public void SetUnSkip()
     {
         if (associatedSegment != null)
         {
             associatedSegment.skip = false;
-            SetDefaultColor(); // 设置为 defaultColor
+            SetDefaultColor(); // Revert the note's visual appearance to default.
         }
     }
 
-    // 当鼠标点击此 DrumNote 时，执行 ToggleSkip
+    /// <summary>
+    /// Toggles the 'skipped' status of the associated HitSegment and updates the drum note's
+    /// visual representation when the mouse clicks on this GameObject.
+    /// </summary>
     void OnMouseDown()
     {
         if (associatedSegment != null)
         {
             if (associatedSegment.skip)
             {
-                SetUnSkip();
+                SetUnSkip(); // If currently skipped, unskip it.
             }
             else
             {
-                SetSkip();
+                SetSkip(); // If not skipped, mark it as skipped.
             }
         }
     }
