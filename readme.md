@@ -66,7 +66,7 @@ As the research and evaluation are detailed in the paper, this document focuses 
 
 Let’s get started!
 
-[![Video Teaser Thumbnail](readme_materials/01_Teaser_video.png) Teaser Video](https://www.youtube.com/watch?v=DkBCzBZu6SM)
+[![Video Teaser Thumbnail](readme_materials/01_Teaser_video.png)](https://www.youtube.com/watch?v=DkBCzBZu6SM)
 
 ---
 
